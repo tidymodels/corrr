@@ -1,7 +1,8 @@
 #' Obtain correlations and corresponding sample sizes.
 #' 
 #' These are methods for calculating the correlations (and corresponding sample
-#' sizes) between columns of a data frame. 
+#' sizes) between columns of a data frame or matrix. Note that data frames are
+#' converted to a matrix before computing correlations.
 #' 
 #' @section Return structures:
 #' 
