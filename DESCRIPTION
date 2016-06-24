@@ -5,10 +5,11 @@ Title: Correlations in R
 Description: A tool for conducting, exploring, and visualising correlations in R.
 Authors@R: c(
   person("Simon", "Jackson", email = "drsimonjackson@gmail.com", role = c("aut", "cre"))
-)
+  )
 URL: https://github.com/drsimonj/corrr
 BugReports: https://github.com/drsimonj/corrr/issues
 Depends:
     R (>= 3.3.0)
+Imports: dplyr
 LazyData: yes
 License: MIT + file LICENSE
