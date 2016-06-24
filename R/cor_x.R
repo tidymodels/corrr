@@ -9,7 +9,7 @@ cor_matrix <- function(x) {
   r <- stats::cor(x, use = "pairwise.complete.obs")
   n <- t(!is.na(x)) %*% (!is.na(x))
   x <- list(r = r, n = n)
-  class(x) <- c("r_matrix", "list")
+  class(x) <- c("r_mat", "list")
   x
 }
 
