@@ -6,14 +6,16 @@
 \alias{cor_x}
 \title{Obtain correlations and corresponding sample sizes.}
 \usage{
-cor_matrix(x, use = "pairwise.complete.obs", method = c("pearson",
-  "kendall", "spearman"))
+cor_matrix(x, y = NULL, use = "pairwise.complete.obs", method = "pearson")
 
-cor_frame(x, use = "pairwise.complete.obs", method = c("pearson", "kendall",
-  "spearman"))
+cor_frame(x, y = NULL, use = "pairwise.complete.obs", method = "pearson")
 }
 \arguments{
-\item{x}{A data frame of columns to correlate.}
+\item{x}{a numeric vector, matrix or data frame.}
+
+\item{y}{\code{NULL} (default) or a vector, matrix or data frame with
+    compatible dimensions to \code{x}.   The default is equivalent to
+    \code{y = x} (but more efficient).}
 
 \item{use}{an optional character string giving a
     method for computing covariances in the presence
@@ -27,8 +29,9 @@ cor_frame(x, use = "pairwise.complete.obs", method = c("pearson", "kendall",
     can be abbreviated.}
 }
 \description{
-These are methods for calculating the correlations (and corresponding sample
-sizes) between columns of a data frame.
+These are extensions of stats::cor(). They use cor() to calculate
+correlations, and return the results in a data frame or matrix-list structure
+with corresponding sample sizes.
 }
 \section{Return structures}{
 

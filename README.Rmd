@@ -22,25 +22,24 @@ devtools::install_github("drsimonj/corrr")
 
 ## Getting Started
 
-The central aspect of corrr is working with a data frame of correlations. To do this, we take a data frame or matrix of columns, and submit it to the function `cor_frame()`:
+The central aspect of corrr is working with a data frame of correlations. The primary function of corrr is `cor_frame()`, which extends `stats::cor()` by returning the correlations (`r`) and corresponding sample sizes (`n`) of each pair of variables (`vars`) in a `dplyr::data_frame()`.
 
 ```{r}
 library(MASS)
 library(corrr)
 
-# Simulate four columns correlating .7 with each other
+# Simulate four columns correlating about .7 with each other
 mu <- rep(0, 4)
 Sigma <- matrix(.7, nrow = 4, ncol = 4) + diag(4)*.3
 set.seed(1) 
-d <- data.frame(mvrnorm(n = 1000, mu = mu, Sigma = Sigma))
+d <- mvrnorm(n = 1000, mu = mu, Sigma = Sigma)
 
 # Insert a few missing values
-d$X1[100:600] <- NA
-d$X4[320:322] <- NA
+d[100:600, 1] <- NA
+d[320:322, 2] <- NA
 
 # Use corrr::cor_frame() to obtain a data frame of the correlations
 cor_frame(d)
-
 ```
 
 We also have the option to gain the same information in a list of two matrix objects using `cor_matrix()`

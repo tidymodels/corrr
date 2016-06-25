@@ -1,8 +1,8 @@
 #' Obtain correlations and corresponding sample sizes.
 #' 
-#' These are methods for calculating the correlations (and corresponding sample
-#' sizes) between columns of a data frame or matrix. Note that data frames are
-#' converted to a matrix before computing correlations.
+#' These are extensions of stats::cor(). They use cor() to calculate
+#' correlations, and return the results in a data frame or matrix-list structure
+#' with corresponding sample sizes.
 #' 
 #' @section Return structures:
 #' 
@@ -22,20 +22,54 @@
 #'  
 #' }
 #' 
-#' @param x A data frame of columns to correlate.
 #' @inheritParams stats::cor
 #' @name cor_x
 
 #' @rdname cor_x
 #' @export
-cor_matrix <- function(x, use = "pairwise.complete.obs",
-                       method = c("pearson", "kendall", "spearman")) {
+cor_matrix <- function(x, y = NULL, use = "pairwise.complete.obs", method = "pearson") {
   UseMethod("cor_matrix")
+}
+
+#' @export
+cor_matrix.default <- function(x, y = NULL, use = "pairwise.complete.obs", method = "pearson") {
+  r <- stats::cor(x = x, y = y, use = use, method = method)
+  if (is.null(y)) y <- x
+  n <- t(!is.na(x)) %*% (!is.na(y))
+  x <- list(r = r, n = n)
+  class(x) <- c("r_mat", "list")
+  x
 }
 
 #' @rdname cor_x
 #' @export
-cor_frame <- function(x, use = "pairwise.complete.obs",
-                      method = c("pearson", "kendall", "spearman")) {
+cor_frame <- function(x, y = NULL, use = "pairwise.complete.obs", method = "pearson") {
   UseMethod("cor_frame")
+}
+
+#' @export
+cor_frame.default <- function(x, y = NULL, use = "pairwise.complete.obs", method = "pearson") {
+  cor_frame(cor_matrix(x, y, use, method))
+}
+
+#' @export
+cor_frame.r_mat <- function(x) {
+  vars <- colnames(x$r)
+  if (is.null(vars)) vars <- paste0("v", 1:ncol(d))
+  n_vars <- length(vars)
+  n_cors <- factorial(n_vars) / (factorial(2) * factorial(n_vars - 2))
+  
+  var1 <- rep(head(vars, -1), (n_vars - 1):1)
+  var2 <- vector(mode = "character")
+  for (i in 1:(n_vars - 1))
+    var2 <- c(var2, tail(vars, -i))
+  
+  x <- dplyr::data_frame(
+    vars = paste(var1, var2, sep = "<>"),
+    r    = x$r[lower.tri(x$r)],
+    n    = x$n[lower.tri(x$n)]
+  )
+  
+  class(x) <- c("r_df", class(x))
+  x
 }
