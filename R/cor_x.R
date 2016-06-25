@@ -55,6 +55,18 @@ cor_frame.default <- function(x, y = NULL, use = "pairwise.complete.obs", method
 # Conversions -------------------------------------------------------------
 
 #' @export
+cor_matrix.cor_df <- function(x) {
+  vars <- union(x$x, x$y)
+  n_vars <- length(vars)
+  r <- n <- matrix(1, nrow = n_vars, ncol = n_vars)
+  r[upper.tri(r)] <- r[lower.tri(r)] <- x$r
+  n[upper.tri(n)] <- n[lower.tri(n)] <- x$n
+  x <- list(r = r, n = n)
+  class(x) <- c("cor_mat", "list")
+  x
+}
+
+#' @export
 cor_frame.cor_mat <- function(x) {
   vars <- colnames(x$r)
   if (is.null(vars)) vars <- paste0("v", 1:ncol(d))
