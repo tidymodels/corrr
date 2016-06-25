@@ -17,7 +17,7 @@ devtools::install_github("drsimonj/corrr")
 Getting Started
 ---------------
 
-The central aspect of corrr is working with a data frame of correlations. The primary function of corrr is `cor_frame()`, which extends `stats::cor()` by returning the correlations (`r`) and corresponding sample sizes (`n`) of each pair of variables (`x1` and `x2`) in a `dplyr::data_frame()`.
+The central aspect of corrr is working with a data frame of correlations. The primary function of corrr is `cor_frame()`, which extends `stats::cor()` by returning the correlations (`r`) and corresponding sample sizes (`n`) of each variable pair (`x` and `y`) in a `dplyr::data_frame()`.
 
 ``` r
 library(MASS)
@@ -37,16 +37,16 @@ d[320:322, 2] <- NA
 cor_frame(d)
 ```
 
-    ## Source: local data frame [6 x 3]
+    ## Source: local data frame [6 x 4]
     ## 
-    ##     vars         r     n
-    ##    (chr)     (dbl) (dbl)
-    ## 1 v1<>v2 0.6957043   499
-    ## 2 v1<>v3 0.7013888   499
-    ## 3 v1<>v4 0.6910351   499
-    ## 4 v2<>v3 0.7004749   997
-    ## 5 v2<>v4 0.7022015   997
-    ## 6 v3<>v4 0.7029762  1000
+    ##       x     y         r     n
+    ##   (chr) (chr)     (dbl) (dbl)
+    ## 1    v1    v2 0.6957043   499
+    ## 2    v1    v3 0.7013888   499
+    ## 3    v1    v4 0.6910351   499
+    ## 4    v2    v3 0.7004749   997
+    ## 5    v2    v4 0.7022015   997
+    ## 6    v3    v4 0.7029762  1000
 
 We also have the option to gain the same information in a list of two matrix objects using `cor_matrix()`
 
@@ -69,4 +69,4 @@ cor_matrix(d)
     ## [4,]  499  997 1000 1000
     ## 
     ## attr(,"class")
-    ## [1] "r_mat" "list"
+    ## [1] "cor_mat" "list"
