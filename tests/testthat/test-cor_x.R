@@ -4,10 +4,10 @@ df <- data.frame(a = c(1:4, NA), b = 5:9)
 mat <- as.matrix(df)
 
 test_that("cor_x adds appropriate class", {
-  expect_is(cor_frame(df), "r_df")
-  expect_is(cor_frame(mat), "r_df")
-  expect_is(cor_matrix(df), "r_mat")
-  expect_is(cor_matrix(mat), "r_mat")
+  expect_is(cor_frame(df), "cor_df")
+  expect_is(cor_frame(mat), "cor_df")
+  expect_is(cor_matrix(df), "cor_mat")
+  expect_is(cor_matrix(mat), "cor_mat")
 })
 
 test_that("cor_matrix produces accurate output", {
@@ -31,8 +31,8 @@ test_that("cor_frame produces accurate output", {
   
   r_df <- cor_frame(df)
 
-  expect_equal(r_df$x1, "a")
-  expect_equal(r_df$x2, "b")
+  expect_equal(r_df$x, "a")
+  expect_equal(r_df$y, "b")
   expect_equal(r_df$r, 1)
   expect_equal(r_df$n, nrow(na.omit(df)))
 })

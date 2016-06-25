@@ -22,7 +22,7 @@ devtools::install_github("drsimonj/corrr")
 
 ## Getting Started
 
-The central aspect of corrr is working with a data frame of correlations. The primary function of corrr is `cor_frame()`, which extends `stats::cor()` by returning the correlations (`r`) and corresponding sample sizes (`n`) of each pair of variables (`x1` and `x2`) in a `dplyr::data_frame()`.
+The central aspect of corrr is working with a data frame of correlations. The primary function of corrr is `cor_frame()`, which extends `stats::cor()` by returning the correlations (`r`) and corresponding sample sizes (`n`) of each variable pair (`x` and `y`) in a `dplyr::data_frame()`.
 
 ```{r}
 library(MASS)

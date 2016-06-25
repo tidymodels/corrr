@@ -37,7 +37,7 @@ cor_matrix.default <- function(x, y = NULL, use = "pairwise.complete.obs", metho
   if (is.null(y)) y <- x
   n <- t(!is.na(x)) %*% (!is.na(y))
   x <- list(r = r, n = n)
-  class(x) <- c("r_mat", "list")
+  class(x) <- c("cor_mat", "list")
   x
 }
 
@@ -52,11 +52,10 @@ cor_frame.default <- function(x, y = NULL, use = "pairwise.complete.obs", method
   cor_frame(cor_matrix(x, y, use, method))
 }
 
-
 # Conversions -------------------------------------------------------------
 
 #' @export
-cor_frame.r_mat <- function(x) {
+cor_frame.cor_mat <- function(x) {
   vars <- colnames(x$r)
   if (is.null(vars)) vars <- paste0("v", 1:ncol(d))
   n_vars <- length(vars)
@@ -73,7 +72,7 @@ cor_frame.r_mat <- function(x) {
     r  = x$r[lower.tri(x$r)],
     n  = x$n[lower.tri(x$n)]
   )
-  
-  class(x) <- c("r_df", class(x))
+  names(x) <- c("x", "y", "r", "n")
+  class(x) <- c("cor_df", class(x))
   x
 }
