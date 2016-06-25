@@ -60,6 +60,7 @@ cor_matrix.cor_df <- function(x) {
   n_vars <- length(vars)
   r <- n <- matrix(1, nrow = n_vars, ncol = n_vars)
   r[upper.tri(r)] <- r[lower.tri(r)] <- x$r
+  rownames(r) <- colnames(r) <- vars
   n[upper.tri(n)] <- n[lower.tri(n)] <- x$n
   x <- list(r = r, n = n)
   class(x) <- c("cor_mat", "list")

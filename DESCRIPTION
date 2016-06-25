@@ -13,7 +13,8 @@ Depends:
     R (>= 3.3.0)
 Imports:
     dplyr,
-    tidyr
+    tidyr,
+    ggplot2
 LazyData: yes
 License: MIT + file LICENSE
 RoxygenNote: 5.0.1
