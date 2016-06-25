@@ -52,6 +52,9 @@ cor_frame.default <- function(x, y = NULL, use = "pairwise.complete.obs", method
   cor_frame(cor_matrix(x, y, use, method))
 }
 
+
+# Conversions -------------------------------------------------------------
+
 #' @export
 cor_frame.r_mat <- function(x) {
   vars <- colnames(x$r)
@@ -59,15 +62,16 @@ cor_frame.r_mat <- function(x) {
   n_vars <- length(vars)
   n_cors <- factorial(n_vars) / (factorial(2) * factorial(n_vars - 2))
   
-  var1 <- rep(head(vars, -1), (n_vars - 1):1)
-  var2 <- vector(mode = "character")
+  x1 <- rep(head(vars, -1), (n_vars - 1):1)
+  x2 <- vector(mode = "character")
   for (i in 1:(n_vars - 1))
-    var2 <- c(var2, tail(vars, -i))
+    x2 <- c(x2, tail(vars, -i))
   
   x <- dplyr::data_frame(
-    vars = paste(var1, var2, sep = "<>"),
-    r    = x$r[lower.tri(x$r)],
-    n    = x$n[lower.tri(x$n)]
+    x1 = x1,
+    x2 = x2,
+    r  = x$r[lower.tri(x$r)],
+    n  = x$n[lower.tri(x$n)]
   )
   
   class(x) <- c("r_df", class(x))

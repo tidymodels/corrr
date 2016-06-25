@@ -31,7 +31,8 @@ test_that("cor_frame produces accurate output", {
   
   r_df <- cor_frame(df)
 
-  expect_equal(r_df$vars, "a<>b")
+  expect_equal(r_df$x1, "a")
+  expect_equal(r_df$x2, "b")
   expect_equal(r_df$r, 1)
   expect_equal(r_df$n, nrow(na.omit(df)))
 })
