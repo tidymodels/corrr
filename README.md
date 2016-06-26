@@ -52,14 +52,14 @@ d[sample(1:nrow(d), 100, replace = TRUE), 1] <- NA
 d[sample(1:nrow(d), 200, replace = TRUE), 5] <- NA
 
 # Correlate
-r_matrix <- correlate(d)
-class(r_matrix)
+x <- correlate(d)
+class(x)
 ```
 
     ## [1] "cor_df"     "tbl_df"     "tbl"        "data.frame"
 
 ``` r
-r_matrix
+x
 ```
 
     ## Source: local data frame [6 x 7]
@@ -73,3 +73,81 @@ r_matrix
     ## 5      v5  0.0213597639  0.00928053  0.001088652  0.4213802123          NA
     ## 6      v6 -0.0435135083 -0.03383145 -0.020057495  0.4424697437 0.425441795
     ## Variables not shown: v6 (dbl)
+
+corrr and dplyr
+---------------
+
+By using the data\_frame structure, we can leverage functions from packages like `dplyr`. Below are some useful examples:
+
+``` r
+library(dplyr)
+
+# Select a subset of variables by column
+x %>% select(rowname, v1, v2)
+```
+
+    ## Source: local data frame [6 x 3]
+    ## 
+    ##   rowname            v1          v2
+    ##     (chr)         (dbl)       (dbl)
+    ## 1      v1            NA  0.70986371
+    ## 2      v2  0.7098637068          NA
+    ## 3      v3  0.7093306516  0.69741127
+    ## 4      v4  0.0001947192 -0.01325755
+    ## 5      v5  0.0213597639  0.00928053
+    ## 6      v6 -0.0435135083 -0.03383145
+
+``` r
+# Select a subset of variables by rows (using filter)
+x %>% filter(rowname %in% c("v1", "v2"))
+```
+
+    ## Source: local data frame [2 x 7]
+    ## 
+    ##   rowname        v1        v2        v3            v4         v5
+    ##     (chr)     (dbl)     (dbl)     (dbl)         (dbl)      (dbl)
+    ## 1      v1        NA 0.7098637 0.7093307  0.0001947192 0.02135976
+    ## 2      v2 0.7098637        NA 0.6974113 -0.0132575510 0.00928053
+    ## Variables not shown: v6 (dbl)
+
+``` r
+# Select columns and rows
+x %>%
+  filter(rowname %in% paste0("v", 4:6)) %>%
+  select(rowname, v1:v3)
+```
+
+    ## Source: local data frame [3 x 4]
+    ## 
+    ##   rowname            v1          v2           v3
+    ##     (chr)         (dbl)       (dbl)        (dbl)
+    ## 1      v4  0.0001947192 -0.01325755 -0.025275246
+    ## 2      v5  0.0213597639  0.00928053  0.001088652
+    ## 3      v6 -0.0435135083 -0.03383145 -0.020057495
+
+``` r
+# Filter rows by correlation size
+x %>% filter(v1 > .6)
+```
+
+    ## Source: local data frame [2 x 7]
+    ## 
+    ##   rowname        v1        v2        v3          v4          v5
+    ##     (chr)     (dbl)     (dbl)     (dbl)       (dbl)       (dbl)
+    ## 1      v2 0.7098637        NA 0.6974113 -0.01325755 0.009280530
+    ## 2      v3 0.7093307 0.6974113        NA -0.02527525 0.001088652
+    ## Variables not shown: v6 (dbl)
+
+``` r
+# Calculate the mean correlation for each variable
+x %>%
+  select(-rowname) %>%
+  summarise_each(funs(mean(., na.rm = TRUE))) %>%
+  round(2)
+```
+
+    ## Source: local data frame [1 x 6]
+    ## 
+    ##      v1    v2    v3    v4    v5    v6
+    ##   (dbl) (dbl) (dbl) (dbl) (dbl) (dbl)
+    ## 1  0.28  0.27  0.27  0.17  0.18  0.15

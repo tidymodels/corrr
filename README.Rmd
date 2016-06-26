@@ -57,7 +57,36 @@ d[sample(1:nrow(d), 100, replace = TRUE), 1] <- NA
 d[sample(1:nrow(d), 200, replace = TRUE), 5] <- NA
 
 # Correlate
-r_matrix <- correlate(d)
-class(r_matrix)
-r_matrix
+x <- correlate(d)
+class(x)
+x
+```
+
+## corrr and dplyr
+
+By using the data_frame structure, we can leverage functions from packages like `dplyr`. Below are some useful examples:
+
+```{r, message = FALSE, warning = FALSE}
+library(dplyr)
+
+# Select a subset of variables by column
+x %>% select(rowname, v1, v2)
+
+# Select a subset of variables by rows (using filter)
+x %>% filter(rowname %in% c("v1", "v2"))
+
+# Select columns and rows
+x %>%
+  filter(rowname %in% paste0("v", 4:6)) %>%
+  select(rowname, v1:v3)
+
+# Filter rows by correlation size
+x %>% filter(v1 > .6)
+
+# Calculate the mean correlation for each variable
+x %>%
+  select(-rowname) %>%
+  summarise_each(funs(mean(., na.rm = TRUE))) %>%
+  round(2)
+
 ```
