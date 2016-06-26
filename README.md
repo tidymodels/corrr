@@ -151,3 +151,35 @@ x %>%
     ##      v1    v2    v3    v4    v5    v6
     ##   (dbl) (dbl) (dbl) (dbl) (dbl) (dbl)
     ## 1  0.28  0.27  0.27  0.17  0.18  0.15
+
+Routine Explorations
+--------------------
+
+`corrr` provides convenience functions for routine explorations of the matrix. Below are some key examples:
+
+``` r
+# Create a cross section of the correlation matrix for certain variables
+x %>% cross_section("v1", "v2")
+```
+
+    ## Source: local data frame [2 x 5]
+    ## 
+    ##   rowname        v3            v4         v5          v6
+    ##     (chr)     (dbl)         (dbl)      (dbl)       (dbl)
+    ## 1      v1 0.7093307  0.0001947192 0.02135976 -0.04351351
+    ## 2      v2 0.6974113 -0.0132575510 0.00928053 -0.03383145
+
+``` r
+# Or put these variables into the columns
+x %>%
+  cross_section("v1", "v2", in_rows = FALSE)
+```
+
+    ## Source: local data frame [4 x 3]
+    ## 
+    ##   rowname            v1          v2
+    ##     (chr)         (dbl)       (dbl)
+    ## 1      v3  0.7093306516  0.69741127
+    ## 2      v4  0.0001947192 -0.01325755
+    ## 3      v5  0.0213597639  0.00928053
+    ## 4      v6 -0.0435135083 -0.03383145
