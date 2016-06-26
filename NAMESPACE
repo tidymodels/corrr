@@ -2,5 +2,11 @@
 
 S3method(print,n_mat)
 S3method(print,r_mat)
+S3method(subcols_,r_mat)
+S3method(subrows_,r_mat)
 export(correlate)
 export(pair_n)
+export(subcols)
+export(subcols_)
+export(subrows)
+export(subrows_)
