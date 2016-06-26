@@ -7,7 +7,7 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-corrr is a package for making it easy to conduct and interpret correlations.
+corrr is a package for exploring **corr**elation matrices in **R**. It provides methods for doing routine tasks when exploring correlation matrices such as comparing only some variables against others, or arranging the matrix in terms of the strength of the correlations, and so it. It also provides visualisation methods for extracting useful information such as variable clustering and latent dimensionality.
 
 You can install:
 
@@ -22,28 +22,37 @@ devtools::install_github("drsimonj/corrr")
 
 ## Getting Started
 
-The central aspect of corrr is working with a data frame of correlations. The primary function of corrr is `cor_frame()`, which extends `stats::cor()` by returning the correlations (`r`) and corresponding sample sizes (`n`) of each variable pair (`x` and `y`) in a `dplyr::data_frame()`.
+Using corrr tyically begins with the function, `correlate()`. This is a simple extension of, and used is the same manner as, `stats::cor()`, but appends a new class to the returned matrix: `r_mat`. It also uses pairwise deletion by default. The result can be used like any other matrix object, but new functions support its exploration. For example, by default, it is printed to two decimal places.
+
+corrr is intended to be used for exploration and visualisation, NOT for statistical modeling (obtaining p values, factor analysis, etc.).
 
 ```{r}
 library(MASS)
 library(corrr)
 
-# Simulate four columns correlating about .7 with each other
-mu <- rep(0, 4)
-Sigma <- matrix(.7, nrow = 4, ncol = 4) + diag(4)*.3
+# Simulate three columns correlating about .7 with each other
+mu <- rep(0, 3)
+Sigma <- matrix(.7, nrow = 3, ncol = 3) + diag(3)*.3
 set.seed(1) 
-d <- mvrnorm(n = 1000, mu = mu, Sigma = Sigma)
+seven <- mvrnorm(n = 1000, mu = mu, Sigma = Sigma)
 
-# Insert a few missing values
-d[100:600, 1] <- NA
-d[320:322, 2] <- NA
+# Simulate three columns correlating about .4 with each other
+mu <- rep(0, 3)
+Sigma <- matrix(.4, nrow = 3, ncol = 3) + diag(3)*.6
+set.seed(2)
+four <- mvrnorm(n = 1000, mu = mu, Sigma = Sigma)
 
-# Use corrr::cor_frame() to obtain a data frame of the correlations
-cor_frame(d)
+# Bind together
+d <- cbind(seven, four)
+
+# Correlate
+r_matrix <- correlate(d)
+class(r_matrix)
+r_matrix
 ```
 
-We also have the option to gain the same information in a list of two matrix objects using `cor_matrix()`
+The number of printed decimal places can be altered with a second argument in print. For example, print four decimal places with:
 
 ```{r}
-cor_matrix(d)
+print(r_matrix, 4)
 ```

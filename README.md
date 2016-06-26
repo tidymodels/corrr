@@ -1,7 +1,7 @@
 corrr
 ================
 
-corrr is a package for making it easy to conduct and interpret correlations.
+corrr is a package for exploring **corr**elation matrices in **R**. It provides methods for doing routine tasks when exploring correlation matrices such as comparing only some variables against others, or arranging the matrix in terms of the strength of the correlations, and so it. It also provides visualisation methods for extracting useful information such as variable clustering and latent dimensionality.
 
 You can install:
 
@@ -17,56 +17,58 @@ devtools::install_github("drsimonj/corrr")
 Getting Started
 ---------------
 
-The central aspect of corrr is working with a data frame of correlations. The primary function of corrr is `cor_frame()`, which extends `stats::cor()` by returning the correlations (`r`) and corresponding sample sizes (`n`) of each variable pair (`x` and `y`) in a `dplyr::data_frame()`.
+Using corrr tyically begins with the function, `correlate()`. This is a simple extension of, and used is the same manner as, `stats::cor()`, but appends a new class to the returned matrix: `r_mat`. It also uses pairwise deletion by default. The result can be used like any other matrix object, but new functions support its exploration. For example, by default, it is printed to two decimal places.
+
+corrr is intended to be used for exploration and visualisation, NOT for statistical modeling (obtaining p values, factor analysis, etc.).
 
 ``` r
 library(MASS)
 library(corrr)
 
-# Simulate four columns correlating about .7 with each other
-mu <- rep(0, 4)
-Sigma <- matrix(.7, nrow = 4, ncol = 4) + diag(4)*.3
+# Simulate three columns correlating about .7 with each other
+mu <- rep(0, 3)
+Sigma <- matrix(.7, nrow = 3, ncol = 3) + diag(3)*.3
 set.seed(1) 
-d <- mvrnorm(n = 1000, mu = mu, Sigma = Sigma)
+seven <- mvrnorm(n = 1000, mu = mu, Sigma = Sigma)
 
-# Insert a few missing values
-d[100:600, 1] <- NA
-d[320:322, 2] <- NA
+# Simulate three columns correlating about .4 with each other
+mu <- rep(0, 3)
+Sigma <- matrix(.4, nrow = 3, ncol = 3) + diag(3)*.6
+set.seed(2)
+four <- mvrnorm(n = 1000, mu = mu, Sigma = Sigma)
 
-# Use corrr::cor_frame() to obtain a data frame of the correlations
-cor_frame(d)
+# Bind together
+d <- cbind(seven, four)
+
+# Correlate
+r_matrix <- correlate(d)
+class(r_matrix)
 ```
 
-    ## Source: local data frame [6 x 4]
-    ## 
-    ##       x     y         r     n
-    ##   (chr) (chr)     (dbl) (dbl)
-    ## 1    v1    v2 0.6957043   499
-    ## 2    v1    v3 0.7013888   499
-    ## 3    v1    v4 0.6910351   499
-    ## 4    v2    v3 0.7004749   997
-    ## 5    v2    v4 0.7022015   997
-    ## 6    v3    v4 0.7029762  1000
-
-We also have the option to gain the same information in a list of two matrix objects using `cor_matrix()`
+    ## [1] "r_mat"  "matrix"
 
 ``` r
-cor_matrix(d)
+r_matrix
 ```
 
-    ## $r
-    ##           [,1]      [,2]      [,3]      [,4]
-    ## [1,] 1.0000000 0.6957043 0.7013888 0.6910351
-    ## [2,] 0.6957043 1.0000000 0.7004749 0.7022015
-    ## [3,] 0.7013888 0.7004749 1.0000000 0.7029762
-    ## [4,] 0.6910351 0.7022015 0.7029762 1.0000000
-    ## 
-    ## $n
-    ##      [,1] [,2] [,3] [,4]
-    ## [1,]  499  499  499  499
-    ## [2,]  499  997  997  997
-    ## [3,]  499  997 1000 1000
-    ## [4,]  499  997 1000 1000
-    ## 
-    ## attr(,"class")
-    ## [1] "cor_mat" "list"
+    ##      [,1] [,2] [,3] [,4] [,5] [,6]
+    ## [1,]       .70  .70 -.04 -.04 -.01
+    ## [2,]  .70       .70 -.02 -.04 -.01
+    ## [3,]  .70  .70      -.05 -.06 -.01
+    ## [4,] -.04 -.02 -.05       .40  .41
+    ## [5,] -.04 -.04 -.06  .40       .41
+    ## [6,] -.01 -.01 -.01  .41  .41
+
+The number of printed decimal places can be altered with a second argument in print. For example, print four decimal places with:
+
+``` r
+print(r_matrix, 4)
+```
+
+    ##      [,1]   [,2]   [,3]   [,4]   [,5]   [,6]  
+    ## [1,]         .6979  .7046 -.0399 -.0420 -.0109
+    ## [2,]  .6979         .6974 -.0219 -.0424 -.0072
+    ## [3,]  .7046  .6974        -.0515 -.0573 -.0133
+    ## [4,] -.0399 -.0219 -.0515         .4038  .4076
+    ## [5,] -.0420 -.0424 -.0573  .4038         .4070
+    ## [6,] -.0109 -.0072 -.0133  .4076  .4070
