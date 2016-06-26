@@ -50,6 +50,7 @@ four <- mvrnorm(n = 1000, mu = mu, Sigma = Sigma)
 
 # Bind together
 d <- cbind(seven, four)
+colnames(d) <- paste0("v", 1:ncol(d))
 
 # Insert some missing values
 d[sample(1:nrow(d), 100, replace = TRUE), 1] <- NA
