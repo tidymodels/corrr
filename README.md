@@ -24,21 +24,24 @@ corrr is intended to be used for exploration and visualisation, NOT for statisti
 ``` r
 library(MASS)
 library(corrr)
+set.seed(1)
 
 # Simulate three columns correlating about .7 with each other
 mu <- rep(0, 3)
 Sigma <- matrix(.7, nrow = 3, ncol = 3) + diag(3)*.3
-set.seed(1) 
 seven <- mvrnorm(n = 1000, mu = mu, Sigma = Sigma)
 
 # Simulate three columns correlating about .4 with each other
 mu <- rep(0, 3)
 Sigma <- matrix(.4, nrow = 3, ncol = 3) + diag(3)*.6
-set.seed(2)
 four <- mvrnorm(n = 1000, mu = mu, Sigma = Sigma)
 
 # Bind together
 d <- cbind(seven, four)
+
+# Insert some missing values
+d[sample(1:nrow(d), 100, replace = TRUE), 1] <- NA
+d[sample(1:nrow(d), 200, replace = TRUE), 5] <- NA
 
 # Correlate
 r_matrix <- correlate(d)
@@ -52,12 +55,12 @@ r_matrix
 ```
 
     ##      [,1] [,2] [,3] [,4] [,5] [,6]
-    ## [1,]       .70  .70 -.04 -.04 -.01
-    ## [2,]  .70       .70 -.02 -.04 -.01
-    ## [3,]  .70  .70      -.05 -.06 -.01
-    ## [4,] -.04 -.02 -.05       .40  .41
-    ## [5,] -.04 -.04 -.06  .40       .41
-    ## [6,] -.01 -.01 -.01  .41  .41
+    ## [1,]       .71  .71  .00  .02 -.04
+    ## [2,]  .71       .70 -.01  .01 -.03
+    ## [3,]  .71  .70      -.03  .00 -.02
+    ## [4,]  .00 -.01 -.03       .42  .44
+    ## [5,]  .02  .01  .00  .42       .43
+    ## [6,] -.04 -.03 -.02  .44  .43
 
 The number of printed decimal places can be altered with a second argument in print. For example, print four decimal places with:
 
@@ -66,9 +69,9 @@ print(r_matrix, 4)
 ```
 
     ##      [,1]   [,2]   [,3]   [,4]   [,5]   [,6]  
-    ## [1,]         .6979  .7046 -.0399 -.0420 -.0109
-    ## [2,]  .6979         .6974 -.0219 -.0424 -.0072
-    ## [3,]  .7046  .6974        -.0515 -.0573 -.0133
-    ## [4,] -.0399 -.0219 -.0515         .4038  .4076
-    ## [5,] -.0420 -.0424 -.0573  .4038         .4070
-    ## [6,] -.0109 -.0072 -.0133  .4076  .4070
+    ## [1,]         .7099  .7093  .0002  .0214 -.0435
+    ## [2,]  .7099         .6974 -.0133  .0093 -.0338
+    ## [3,]  .7093  .6974        -.0253  .0011 -.0201
+    ## [4,]  .0002 -.0133 -.0253         .4214  .4425
+    ## [5,]  .0214  .0093  .0011  .4214         .4254
+    ## [6,] -.0435 -.0338 -.0201  .4425  .4254

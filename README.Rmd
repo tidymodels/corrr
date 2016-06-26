@@ -29,21 +29,24 @@ corrr is intended to be used for exploration and visualisation, NOT for statisti
 ```{r}
 library(MASS)
 library(corrr)
+set.seed(1)
 
 # Simulate three columns correlating about .7 with each other
 mu <- rep(0, 3)
 Sigma <- matrix(.7, nrow = 3, ncol = 3) + diag(3)*.3
-set.seed(1) 
 seven <- mvrnorm(n = 1000, mu = mu, Sigma = Sigma)
 
 # Simulate three columns correlating about .4 with each other
 mu <- rep(0, 3)
 Sigma <- matrix(.4, nrow = 3, ncol = 3) + diag(3)*.6
-set.seed(2)
 four <- mvrnorm(n = 1000, mu = mu, Sigma = Sigma)
 
 # Bind together
 d <- cbind(seven, four)
+
+# Insert some missing values
+d[sample(1:nrow(d), 100, replace = TRUE), 1] <- NA
+d[sample(1:nrow(d), 200, replace = TRUE), 5] <- NA
 
 # Correlate
 r_matrix <- correlate(d)
