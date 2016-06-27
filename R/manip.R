@@ -1,20 +1,21 @@
-#' Cross section of the correlation matrix.
+#' Cross correlate.
 #' 
-#' Convenience function to create a cross section of the matrix by selecting a 
-#' set of variables to be kept in one axis (rows or columns), and dropped from
-#' the other.
+#' Convenience function to cross correlate one set of variables with all others
+#' from a correlation matrix. This function will take a \code{\link{correlate}}
+#' correlation matrix, and keep the named variables in the rows (or columns),
+#' and drop them from the columns (or rows).
 #' 
 #' @param x A \code{\link{correlate}} correlation matrix.
 #' @param ... Vector of/comma separated character strings of variable names.
 #' @param in_rows Boolean to keep the named variables in the rows, or
 #'   columns otherwise. Default = TRUE.
 #' @export
-cross_section <- function(x, ..., in_rows = TRUE) {
-  UseMethod("cross_section")
+cross_cor <- function(x, ..., in_rows = TRUE) {
+  UseMethod("cross_cor")
 }
 
 #' @export
-cross_section.cor_df <- function(x, ..., in_rows = TRUE) {
+cross_cor.cor_df <- function(x, ..., in_rows = TRUE) {
   vars <- c(...)
   if (!all(vars %in% names(x)))
     stop("Not all variables are in the correlation matrix.")

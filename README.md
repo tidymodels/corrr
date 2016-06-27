@@ -159,7 +159,7 @@ Routine Explorations
 
 ``` r
 # Create a cross section of the correlation matrix for certain variables
-x %>% cross_section("v1", "v2")
+x %>% cross_cor("v1", "v2")
 ```
 
     ## Source: local data frame [2 x 5]
@@ -172,7 +172,7 @@ x %>% cross_section("v1", "v2")
 ``` r
 # Or put these variables into the columns
 x %>%
-  cross_section("v1", "v2", in_rows = FALSE)
+  cross_cor("v1", "v2", in_rows = FALSE)
 ```
 
     ## Source: local data frame [4 x 3]

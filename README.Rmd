@@ -97,10 +97,10 @@ x %>%
 
 ```{r}
 # Create a cross section of the correlation matrix for certain variables
-x %>% cross_section("v1", "v2")
+x %>% cross_cor("v1", "v2")
 
 # Or put these variables into the columns
 x %>%
-  cross_section("v1", "v2", in_rows = FALSE)
+  cross_cor("v1", "v2", in_rows = FALSE)
 ```
 
