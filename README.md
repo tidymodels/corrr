@@ -155,24 +155,15 @@ x %>%
 Routine Explorations
 --------------------
 
-`corrr` provides convenience functions for routine explorations of the matrix. Below are some key examples:
+`corrr` provides convenience functions for routine explorations of the matrix.
+
+### xselect()
+
+xselect() behaves similarly to dplyr::select(), but removes whichever columns you select from the rows. It takes your correlate() correlation matrix, and then expressions you would use in select(). Here are some examples of using xselect():
 
 ``` r
-# Create a cross section of the correlation matrix for certain variables
-x %>% cross_cor("v1", "v2")
-```
-
-    ## Source: local data frame [2 x 5]
-    ## 
-    ##   rowname        v3            v4         v5          v6
-    ##     (chr)     (dbl)         (dbl)      (dbl)       (dbl)
-    ## 1      v1 0.7093307  0.0001947192 0.02135976 -0.04351351
-    ## 2      v2 0.6974113 -0.0132575510 0.00928053 -0.03383145
-
-``` r
-# Or put these variables into the columns
-x %>%
-  cross_cor("v1", "v2", in_rows = FALSE)
+# select v1 and v2 to stay in the columns
+x %>% xselect(v1, v2)
 ```
 
     ## Source: local data frame [4 x 3]
@@ -183,3 +174,28 @@ x %>%
     ## 2      v4  0.0001947192 -0.01325755
     ## 3      v5  0.0213597639  0.00928053
     ## 4      v6 -0.0435135083 -0.03383145
+
+``` r
+# Or put these variables into the rows
+x %>% xselect(-v1, -v2)
+```
+
+    ## Source: local data frame [2 x 5]
+    ## 
+    ##   rowname        v3            v4         v5          v6
+    ##     (chr)     (dbl)         (dbl)      (dbl)       (dbl)
+    ## 1      v1 0.7093307  0.0001947192 0.02135976 -0.04351351
+    ## 2      v2 0.6974113 -0.0132575510 0.00928053 -0.03383145
+
+``` r
+# And can use any dplyr::select() expressions
+x %>% xselect(num_range("v", 1:3))
+```
+
+    ## Source: local data frame [3 x 4]
+    ## 
+    ##   rowname            v1          v2           v3
+    ##     (chr)         (dbl)       (dbl)        (dbl)
+    ## 1      v4  0.0001947192 -0.01325755 -0.025275246
+    ## 2      v5  0.0213597639  0.00928053  0.001088652
+    ## 3      v6 -0.0435135083 -0.03383145 -0.020057495

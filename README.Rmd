@@ -93,14 +93,21 @@ x %>%
 
 ## Routine Explorations
 
-`corrr` provides convenience functions for routine explorations of the matrix. Below are some key examples:
+`corrr` provides convenience functions for routine explorations of the matrix.
+
+
+### xselect()
+
+xselect() behaves similarly to dplyr::select(), but removes whichever columns you select from the rows. It takes your correlate() correlation matrix, and then expressions you would use in select(). Here are some examples of using xselect():
 
 ```{r}
-# Create a cross section of the correlation matrix for certain variables
-x %>% cross_cor("v1", "v2")
+# select v1 and v2 to stay in the columns
+x %>% xselect(v1, v2)
 
-# Or put these variables into the columns
-x %>%
-  cross_cor("v1", "v2", in_rows = FALSE)
+# Or put these variables into the rows
+x %>% xselect(-v1, -v2)
+
+# And can use any dplyr::select() expressions
+x %>% xselect(num_range("v", 1:3))
 ```
 

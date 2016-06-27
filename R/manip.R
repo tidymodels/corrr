@@ -1,34 +1,45 @@
-#' Cross correlate.
+#' Select variables as columns, remove as rows.
 #' 
-#' Convenience function to cross correlate one set of variables with all others
-#' from a correlation matrix. This function will take a \code{\link{correlate}}
-#' correlation matrix, and keep the named variables in the rows (or columns),
-#' and drop them from the columns (or rows).
+#' Convenience function to select a set of variables from a correlation matrix
+#' to keep as the columns, but remove these same variables from the rows. This
+#' function will take a \code{\link{correlate}} correlation matrix, and
+#' expression(s) suited for dplyr::select(). The selected variables will remain
+#' in the columns, but be removed from the rows. For a complete list of methods
+#' for using this function, see \code{\link[dplyr]{select}}.
 #' 
 #' @param x A \code{\link{correlate}} correlation matrix.
-#' @param ... Vector of/comma separated character strings of variable names.
-#' @param in_rows Boolean to keep the named variables in the rows, or
-#'   columns otherwise. Default = TRUE.
+#' @inheritParams dplyr::select
+#' 
+#' @examples
+#' mtcars %>% correlate() %>% xselect(mpg, cyl)
+#' mtcars %>% correlate() %>% xselect(-disp, - mpg)
+#' iris[, 1:4] %>% correlate() %>% xselect(-matches("Sepal"))
+#' 
 #' @export
-cross_cor <- function(x, ..., in_rows = TRUE) {
-  UseMethod("cross_cor")
+xselect <- function(x, ...) {
+  UseMethod("xselect")
 }
 
-#' @export
-cross_cor.cor_df <- function(x, ..., in_rows = TRUE) {
-  vars <- c(...)
-  if (!all(vars %in% names(x)))
-    stop("Not all variables are in the correlation matrix.")
-  
-  other_vars <- names(x)[!names(x) %in% c(vars, "rowname")]
 
-  if (in_rows) {
-    x %>%
-      dplyr::filter(rowname %in% vars) %>%
-      dplyr::select(rowname, one_of(other_vars))
+#' @export
+xselect.cor_df <- function(x, ...) {
+  
+  # Store rownames in case they're removed in next step
+  row_names <- x$rowname
+  
+  # Select relevant columns
+  x %<>% dplyr::select_(.dots = lazyeval::lazy_dots(...))
+  
+  # Get selected column names and
+  # append back rownames if necessary
+  vars <- colnames(x)
+  if ("rowname" %in% vars) {
+    vars %<>% .[. != "rowname"]
   } else {
-    x %>%
-      dplyr::filter(rowname %in% other_vars) %>%
-      dplyr::select(rowname, one_of(vars))
+    rownames(x) <- row_names
+    x %<>% dplyr::add_rownames()
   }
+  
+  # Remove these from the rows
+  x %>% dplyr::filter(!(rowname %in% vars))
 }
