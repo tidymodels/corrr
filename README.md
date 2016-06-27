@@ -159,7 +159,7 @@ Routine Explorations
 
 ### xselect()
 
-xselect() behaves similarly to dplyr::select(), but removes whichever columns you select from the rows. It takes your correlate() correlation matrix, and then expressions you would use in select(). Here are some examples of using xselect():
+xselect() behaves similarly to dplyr::select(), but excludes whichever columns you select from the rows. It takes your correlate() correlation matrix, and then expressions you would use in select(). Here are some examples of using xselect():
 
 ``` r
 # select v1 and v2 to stay in the columns
@@ -176,7 +176,7 @@ x %>% xselect(v1, v2)
     ## 4      v6 -0.0435135083 -0.03383145
 
 ``` r
-# Or put these variables into the rows
+# Or put these variables into the rows by dropping from columns
 x %>% xselect(-v1, -v2)
 ```
 
