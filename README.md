@@ -157,13 +157,25 @@ Routine Explorations
 
 `corrr` provides convenience functions for routine explorations of the matrix.
 
-### xselect()
+### rselect()
 
-xselect() behaves similarly to dplyr::select(), but excludes whichever columns you select from the rows. It takes your correlate() correlation matrix, and then expressions you would use in select(). Here are some examples of using xselect():
+`rselect()` behaves similarly to `dplyr::select()`, but affects rows as well as columns. As arguments, it takes your `correlate()` correlation matrix, expressions you would use in `select()`, and an optional boolean argument `rows`, indicating whether to keep the selected, or all other variables, in the rows. Here are some examples of using `rselect()`:
 
 ``` r
-# select v1 and v2 to stay in the columns
-x %>% xselect(v1, v2)
+# select v1 and v2 to stay in the columns and rows
+x %>% rselect(v1, v2)
+```
+
+    ## Source: local data frame [2 x 3]
+    ## 
+    ##   rowname        v1        v2
+    ##     (chr)     (dbl)     (dbl)
+    ## 1      v1        NA 0.7098637
+    ## 2      v2 0.7098637        NA
+
+``` r
+# Keep in columns, drop from rows
+x %>% rselect(v1, v2, rows = FALSE)
 ```
 
     ## Source: local data frame [4 x 3]
@@ -177,7 +189,7 @@ x %>% xselect(v1, v2)
 
 ``` r
 # Or put these variables into the rows by dropping from columns
-x %>% xselect(-v1, -v2)
+x %>% rselect(-v1, -v2, rows = FALSE)
 ```
 
     ## Source: local data frame [2 x 5]
@@ -189,13 +201,98 @@ x %>% xselect(-v1, -v2)
 
 ``` r
 # And can use any dplyr::select() expressions
-x %>% xselect(num_range("v", 1:3))
+x %>% rselect(num_range("v", 1:3))
 ```
 
     ## Source: local data frame [3 x 4]
     ## 
-    ##   rowname            v1          v2           v3
-    ##     (chr)         (dbl)       (dbl)        (dbl)
-    ## 1      v4  0.0001947192 -0.01325755 -0.025275246
-    ## 2      v5  0.0213597639  0.00928053  0.001088652
-    ## 3      v6 -0.0435135083 -0.03383145 -0.020057495
+    ##   rowname        v1        v2        v3
+    ##     (chr)     (dbl)     (dbl)     (dbl)
+    ## 1      v1        NA 0.7098637 0.7093307
+    ## 2      v2 0.7098637        NA 0.6974113
+    ## 3      v3 0.7093307 0.6974113        NA
+
+### rgather()
+
+`rgather()` behaves similarly to `tidyr::gather()`. As arguments, it takes your `correlate()` correlation matrix, expressions you would use in `dplyr::select()` (as above), and some optional boolean arguments. The result is a three-column data frame with columns `x` and `y` storing variable names, and `r`, storing the correlation. Here are some examples of using `rgather()`:
+
+``` r
+# Convert all to long format
+x %>% rgather(everything())
+```
+
+    ## Source: local data frame [36 x 3]
+    ## 
+    ##        x     y             r
+    ##    (chr) (chr)         (dbl)
+    ## 1     v1    v1            NA
+    ## 2     v2    v1  0.7098637068
+    ## 3     v3    v1  0.7093306516
+    ## 4     v4    v1  0.0001947192
+    ## 5     v5    v1  0.0213597639
+    ## 6     v6    v1 -0.0435135083
+    ## 7     v1    v2  0.7098637068
+    ## 8     v2    v2            NA
+    ## 9     v3    v2  0.6974112661
+    ## 10    v4    v2 -0.0132575510
+    ## ..   ...   ...           ...
+
+``` r
+# Select certain variables to convert to long format
+x %>% rgather(v1, v3, v4)
+```
+
+    ## Source: local data frame [9 x 3]
+    ## 
+    ##       x     y             r
+    ##   (chr) (chr)         (dbl)
+    ## 1    v1    v1            NA
+    ## 2    v3    v1  0.7093306516
+    ## 3    v4    v1  0.0001947192
+    ## 4    v1    v3  0.7093306516
+    ## 5    v3    v3            NA
+    ## 6    v4    v3 -0.0252752456
+    ## 7    v1    v4  0.0001947192
+    ## 8    v3    v4 -0.0252752456
+    ## 9    v4    v4            NA
+
+``` r
+# Drop diagonal NA values using na_omit = TRUE
+x %>% rgather(num_range("v", 4:6), na_omit = TRUE)
+```
+
+    ## Source: local data frame [6 x 3]
+    ## 
+    ##       x     y         r
+    ##   (chr) (chr)     (dbl)
+    ## 1    v5    v4 0.4213802
+    ## 2    v6    v4 0.4424697
+    ## 3    v4    v5 0.4213802
+    ## 4    v6    v5 0.4254418
+    ## 5    v4    v6 0.4424697
+    ## 6    v5    v6 0.4254418
+
+``` r
+# Or drop diagonal and repeated correlations above the diagonal with mirror = FALSE
+x %>% rgather(everything(), mirror = FALSE)
+```
+
+    ## Source: local data frame [15 x 3]
+    ## 
+    ##        x     y             r
+    ##    (chr) (chr)         (dbl)
+    ## 1     v2    v1  0.7098637068
+    ## 2     v3    v1  0.7093306516
+    ## 3     v4    v1  0.0001947192
+    ## 4     v5    v1  0.0213597639
+    ## 5     v6    v1 -0.0435135083
+    ## 6     v3    v2  0.6974112661
+    ## 7     v4    v2 -0.0132575510
+    ## 8     v5    v2  0.0092805296
+    ## 9     v6    v2 -0.0338314515
+    ## 10    v4    v3 -0.0252752456
+    ## 11    v5    v3  0.0010886516
+    ## 12    v6    v3 -0.0200574953
+    ## 13    v5    v4  0.4213802123
+    ## 14    v6    v4  0.4424697437
+    ## 15    v6    v5  0.4254417954

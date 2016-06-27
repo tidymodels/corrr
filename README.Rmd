@@ -96,18 +96,39 @@ x %>%
 `corrr` provides convenience functions for routine explorations of the matrix.
 
 
-### xselect()
+### rselect()
 
-xselect() behaves similarly to dplyr::select(), but excludes whichever columns you select from the rows. It takes your correlate() correlation matrix, and then expressions you would use in select(). Here are some examples of using xselect():
+`rselect()` behaves similarly to `dplyr::select()`, but affects rows as well as columns. As arguments, it takes your `correlate()` correlation matrix, expressions you would use in `select()`, and an optional boolean argument `rows`, indicating whether to keep the selected, or all other variables, in the rows. Here are some examples of using `rselect()`:
 
-```{r}
-# select v1 and v2 to stay in the columns
-x %>% xselect(v1, v2)
+```{r rselect}
+# select v1 and v2 to stay in the columns and rows
+x %>% rselect(v1, v2)
+
+# Keep in columns, drop from rows
+x %>% rselect(v1, v2, rows = FALSE)
 
 # Or put these variables into the rows by dropping from columns
-x %>% xselect(-v1, -v2)
+x %>% rselect(-v1, -v2, rows = FALSE)
 
 # And can use any dplyr::select() expressions
-x %>% xselect(num_range("v", 1:3))
+x %>% rselect(num_range("v", 1:3))
 ```
 
+### rgather()
+
+`rgather()` behaves similarly to `tidyr::gather()`. As arguments, it takes your `correlate()` correlation matrix, expressions you would use in `dplyr::select()` (as above), and some optional boolean arguments. The result is a three-column data frame with columns `x` and `y` storing variable names, and `r`, storing the correlation. Here are some examples of using `rgather()`:
+
+```{r rgather}
+# Convert all to long format
+x %>% rgather(everything())
+
+# Select certain variables to convert to long format
+x %>% rgather(v1, v3, v4)
+
+# Drop diagonal NA values using na_omit = TRUE
+x %>% rgather(num_range("v", 4:6), na_omit = TRUE)
+
+# Or drop diagonal and repeated correlations above the diagonal with mirror = FALSE
+x %>% rgather(everything(), mirror = FALSE)
+
+```
