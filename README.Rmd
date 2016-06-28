@@ -143,17 +143,17 @@ x %>% shave() %>% rgather(everything(), na_omit = TRUE)
 mtcars %>% correlate() %>% rplot()
 ```
 
-This is particularly useful if `rarrange()` is used first, as it rearranges the correlations to group highly correlated variables together. Some examples combining this and the above:
+This is particularly useful if `rearrange()` is used first, as it rearranges the correlations to group highly correlated variables together. Some examples combining this and the above:
 
 ```{r rplot_arranged, warning = FALSE, fig.height = 4, fig.width = 5}
 # Default settings
-mtcars %>% correlate() %>% rarrange() %>% rplot()
+mtcars %>% correlate() %>% rearrange() %>% rplot()
 
 # Using hierarchical clustering (method = "HC") and treating negative and
 # positive correlations as distant (absolute = FALSE)
-mtcars %>% correlate() %>% rarrange(method = "HC", absolute = FALSE) %>% rplot()
+mtcars %>% correlate() %>% rearrange(method = "HC", absolute = FALSE) %>% rplot()
 
 
 # As with rgather(), use shave() to screen out one of the triangles
-mtcars %>% correlate() %>% rarrange() %>% shave() %>% rplot()
+mtcars %>% correlate() %>% rearrange() %>% shave() %>% rplot()
 ```

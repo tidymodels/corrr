@@ -159,7 +159,7 @@ Manipulating cor\_df
 
 ### focus()
 
-`focus()` behaves similarly to `dplyr::select()`, but affects rows as well as columns. As arguments, it takes your `cor_df`, expressions you would use in `select()`, and an optional boolean argument `rows`, indicating whether to keep the selected, or all other variables (default), in the rows. Here are some examples of using `focus()`:
+`focus()` helps to focus in on a section of a `cor_df`. You use it similarly to selecting columns with `dplyr::select()`, but rows are also affected. As arguments, it takes your `cor_df`, expressions you would use in `select()`, and an optional boolean argument `rows`, indicating whether to keep the selected, or all other variables (default), in the rows. Here are some examples of using `focus()`:
 
 ``` r
 # select v1 and v2 to stay in the columns but not rows
@@ -311,11 +311,11 @@ mtcars %>% correlate() %>% rplot()
 
 ![](README_files/figure-markdown_github/rplot-1.png)
 
-This is particularly useful if `rarrange()` is used first, as it rearranges the correlations to group highly correlated variables together. Some examples combining this and the above:
+This is particularly useful if `rearrange()` is used first, as it rearranges the correlations to group highly correlated variables together. Some examples combining this and the above:
 
 ``` r
 # Default settings
-mtcars %>% correlate() %>% rarrange() %>% rplot()
+mtcars %>% correlate() %>% rearrange() %>% rplot()
 ```
 
 ![](README_files/figure-markdown_github/rplot_arranged-1.png)
@@ -323,14 +323,14 @@ mtcars %>% correlate() %>% rarrange() %>% rplot()
 ``` r
 # Using hierarchical clustering (method = "HC") and treating negative and
 # positive correlations as distant (absolute = FALSE)
-mtcars %>% correlate() %>% rarrange(method = "HC", absolute = FALSE) %>% rplot()
+mtcars %>% correlate() %>% rearrange(method = "HC", absolute = FALSE) %>% rplot()
 ```
 
 ![](README_files/figure-markdown_github/rplot_arranged-2.png)
 
 ``` r
 # As with rgather(), use shave() to screen out one of the triangles
-mtcars %>% correlate() %>% rarrange() %>% shave() %>% rplot()
+mtcars %>% correlate() %>% rearrange() %>% shave() %>% rplot()
 ```
 
 ![](README_files/figure-markdown_github/rplot_arranged-3.png)

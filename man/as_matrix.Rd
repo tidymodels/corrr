@@ -2,7 +2,7 @@
 % Please edit documentation in R/internal.R
 \name{as_matrix}
 \alias{as_matrix}
-\title{Convert correlate to original matrix.}
+\title{Convert cor_df to original matrix.}
 \usage{
 as_matrix(x)
 }

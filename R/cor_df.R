@@ -25,7 +25,7 @@ shave.cor_df <- function(x, upper = TRUE) {
 # Arrange -----------------------------------------------------------------
 
 #' @export
-rarrange.cor_df <- function(x, method = "PCA", absolute = TRUE) {
+rearrange.cor_df <- function(x, method = "PCA", absolute = TRUE) {
   
   # Convert to original matrix
   m <- x %>% as_matrix()

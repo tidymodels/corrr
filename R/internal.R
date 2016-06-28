@@ -1,4 +1,4 @@
-#' Convert correlate to original matrix.
+#' Convert cor_df to original matrix.
 #' 
 #' Convert a \code{\link{correlate}} correlation matrix from data frame to
 #' original matrix format.
@@ -22,12 +22,12 @@ shave <- function(x, upper = TRUE) {
   UseMethod("shave")
 }
 
-#' Re-arrange a correlation matrix
+#' Re-arrange a correlation data frame
 #' 
-#' Re-arrange a correlation matrix to group highly correlated variables closer
+#' Re-arrange a correlation data frame to group highly correlated variables closer
 #' together.
 #' 
-#' @param x A \code{\link{correlate}} correlation matrix.
+#' @param x cor_df. See \code{\link{correlate}}.
 #' @param method String specifying the arrangement (clustering) method.
 #'   Clustering is achieved via \code{\link[seriation]{seriate}}, which can be
 #'   consulted for a complete list of clustering methods. Default = "PCA".
@@ -35,6 +35,6 @@ shave <- function(x, upper = TRUE) {
 #'   be used when clustering.
 #' 
 #' @export
-rarrange <- function(x, method = "PC", absolute = TRUE) {
-  UseMethod("rarrange")
+rearrange <- function(x, method = "PC", absolute = TRUE) {
+  UseMethod("rearrange")
 }
