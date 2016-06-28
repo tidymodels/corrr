@@ -117,14 +117,14 @@ rgather.cor_df <- function(x, ..., na_omit = FALSE) {
 
   x %<>%
     rselect(..., rows = TRUE) %>%
-    tidyr::gather(y, r, -rowname) %>%
-    dplyr::rename(x = rowname)
+    tidyr::gather(x, r, -rowname) %>%
+    dplyr::rename(y = rowname)
   
   if (na_omit) {
     x %<>% dplyr::filter(!is.na(r))
   }
   
-  x
+  x[, c("x", "y", "r")]
 }
 
 

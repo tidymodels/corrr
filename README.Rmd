@@ -128,8 +128,8 @@ x %>% rgather(v1, v3, v4)
 x %>% rgather(num_range("v", 4:6), na_omit = TRUE)
 
 # Or combine with na_upper()/na_lower() to set all duplicates to missing first
-# and then omit
-x %>% na_upper() %>% rgather(everything(), na_omit = TRUE)
+# and then omit (to retain each correlation just once)
+x %>% na_lower() %>% rgather(everything(), na_omit = TRUE)
 
 ```
 
@@ -155,5 +155,5 @@ mtcars %>% correlate() %>% rarrange(method = "HC", absolute = FALSE) %>% rplot()
 
 
 # As with rgather(), use na_upper()/na_lower() to screen out one of the triangles
-mtcars %>% correlate() %>% rarrange() %>% na_lower() %>% rplot()
+mtcars %>% correlate() %>% rarrange() %>% na_upper() %>% rplot()
 ```

@@ -226,15 +226,15 @@ x %>% rgather(everything())
     ##        x     y             r
     ##    (chr) (chr)         (dbl)
     ## 1     v1    v1            NA
-    ## 2     v2    v1  0.7098637068
-    ## 3     v3    v1  0.7093306516
-    ## 4     v4    v1  0.0001947192
-    ## 5     v5    v1  0.0213597639
-    ## 6     v6    v1 -0.0435135083
-    ## 7     v1    v2  0.7098637068
+    ## 2     v1    v2  0.7098637068
+    ## 3     v1    v3  0.7093306516
+    ## 4     v1    v4  0.0001947192
+    ## 5     v1    v5  0.0213597639
+    ## 6     v1    v6 -0.0435135083
+    ## 7     v2    v1  0.7098637068
     ## 8     v2    v2            NA
-    ## 9     v3    v2  0.6974112661
-    ## 10    v4    v2 -0.0132575510
+    ## 9     v2    v3  0.6974112661
+    ## 10    v2    v4 -0.0132575510
     ## ..   ...   ...           ...
 
 ``` r
@@ -247,13 +247,13 @@ x %>% rgather(v1, v3, v4)
     ##       x     y             r
     ##   (chr) (chr)         (dbl)
     ## 1    v1    v1            NA
-    ## 2    v3    v1  0.7093306516
-    ## 3    v4    v1  0.0001947192
-    ## 4    v1    v3  0.7093306516
+    ## 2    v1    v3  0.7093306516
+    ## 3    v1    v4  0.0001947192
+    ## 4    v3    v1  0.7093306516
     ## 5    v3    v3            NA
-    ## 6    v4    v3 -0.0252752456
-    ## 7    v1    v4  0.0001947192
-    ## 8    v3    v4 -0.0252752456
+    ## 6    v3    v4 -0.0252752456
+    ## 7    v4    v1  0.0001947192
+    ## 8    v4    v3 -0.0252752456
     ## 9    v4    v4            NA
 
 ``` r
@@ -265,17 +265,17 @@ x %>% rgather(num_range("v", 4:6), na_omit = TRUE)
     ## 
     ##       x     y         r
     ##   (chr) (chr)     (dbl)
-    ## 1    v5    v4 0.4213802
-    ## 2    v6    v4 0.4424697
-    ## 3    v4    v5 0.4213802
-    ## 4    v6    v5 0.4254418
-    ## 5    v4    v6 0.4424697
-    ## 6    v5    v6 0.4254418
+    ## 1    v4    v5 0.4213802
+    ## 2    v4    v6 0.4424697
+    ## 3    v5    v4 0.4213802
+    ## 4    v5    v6 0.4254418
+    ## 5    v6    v4 0.4424697
+    ## 6    v6    v5 0.4254418
 
 ``` r
 # Or combine with na_upper()/na_lower() to set all duplicates to missing first
-# and then omit
-x %>% na_upper() %>% rgather(everything(), na_omit = TRUE)
+# and then omit (to retain each correlation just once)
+x %>% na_lower() %>% rgather(everything(), na_omit = TRUE)
 ```
 
     ## Source: local data frame [15 x 3]
@@ -284,17 +284,17 @@ x %>% na_upper() %>% rgather(everything(), na_omit = TRUE)
     ##    (chr) (chr)         (dbl)
     ## 1     v2    v1  0.7098637068
     ## 2     v3    v1  0.7093306516
-    ## 3     v4    v1  0.0001947192
-    ## 4     v5    v1  0.0213597639
-    ## 5     v6    v1 -0.0435135083
-    ## 6     v3    v2  0.6974112661
-    ## 7     v4    v2 -0.0132575510
+    ## 3     v3    v2  0.6974112661
+    ## 4     v4    v1  0.0001947192
+    ## 5     v4    v2 -0.0132575510
+    ## 6     v4    v3 -0.0252752456
+    ## 7     v5    v1  0.0213597639
     ## 8     v5    v2  0.0092805296
-    ## 9     v6    v2 -0.0338314515
-    ## 10    v4    v3 -0.0252752456
-    ## 11    v5    v3  0.0010886516
-    ## 12    v6    v3 -0.0200574953
-    ## 13    v5    v4  0.4213802123
+    ## 9     v5    v3  0.0010886516
+    ## 10    v5    v4  0.4213802123
+    ## 11    v6    v1 -0.0435135083
+    ## 12    v6    v2 -0.0338314515
+    ## 13    v6    v3 -0.0200574953
     ## 14    v6    v4  0.4424697437
     ## 15    v6    v5  0.4254417954
 
@@ -330,7 +330,7 @@ mtcars %>% correlate() %>% rarrange(method = "HC", absolute = FALSE) %>% rplot()
 
 ``` r
 # As with rgather(), use na_upper()/na_lower() to screen out one of the triangles
-mtcars %>% correlate() %>% rarrange() %>% na_lower() %>% rplot()
+mtcars %>% correlate() %>% rarrange() %>% na_upper() %>% rplot()
 ```
 
 ![](README_files/figure-markdown_github/rplot_arranged-3.png)
