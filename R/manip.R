@@ -26,11 +26,11 @@ as_matrix <- function(x) {
 #' 
 #' @examples
 #' mtcars %>% correlate() %>% rselect(mpg, cyl)
-#' mtcars %>% correlate() %>% rselect(-disp, - mpg)
+#' mtcars %>% correlate() %>% rselect(-disp, - mpg, rows = TRUE)
 #' iris[, 1:4] %>% correlate() %>% rselect(-matches("Sepal"))
 #' 
 #' @export
-rselect <- function(x, ..., rows = TRUE) {
+rselect <- function(x, ..., rows = FALSE) {
   UseMethod("rselect")
 }
 

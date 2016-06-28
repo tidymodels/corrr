@@ -4,7 +4,7 @@
 \alias{rselect}
 \title{Select columns, exclude same or other rows.}
 \usage{
-rselect(x, ..., rows = TRUE)
+rselect(x, ..., rows = FALSE)
 }
 \arguments{
 \item{x}{A \code{\link{correlate}} correlation matrix.}
@@ -27,7 +27,7 @@ function, see \code{\link[dplyr]{select}}.
 }
 \examples{
 mtcars \%>\% correlate() \%>\% rselect(mpg, cyl)
-mtcars \%>\% correlate() \%>\% rselect(-disp, - mpg)
+mtcars \%>\% correlate() \%>\% rselect(-disp, - mpg, rows = TRUE)
 iris[, 1:4] \%>\% correlate() \%>\% rselect(-matches("Sepal"))
 
 }

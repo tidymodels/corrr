@@ -74,10 +74,10 @@ x
     ## 6      v6 -0.0435135083 -0.03383145 -0.020057495  0.4424697437 0.425441795
     ## Variables not shown: v6 (dbl)
 
-corrr and dplyr
----------------
+Correlation matrices as Correlation Data Frames (cor\_df)
+---------------------------------------------------------
 
-By using the data\_frame structure, we can leverage functions from packages like `dplyr`. Below are some useful examples:
+By using the data\_frame structure, we can more easily leverage functions from packages like `dplyr`, `tidyr`, `ggplot2`, and so on. Below are some useful examples:
 
 ``` r
 library(dplyr)
@@ -152,30 +152,18 @@ x %>%
     ##   (dbl) (dbl) (dbl) (dbl) (dbl) (dbl)
     ## 1  0.28  0.27  0.27  0.17  0.18  0.15
 
-Manipulating the Matrix
------------------------
+Manipulating cor\_df
+--------------------
 
 `corrr` provides convenience functions for routine manipulations of the matrix. In general, these functions begin with the letter `r`.
 
 ### rselect()
 
-`rselect()` behaves similarly to `dplyr::select()`, but affects rows as well as columns. As arguments, it takes your `correlate()` correlation matrix, expressions you would use in `select()`, and an optional boolean argument `rows`, indicating whether to keep the selected, or all other variables, in the rows. Here are some examples of using `rselect()`:
+`rselect()` behaves similarly to `dplyr::select()`, but affects rows as well as columns. As arguments, it takes your `cor_df`, expressions you would use in `select()`, and an optional boolean argument `rows`, indicating whether to keep the selected, or all other variables (default), in the rows. Here are some examples of using `rselect()`:
 
 ``` r
-# select v1 and v2 to stay in the columns and rows
+# select v1 and v2 to stay in the columns but not rows
 x %>% rselect(v1, v2)
-```
-
-    ## Source: local data frame [2 x 3]
-    ## 
-    ##   rowname        v1        v2
-    ##     (chr)     (dbl)     (dbl)
-    ## 1      v1        NA 0.7098637
-    ## 2      v2 0.7098637        NA
-
-``` r
-# Keep in columns, drop from rows
-x %>% rselect(v1, v2, rows = FALSE)
 ```
 
     ## Source: local data frame [4 x 3]
@@ -188,8 +176,20 @@ x %>% rselect(v1, v2, rows = FALSE)
     ## 4      v6 -0.0435135083 -0.03383145
 
 ``` r
+# Keep in columns and rows (drop all others)
+x %>% rselect(v1, v2, rows = TRUE)
+```
+
+    ## Source: local data frame [2 x 3]
+    ## 
+    ##   rowname        v1        v2
+    ##     (chr)     (dbl)     (dbl)
+    ## 1      v1        NA 0.7098637
+    ## 2      v2 0.7098637        NA
+
+``` r
 # Or put these variables into the rows by dropping from columns
-x %>% rselect(-v1, -v2, rows = FALSE)
+x %>% rselect(-v1, -v2)
 ```
 
     ## Source: local data frame [2 x 5]
@@ -206,11 +206,11 @@ x %>% rselect(num_range("v", 1:3))
 
     ## Source: local data frame [3 x 4]
     ## 
-    ##   rowname        v1        v2        v3
-    ##     (chr)     (dbl)     (dbl)     (dbl)
-    ## 1      v1        NA 0.7098637 0.7093307
-    ## 2      v2 0.7098637        NA 0.6974113
-    ## 3      v3 0.7093307 0.6974113        NA
+    ##   rowname            v1          v2           v3
+    ##     (chr)         (dbl)       (dbl)        (dbl)
+    ## 1      v4  0.0001947192 -0.01325755 -0.025275246
+    ## 2      v5  0.0213597639  0.00928053  0.001088652
+    ## 3      v6 -0.0435135083 -0.03383145 -0.020057495
 
 ### rgather()
 

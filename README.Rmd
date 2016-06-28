@@ -62,9 +62,9 @@ class(x)
 x
 ```
 
-## corrr and dplyr
+## Correlation matrices as Correlation Data Frames (cor_df)
 
-By using the data_frame structure, we can leverage functions from packages like `dplyr`. Below are some useful examples:
+By using the data_frame structure, we can more easily leverage functions from packages like `dplyr`, `tidyr`, `ggplot2`, and so on. Below are some useful examples:
 
 ```{r, message = FALSE, warning = FALSE}
 library(dplyr)
@@ -91,23 +91,23 @@ x %>%
 
 ```
 
-## Manipulating the Matrix
+## Manipulating cor_df
 
 `corrr` provides convenience functions for routine manipulations of the matrix. In general, these functions begin with the letter `r`.
 
 ### rselect()
 
-`rselect()` behaves similarly to `dplyr::select()`, but affects rows as well as columns. As arguments, it takes your `correlate()` correlation matrix, expressions you would use in `select()`, and an optional boolean argument `rows`, indicating whether to keep the selected, or all other variables, in the rows. Here are some examples of using `rselect()`:
+`rselect()` behaves similarly to `dplyr::select()`, but affects rows as well as columns. As arguments, it takes your `cor_df`, expressions you would use in `select()`, and an optional boolean argument `rows`, indicating whether to keep the selected, or all other variables (default), in the rows. Here are some examples of using `rselect()`:
 
 ```{r rselect}
-# select v1 and v2 to stay in the columns and rows
+# select v1 and v2 to stay in the columns but not rows
 x %>% rselect(v1, v2)
 
-# Keep in columns, drop from rows
-x %>% rselect(v1, v2, rows = FALSE)
+# Keep in columns and rows (drop all others)
+x %>% rselect(v1, v2, rows = TRUE)
 
 # Or put these variables into the rows by dropping from columns
-x %>% rselect(-v1, -v2, rows = FALSE)
+x %>% rselect(-v1, -v2)
 
 # And can use any dplyr::select() expressions
 x %>% rselect(num_range("v", 1:3))
