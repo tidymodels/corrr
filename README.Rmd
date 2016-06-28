@@ -124,11 +124,12 @@ x %>% rgather(everything())
 # Select certain variables to convert to long format
 x %>% rgather(v1, v3, v4)
 
-# Drop diagonal NA values using na_omit = TRUE
+# Drop missing values (the diagonal by default) using na_omit = TRUE
 x %>% rgather(num_range("v", 4:6), na_omit = TRUE)
 
-# Or drop diagonal and repeated correlations above the diagonal with mirror = FALSE
-x %>% rgather(everything(), mirror = FALSE)
+# Or combine with na_upper()/na_lower() to set all duplicates to missing first
+# and then omit
+x %>% na_upper() %>% rgather(everything(), na_omit = TRUE)
 
 ```
 
@@ -151,4 +152,8 @@ mtcars %>% correlate() %>% rarrange() %>% rplot()
 # Using hierarchical clustering (method = "HC") and treating negative and
 # positive correlations as distant (absolute = FALSE)
 mtcars %>% correlate() %>% rarrange(method = "HC", absolute = FALSE) %>% rplot()
+
+
+# As with rgather(), use na_upper()/na_lower() to screen out one of the triangles
+mtcars %>% correlate() %>% rarrange() %>% na_lower() %>% rplot()
 ```

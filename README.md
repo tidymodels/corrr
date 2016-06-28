@@ -257,7 +257,7 @@ x %>% rgather(v1, v3, v4)
     ## 9    v4    v4            NA
 
 ``` r
-# Drop diagonal NA values using na_omit = TRUE
+# Drop missing values (the diagonal by default) using na_omit = TRUE
 x %>% rgather(num_range("v", 4:6), na_omit = TRUE)
 ```
 
@@ -273,8 +273,9 @@ x %>% rgather(num_range("v", 4:6), na_omit = TRUE)
     ## 6    v5    v6 0.4254418
 
 ``` r
-# Or drop diagonal and repeated correlations above the diagonal with mirror = FALSE
-x %>% rgather(everything(), mirror = FALSE)
+# Or combine with na_upper()/na_lower() to set all duplicates to missing first
+# and then omit
+x %>% na_upper() %>% rgather(everything(), na_omit = TRUE)
 ```
 
     ## Source: local data frame [15 x 3]
@@ -326,3 +327,10 @@ mtcars %>% correlate() %>% rarrange(method = "HC", absolute = FALSE) %>% rplot()
 ```
 
 ![](README_files/figure-markdown_github/rplot_arranged-2.png)
+
+``` r
+# As with rgather(), use na_upper()/na_lower() to screen out one of the triangles
+mtcars %>% correlate() %>% rarrange() %>% na_lower() %>% rplot()
+```
+
+![](README_files/figure-markdown_github/rplot_arranged-3.png)

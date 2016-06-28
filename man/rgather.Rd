@@ -4,7 +4,7 @@
 \alias{rgather}
 \title{Gather correlation columns}
 \usage{
-rgather(x, ..., mirror = TRUE, na_omit = FALSE)
+rgather(x, ..., na_omit = FALSE)
 }
 \arguments{
 \item{x}{A \code{\link{correlate}} correlation matrix.}
@@ -12,8 +12,6 @@ rgather(x, ..., mirror = TRUE, na_omit = FALSE)
 \item{...}{Comma separated list of unquoted expressions. You can treat
 variable names like they are positions. Use positive values to select
 variables; use negative values to drop variables.}
-
-\item{mirror}{Boolean. Should the upper and lower triangles of the matrix be included?}
 
 \item{na_omit}{Boolean. Whether rows with an NA correlation (originally the
 matrix diagonal) should be dropped? Will automatically be set to TRUE if

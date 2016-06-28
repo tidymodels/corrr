@@ -44,12 +44,11 @@ rselect <- function(x, ..., rows = FALSE) {
 #' 
 #' @param x A \code{\link{correlate}} correlation matrix.
 #' @inheritParams dplyr::select
-#' @param mirror Boolean. Should the upper and lower triangles of the matrix be included?
 #' @param na_omit Boolean. Whether rows with an NA correlation (originally the
 #'   matrix diagonal) should be dropped? Will automatically be set to TRUE if
 #'   mirror is FALSE.
 #' 
 #' @export
-rgather <- function(x, ..., mirror = TRUE, na_omit = FALSE) {
+rgather <- function(x, ..., na_omit = FALSE) {
   UseMethod("rgather")
 }

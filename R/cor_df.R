@@ -113,21 +113,7 @@ rselect.cor_df <- function(x, ..., rows = FALSE) {
 }
 
 #' @export
-rgather.cor_df <- function(x, ..., mirror = TRUE, na_omit = FALSE) {
-  
-  if (!mirror) {
-    # Store rownames while upper triangle is omitted
-    row_names <- x$rowname
-    x <- dplyr::select(x, -rowname)
-    
-    # Set upper triangle to missing
-    # and na_omit to TRUE
-    x[upper.tri(x)] <- NA
-    rownames(x) <- row_names
-    x %<>% dplyr::add_rownames()
-    class(x) <- c("cor_df", class(x))
-    na_omit <- TRUE
-  }
+rgather.cor_df <- function(x, ..., na_omit = FALSE) {
 
   x %<>%
     rselect(..., rows = TRUE) %>%
