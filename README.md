@@ -157,13 +157,13 @@ Manipulating cor\_df
 
 `corrr` provides convenience functions for routine manipulations of the matrix. In general, these functions begin with the letter `r`.
 
-### rselect()
+### focus()
 
-`rselect()` behaves similarly to `dplyr::select()`, but affects rows as well as columns. As arguments, it takes your `cor_df`, expressions you would use in `select()`, and an optional boolean argument `rows`, indicating whether to keep the selected, or all other variables (default), in the rows. Here are some examples of using `rselect()`:
+`focus()` behaves similarly to `dplyr::select()`, but affects rows as well as columns. As arguments, it takes your `cor_df`, expressions you would use in `select()`, and an optional boolean argument `rows`, indicating whether to keep the selected, or all other variables (default), in the rows. Here are some examples of using `focus()`:
 
 ``` r
 # select v1 and v2 to stay in the columns but not rows
-x %>% rselect(v1, v2)
+x %>% focus(v1, v2)
 ```
 
     ## Source: local data frame [4 x 3]
@@ -177,7 +177,7 @@ x %>% rselect(v1, v2)
 
 ``` r
 # Keep in columns and rows (drop all others)
-x %>% rselect(v1, v2, rows = TRUE)
+x %>% focus(v1, v2, rows = TRUE)
 ```
 
     ## Source: local data frame [2 x 3]
@@ -189,7 +189,7 @@ x %>% rselect(v1, v2, rows = TRUE)
 
 ``` r
 # Or put these variables into the rows by dropping from columns
-x %>% rselect(-v1, -v2)
+x %>% focus(-v1, -v2)
 ```
 
     ## Source: local data frame [2 x 5]
@@ -201,7 +201,7 @@ x %>% rselect(-v1, -v2)
 
 ``` r
 # And can use any dplyr::select() expressions
-x %>% rselect(num_range("v", 1:3))
+x %>% focus(num_range("v", 1:3))
 ```
 
     ## Source: local data frame [3 x 4]

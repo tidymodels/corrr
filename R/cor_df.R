@@ -71,7 +71,7 @@ as_matrix.cor_df <- function(x) {
 
 
 #' @export
-rselect.cor_df <- function(x, ..., rows = FALSE) {
+focus.cor_df <- function(x, ..., rows = FALSE) {
   
   # Store rownames in case they're dropped in next step
   row_names <- x$rowname
@@ -103,7 +103,7 @@ rselect.cor_df <- function(x, ..., rows = FALSE) {
 rgather.cor_df <- function(x, ..., na_omit = FALSE) {
 
   x %<>%
-    rselect(..., rows = TRUE) %>%
+    focus(..., rows = TRUE) %>%
     tidyr::gather(x, r, -rowname) %>%
     dplyr::rename(y = rowname)
   

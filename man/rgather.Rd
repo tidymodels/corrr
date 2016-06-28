@@ -21,7 +21,7 @@ mirror is FALSE.}
 rgather is an extension of tidyr::gather() to be applied to a
 \code{\link{correlate}} correlation matrix. It will gather the selected
 variables into a long-format data frame. The rowname column is handled
-automatically. Variable selection is achieved with \code{\link{rselect}},
+automatically. Variable selection is achieved with \code{\link{focus}},
 which you can see for more detail on how to select columns.
 }
 

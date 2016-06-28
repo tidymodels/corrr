@@ -1,4 +1,4 @@
-#' Select columns, exclude same or other rows.
+#' Focus on section of a correlation data frame.
 #' 
 #' Convenience function to select a set of variables from a correlation matrix
 #' to keep as the columns, and exclude these or all other variables from the rows. This
@@ -8,19 +8,19 @@
 #' rows based on `\code{same}. For a complete list of methods for using this
 #' function, see \code{\link[dplyr]{select}}.
 #' 
-#' @param x A \code{\link{correlate}} correlation matrix.
+#' @param x cor_df. See \code{\link{correlate}}.
 #' @inheritParams dplyr::select
 #' @param rows Boolean. Whether to keep selected variables in the rows, or all other
 #'   variables otherwise.
 #' 
 #' @examples
-#' mtcars %>% correlate() %>% rselect(mpg, cyl)
-#' mtcars %>% correlate() %>% rselect(-disp, - mpg, rows = TRUE)
-#' iris[, 1:4] %>% correlate() %>% rselect(-matches("Sepal"))
+#' mtcars %>% correlate() %>% focus(mpg, cyl)
+#' mtcars %>% correlate() %>% focus(-disp, - mpg, rows = TRUE)
+#' iris[, 1:4] %>% correlate() %>% focus(-matches("Sepal"))
 #' 
 #' @export
-rselect <- function(x, ..., rows = FALSE) {
-  UseMethod("rselect")
+focus <- function(x, ..., rows = FALSE) {
+  UseMethod("focus")
 }
 
 #' Gather correlation columns
@@ -28,7 +28,7 @@ rselect <- function(x, ..., rows = FALSE) {
 #' rgather is an extension of tidyr::gather() to be applied to a
 #' \code{\link{correlate}} correlation matrix. It will gather the selected
 #' variables into a long-format data frame. The rowname column is handled
-#' automatically. Variable selection is achieved with \code{\link{rselect}},
+#' automatically. Variable selection is achieved with \code{\link{focus}},
 #' which you can see for more detail on how to select columns.
 #' 
 #' @param x A \code{\link{correlate}} correlation matrix.
