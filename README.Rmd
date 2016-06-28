@@ -91,10 +91,9 @@ x %>%
 
 ```
 
-## Routine Explorations
+## Manipulating the Matrix
 
-`corrr` provides convenience functions for routine explorations of the matrix.
-
+`corrr` provides convenience functions for routine manipulations of the matrix.
 
 ### rselect()
 
@@ -131,4 +130,14 @@ x %>% rgather(num_range("v", 4:6), na_omit = TRUE)
 # Or drop diagonal and repeated correlations above the diagonal with mirror = FALSE
 x %>% rgather(everything(), mirror = FALSE)
 
+```
+
+## Visualising
+
+`corrr` provides a number of methods for visualising a correlation matrix. Below are some examples.
+
+`rplot()` creates a visual of the entire correlate() matrix. It uses the package `ggplot2` to produce a point plot with colouring, size and alpha to support visualisation.
+
+```{r rplot, warning = FALSE}
+mtcars %>% correlate() %>% rplot()
 ```

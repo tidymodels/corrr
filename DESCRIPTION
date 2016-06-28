@@ -24,4 +24,5 @@ RoxygenNote: 5.0.1
 Suggests: testthat
 Imports: dplyr,
     magrittr,
-    tidyr
+    tidyr,
+    ggplot2

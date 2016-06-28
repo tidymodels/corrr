@@ -53,3 +53,29 @@ rgather.cor_df <- function(x, ..., mirror = TRUE, na_omit = FALSE) {
   
   x
 }
+
+#' @export
+rplot.cor_df <- function(x) {
+  # Store order for factoring the variables
+  row_order <- x$rowname
+  
+  # Convert data to relevant format and plot
+  x %>%
+    # Convert to wide
+    rgather(everything()) %>%
+    # Factor x and y to correct order
+    # and add text column to fill diagonal
+    mutate(x = factor(x, levels = row_order),
+           y = factor(y, levels = rev(row_order)),
+           size = abs(r),
+           label = ifelse(is.na(r), as.character(x), NA)) %>%
+    # plot
+    ggplot2::ggplot(ggplot2::aes(x = x, y = y,
+               color = r, size = size, alpha = size,
+               label = label)) +
+    ggplot2::geom_point() +
+    ggplot2::scale_colour_gradient2(limits = c(-1, 1), low = "indianred2", mid= "white", high = "skyblue1") +
+    ggplot2::geom_text() +
+    ggplot2::labs(x = "", y ="") +
+    ggplot2::theme_classic()
+}

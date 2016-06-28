@@ -152,10 +152,10 @@ x %>%
     ##   (dbl) (dbl) (dbl) (dbl) (dbl) (dbl)
     ## 1  0.28  0.27  0.27  0.17  0.18  0.15
 
-Routine Explorations
---------------------
+Manipulating the Matrix
+-----------------------
 
-`corrr` provides convenience functions for routine explorations of the matrix.
+`corrr` provides convenience functions for routine manipulations of the matrix.
 
 ### rselect()
 
@@ -296,3 +296,16 @@ x %>% rgather(everything(), mirror = FALSE)
     ## 13    v5    v4  0.4213802123
     ## 14    v6    v4  0.4424697437
     ## 15    v6    v5  0.4254417954
+
+Visualising
+-----------
+
+`corrr` provides a number of methods for visualising a correlation matrix. Below are some examples.
+
+`rplot()` creates a visual of the entire correlate() matrix. It uses the package `ggplot2` to produce a point plot with colouring, size and alpha to support visualisation.
+
+``` r
+mtcars %>% correlate() %>% rplot()
+```
+
+![](README_files/figure-markdown_github/rplot-1.png)
