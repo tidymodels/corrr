@@ -48,7 +48,7 @@ rgather.cor_df <- function(x, ..., mirror = TRUE, na_omit = FALSE) {
     dplyr::rename(x = rowname)
   
   if (na_omit) {
-    x %<>% filter(!is.na(r))
+    x %<>% dplyr::filter(!is.na(r))
   }
   
   x
