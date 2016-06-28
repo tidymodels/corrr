@@ -313,7 +313,7 @@ mtcars %>% correlate() %>% rplot()
 This is particularly useful if `rarrange()` is used first, as it rearranges the correlations to group highly correlated variables together. Some examples combining this and the above:
 
 ``` r
-# Deafult settings
+# Default settings
 mtcars %>% correlate() %>% rarrange() %>% rplot()
 ```
 

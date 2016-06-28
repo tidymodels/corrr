@@ -145,7 +145,7 @@ mtcars %>% correlate() %>% rplot()
 This is particularly useful if `rarrange()` is used first, as it rearranges the correlations to group highly correlated variables together. Some examples combining this and the above:
 
 ```{r rplot_arranged, warning = FALSE, fig.height = 4, fig.width = 5}
-# Deafult settings
+# Default settings
 mtcars %>% correlate() %>% rarrange() %>% rplot()
 
 # Using hierarchical clustering (method = "HC") and treating negative and
