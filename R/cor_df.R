@@ -1,3 +1,52 @@
+
+# Arrange -----------------------------------------------------------------
+
+#' @export
+rarrange.cor_df <- function(x, method = "PCA", absolute = TRUE) {
+  
+  # Convert to original matrix
+  m <- x %>% as_matrix()
+  
+  if (absolute) {
+    m %<>% abs()
+  }
+
+  if (method %in% c("BEA", "BEA_TSP", "PCA", "PCA_angle")) {
+    ord <- m %>% seriation::seriate(method = method)
+  } else {
+    ord <- dist(m) %>% seriation::seriate(method = method)
+  }
+  
+  ord %<>% seriation::get_order()
+
+  # Arrange and return matrix
+  # "c(1, 1 + ..." to handle rowname column
+  x <- x[ord, c(1, 1 + ord)]
+  class(x) <- c("cor_df", class(x))
+  return(x)
+}
+
+
+
+# Manipulate --------------------------------------------------------------
+
+#' @export
+as_matrix.cor_df <- function(x) {
+  # Separate rownames
+  row_names <- x$rowname
+  x %<>% dplyr::select(-rowname)
+  
+  # Return diagonal to 1
+  diag(x) <- 1
+  
+  # Convert to matrix and set rownames
+  class(x) <- "data.frame"
+  x %<>% as.matrix()
+  rownames(x) <- row_names
+  x
+}
+
+
 #' @export
 rselect.cor_df <- function(x, ..., rows = TRUE) {
   
@@ -19,7 +68,9 @@ rselect.cor_df <- function(x, ..., rows = TRUE) {
   
   # Exclude these or others from the rows
   if (rows) {
-    x %>% dplyr::filter(rowname %in% vars)
+    x %<>% dplyr::filter(rowname %in% vars)
+    class(x) <- c("cor_df", class(x))
+    x
   } else {
     x %>% dplyr::filter(!(rowname %in% vars))
   }
@@ -53,6 +104,9 @@ rgather.cor_df <- function(x, ..., mirror = TRUE, na_omit = FALSE) {
   
   x
 }
+
+
+# Plot --------------------------------------------------------------------
 
 #' @export
 rplot.cor_df <- function(x) {

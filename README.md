@@ -155,7 +155,7 @@ x %>%
 Manipulating the Matrix
 -----------------------
 
-`corrr` provides convenience functions for routine manipulations of the matrix.
+`corrr` provides convenience functions for routine manipulations of the matrix. In general, these functions begin with the letter `r`.
 
 ### rselect()
 
@@ -309,3 +309,20 @@ mtcars %>% correlate() %>% rplot()
 ```
 
 ![](README_files/figure-markdown_github/rplot-1.png)
+
+This is particularly useful if `rarrange()` is used first, as it rearranges the correlations to group highly correlated variables together. Some examples combining this and the above:
+
+``` r
+# Deafult settings
+mtcars %>% correlate() %>% rarrange() %>% rplot()
+```
+
+![](README_files/figure-markdown_github/rplot_arranged-1.png)
+
+``` r
+# Using hierarchical clustering (method = "HC") and treating negative and
+# positive correlations as distant (absolute = FALSE)
+mtcars %>% correlate() %>% rarrange(method = "HC", absolute = FALSE) %>% rplot()
+```
+
+![](README_files/figure-markdown_github/rplot_arranged-2.png)

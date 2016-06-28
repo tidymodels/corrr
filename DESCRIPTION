@@ -25,4 +25,5 @@ Suggests: testthat
 Imports: dplyr,
     magrittr,
     tidyr,
-    ggplot2
+    ggplot2,
+    seriation
