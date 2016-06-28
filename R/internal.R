@@ -1,14 +1,3 @@
-#' Convert cor_df to original matrix.
-#' 
-#' Convert a \code{\link{correlate}} correlation matrix from data frame to
-#' original matrix format.
-#' 
-#' @param x A \code{\link{correlate}} correlation matrix.
-#' @export
-as_matrix <- function(x) {
-  UseMethod("as_matrix")
-}
-
 #' Shave off upper/lower triangle.
 #' 
 #' Convert the upper or lower triangle of a correlation data frame (cor_df) to

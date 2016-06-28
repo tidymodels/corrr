@@ -152,8 +152,27 @@ x %>%
     ##   (dbl) (dbl) (dbl) (dbl) (dbl) (dbl)
     ## 1  0.28  0.27  0.27  0.17  0.18  0.15
 
-Manipulating cor\_df
---------------------
+The Functions of corrr
+----------------------
+
+The primary corrr functions do one of three major tasks with a `cor_df`:
+
+Change the internal values:
+
+-   shave()
+-   rearrange()
+
+Reshape the values:
+
+-   focus()
+-   stretch()
+
+Generate output/visualsations:
+
+-   rplot()
+
+Reshaping
+---------
 
 `corrr` provides convenience functions for routine manipulations of the matrix. In general, these functions begin with the letter `r`.
 
@@ -298,8 +317,8 @@ x %>% shave() %>% stretch(everything(), na_omit = TRUE)
     ## 14    v4    v6  0.4424697437
     ## 15    v5    v6  0.4254417954
 
-Visualising
------------
+Output/Visualisation
+--------------------
 
 `corrr` provides a number of methods for visualising a correlation matrix. Below are some examples.
 

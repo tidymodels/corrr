@@ -1,6 +1,6 @@
 Package: corrr
 Type: Package
-Version: 0.0.4
+Version: 0.0.5
 Title: Correlations in R
 Description: corrr is a package for exploring
   CORRelation matrices in R. It provides methods for
