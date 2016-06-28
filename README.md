@@ -212,13 +212,13 @@ x %>% focus(num_range("v", 1:3))
     ## 2      v5  0.0213597639  0.00928053  0.001088652
     ## 3      v6 -0.0435135083 -0.03383145 -0.020057495
 
-### rgather()
+### stretch()
 
-`rgather()` behaves similarly to `tidyr::gather()`. As arguments, it takes your `correlate()` correlation matrix, expressions you would use in `dplyr::select()` (as above), and some optional boolean arguments. The result is a three-column data frame with columns `x` and `y` storing variable names, and `r`, storing the correlation. Here are some examples of using `rgather()`:
+`stretch()` converts your `cor_df` into a long-format data frame. It behaves similarly to `tidyr::gather()`. As arguments, it takes your `correlate()` correlation matrix, expressions you would use in `dplyr::select()` (as above), and some optional boolean arguments. The result is a three-column data frame with columns `x` and `y` storing variable names, and `r`, storing the correlation. Here are some examples of using `stretch()`:
 
 ``` r
 # Convert all to long format
-x %>% rgather(everything())
+x %>% stretch(everything())
 ```
 
     ## Source: local data frame [36 x 3]
@@ -239,7 +239,7 @@ x %>% rgather(everything())
 
 ``` r
 # Select certain variables to convert to long format
-x %>% rgather(v1, v3, v4)
+x %>% stretch(v1, v3, v4)
 ```
 
     ## Source: local data frame [9 x 3]
@@ -258,7 +258,7 @@ x %>% rgather(v1, v3, v4)
 
 ``` r
 # Drop missing values (the diagonal by default) using na_omit = TRUE
-x %>% rgather(num_range("v", 4:6), na_omit = TRUE)
+x %>% stretch(num_range("v", 4:6), na_omit = TRUE)
 ```
 
     ## Source: local data frame [6 x 3]
@@ -275,7 +275,7 @@ x %>% rgather(num_range("v", 4:6), na_omit = TRUE)
 ``` r
 # Or combine with shave() to set all duplicates to missing first
 # and then omit (to retain each correlation just once)
-x %>% shave() %>% rgather(everything(), na_omit = TRUE)
+x %>% shave() %>% stretch(everything(), na_omit = TRUE)
 ```
 
     ## Source: local data frame [15 x 3]
@@ -329,7 +329,7 @@ mtcars %>% correlate() %>% rearrange(method = "HC", absolute = FALSE) %>% rplot(
 ![](README_files/figure-markdown_github/rplot_arranged-2.png)
 
 ``` r
-# As with rgather(), use shave() to screen out one of the triangles
+# As with stretch(), use shave() to screen out one of the triangles
 mtcars %>% correlate() %>% rearrange() %>% shave() %>% rplot()
 ```
 

@@ -23,21 +23,21 @@ focus <- function(x, ..., rows = FALSE) {
   UseMethod("focus")
 }
 
-#' Gather correlation columns
+#' Stretch correlation data frame into long format.
 #' 
-#' rgather is an extension of tidyr::gather() to be applied to a
+#' \code{stretch} is an extension of tidyr::gather() to be applied to a
 #' \code{\link{correlate}} correlation matrix. It will gather the selected
 #' variables into a long-format data frame. The rowname column is handled
 #' automatically. Variable selection is achieved with \code{\link{focus}},
 #' which you can see for more detail on how to select columns.
 #' 
-#' @param x A \code{\link{correlate}} correlation matrix.
+#' @param x cor_df. See \code{\link{correlate}}.
 #' @inheritParams dplyr::select
 #' @param na_omit Boolean. Whether rows with an NA correlation (originally the
 #'   matrix diagonal) should be dropped? Will automatically be set to TRUE if
 #'   mirror is FALSE.
 #' 
 #' @export
-rgather <- function(x, ..., na_omit = FALSE) {
-  UseMethod("rgather")
+stretch <- function(x, ..., na_omit = FALSE) {
+  UseMethod("stretch")
 }

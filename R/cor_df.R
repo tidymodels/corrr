@@ -100,7 +100,7 @@ focus.cor_df <- function(x, ..., rows = FALSE) {
 }
 
 #' @export
-rgather.cor_df <- function(x, ..., na_omit = FALSE) {
+stretch.cor_df <- function(x, ..., na_omit = FALSE) {
 
   x %<>%
     focus(..., rows = TRUE) %>%
@@ -125,7 +125,7 @@ rplot.cor_df <- function(x) {
   # Convert data to relevant format and plot
   x %>%
     # Convert to wide
-    rgather(everything()) %>%
+    stretch(everything()) %>%
     # Factor x and y to correct order
     # and add text column to fill diagonal
     mutate(x = factor(x, levels = row_order),
