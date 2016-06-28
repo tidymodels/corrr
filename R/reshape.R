@@ -1,14 +1,3 @@
-#' Convert correlate to original matrix.
-#' 
-#' Convert a \code{\link{correlate}} correlation matrix from data frame to
-#' original matrix format.
-#' 
-#' @param x A \code{\link{correlate}} correlation matrix.
-#' @export
-as_matrix <- function(x) {
-  UseMethod("as_matrix")
-}
-
 #' Select columns, exclude same or other rows.
 #' 
 #' Convenience function to select a set of variables from a correlation matrix
