@@ -1,4 +1,40 @@
 
+# na_x --------------------------------------------------------------------
+
+#' @export
+na_upper.cor_df <- function(x) {
+  
+  # Separate rownames
+  row_names <- x$rowname
+  x %<>% dplyr::select(-rowname)
+  
+  # Remove upper matrix
+  x[upper.tri(x)] <- NA
+  
+  # Reappend rownames and class
+  rownames(x) <- row_names
+  x %<>% dplyr::add_rownames()
+  class(x) <- c("cor_df", class(x))
+  x
+}
+
+#' @export
+na_lower.cor_df <- function(x) {
+  
+  # Separate rownames
+  row_names <- x$rowname
+  x %<>% dplyr::select(-rowname)
+  
+  # Remove upper matrix
+  x[lower.tri(x)] <- NA
+  
+  # Reappend rownames and class
+  rownames(x) <- row_names
+  x %<>% dplyr::add_rownames()
+  class(x) <- c("cor_df", class(x))
+  x
+}
+
 # Arrange -----------------------------------------------------------------
 
 #' @export
