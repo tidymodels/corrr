@@ -171,10 +171,24 @@ Generate output/visualsations:
 
 -   rplot()
 
+Examples
+--------
+
+Following are some examples of combining corrr functions in a single pipeline:
+
+``` r
+datasets::mtcars %>%
+  correlate() %>%    # Create correlation data frame (cor_df)
+  focus(-cyl, -vs, rows = TRUE) %>%  # Focus on cor_df without 'cyl' and 'vs'
+  rearrange(method = "HC", absolute = FALSE) %>%  # arrange by correlations
+  shave() %>%  # Shave off the upper triangle for a clean plot
+  rplot()  # Plot the results
+```
+
+![](README_files/figure-markdown_github/combination-1.png)
+
 Reshaping
 ---------
-
-`corrr` provides convenience functions for routine manipulations of the matrix. In general, these functions begin with the letter `r`.
 
 ### focus()
 
