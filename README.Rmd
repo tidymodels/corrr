@@ -41,7 +41,7 @@ Change internal values (`cor_df` in, `cor_df` out):
 
 Reshape values (`cor_df` in, `tbl` or `cor_df` out):
 
-- `focus()` reduces to some columns against others (or themselves).
+- `focus()` reduces to some columns against all other (or only same) rows.
 - `stretch()` converts to a long format.
 
 Generate output/visualsations (`cor_df` in, console/plot out):
