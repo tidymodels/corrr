@@ -7,7 +7,7 @@
 rplot(x)
 }
 \arguments{
-\item{x}{A \code{\link{correlate}} correlation matrix.}
+\item{x}{cor_df. See \code{\link{correlate}}.}
 }
 \description{
 Plot a \code{\link{correlate}} correlation matrix.
