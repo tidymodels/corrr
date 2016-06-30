@@ -1,5 +1,22 @@
+# Utility --------------------------------------------------------------
 
-# na_x --------------------------------------------------------------------
+#' @export
+as_matrix.cor_df <- function(x) {
+  # Separate rownames
+  row_names <- x$rowname
+  x %<>% dplyr::select(-rowname)
+  
+  # Return diagonal to 1
+  diag(x) <- 1
+  
+  # Convert to matrix and set rownames
+  class(x) <- "data.frame"
+  x %<>% as.matrix()
+  rownames(x) <- row_names
+  x
+}
+
+# Internal --------------------------------------------------------------------
 
 #' @export
 shave.cor_df <- function(x, upper = TRUE) {
@@ -21,8 +38,6 @@ shave.cor_df <- function(x, upper = TRUE) {
   class(x) <- c("cor_df", class(x))
   x
 }
-
-# Arrange -----------------------------------------------------------------
 
 #' @export
 rearrange.cor_df <- function(x, method = "PCA", absolute = TRUE) {
@@ -50,25 +65,7 @@ rearrange.cor_df <- function(x, method = "PCA", absolute = TRUE) {
 }
 
 
-
-# Manipulate --------------------------------------------------------------
-
-#' @export
-as_matrix.cor_df <- function(x) {
-  # Separate rownames
-  row_names <- x$rowname
-  x %<>% dplyr::select(-rowname)
-  
-  # Return diagonal to 1
-  diag(x) <- 1
-  
-  # Convert to matrix and set rownames
-  class(x) <- "data.frame"
-  x %<>% as.matrix()
-  rownames(x) <- row_names
-  x
-}
-
+# Reshape -----------------------------------------------------------------
 
 #' @export
 focus.cor_df <- function(x, ..., rows = FALSE) {
@@ -115,7 +112,7 @@ stretch.cor_df <- function(x, ..., na_omit = FALSE) {
 }
 
 
-# Plot --------------------------------------------------------------------
+# Output --------------------------------------------------------------------
 
 #' @export
 rplot.cor_df <- function(x) {
