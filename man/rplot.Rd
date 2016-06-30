@@ -4,10 +4,12 @@
 \alias{rplot}
 \title{Plot correlation matrix.}
 \usage{
-rplot(x)
+rplot(x, shape)
 }
 \arguments{
 \item{x}{cor_df. See \code{\link{correlate}}.}
+
+\item{shape}{\code{\link{geom_point}} aesthetic.}
 }
 \description{
 Plot a \code{\link{correlate}} correlation matrix.

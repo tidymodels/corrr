@@ -115,7 +115,7 @@ stretch.cor_df <- function(x, ..., na_omit = FALSE) {
 # Output --------------------------------------------------------------------
 
 #' @export
-rplot.cor_df <- function(x) {
+rplot.cor_df <- function(x, shape = 16) {
   # Store order for factoring the variables
   row_order <- x$rowname
   
@@ -133,13 +133,14 @@ rplot.cor_df <- function(x) {
     ggplot2::ggplot(ggplot2::aes(x = x, y = y,
                color = r, size = size, alpha = size,
                label = label)) +
-    ggplot2::geom_point() +
+    ggplot2::geom_point(shape = shape) +
     #ggplot2::guides(colour = FALSE) +
     ggplot2::scale_colour_gradient2(limits = c(-1, 1),
                                     low    = "indianred2",
                                     mid    = "white",
                                     high   = "skyblue1") +
-    ggplot2::geom_text() +
+    ggplot2::geom_text(show.legend = FALSE) +
     ggplot2::labs(x = "", y ="") +
-    ggplot2::theme_classic()
+    ggplot2::theme_classic() +
+    ggplot2::theme(legend.position = "none")
 }
