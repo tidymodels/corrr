@@ -125,7 +125,7 @@ rplot.cor_df <- function(x) {
     stretch(everything()) %>%
     # Factor x and y to correct order
     # and add text column to fill diagonal
-    mutate(x = factor(x, levels = row_order),
+    dplyr::mutate(x = factor(x, levels = row_order),
            y = factor(y, levels = rev(row_order)),
            size = abs(r),
            label = ifelse(is.na(r), as.character(x), NA)) %>%
@@ -134,7 +134,11 @@ rplot.cor_df <- function(x) {
                color = r, size = size, alpha = size,
                label = label)) +
     ggplot2::geom_point() +
-    ggplot2::scale_colour_gradient2(limits = c(-1, 1), low = "indianred2", mid= "white", high = "skyblue1") +
+    #ggplot2::guides(colour = FALSE) +
+    ggplot2::scale_colour_gradient2(limits = c(-1, 1),
+                                    low    = "indianred2",
+                                    mid    = "white",
+                                    high   = "skyblue1") +
     ggplot2::geom_text() +
     ggplot2::labs(x = "", y ="") +
     ggplot2::theme_classic()
