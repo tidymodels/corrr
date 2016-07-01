@@ -68,7 +68,7 @@ rearrange.cor_df <- function(x, method = "PCA", absolute = TRUE) {
 # Reshape -----------------------------------------------------------------
 
 #' @export
-focus.cor_df <- function(x, ..., rows = FALSE) {
+focus.cor_df <- function(x, ..., mirror = FALSE) {
   
   # Store rownames in case they're dropped in next step
   row_names <- x$rowname
@@ -87,7 +87,7 @@ focus.cor_df <- function(x, ..., rows = FALSE) {
   }
   
   # Exclude these or others from the rows
-  if (rows) {
+  if (mirror) {
     x %<>% dplyr::filter(rowname %in% vars)
     class(x) <- c("cor_df", class(x))
     x
@@ -100,7 +100,7 @@ focus.cor_df <- function(x, ..., rows = FALSE) {
 stretch.cor_df <- function(x, ..., na_omit = FALSE) {
 
   x %<>%
-    focus(..., rows = TRUE) %>%
+    focus(..., mirror = TRUE) %>%
     tidyr::gather(x, r, -rowname) %>%
     dplyr::rename(y = rowname)
   

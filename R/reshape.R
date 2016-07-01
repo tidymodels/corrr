@@ -10,16 +10,16 @@
 #' 
 #' @param x cor_df. See \code{\link{correlate}}.
 #' @inheritParams dplyr::select
-#' @param rows Boolean. Whether to keep selected variables in the rows, or all other
-#'   variables otherwise.
+#' @param mirror Boolean. Whether to mirror the selected columns in the rows or
+#'   not.
 #' 
 #' @examples
 #' mtcars %>% correlate() %>% focus(mpg, cyl)
-#' mtcars %>% correlate() %>% focus(-disp, - mpg, rows = TRUE)
+#' mtcars %>% correlate() %>% focus(-disp, - mpg, mirror = TRUE)
 #' iris[, 1:4] %>% correlate() %>% focus(-matches("Sepal"))
 #' 
 #' @export
-focus <- function(x, ..., rows = FALSE) {
+focus <- function(x, ..., mirror = FALSE) {
   UseMethod("focus")
 }
 

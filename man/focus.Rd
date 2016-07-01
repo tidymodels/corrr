@@ -4,7 +4,7 @@
 \alias{focus}
 \title{Focus on section of a correlation data frame.}
 \usage{
-focus(x, ..., rows = FALSE)
+focus(x, ..., mirror = FALSE)
 }
 \arguments{
 \item{x}{cor_df. See \code{\link{correlate}}.}
@@ -13,8 +13,8 @@ focus(x, ..., rows = FALSE)
 variable names like they are positions. Use positive values to select
 variables; use negative values to drop variables.}
 
-\item{rows}{Boolean. Whether to keep selected variables in the rows, or all other
-variables otherwise.}
+\item{mirror}{Boolean. Whether to mirror the selected columns in the rows or
+not.}
 }
 \description{
 Convenience function to select a set of variables from a correlation matrix
@@ -27,7 +27,7 @@ function, see \code{\link[dplyr]{select}}.
 }
 \examples{
 mtcars \%>\% correlate() \%>\% focus(mpg, cyl)
-mtcars \%>\% correlate() \%>\% focus(-disp, - mpg, rows = TRUE)
+mtcars \%>\% correlate() \%>\% focus(-disp, - mpg, mirror = TRUE)
 iris[, 1:4] \%>\% correlate() \%>\% focus(-matches("Sepal"))
 
 }
