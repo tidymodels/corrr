@@ -2,9 +2,7 @@ corrr
 ================
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-corrr is a package for exploring **corr**elation matrices in **R**. It makes it possible to easily perform routine tasks when exploring correlation matrices such as focusing on the correlations of certain variables against others, or arranging the matrix in terms of the strength of the correlations, and so on. `corrr` also provides visualisation methods for extracting useful information such as variable clustering and latent dimensionality.
-
-`corrr` is intended to be used for exploration and visualisation, NOT for statistical modeling (obtaining p values, factor analysis, etc.).
+corrr is a package for exploring **corr**elations in **R**. It makes it possible to easily perform routine tasks when exploring correlation matrices such as ignoring the diagonal, focusing on the correlations of certain variables against others, or arranging and visualising the matrix in terms of the strength of the correlations.
 
 You can install:
 
@@ -20,27 +18,27 @@ devtools::install_github("drsimonj/corrr")
 Using corrr
 -----------
 
-Using `corrr` starts with `correlate()`, which acts just like `stats::cor()` (though with pairwise deletion by default), but returns the result as a correlation data frame (`cor_df`). A correlation data frame is simply a correlation matrix in the following structure:
+Using `corrr` starts with `correlate()`, which acts like the base correlation function `cor()`. It differs by defaulting to pairwise deletion, and returning a correlation data frame (`cor_df`) of the following structure:
 
--   A *tbl* with an additional class, `cor_df`
+-   A `tbl` with an additional class, `cor_df`
 -   An extra "rowname" column
--   Standardised variances (the matrix diagonal) set to missing values (`NA`) so they can be omitted in calculations.
+-   Standardised variances (the matrix diagonal) set to missing values (`NA`) so they can be ignored.
 
 ### API
 
-The API of corrr is designed with data pipelines in mind (e.g., to use `%>%` from the magrittr package). After `correlate()`, all functions take a `cor_df` as their first arguement, and return a `cor_df` or `tbl` (or output like a plot). The primary corrr functions do one of three major tasks with a `cor_df`:
+The corrr API is designed with data pipelines in mind (e.g., to use `%>%` from the magrittr package). After `correlate()`, the primary corrr functions take a `cor_df` as their first argument, and return a `cor_df` or `tbl` (or output like a plot). These functions serve one of three purposes:
 
-Change internal values (`cor_df` in, `cor_df` out):
+Internal changes (`cor_df` out):
 
--   `shave()` sets the upper (or lower) triangle to NA.
--   `rearrange()` uses seriation to arrange the columns (and rows) in terms of the correlation strengths.
+-   `shave()` the upper or lower triangle (set to NA).
+-   `rearrange()` the columns and rows based on correlation strengths.
 
-Reshape values (`cor_df` in, `tbl` or `cor_df` out):
+Reshape structure (`tbl` or `cor_df` out):
 
--   `focus()` reduces to some columns against all other (or only same) rows.
--   `stretch()` converts to a long format.
+-   `focus()` on select columns and rows.
+-   `stretch()` into a long format.
 
-Generate output/visualsations (`cor_df` in, console/plot out):
+Output/visualisations (console/plot out):
 
 -   `rplot()` plots the correlations.
 
@@ -88,7 +86,7 @@ x
 #> Variables not shown: v6 (dbl)
 ```
 
-Being a *tbl*, we can automatically leverage functions from packages like `dplyr`, `tidyr`, `ggplot2`, and so on:
+As a `tbl`, we can use functions from data frame packages like `dplyr`, `tidyr`, `ggplot2`:
 
 ``` r
 library(dplyr)
@@ -102,20 +100,9 @@ x %>% filter(v1 > .6)
 #> 1      v2 0.7098637        NA 0.6974113 -0.01325755 0.009280530
 #> 2      v3 0.7093307 0.6974113        NA -0.02527525 0.001088652
 #> Variables not shown: v6 (dbl)
-
-# Calculate the mean correlation for each variable
-x %>%
-  select(-rowname) %>%
-  summarise_each(funs(mean(., na.rm = TRUE))) %>%
-  round(2)
-#> Source: local data frame [1 x 6]
-#> 
-#>      v1    v2    v3    v4    v5    v6
-#>   (dbl) (dbl) (dbl) (dbl) (dbl) (dbl)
-#> 1  0.28  0.27  0.27  0.17  0.18  0.15
 ```
 
-corrr functions are developed with the same data pipeline style in mind:
+corrr functions work in pipelines (`cor_df` in; `cor_df` or `tbl` out):
 
 ``` r
 datasets::mtcars %>%
