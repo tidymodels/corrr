@@ -1,12 +1,12 @@
 #' Correlation Data Frame
 #' 
-#' An extension of stats::cor(), which returns a correlation matrix in a
+#' An implementation of stats::cor(), which returns a correlation matrix in a
 #' specific format. See details below. Additional adjustment include the use of
 #' pairwise deletion by default.
 #' 
 #' \itemize{
 #'   This function returns a correlation matrix in the following format:
-#'   \item A tibble::data_frame
+#'   \item A tbl (tibble::data_frame)
 #'   \item An additional class, "cor_df"
 #'   \item A "rowname" column
 #'   \item Standardised variances (the matrix diagonal) set to missing values
@@ -18,7 +18,15 @@
 #' 
 #' 
 #' @inheritParams stats::cor
+#' @return A correlation data frame (cor_df)
 #' @export
+#' @examples
+#' \dontrun{
+#' correlate(iris)
+#' }
+#' 
+#' correlate(mtcars)
+#' correlate(iris[-5])
 correlate <- function(x, y = NULL,
                        use = "pairwise.complete.obs",
                        method = "pearson") {
