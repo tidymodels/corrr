@@ -22,4 +22,5 @@ Imports: dplyr (>= 0.4.3),
     magrittr (>= 1.5),
     tidyr (>= 0.4.1),
     ggplot2 (>= 2.1.0),
-    seriation (>= 1.2-0)
+    seriation (>= 1.2-0),
+    lazyeval (>= 0.1.10)

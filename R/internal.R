@@ -6,6 +6,7 @@
 #' @param x cor_df. See \code{\link{correlate}}.
 #' @param upper Boolean. If TRUE, set upper triangle to NA; lower triangle if
 #'   FALSE.
+#' @return cor_df. See \code{\link{correlate}}.
 #' @export
 #' @examples
 #' x <- correlate(mtcars)
@@ -26,6 +27,7 @@ shave <- function(x, upper = TRUE) {
 #'   consulted for a complete list of clustering methods. Default = "PCA".
 #' @param absolute Boolean whether absolute values for the correlations should
 #'   be used for clustering.
+#' @return cor_df. See \code{\link{correlate}}.
 #' @export
 #' @examples 
 #' x <- correlate(mtcars)
