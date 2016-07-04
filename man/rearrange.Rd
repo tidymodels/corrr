@@ -14,10 +14,17 @@ Clustering is achieved via \code{\link[seriation]{seriate}}, which can be
 consulted for a complete list of clustering methods. Default = "PCA".}
 
 \item{absolute}{Boolean whether absolute values for the correlations should
-be used when clustering.}
+be used for clustering.}
 }
 \description{
 Re-arrange a correlation data frame to group highly correlated variables closer
 together.
+}
+\examples{
+x <- correlate(mtcars)
+
+rearrange(x) # Default settings
+rearrange(x, method = "HC")  # Different seriation method
+rearrange(x, absolute = FALSE)  # Not using absolute values for arranging
 }
 

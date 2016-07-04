@@ -16,4 +16,8 @@ FALSE.}
 Convert the upper or lower triangle of a correlation data frame (cor_df) to
 missing values.
 }
+\examples{
+x <- correlate(mtcars)
+shave(x)
+}
 

@@ -7,6 +7,10 @@
 #' @param upper Boolean. If TRUE, set upper triangle to NA; lower triangle if
 #'   FALSE.
 #' @export
+#' @examples
+#' x <- correlate(mtcars)
+#' shave(x)  # Default; shave upper triangle
+#' shave(x, upper = FALSE)  # shave lower triangle
 shave <- function(x, upper = TRUE) {
   UseMethod("shave")
 }
@@ -21,9 +25,14 @@ shave <- function(x, upper = TRUE) {
 #'   Clustering is achieved via \code{\link[seriation]{seriate}}, which can be
 #'   consulted for a complete list of clustering methods. Default = "PCA".
 #' @param absolute Boolean whether absolute values for the correlations should
-#'   be used when clustering.
-#' 
+#'   be used for clustering.
 #' @export
+#' @examples 
+#' x <- correlate(mtcars)
+#' 
+#' rearrange(x) # Default settings
+#' rearrange(x, method = "HC")  # Different seriation method
+#' rearrange(x, absolute = FALSE)  # Not using absolute values for arranging
 rearrange <- function(x, method = "PC", absolute = TRUE) {
   UseMethod("rearrange")
 }
