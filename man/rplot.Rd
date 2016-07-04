@@ -11,7 +11,19 @@ rplot(x, shape)
 
 \item{shape}{\code{\link{geom_point}} aesthetic.}
 }
+\value{
+Plots a correlation data frame
+}
 \description{
-Plot a \code{\link{correlate}} correlation matrix.
+Plot a correlation data frame using ggplot.
+}
+\examples{
+x <- correlate(mtcars)
+rplot(x)
+
+# Common use is following rearrange and shave
+x <- rearrange(x, absolute = FALSE)
+x <- shave(x)
+rplot(x)
 }
 
