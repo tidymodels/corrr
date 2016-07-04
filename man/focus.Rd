@@ -16,6 +16,9 @@ variables; use negative values to drop variables.}
 \item{mirror}{Boolean. Whether to mirror the selected columns in the rows or
 not.}
 }
+\value{
+A tbl or, if mirror = TRUE, a cor_df (see \code{\link{correlate}}).
+}
 \description{
 Convenience function to select a set of variables from a correlation matrix
 to keep as the columns, and exclude these or all other variables from the rows. This
@@ -26,9 +29,12 @@ rows based on `\code{same}. For a complete list of methods for using this
 function, see \code{\link[dplyr]{select}}.
 }
 \examples{
-mtcars \%>\% correlate() \%>\% focus(mpg, cyl)
-mtcars \%>\% correlate() \%>\% focus(-disp, - mpg, mirror = TRUE)
-iris[, 1:4] \%>\% correlate() \%>\% focus(-matches("Sepal"))
+x <- correlate(mtcars)
+focus(x, mpg, cyl)  # Focus on correlations of mpg and cyl with all other variables
+focus(x, -disp, - mpg, mirror = TRUE)  # Remove disp and mpg from columns and rows
 
+x <- correlate(iris[-5])
+focus(x, -matches("Sepal"))  # Focus on correlations of non-Sepal 
+                             # variables with Sepal variables.
 }
 

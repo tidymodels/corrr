@@ -12,32 +12,44 @@
 #' @inheritParams dplyr::select
 #' @param mirror Boolean. Whether to mirror the selected columns in the rows or
 #'   not.
-#' 
-#' @examples
-#' mtcars %>% correlate() %>% focus(mpg, cyl)
-#' mtcars %>% correlate() %>% focus(-disp, - mpg, mirror = TRUE)
-#' iris[, 1:4] %>% correlate() %>% focus(-matches("Sepal"))
-#' 
+#' @return A tbl or, if mirror = TRUE, a cor_df (see \code{\link{correlate}}).
 #' @export
+#' @examples
+#' x <- correlate(mtcars)
+#' focus(x, mpg, cyl)  # Focus on correlations of mpg and cyl with all other variables
+#' focus(x, -disp, - mpg, mirror = TRUE)  # Remove disp and mpg from columns and rows
+#' 
+#' x <- correlate(iris[-5])
+#' focus(x, -matches("Sepal"))  # Focus on correlations of non-Sepal 
+#'                              # variables with Sepal variables.
 focus <- function(x, ..., mirror = FALSE) {
   UseMethod("focus")
 }
 
 #' Stretch correlation data frame into long format.
 #' 
-#' \code{stretch} is an extension of tidyr::gather() to be applied to a
-#' \code{\link{correlate}} correlation matrix. It will gather the selected
-#' variables into a long-format data frame. The rowname column is handled
-#' automatically. Variable selection is achieved with \code{\link{focus}},
-#' which you can see for more detail on how to select columns.
+#' \code{stretch} is a specified implementation of tidyr::gather() to be applied
+#' to a correlation data frame. It will gather the columns into a long-format 
+#' data frame. The rowname column is handled automatically.
 #' 
 #' @param x cor_df. See \code{\link{correlate}}.
-#' @inheritParams dplyr::select
 #' @param na_omit Boolean. Whether rows with an NA correlation (originally the
 #'   matrix diagonal) should be dropped? Will automatically be set to TRUE if
 #'   mirror is FALSE.
-#' 
+#' @return tbl with three colums (x and y variables, and their correlation)
 #' @export
-stretch <- function(x, ..., na_omit = FALSE) {
+#' @examples
+#' x <- correlate(mtcars)
+#' stretch(x)  # Convert all to long format
+#' stretch(x, na_omit = FALSE)  # omit NAs (diagonal in this case)
+#' 
+#' x <- focus(-mpg, -cyl, mirror = TRUE)  # use focus (with mirror = TRUE) to
+#'                                        # drop columns first
+#' stretch(x)
+#' 
+#' x <- shave(x)  # use shave to set upper triangle to NA and then...
+#' stretch(x, na_omit = FALSE)  # omit all NAs, therefore keeping each
+#'                              # correlation only once.
+stretch <- function(x, na_omit = FALSE) {
   UseMethod("stretch")
 }

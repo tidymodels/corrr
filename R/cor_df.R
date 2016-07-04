@@ -97,10 +97,9 @@ focus.cor_df <- function(x, ..., mirror = FALSE) {
 }
 
 #' @export
-stretch.cor_df <- function(x, ..., na_omit = FALSE) {
-
+stretch.cor_df <- function(x, na_omit = FALSE) {
+  
   x %<>%
-    focus(..., mirror = TRUE) %>%
     tidyr::gather(x, r, -rowname) %>%
     dplyr::rename(y = rowname)
   
@@ -122,7 +121,7 @@ rplot.cor_df <- function(x, shape = 16) {
   # Convert data to relevant format and plot
   x %>%
     # Convert to wide
-    stretch(everything()) %>%
+    stretch() %>%
     # Factor x and y to correct order
     # and add text column to fill diagonal
     dplyr::mutate(x = factor(x, levels = row_order),

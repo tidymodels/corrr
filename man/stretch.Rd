@@ -4,18 +4,17 @@
 \alias{stretch}
 \title{Stretch correlation data frame into long format.}
 \usage{
-stretch(x, ..., na_omit = FALSE)
+stretch(x, na_omit = FALSE)
 }
 \arguments{
 \item{x}{cor_df. See \code{\link{correlate}}.}
 
-\item{...}{Comma separated list of unquoted expressions. You can treat
-variable names like they are positions. Use positive values to select
-variables; use negative values to drop variables.}
-
 \item{na_omit}{Boolean. Whether rows with an NA correlation (originally the
 matrix diagonal) should be dropped? Will automatically be set to TRUE if
 mirror is FALSE.}
+}
+\value{
+tbl with three colums (x and y variables, and their correlation)
 }
 \description{
 \code{stretch} is an extension of tidyr::gather() to be applied to a
@@ -23,5 +22,14 @@ mirror is FALSE.}
 variables into a long-format data frame. The rowname column is handled
 automatically. Variable selection is achieved with \code{\link{focus}},
 which you can see for more detail on how to select columns.
+}
+\examples{
+x <- correlate(mtcars)
+stretch(x)  # Convert all to long format
+stretch(x, na_omit = FALSE)  # omit NAs (diagonal in this case)
+
+x <- shave(x)  # shave upper triangle and then...
+stretch(x, na_omit = FALSE)  # omit all NAs, therefore keeping each
+                             # correlation only once.
 }
 

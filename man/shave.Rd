@@ -12,6 +12,9 @@ shave(x, upper = TRUE)
 \item{upper}{Boolean. If TRUE, set upper triangle to NA; lower triangle if
 FALSE.}
 }
+\value{
+cor_df. See \code{\link{correlate}}.
+}
 \description{
 Convert the upper or lower triangle of a correlation data frame (cor_df) to
 missing values.

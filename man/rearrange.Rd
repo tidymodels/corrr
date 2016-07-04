@@ -16,6 +16,9 @@ consulted for a complete list of clustering methods. Default = "PCA".}
 \item{absolute}{Boolean whether absolute values for the correlations should
 be used for clustering.}
 }
+\value{
+cor_df. See \code{\link{correlate}}.
+}
 \description{
 Re-arrange a correlation data frame to group highly correlated variables closer
 together.
