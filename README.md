@@ -2,7 +2,7 @@ corrr
 ================
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-corrr is a package for exploring **corr**elations in **R**. It makes it possible to easily perform routine tasks when exploring correlation matrices such as ignoring the diagonal, focusing on the correlations of certain variables against others, or arranging and visualising the matrix in terms of the strength of the correlations.
+corrr is a package for exploring **corr**elations in **R**. It makes it possible to easily perform routine tasks when exploring correlation matrices such as ignoring the diagonal, focusing on the correlations of certain variables against others, or rearranging and visualising the matrix in terms of the strength of the correlations.
 
 You can install:
 
