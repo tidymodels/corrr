@@ -6,30 +6,26 @@ d <- correlate(d)
 
 test_that("Converts to proper structure", {
   expect_equal(
-    nrow(stretch(d, everything())),
+    nrow(stretch(d)),
     nrow(d) * nrow(d)
   )
-  expect_equal(
-    nrow(stretch(d, contains("Length"))),
-    4
-  )
   expect_output(
-    str(stretch(d, everything())),
+    str(stretch(d)),
     "16 obs. of  3 variables:"
   )
   expect_equal(
-    colnames(stretch(d, everything())),
+    colnames(stretch(d)),
     c("x", "y", "r")
   )
 })
 
 test_that("na_omit", {
   expect_equal(
-    sum(is.na(stretch(d, everything())$r)),
+    sum(is.na(stretch(d)$r)),
     nrow(d)
   )
   expect_equal(
-    sum(is.na(stretch(d, everything(), na_omit = TRUE)$r)),
+    sum(is.na(stretch(d, na_omit = TRUE)$r)),
     0
   )
 })

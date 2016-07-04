@@ -6,6 +6,8 @@
 #' @inheritParams stats::cor
 #' @return Matrix of pairwise sample sizes (number of complete cases).
 #' @export
+#' @examples
+#' pair_n(mtcars)
 pair_n <- function(x, y = NULL) {
   if (is.null(y)) y <- x
   x <- t(!is.na(x)) %*% (!is.na(y))
@@ -15,11 +17,14 @@ pair_n <- function(x, y = NULL) {
 
 #' Convert cor_df to original matrix.
 #' 
-#' Convert a \code{\link{correlate}} correlation matrix from data frame to
-#' original matrix format.
+#' Convert a correlation data frame to original matrix format.
 #' 
-#' @param x A \code{\link{correlate}} correlation matrix.
+#' @param x cor_df. See \code{\link{correlate}}.
+#' @return Correlation matrix
 #' @export
+#' @examples
+#' x <- correlate(mtcars)
+#' as_matrix(x)
 as_matrix <- function(x) {
   UseMethod("as_matrix")
 }

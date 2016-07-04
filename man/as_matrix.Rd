@@ -7,10 +7,16 @@
 as_matrix(x)
 }
 \arguments{
-\item{x}{A \code{\link{correlate}} correlation matrix.}
+\item{x}{cor_df. See \code{\link{correlate}}.}
+}
+\value{
+Correlation matrix
 }
 \description{
-Convert a \code{\link{correlate}} correlation matrix from data frame to
-original matrix format.
+Convert a correlation data frame to original matrix format.
+}
+\examples{
+x <- correlate(mtcars)
+as_matrix(x)
 }
 
