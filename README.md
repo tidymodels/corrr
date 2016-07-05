@@ -40,6 +40,7 @@ Reshape structure (`tbl` or `cor_df` out):
 
 Output/visualisations (console/plot out):
 
+-   `fashion()` the correlations for pretty printing.
 -   `rplot()` plots the correlations.
 
 Examples
@@ -105,12 +106,24 @@ x %>% filter(v1 > .6)
 corrr functions work in pipelines (`cor_df` in; `cor_df` or `tbl` out):
 
 ``` r
-datasets::mtcars %>%
-  correlate() %>%    # Create correlation data frame (cor_df)
-  focus(-cyl, -vs, mirror = TRUE) %>%  # Focus on cor_df without 'cyl' and 'vs'
-  rearrange(method = "HC", absolute = FALSE) %>%  # arrange by correlations
-  shave() %>%  # Shave off the upper triangle for a clean plot
-  rplot()  # Plot the results
+x <- datasets::mtcars %>%
+       correlate() %>%    # Create correlation data frame (cor_df)
+       focus(-cyl, -vs, mirror = TRUE) %>%  # Focus on cor_df without 'cyl' and 'vs'
+       rearrange(method = "HC", absolute = FALSE) %>%  # arrange by correlations
+       shave() # Shave off the upper triangle for a clean result
+
+fashion(x)
+#>       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9]
+#>  [1,]                                             
+#>  [2,]  .89                                        
+#>  [3,]  .79  .66                                   
+#>  [4,]  .39  .43  .75                              
+#>  [5,] -.43 -.17 -.71 -.66                         
+#>  [6,] -.85 -.87 -.78 -.55  .42                    
+#>  [7,] -.71 -.71 -.45 -.09  .09  .68               
+#>  [8,] -.59 -.69 -.24  .06 -.23  .60  .71          
+#>  [9,] -.56 -.58 -.13  .27 -.21  .48  .70  .79
+rplot(x)
 ```
 
 ![](README-combination-1.png)

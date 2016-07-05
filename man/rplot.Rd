@@ -2,7 +2,7 @@
 % Please edit documentation in R/output.R
 \name{rplot}
 \alias{rplot}
-\title{Plot correlation matrix.}
+\title{Plot a correlation data frame.}
 \usage{
 rplot(x, shape)
 }

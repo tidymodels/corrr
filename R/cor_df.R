@@ -115,6 +115,19 @@ stretch.cor_df <- function(x, na_omit = FALSE) {
 # Output --------------------------------------------------------------------
 
 #' @export
+fashion.cor_df <- function(x, digits = 2) {
+  x %<>%
+    dplyr::select(-rowname) %>%
+    purrr::map(~ sub("^-0.", "-\\1.", sprintf(paste0("%.", digits, "f"), .))) %>%
+    purrr::map(~ sub("^0.", " \\1.", .)) %>%
+    purrr::map(~ sub("NA", "", .)) %>%
+    do.call(cbind, .) %>%
+    noquote()
+  colnames(x) <- rownames(x)
+  x
+}
+
+#' @export
 rplot.cor_df <- function(x, shape = 16) {
   # Store order for factoring the variables
   row_order <- x$rowname

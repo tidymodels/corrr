@@ -23,4 +23,5 @@ Imports: dplyr (>= 0.4.3),
     tidyr (>= 0.4.1),
     ggplot2 (>= 2.1.0),
     seriation (>= 1.2-0),
-    lazyeval (>= 0.1.10)
+    lazyeval (>= 0.1.10),
+    purrr (>= 0.2.1)
