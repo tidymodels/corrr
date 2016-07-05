@@ -26,10 +26,6 @@ x <- correlate(mtcars)
 stretch(x)  # Convert all to long format
 stretch(x, na_omit = FALSE)  # omit NAs (diagonal in this case)
 
-x <- focus(-mpg, -cyl, mirror = TRUE)  # use focus (with mirror = TRUE) to
-                                       # drop columns first
-stretch(x)
-
 x <- shave(x)  # use shave to set upper triangle to NA and then...
 stretch(x, na_omit = FALSE)  # omit all NAs, therefore keeping each
                              # correlation only once.

@@ -2,6 +2,7 @@
 
 #' @export
 as_matrix.cor_df <- function(x) {
+
   # Separate rownames
   row_names <- x$rowname
   x %<>% dplyr::select(-rowname)
