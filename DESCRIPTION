@@ -17,7 +17,9 @@ Depends: R (>= 3.3.0)
 LazyData: yes
 License: MIT + file LICENSE
 RoxygenNote: 5.0.1
-Suggests: testthat (>= 1.0.2)
+Suggests: testthat (>= 1.0.2),
+    knitr,
+    rmarkdown
 Imports: dplyr (>= 0.4.3),
     magrittr (>= 1.5),
     tidyr (>= 0.4.1),
@@ -25,3 +27,4 @@ Imports: dplyr (>= 0.4.3),
     seriation (>= 1.2-0),
     lazyeval (>= 0.1.10),
     purrr (>= 0.2.1)
+VignetteBuilder: knitr

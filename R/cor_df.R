@@ -123,7 +123,7 @@ fashion.cor_df <- function(x, digits = 2) {
     purrr::map(~ sub("NA", "", .)) %>%
     do.call(cbind, .) %>%
     noquote()
-  colnames(x) <- rownames(x)
+  rownames(x) <- colnames(x)
   x
 }
 

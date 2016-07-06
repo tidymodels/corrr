@@ -1,0 +1,98 @@
+---
+title: "Using corrr"
+author: "Simon Jackson"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, echo = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+corrr is a package for exploring **corr**elations in **R**. It makes it possible to easily perform routine tasks when exploring correlation matrices such as ignoring the diagonal, focusing on the correlations of certain variables against others, or rearranging and visualising the matrix in terms of the strength of the correlations.
+
+## Using corrr
+
+Using `corrr` starts with `correlate()`, which acts like the base correlation function `cor()`. It differs by defaulting to pairwise deletion, and returning a correlation data frame (`cor_df`) of the following structure:
+
+- A `tbl` with an additional class, `cor_df`
+- An extra "rowname" column
+- Standardised variances (the matrix diagonal) set to missing values (`NA`) so they can be ignored.
+
+To work with further, let's create a correlation data frame using `correlate()` from the `mtcars` data that comes with R:
+
+```{r}
+library(corrr)
+d <- correlate(mtcars)
+d
+```
+
+## Why a correlation data frame?
+
+At first, a correlation data frame might seem like an unneccessary complexity compared to the traditional matrix. However, the purpose of corrr is to help use explore these correlations, not to do mathematical or statistical operations. Thus, by having the correlations in a data frame, we can make use of packages that help us work with data frames like `dplyr`, `tidyr`, `ggplot2`, and focus on using data pipelines. Lets look at some examples:
+
+```{r, message=F}
+library(dplyr)
+
+# Filter rows to occasions in which cyl has a correlation of .7 or more with
+# another variable.
+d %>% filter(cyl > .7)
+
+# Select the mpg, cyl and disp columns (and rowname)
+d %>% select(rowname, mpg, cyl, disp)
+
+# Combine above in a single pipeline
+d %>%
+  filter(cyl > .7) %>% 
+  select(rowname, mpg, cyl, disp)
+```
+
+### API
+
+As the above section suggests, the corrr API is designed with data pipelines in mind (e.g., to use `%>%` from the magrittr package). After `correlate()`, the primary corrr functions take a `cor_df` as their first argument, and return a `cor_df` or `tbl` (or output like a plot). These functions serve one of three purposes:
+
+Internal changes (`cor_df` out):
+
+- `shave()` the upper or lower triangle (set to `r NA`).
+- `rearrange()` the columns and rows based on correlation strengths.
+
+Reshape structure (`tbl` or `cor_df` out):
+
+- `focus()` on select columns and rows.
+- `stretch()` into a long format.
+
+Output/visualisations (console/plot out):
+
+- `fashion()` the correlations for pretty printing.
+- `rplot()` plots the correlations.
+
+By combing these functions in data pipelines, it's possible to easily explore your correlations.
+
+For example, say we want to print our correlations, but fashioned to look nice and also without the upper triangle:
+
+```{r}
+d %>%
+  shave() %>% # Remove the upper triangle
+  fashion()   # Print in nice format 
+```
+
+Alternatively, we can visualise these correlations (let's clear the lower triangle for a change):
+
+```{r, warning = FALSE}
+d %>%
+  shave(upper = FALSE) %>%
+  rplot()     # Plot
+```
+
+Perhaps we'd like to rearrange the correlations so that the plot becomes easier to interpret. In this case, we can add `rearrange()` into our pipeline before shaving one of the triangles (we'll take correlation sign into account with `absolute = FALSE`).
+
+```{r, warning = FALSE}
+d %>%
+  rearrange(absolute = FALSE) %>% 
+  shave() %>%
+  rplot()
+```
