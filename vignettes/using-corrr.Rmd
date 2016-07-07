@@ -72,10 +72,17 @@ Output/visualisations (console/plot out):
 
 By combing these functions in data pipelines, it's possible to easily explore your correlations.
 
-For example, say we want to print our correlations, but fashioned to look nice and also without the upper triangle:
+For example, lets focus on the correlations of mpg and cyl with all the others:
+
+```{r}
+d %>% focus(mpg, cyl)
+```
+
+Or maybe we want to focus in on a few variables (mirrored in rows too) and print the correlations without an upper triangle and fashioned to look nice:
 
 ```{r}
 d %>%
+  focus(mpg:drat, mirror = TRUE) %>%  # Focus only on mpg:drat
   shave() %>% # Remove the upper triangle
   fashion()   # Print in nice format 
 ```
@@ -84,6 +91,7 @@ Alternatively, we can visualise these correlations (let's clear the lower triang
 
 ```{r, warning = FALSE}
 d %>%
+  focus(mpg:drat, mirror = TRUE) %>%
   shave(upper = FALSE) %>%
   rplot()     # Plot
 ```
@@ -92,6 +100,7 @@ Perhaps we'd like to rearrange the correlations so that the plot becomes easier 
 
 ```{r, warning = FALSE}
 d %>%
+  focus(mpg:drat, mirror = TRUE) %>%
   rearrange(absolute = FALSE) %>% 
   shave() %>%
   rplot()
