@@ -6,6 +6,12 @@ corrr is a package for exploring **corr**elations in **R**. It makes it possible
 
 You can install:
 
+-   the latest released version from CRAN with
+
+``` r
+install.packages("corrr")
+```
+
 -   the latest development version from github with
 
 ``` r
