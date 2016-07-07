@@ -14,11 +14,11 @@ test_that("Column select works as dplyr::select", {
     c("rowname", "Sepal.Length", "Sepal.Width", "Petal.Length")
   )
   expect_equal(
-    colnames(focus(d, contains("Length"), mirror = TRUE)),
+    colnames(focus(d, dplyr::contains("Length"), mirror = TRUE)),
     c("rowname", "Sepal.Length", "Petal.Length")
   )
   expect_equal(
-    colnames(focus(d, -contains("Length"), mirror = TRUE)),
+    colnames(focus(d, -dplyr::contains("Length"), mirror = TRUE)),
     c("rowname", "Sepal.Width", "Petal.Width")
   )
 })

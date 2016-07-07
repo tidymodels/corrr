@@ -34,8 +34,7 @@ shave.cor_df <- function(x, upper = TRUE) {
   }
   
   # Reappend rownames and class
-  rownames(x) <- row_names
-  x %<>% dplyr::add_rownames()
+  x %<>% first_col(row_names)
   class(x) <- c("cor_df", class(x))
   x
 }
@@ -83,8 +82,7 @@ focus.cor_df <- function(x, ..., mirror = FALSE) {
   if ("rowname" %in% vars) {
     vars %<>% .[. != "rowname"]
   } else {
-    rownames(x) <- row_names
-    x %<>% dplyr::add_rownames()
+    x %<>% first_col(row_names)
   }
   
   # Exclude these or others from the rows

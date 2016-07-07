@@ -74,17 +74,16 @@ x <- correlate(d)
 class(x)
 #> [1] "cor_df"     "tbl_df"     "tbl"        "data.frame"
 x
-#> Source: local data frame [6 x 7]
-#> 
+#> # A tibble: 6 x 7
 #>   rowname            v1          v2           v3            v4          v5
-#>     (chr)         (dbl)       (dbl)        (dbl)         (dbl)       (dbl)
+#>     <chr>         <dbl>       <dbl>        <dbl>         <dbl>       <dbl>
 #> 1      v1            NA  0.70986371  0.709330652  0.0001947192 0.021359764
 #> 2      v2  0.7098637068          NA  0.697411266 -0.0132575510 0.009280530
 #> 3      v3  0.7093306516  0.69741127           NA -0.0252752456 0.001088652
 #> 4      v4  0.0001947192 -0.01325755 -0.025275246            NA 0.421380212
 #> 5      v5  0.0213597639  0.00928053  0.001088652  0.4213802123          NA
 #> 6      v6 -0.0435135083 -0.03383145 -0.020057495  0.4424697437 0.425441795
-#> Variables not shown: v6 (dbl)
+#> # ... with 1 more variables: v6 <dbl>
 ```
 
 As a `tbl`, we can use functions from data frame packages like `dplyr`, `tidyr`, `ggplot2`:
@@ -94,13 +93,12 @@ library(dplyr)
 
 # Filter rows by correlation size
 x %>% filter(v1 > .6)
-#> Source: local data frame [2 x 7]
-#> 
+#> # A tibble: 2 x 7
 #>   rowname        v1        v2        v3          v4          v5
-#>     (chr)     (dbl)     (dbl)     (dbl)       (dbl)       (dbl)
+#>     <chr>     <dbl>     <dbl>     <dbl>       <dbl>       <dbl>
 #> 1      v2 0.7098637        NA 0.6974113 -0.01325755 0.009280530
 #> 2      v3 0.7093307 0.6974113        NA -0.02527525 0.001088652
-#> Variables not shown: v6 (dbl)
+#> # ... with 1 more variables: v6 <dbl>
 ```
 
 corrr functions work in pipelines (`cor_df` in; `cor_df` or `tbl` out):

@@ -5,7 +5,7 @@ d[1, 1] <- NA
 
 test_that("Inherits correct classes", {
   expect_is(correlate(d), "cor_df")
-  expect_is(correlate(d), "tbl_df")
+  expect_is(correlate(d), "data.frame")
 })
 
 test_that("Yields correct columns and rows", {

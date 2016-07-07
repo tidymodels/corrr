@@ -35,7 +35,7 @@ d
 
 At first, a correlation data frame might seem like an unneccessary complexity compared to the traditional matrix. However, the purpose of corrr is to help use explore these correlations, not to do mathematical or statistical operations. Thus, by having the correlations in a data frame, we can make use of packages that help us work with data frames like `dplyr`, `tidyr`, `ggplot2`, and focus on using data pipelines. Lets look at some examples:
 
-```{r, message=F}
+```{r, message=F, warning=F}
 library(dplyr)
 
 # Filter rows to occasions in which cyl has a correlation of .7 or more with

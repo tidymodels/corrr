@@ -32,8 +32,8 @@ correlate <- function(x, y = NULL,
                        method = "pearson") {
   x <- stats::cor(x = x, y = y, use = use, method = method)
   diag(x) <- NA
-  x <- as.data.frame(x)
-  x %<>% dplyr::add_rownames()
+  x <- dplyr::as_data_frame(x)
+  x %<>% first_col(names(.))
   class(x) <- c("cor_df", class(x))
   x
 }
