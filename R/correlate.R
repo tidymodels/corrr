@@ -33,7 +33,7 @@ correlate <- function(x, y = NULL,
   x <- stats::cor(x = x, y = y, use = use, method = method)
   diag(x) <- NA
   x <- dplyr::as_data_frame(x)
-  x %<>% first_col(names(.))
+  x <- first_col(x, names(x))
   class(x) <- c("cor_df", class(x))
   x
 }

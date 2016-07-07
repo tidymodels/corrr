@@ -43,11 +43,13 @@ pair_n <- function(x, y = NULL) {
 #' Convert a correlation data frame to original matrix format.
 #' 
 #' @param x cor_df. See \code{\link{correlate}}.
+#' @param diagonal Value (typically numeric or NA) to set the diagonal to.
+#'   Default = 1.
 #' @return Correlation matrix
 #' @export
 #' @examples
 #' x <- correlate(mtcars)
 #' as_matrix(x)
-as_matrix <- function(x) {
+as_matrix <- function(x, diagonal) {
   UseMethod("as_matrix")
 }

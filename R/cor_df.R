@@ -1,18 +1,18 @@
 # Utility --------------------------------------------------------------
 
 #' @export
-as_matrix.cor_df <- function(x) {
+as_matrix.cor_df <- function(x, diagonal = 1) {
 
   # Separate rownames
   row_names <- x$rowname
-  x %<>% dplyr::select(-rowname)
-  
+  x %<>% dplyr::select_("-rowname")
   # Return diagonal to 1
-  diag(x) <- 1
+  diag(x) <- diagonal
   
   # Convert to matrix and set rownames
   class(x) <- "data.frame"
-  x %<>% as.matrix()
+  #x %<>% as.matrix()
+  x <- as.matrix(x)
   rownames(x) <- row_names
   x
 }
@@ -24,7 +24,7 @@ shave.cor_df <- function(x, upper = TRUE) {
   
   # Separate rownames
   row_names <- x$rowname
-  x %<>% dplyr::select(-rowname)
+  x %<>% dplyr::select_("-rowname")
   
   # Remove upper matrix
   if (upper) {
@@ -80,30 +80,33 @@ focus.cor_df <- function(x, ..., mirror = FALSE) {
   # append back rownames if necessary
   vars <- colnames(x)
   if ("rowname" %in% vars) {
-    vars %<>% .[. != "rowname"]
+    vars <- vars[vars != "rowname"]
   } else {
     x %<>% first_col(row_names)
   }
   
   # Exclude these or others from the rows
+  vars <- x$rowname %in% vars
   if (mirror) {
-    x %<>% dplyr::filter(rowname %in% vars)
+    x <- x[vars, ]
     class(x) <- c("cor_df", class(x))
-    x
   } else {
-    x %>% dplyr::filter(!(rowname %in% vars))
+    x <- x[!vars, ]
   }
+  x
 }
 
 #' @export
 stretch.cor_df <- function(x, na_omit = FALSE) {
   
+  vars <- names(x)[names(x) != "rowname"]
+  
   x %<>%
-    tidyr::gather(x, r, -rowname) %>%
-    dplyr::rename(y = rowname)
+    tidyr::gather_("x", "r", vars) %>% 
+    dplyr::rename_("y" = "rowname")
   
   if (na_omit) {
-    x %<>% dplyr::filter(!is.na(r))
+    x <- x[!is.na(x$r), ]
   }
   
   x[, c("x", "y", "r")]
@@ -114,15 +117,15 @@ stretch.cor_df <- function(x, na_omit = FALSE) {
 
 #' @export
 fashion.cor_df <- function(x, digits = 2) {
-  x %<>%
-    dplyr::select(-rowname) %>%
-    purrr::map(~ sub("^-0.", "-\\1.", sprintf(paste0("%.", digits, "f"), .))) %>%
-    purrr::map(~ sub("^0.", " \\1.", .)) %>%
-    purrr::map(~ sub("NA", "", .)) %>%
-    do.call(cbind, .) %>%
-    noquote()
-  rownames(x) <- colnames(x)
-  x
+  vars <- x$rowname
+  
+  x %<>% as_matrix(diagonal = NA)
+  x <- sub("^-0.", "-\\1.", sprintf(paste0("%.", digits, "f"), x))
+  x <- sub("^0.", " \\1.", x)
+  x <- sub("NA", "", x)
+  x %<>% matrix(nrow = length(vars))
+  rownames(x) <- colnames(x) <- vars
+  noquote(x)
 }
 
 #' @export
@@ -130,22 +133,31 @@ rplot.cor_df <- function(x, shape = 16) {
   # Store order for factoring the variables
   row_order <- x$rowname
   
+  # Prep dots for mutate_
+  dots <- stats::setNames(list(lazyeval::interp(~ factor(x, levels = row_order),
+                                           x = quote(x)),
+                          lazyeval::interp(~ factor(y, levels = rev(row_order)),
+                                           y = quote(y)),
+                          lazyeval::interp(~ abs(r),
+                                           r = quote(r)),
+                          lazyeval::interp(~ ifelse(is.na(r), as.character(x), NA),
+                                           r = quote(r), x = quote(x))
+                          ),
+                     list("x", "y", "size", "label"))
+  
   # Convert data to relevant format and plot
   x %>%
     # Convert to wide
     stretch() %>%
     # Factor x and y to correct order
     # and add text column to fill diagonal
-    dplyr::mutate(x = factor(x, levels = row_order),
-           y = factor(y, levels = rev(row_order)),
-           size = abs(r),
-           label = ifelse(is.na(r), as.character(x), NA)) %>%
+    # See dots above
+    dplyr::mutate_(.dots = dots) %>% 
     # plot
-    ggplot2::ggplot(ggplot2::aes(x = x, y = y,
-               color = r, size = size, alpha = size,
-               label = label)) +
+    ggplot2::ggplot(ggplot2::aes_string(x = "x", y = "y", color = "r",
+                                        size = "size", alpha = "size",
+                                        label = "label")) +
     ggplot2::geom_point(shape = shape) +
-    #ggplot2::guides(colour = FALSE) +
     ggplot2::scale_colour_gradient2(limits = c(-1, 1),
                                     low    = "indianred2",
                                     mid    = "white",

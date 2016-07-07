@@ -4,10 +4,13 @@
 \alias{as_matrix}
 \title{Convert cor_df to original matrix.}
 \usage{
-as_matrix(x)
+as_matrix(x, diagonal)
 }
 \arguments{
 \item{x}{cor_df. See \code{\link{correlate}}.}
+
+\item{diagonal}{Value (typically numeric or NA) to set the diagonal to.
+Default = 1.}
 }
 \value{
 Correlation matrix
