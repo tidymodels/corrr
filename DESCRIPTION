@@ -2,7 +2,7 @@ Package: corrr
 Type: Package
 Version: 0.1.0
 Title: Correlations in R
-Description: corrr is a package for exploring correlations in R.
+Description: A tool for exploring correlations.
     It makes it possible to easily perform routine tasks when
     exploring correlation matrices such as ignoring the diagonal,
     focusing on the correlations of certain variables against others,
