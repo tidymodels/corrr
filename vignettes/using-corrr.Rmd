@@ -4,7 +4,7 @@ author: "Simon Jackson"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Using corrr}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -49,6 +49,14 @@ d %>% select(rowname, mpg, cyl, disp)
 d %>%
   filter(cyl > .7) %>% 
   select(rowname, mpg, cyl, disp)
+```
+
+Furthermore, by having the diagonal set to missing, we don't need to put in extra effort to ignore them when summarising the correlations. For example:
+
+```{r, warning = FALSE, message = FALSE}
+# Compute mean of each column
+library(purrr)
+d %>% select(-rowname) %>% map_dbl(~ mean(., na.rm = TRUE))
 ```
 
 ### API
