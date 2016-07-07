@@ -7,11 +7,11 @@
 first_col(df, ..., var = "rowname")
 }
 \arguments{
+\item{df}{Data frame}
+
 \item{...}{Values to go into the column}
 
 \item{var}{Label for the column. Default is "rowname"}
-
-\item{x}{Data frame}
 }
 \description{
 Add a first column to a data.frame. This is most commonly used toappend a

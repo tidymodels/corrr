@@ -3,7 +3,7 @@
 #' Add a first column to a data.frame. This is most commonly used toappend a
 #' rowname column to create a cor_df.
 #' 
-#' @param x Data frame
+#' @param df Data frame
 #' @param ... Values to go into the column
 #' @param var Label for the column. Default is "rowname"
 #' @export

@@ -13,19 +13,19 @@ Authors@R: c(
   )
 URL: https://github.com/drsimonj/corrr
 BugReports: https://github.com/drsimonj/corrr/issues
-Depends: R (>= 3.3.0)
+Depends: R (>= 3.3.1),
+    dplyr (>= 0.5.0)
 LazyData: yes
 License: MIT + file LICENSE
 RoxygenNote: 5.0.1
 Suggests: testthat (>= 1.0.2),
     knitr (>= 1.13),
     rmarkdown (>= 0.9.6)
-Imports: dplyr (>= 0.5.0),
-    magrittr (>= 1.5),
+Imports: magrittr (>= 1.5),
     tidyr (>= 0.5.1),
     ggplot2 (>= 2.1.0),
     seriation (>= 1.2-0),
     lazyeval (>= 0.2.0),
     purrr (>= 0.2.2),
     tibble (>= 1.1)
-VignetteBuilder: knitr (>= 1.13)
+VignetteBuilder: knitr
