@@ -4,14 +4,38 @@
 #' matrix with the correlations cleanly formatted (leading zeros removed; spaced
 #' for signs) and the diagonal (or any NA) left blank.
 #' 
-#' @param x cor_df. See \code{\link{correlate}}.
-#' @param digits Number of decimal places to display.
-#' @return Formatted noquote matrix.
+#' @param x Scalar, vector, matrix or data frame.
+#' @param decimals Number of decimal places to display for numbers.
+#' @param na_print Character string indicating NA values in printed output
+#' @return noquote. Also a data frame if a x is a matrix or data frame.
 #' @export
-fashion <- function(x, digits) {
+fashion <- function(x, decimals, na_print) {
   UseMethod("fashion")
 }
 
+#' @export
+fashion.default <- function(x, decimals = 2, na_print = "") {
+  
+  if (is.numeric(x)) {
+    tmp <- na.omit(x)
+    if (length(tmp)) {
+      # Format to correct number of decimals and remove any leading zeros
+      tmp <- sub("^-0.", "-\\1.", sprintf(paste0("%.", decimals, "f"), tmp))
+      tmp <- sub("^0.", " \\1.", tmp)
+      # Make all decimals same "length" to appear right justified
+      n_chars <- nchar(tmp)
+      longest <- max(n_chars)
+      tmp <- (longest - n_chars) %>%
+        purrr::map_chr(~paste(rep(" ", .), collapse = "")) %>% 
+        paste0(tmp)
+      x[!is.na(x)] <- tmp
+    }
+  }
+  
+  x <- as.character(x)
+  x[is.na(x) | x == "NA"] <- na_print
+  noquote(x)
+}
 
 #' Plot a correlation data frame.
 #' 

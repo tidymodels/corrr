@@ -117,16 +117,16 @@ x <- datasets::mtcars %>%
        shave() # Shave off the upper triangle for a clean result
 
 fashion(x)
-#>      disp wt   hp   carb qsec mpg  drat am   gear
-#> disp                                             
-#> wt    .89                                        
-#> hp    .79  .66                                   
-#> carb  .39  .43  .75                              
-#> qsec -.43 -.17 -.71 -.66                         
-#> mpg  -.85 -.87 -.78 -.55  .42                    
-#> drat -.71 -.71 -.45 -.09  .09  .68               
-#> am   -.59 -.69 -.24  .06 -.23  .60  .71          
-#> gear -.56 -.58 -.13  .27 -.21  .48  .70  .79
+#>   rowname disp   wt   hp carb qsec  mpg drat   am gear
+#> 1    disp                                             
+#> 2      wt  .89                                        
+#> 3      hp  .79  .66                                   
+#> 4    carb  .39  .43  .75                              
+#> 5    qsec -.43 -.17 -.71 -.66                         
+#> 6     mpg -.85 -.87 -.78 -.55  .42                    
+#> 7    drat -.71 -.71 -.45 -.09  .09  .68               
+#> 8      am -.59 -.69 -.24  .06 -.23  .60  .71          
+#> 9    gear -.56 -.58 -.13  .27 -.21  .48  .70  .79
 rplot(x)
 ```
 

@@ -4,15 +4,17 @@
 \alias{fashion}
 \title{Fashion a correlation data frame for printing.}
 \usage{
-fashion(x, digits)
+fashion(x, decimals, na_print)
 }
 \arguments{
-\item{x}{cor_df. See \code{\link{correlate}}.}
+\item{x}{Scalar, vector, matrix or data frame.}
 
-\item{digits}{Number of decimal places to display.}
+\item{decimals}{Number of decimal places to display for numbers.}
+
+\item{na_print}{Character string indicating NA values in printed output}
 }
 \value{
-Formatted noquote matrix.
+noquote. Also a data frame if a x is a matrix or data frame.
 }
 \description{
 For the purpose of printing, convert a correlation data frame into a noquote 
