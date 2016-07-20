@@ -10,6 +10,7 @@
 #' 
 #' @param x cor_df. See \code{\link{correlate}}.
 #' @inheritParams dplyr::select
+#' @param .dots Use focus_ to do standard evaluations. See \code{\link[dplyr]{select}}.
 #' @param mirror Boolean. Whether to mirror the selected columns in the rows or
 #'   not.
 #' @return A tbl or, if mirror = TRUE, a cor_df (see \code{\link{correlate}}).
@@ -23,7 +24,13 @@
 #' focus(x, -matches("Sepal"))  # Focus on correlations of non-Sepal 
 #'                              # variables with Sepal variables.
 focus <- function(x, ..., mirror = FALSE) {
-  UseMethod("focus")
+  focus_(x, .dots = lazyeval::lazy_dots(...), mirror = mirror)
+}
+
+#' @export
+#' @rdname focus
+focus_ <- function(x, ..., .dots, mirror) {
+  UseMethod("focus_")
 }
 
 #' Stretch correlation data frame into long format.

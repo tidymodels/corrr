@@ -2,9 +2,12 @@
 % Please edit documentation in R/reshape.R
 \name{focus}
 \alias{focus}
+\alias{focus_}
 \title{Focus on section of a correlation data frame.}
 \usage{
 focus(x, ..., mirror = FALSE)
+
+focus_(x, ..., .dots, mirror)
 }
 \arguments{
 \item{x}{cor_df. See \code{\link{correlate}}.}
@@ -15,6 +18,8 @@ variables; use negative values to drop variables.}
 
 \item{mirror}{Boolean. Whether to mirror the selected columns in the rows or
 not.}
+
+\item{.dots}{Use focus_ to do standard evaluations. See \code{\link[dplyr]{select}}.}
 }
 \value{
 A tbl or, if mirror = TRUE, a cor_df (see \code{\link{correlate}}).

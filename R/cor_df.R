@@ -68,14 +68,14 @@ rearrange.cor_df <- function(x, method = "PCA", absolute = TRUE) {
 # Reshape -----------------------------------------------------------------
 
 #' @export
-focus.cor_df <- function(x, ..., mirror = FALSE) {
+focus_.cor_df <- function(x, ..., .dots = NULL, mirror = FALSE) {
   
   # Store rownames in case they're dropped in next step
   row_names <- x$rowname
   
   # Select relevant columns
-  x %<>% dplyr::select_(.dots = lazyeval::lazy_dots(...))
-  
+  x %<>% dplyr::select_(..., .dots = .dots)
+
   # Get selected column names and
   # append back rownames if necessary
   vars <- colnames(x)
