@@ -154,3 +154,73 @@ rplot.cor_df <- function(x, shape = 16) {
     ggplot2::theme_classic() +
     ggplot2::theme(legend.position = "none")
 }
+
+#' @export
+network_plot.cor_df <- function(x, min_cor = .30) {
+  
+  if (min_cor < 0) {
+    stop ("min_cor must be a value greater than zero.")
+  }
+  
+  x %<>% as_matrix()
+  distance <- sign(x) * (1 - abs(x))
+  
+  # Use multidimensional Scaling to obtain x and y coordinates for points.
+  points <- distance %>%
+    abs() %>%
+    stats::cmdscale() %>%
+    data.frame() %>%
+    dplyr::rename(x = X1, y = X2) %>%
+    dplyr::mutate(id = rownames(.))
+  
+  # Create a proximity matrix of the paths to be plotted.
+  proximity <- abs(x)
+  proximity[upper.tri(proximity)] <- NA
+  diag(proximity) <- NA
+  proximity[proximity < min_cor] <- NA
+  
+  # Produce a data frame of data needed for plotting the paths.
+  n_paths <- sum(!is.na(proximity))
+  paths <- matrix(nrow = n_paths, ncol = 6) %>% data.frame()
+  colnames(paths) <- c("x", "y", "xend", "yend", "proximity", "sign")
+  path <- 1
+  for(row in 1:nrow(proximity)) {
+    for(col in 1:ncol(proximity)) {
+      path_proximity <- proximity[row, col]
+      if (!is.na(path_proximity)) {
+        path_sign <- sign(distance[row, col])
+        x    <- points$x[row]
+        y    <- points$y[row]
+        xend <- points$x[col]
+        yend <- points$y[col]
+        paths[path, ] <- c(x, y, xend, yend, path_proximity, path_sign)
+        path <- path + 1
+      }
+    }
+  }
+  
+  # Produce the plot.
+  ggplot2::ggplot() +
+    # Plot the paths
+    ggplot2::geom_curve(data = paths,
+                        ggplot2::aes(x = x, y = y, xend = xend, yend = yend,
+                                     alpha = proximity, size = proximity,
+                                     colour = factor(sign)),
+                        show.legend = FALSE) +
+    # Plot the points
+    ggplot2::geom_point(data = points,
+                        ggplot2::aes(x, y),
+                        size = 3, alpha = .5, shape = 1, colour = "white") +
+    # Plot variable labels
+    ggplot2::geom_text(data = points,
+                       ggplot2::aes(x, y, label = id),
+                       size = 8, colour = "black", vjust = 1) +
+    # expand the axes to add space for curves
+    ggplot2::expand_limits(x = c(min(points$x) - .1,
+                                 max(points$x) + .1),
+                           y = c(min(points$y) - .1,
+                                 max(points$y) + .1)
+    ) +
+    ggplot2::theme_void()
+  
+}

@@ -56,3 +56,8 @@ fashion.default <- function(x, decimals = 2, na_print = "") {
 rplot <- function(x, shape) {
   UseMethod("rplot")
 }
+
+#' @export
+network_plot <- function(x, min_cor) {
+  UseMethod("network_plot")
+}
