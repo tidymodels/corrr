@@ -214,7 +214,7 @@ network_plot.cor_df <- function(x, min_cor = .30) {
     # Plot variable labels
     ggplot2::geom_text(data = points,
                        ggplot2::aes(x, y, label = id),
-                       size = 8, colour = "black", vjust = 1) +
+                       size = 5, colour = "black", vjust = 1) +
     # expand the axes to add space for curves
     ggplot2::expand_limits(x = c(min(points$x) - .1,
                                  max(points$x) + .1),
@@ -222,5 +222,4 @@ network_plot.cor_df <- function(x, min_cor = .30) {
                                  max(points$y) + .1)
     ) +
     ggplot2::theme_void()
-  
 }

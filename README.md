@@ -47,7 +47,8 @@ Reshape structure (`tbl` or `cor_df` out):
 Output/visualisations (console/plot out):
 
 -   `fashion()` the correlations for pretty printing.
--   `rplot()` plots the correlations.
+-   `rplot()` the correlations with shapes in place of the values.
+-   `network_plot()` the correlations in a network.
 
 Examples
 --------
@@ -131,3 +132,12 @@ rplot(x)
 ```
 
 ![](README-combination-1.png)
+
+``` r
+
+mtcars %>% 
+  correlate() %>% 
+  network_plot(min_cor = .6)
+```
+
+![](README-combination-2.png)

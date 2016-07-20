@@ -62,7 +62,8 @@ rplot <- function(x, shape) {
 #' Output a network plot of a correlation data frame in which variables that are
 #' more highly correlated appear closer together and are joined by stronger
 #' paths. Paths are also coloured by their sign (blue for positive and red for
-#' negative).
+#' negative). The proximity of the points are determined using multidimensional
+#' clustering.
 #' 
 #' @param x cor_df. See \code{\link{correlate}}.
 #' @param min_cor Number from 0 to 1 indicating the minimum value of
