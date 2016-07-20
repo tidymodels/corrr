@@ -116,43 +116,50 @@ stretch.cor_df <- function(x, na_omit = FALSE) {
 # Output --------------------------------------------------------------------
 
 #' @export
-rplot.cor_df <- function(x, shape = 16) {
+rplot.cor_df <- function(x, print_cor = FALSE, shape = 16) {
   # Store order for factoring the variables
   row_order <- x$rowname
   
   # Prep dots for mutate_
   dots <- stats::setNames(list(lazyeval::interp(~ factor(x, levels = row_order),
                                            x = quote(x)),
-                          lazyeval::interp(~ factor(y, levels = rev(row_order)),
-                                           y = quote(y)),
-                          lazyeval::interp(~ abs(r),
-                                           r = quote(r)),
-                          lazyeval::interp(~ ifelse(is.na(r), as.character(x), NA),
-                                           r = quote(r), x = quote(x))
-                          ),
+                               lazyeval::interp(~ factor(y, levels = rev(row_order)),
+                                                y = quote(y)),
+                               lazyeval::interp(~ abs(r),
+                                                r = quote(r)),
+                               lazyeval::interp(~ as.character(fashion(r)),
+                                                r = quote(r))
+                               #lazyeval::interp(~ as.character(x),
+                              #                  x = quote(x))
+                              ),
                      list("x", "y", "size", "label"))
   
   # Convert data to relevant format and plot
-  x %>%
-    # Convert to wide
-    stretch() %>%
-    # Factor x and y to correct order
-    # and add text column to fill diagonal
-    # See dots above
-    dplyr::mutate_(.dots = dots) %>% 
-    # plot
-    ggplot2::ggplot(ggplot2::aes_string(x = "x", y = "y", color = "r",
-                                        size = "size", alpha = "size",
-                                        label = "label")) +
-    ggplot2::geom_point(shape = shape) +
-    ggplot2::scale_colour_gradient2(limits = c(-1, 1),
-                                    low    = "indianred2",
-                                    mid    = "white",
-                                    high   = "skyblue1") +
-    ggplot2::geom_text(show.legend = FALSE) +
-    ggplot2::labs(x = "", y ="") +
-    ggplot2::theme_classic() +
-    ggplot2::theme(legend.position = "none")
+  p <- x %>%
+        # Convert to wide
+        stretch(na_omit = TRUE) %>%
+        # Factor x and y to correct order
+        # and add text column to fill diagonal
+        # See dots above
+        dplyr::mutate_(.dots = dots) %>% 
+        # plot
+        ggplot2::ggplot(ggplot2::aes_string(x = "x", y = "y", color = "r",
+                                            size = "size", alpha = "size",
+                                            label = "label")) +
+        ggplot2::geom_point(shape = shape) +
+        ggplot2::scale_colour_gradient2(limits = c(-1, 1),
+                                        low    = "indianred2",
+                                        mid    = "white",
+                                        high   = "skyblue1") +
+        ggplot2::labs(x = "", y ="") +
+        ggplot2::theme_classic() +
+        ggplot2::theme(legend.position = "none")
+  
+  if (print_cor) {
+    p <- p + ggplot2::geom_text(color = "black", size = 3, show.legend = FALSE)
+  }
+    
+  p
 }
 
 #' @export

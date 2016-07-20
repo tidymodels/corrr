@@ -4,10 +4,12 @@
 \alias{rplot}
 \title{Plot a correlation data frame.}
 \usage{
-rplot(x, shape)
+rplot(x, print_cor, shape)
 }
 \arguments{
 \item{x}{cor_df. See \code{\link{correlate}}.}
+
+\item{print_cor}{Boolean indicating whether the correlations should be printed over the shapes.}
 
 \item{shape}{\code{\link{geom_point}} aesthetic.}
 }
@@ -25,5 +27,6 @@ rplot(x)
 x <- rearrange(x, absolute = FALSE)
 x <- shave(x)
 rplot(x)
+rplot(x, print_cor = TRUE)
 }
 

@@ -42,6 +42,7 @@ fashion.default <- function(x, decimals = 2, na_print = "") {
 #' Plot a correlation data frame using ggplot.
 #' 
 #' @param x cor_df. See \code{\link{correlate}}.
+#' @param print_cor Boolean indicating whether the correlations should be printed over the shapes.
 #' @param shape \code{\link{geom_point}} aesthetic.
 #' @return Plots a correlation data frame
 #' @export
@@ -53,7 +54,8 @@ fashion.default <- function(x, decimals = 2, na_print = "") {
 #' x <- rearrange(x, absolute = FALSE)
 #' x <- shave(x)
 #' rplot(x)
-rplot <- function(x, shape) {
+#' rplot(x, print_cor = TRUE)
+rplot <- function(x, print_cor, shape) {
   UseMethod("rplot")
 }
 
