@@ -57,7 +57,22 @@ rplot <- function(x, shape) {
   UseMethod("rplot")
 }
 
+#' Network plot of a correlation data frame
+#' 
+#' Output a network plot of a correlation data frame in which variables that are
+#' more highly correlated appear closer together and are joined by stronger
+#' paths. Paths are also coloured by their sign (blue for positive and red for
+#' negative).
+#' 
+#' @param x cor_df. See \code{\link{correlate}}.
+#' @param min_cor Number from 0 to 1 indicating the minimum value of
+#'   correlations (in absolute terms) to plot.
 #' @export
+#' @examples 
+#' x <- correlate(mtcars)
+#' network_plot(x)
+#' network_plot(x, min_cor = .1)
+#' network_plot(x, min_cor = .6)
 network_plot <- function(x, min_cor) {
   UseMethod("network_plot")
 }
