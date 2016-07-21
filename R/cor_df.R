@@ -214,14 +214,17 @@ network_plot.cor_df <- function(x, min_cor = .30) {
                                      alpha = proximity, size = proximity,
                                      colour = factor(sign)),
                         show.legend = FALSE) +
+    ggplot2::scale_size(limits = c(0, 1)) +
+    ggplot2::scale_alpha(limits = c(0, 1)) +
     # Plot the points
     ggplot2::geom_point(data = points,
                         ggplot2::aes(x, y),
-                        size = 3, alpha = .5, shape = 1, colour = "white") +
+                        size = 3, shape = 19, colour = "white") +
     # Plot variable labels
-    ggplot2::geom_text(data = points,
-                       ggplot2::aes(x, y, label = id),
-                       size = 5, colour = "black", vjust = 1) +
+    ggrepel::geom_text_repel(data = points,
+                             ggplot2::aes(x, y, label = id),
+                             fontface = 'bold', size = 5,
+                             segment.size = 0) +
     # expand the axes to add space for curves
     ggplot2::expand_limits(x = c(min(points$x) - .1,
                                  max(points$x) + .1),
