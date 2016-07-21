@@ -17,7 +17,7 @@ fashion <- function(x, decimals, na_print) {
 fashion.default <- function(x, decimals = 2, na_print = "") {
   
   if (is.numeric(x)) {
-    tmp <- na.omit(x)
+    tmp <- stats::na.omit(x)
     n_dig <- length(tmp)
     
     # Format to correct number of decimals and remove any leading zeros

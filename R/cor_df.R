@@ -177,8 +177,8 @@ network_plot.cor_df <- function(x, min_cor = .30) {
     abs() %>%
     stats::cmdscale() %>%
     data.frame() %>%
-    dplyr::rename(x = X1, y = X2) %>%
-    dplyr::mutate(id = rownames(.))
+    dplyr::rename_(x = "X1", y = "X2")
+  points$id <- rownames(points)
   
   # Create a proximity matrix of the paths to be plotted.
   proximity <- abs(x)
