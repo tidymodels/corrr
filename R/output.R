@@ -18,16 +18,23 @@ fashion.default <- function(x, decimals = 2, na_print = "") {
   
   if (is.numeric(x)) {
     tmp <- na.omit(x)
-    if (length(tmp)) {
-      # Format to correct number of decimals and remove any leading zeros
+    n_dig <- length(tmp)
+    
+    # Format to correct number of decimals and remove any leading zeros
+    if (n_dig) {
       tmp <- sub("^-0.", "-\\1.", sprintf(paste0("%.", decimals, "f"), tmp))
       tmp <- sub("^0.", " \\1.", tmp)
-      # Make all decimals same "length" to appear right justified
-      n_chars <- nchar(tmp)
-      longest <- max(n_chars)
-      tmp <- (longest - n_chars) %>%
-        purrr::map_chr(~paste(rep(" ", .), collapse = "")) %>% 
-        paste0(tmp)
+      
+      # Pad mulitple digits to appear right justified
+      if (n_dig > 1) {
+        n_chars <- nchar(tmp)
+        longest <- max(n_chars)
+        tmp <- (longest - n_chars) %>%
+          purrr::map_chr(~paste(rep(" ", .), collapse = "")) %>% 
+          paste0(tmp) 
+      }
+      
+      # Insert back to x
       x[!is.na(x)] <- tmp
     }
   }
