@@ -1,6 +1,7 @@
 ## Test environments
 * local OS X El Capitan install, R 3.3.1
 * local Windows 10 install, R 3.3.1
+* ubuntu 12.04.5 LTS (on travis-ci), R 3.3.1
 
 ## R CMD check results
 
