@@ -165,8 +165,8 @@ rplot.cor_df <- function(x, print_cor = FALSE, shape = 16) {
 #' @export
 network_plot.cor_df <- function(x, min_cor = .30) {
   
-  if (min_cor < 0) {
-    stop ("min_cor must be a value greater than zero.")
+  if (min_cor < 0 || min_cor > 1) {
+    stop ("min_cor must be a value ranging from zero to one.")
   }
   
   x %<>% as_matrix()
@@ -224,7 +224,8 @@ network_plot.cor_df <- function(x, min_cor = .30) {
     ggrepel::geom_text_repel(data = points,
                              ggplot2::aes(x, y, label = id),
                              fontface = 'bold', size = 5,
-                             segment.size = 0) +
+                             segment.size = 0.0,
+                             segment.color = "white") +
     # expand the axes to add space for curves
     ggplot2::expand_limits(x = c(min(points$x) - .1,
                                  max(points$x) + .1),
