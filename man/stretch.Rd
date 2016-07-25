@@ -4,12 +4,12 @@
 \alias{stretch}
 \title{Stretch correlation data frame into long format.}
 \usage{
-stretch(x, na_omit = FALSE)
+stretch(x, na.rm = FALSE)
 }
 \arguments{
 \item{x}{cor_df. See \code{\link{correlate}}.}
 
-\item{na_omit}{Boolean. Whether rows with an NA correlation (originally the
+\item{na.rm}{Boolean. Whether rows with an NA correlation (originally the
 matrix diagonal) should be dropped? Will automatically be set to TRUE if
 mirror is FALSE.}
 }
@@ -24,10 +24,10 @@ data frame. The rowname column is handled automatically.
 \examples{
 x <- correlate(mtcars)
 stretch(x)  # Convert all to long format
-stretch(x, na_omit = FALSE)  # omit NAs (diagonal in this case)
+stretch(x, na.rm = FALSE)  # omit NAs (diagonal in this case)
 
 x <- shave(x)  # use shave to set upper triangle to NA and then...
-stretch(x, na_omit = FALSE)  # omit all NAs, therefore keeping each
+stretch(x, na.rm = FALSE)  # omit all NAs, therefore keeping each
                              # correlation only once.
 }
 

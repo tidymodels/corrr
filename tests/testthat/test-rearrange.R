@@ -19,13 +19,13 @@ test_that("Converts to proper structure", {
   )
 })
 
-test_that("na_omit", {
+test_that("na.rm", {
   expect_equal(
     sum(is.na(stretch(d)$r)),
     nrow(d)
   )
   expect_equal(
-    sum(is.na(stretch(d, na_omit = TRUE)$r)),
+    sum(is.na(stretch(d, na.rm = TRUE)$r)),
     0
   )
 })

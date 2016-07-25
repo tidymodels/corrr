@@ -97,17 +97,13 @@ focus_.cor_df <- function(x, ..., .dots = NULL, mirror = FALSE) {
 }
 
 #' @export
-stretch.cor_df <- function(x, na_omit = FALSE) {
+stretch.cor_df <- function(x, na.rm = FALSE) {
   
   vars <- names(x)[names(x) != "rowname"]
   
   x %<>%
-    tidyr::gather_("x", "r", vars) %>% 
+    tidyr::gather_("x", "r", vars, na.rm) %>% 
     dplyr::rename_("y" = "rowname")
-  
-  if (na_omit) {
-    x <- x[!is.na(x$r), ]
-  }
   
   x[, c("x", "y", "r")]
 }

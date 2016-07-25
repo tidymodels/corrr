@@ -40,7 +40,7 @@ focus_ <- function(x, ..., .dots, mirror) {
 #' data frame. The rowname column is handled automatically.
 #' 
 #' @param x cor_df. See \code{\link{correlate}}.
-#' @param na_omit Boolean. Whether rows with an NA correlation (originally the
+#' @param na.rm Boolean. Whether rows with an NA correlation (originally the
 #'   matrix diagonal) should be dropped? Will automatically be set to TRUE if
 #'   mirror is FALSE.
 #' @return tbl with three colums (x and y variables, and their correlation)
@@ -48,11 +48,11 @@ focus_ <- function(x, ..., .dots, mirror) {
 #' @examples
 #' x <- correlate(mtcars)
 #' stretch(x)  # Convert all to long format
-#' stretch(x, na_omit = FALSE)  # omit NAs (diagonal in this case)
+#' stretch(x, na.rm = FALSE)  # omit NAs (diagonal in this case)
 #' 
 #' x <- shave(x)  # use shave to set upper triangle to NA and then...
-#' stretch(x, na_omit = FALSE)  # omit all NAs, therefore keeping each
+#' stretch(x, na.rm = FALSE)  # omit all NAs, therefore keeping each
 #'                              # correlation only once.
-stretch <- function(x, na_omit = FALSE) {
+stretch <- function(x, na.rm = FALSE) {
   UseMethod("stretch")
 }
