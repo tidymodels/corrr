@@ -4,7 +4,7 @@
 \alias{as_matrix}
 \title{Convert cor_df to original matrix.}
 \usage{
-as_matrix(x, diagonal)
+as_matrix(x, diagonal = 1)
 }
 \arguments{
 \item{x}{cor_df. See \code{\link{correlate}}.}

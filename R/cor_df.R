@@ -133,7 +133,7 @@ rplot.cor_df <- function(x, print_cor = FALSE, shape = 16) {
   # Convert data to relevant format and plot
   p <- x %>%
         # Convert to wide
-        stretch(na_omit = TRUE) %>%
+        stretch(na.rm = TRUE) %>%
         # Factor x and y to correct order
         # and add text column to fill diagonal
         # See dots above
