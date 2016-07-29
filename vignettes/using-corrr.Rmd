@@ -25,7 +25,7 @@ Using `corrr` starts with `correlate()`, which acts like the base correlation fu
 
 To work with further, let's create a correlation data frame using `correlate()` from the `mtcars` data that comes with R:
 
-```{r}
+```{r, message = F, warning = F}
 library(corrr)
 d <- correlate(mtcars)
 d
@@ -76,7 +76,8 @@ Reshape structure (`tbl` or `cor_df` out):
 Output/visualisations (console/plot out):
 
 - `fashion()` the correlations for pretty printing.
-- `rplot()` plots the correlations.
+- `rplot()` a shape for each correlation.
+- `network_plot()` a point for each variable, joined by paths for correlations.
 
 By combing these functions in data pipelines, it's possible to easily explore your correlations.
 
@@ -113,3 +114,7 @@ d %>%
   shave() %>%
   rplot()
 ```
+
+## Other Resources
+
+For other resources about how to use `corrr`, you'll find plenty of posts explaining functions at [blogR](https://drsimonj.svbtle.com/), or keep up to date with these on Twitter by following [\@drsimonj](https://twitter.com/drsimonj).
