@@ -26,7 +26,26 @@ test_that("Decimal places", {
   )
 })
 
-test_that("Non-numeric", {
+test_that("Leading zeros", {
+  expect_equal(
+    fashion(0.23, leading_zeros = F),
+    noquote(" .23")
+  )
+  expect_equal(
+    fashion(-0.23, leading_zeros = F),
+    noquote("-.23")
+  )
+  expect_equal(
+    fashion(0.23, leading_zeros = T),
+    noquote("0.23")
+  )
+  expect_equal(
+    fashion(-0.23, leading_zeros = T),
+    noquote("-0.23")
+  )
+})
+
+test_that("Non-numeric and missing", {
   expect_equal(
     fashion("0.232573"),
     noquote("0.232573")
@@ -39,8 +58,12 @@ test_that("Non-numeric", {
     fashion(NA),
     noquote("")
   )
+  expect_equal(
+    fashion(NA, na_print = "x"),
+    noquote("x")
+  )
 })
-noquote(as.character(list(1,2,3)))
+
 test_that("Vectors and padding", {
   expect_equal(
     fashion(c(111.11, .11, -.11, NA)),

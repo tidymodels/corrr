@@ -4,21 +4,34 @@
 \alias{fashion}
 \title{Fashion a correlation data frame for printing.}
 \usage{
-fashion(x, decimals, na_print)
+fashion(x, decimals = 2, leading_zeros = FALSE, na_print = "")
 }
 \arguments{
 \item{x}{Scalar, vector, matrix or data frame.}
 
 \item{decimals}{Number of decimal places to display for numbers.}
 
+\item{leading_zeros}{Should leading zeros be displayed for decimals (e.g., 0.1)? If FALSE, they will be removed.}
+
 \item{na_print}{Character string indicating NA values in printed output}
 }
 \value{
-noquote. Also a data frame if a x is a matrix or data frame.
+noquote. Also a data frame if x is a matrix or data frame.
 }
 \description{
 For the purpose of printing, convert a correlation data frame into a noquote 
 matrix with the correlations cleanly formatted (leading zeros removed; spaced
 for signs) and the diagonal (or any NA) left blank.
+}
+\examples{
+# Examples with correlate()
+mtcars \%>\% correlate() \%>\% fashion()
+mtcars \%>\% correlate() \%>\% fashion(decimals = 1)
+mtcars \%>\% correlate() \%>\% fashion(leading_zeros = TRUE)
+mtcars \%>\% correlate() \%>\% fashion(na_print = "*")
+
+# But doesn't have to include correlate()
+mtcars \%>\% fashion(decimlas = 3)
+c(0.234, 134.23, -.23, NA) \%>\% fashion(na_print = "X")
 }
 

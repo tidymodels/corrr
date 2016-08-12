@@ -1,7 +1,10 @@
 #' @export
-fashion.data.frame <- function(x, decimals = 2, na_print = "") {
+fashion.data.frame <- function(x, decimals = 2, leading_zeros = FALSE, na_print = "") {
   x %>%
-    purrr::map(fashion, decimals = decimals, na_print = na_print) %>% 
+    purrr::map(fashion,
+               decimals = decimals,
+               leading_zeros = leading_zeros,
+               na_print = na_print) %>% 
     as.data.frame() %>% 
     noquote()
 }
