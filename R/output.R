@@ -18,7 +18,7 @@
 #' mtcars %>% correlate() %>% fashion(na_print = "*")
 #' 
 #' # But doesn't have to include correlate()
-#' mtcars %>% fashion(decimlas = 3)
+#' mtcars %>% fashion(decimals = 3)
 #' c(0.234, 134.23, -.23, NA) %>% fashion(na_print = "X")
 fashion <- function(x, decimals = 2, leading_zeros = FALSE, na_print = "") {
   UseMethod("fashion")
