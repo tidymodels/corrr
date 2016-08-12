@@ -1,5 +1,15 @@
 # corrr 0.2.0.9000
 
+## New Functionality
+
+- Can keep leading zeros when using `fashion()` with new arguement `leading_zeros = TRUE`.
+- Optional `legend` argument added to `network_plot()` and `rplot()` to display a legend mapping correlations to size and colour.
+
+## Fixes
+
+- `network_plot()` no longer plots wrong colours if only positive correlations are included.
+- Colour scheme for `network_plot()` changed to match `rplot()`.
+
 # corrr 0.2.0
 
 ## New Functions

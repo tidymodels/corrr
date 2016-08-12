@@ -68,6 +68,7 @@ fashion.default <- function(x, decimals = 2, leading_zeros = FALSE, na_print = "
 #' @param x cor_df. See \code{\link{correlate}}.
 #' @param print_cor Boolean indicating whether the correlations should be printed over the shapes.
 #' @param shape \code{\link{geom_point}} aesthetic.
+#' @param legend Should a legend mapping the colours to the correlations be displayed?
 #' @return Plots a correlation data frame
 #' @export
 #' @examples 
@@ -79,7 +80,7 @@ fashion.default <- function(x, decimals = 2, leading_zeros = FALSE, na_print = "
 #' x <- shave(x)
 #' rplot(x)
 #' rplot(x, print_cor = TRUE)
-rplot <- function(x, print_cor, shape) {
+rplot <- function(x, print_cor = FALSE, shape = 16, legend = FALSE) {
   UseMethod("rplot")
 }
 
@@ -94,12 +95,13 @@ rplot <- function(x, print_cor, shape) {
 #' @param x cor_df. See \code{\link{correlate}}.
 #' @param min_cor Number from 0 to 1 indicating the minimum value of
 #'   correlations (in absolute terms) to plot.
+#' @param legend Should a legend mapping the colours to the correlations be displayed?
 #' @export
 #' @examples 
 #' x <- correlate(mtcars)
 #' network_plot(x)
 #' network_plot(x, min_cor = .1)
 #' network_plot(x, min_cor = .6)
-network_plot <- function(x, min_cor) {
+network_plot <- function(x, min_cor = .3, legend = FALSE) {
   UseMethod("network_plot")
 }

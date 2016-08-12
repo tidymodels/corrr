@@ -4,7 +4,7 @@
 \alias{rplot}
 \title{Plot a correlation data frame.}
 \usage{
-rplot(x, print_cor, shape)
+rplot(x, print_cor = FALSE, shape = 16, legend = FALSE)
 }
 \arguments{
 \item{x}{cor_df. See \code{\link{correlate}}.}
@@ -12,6 +12,8 @@ rplot(x, print_cor, shape)
 \item{print_cor}{Boolean indicating whether the correlations should be printed over the shapes.}
 
 \item{shape}{\code{\link{geom_point}} aesthetic.}
+
+\item{legend}{Should a legend mapping the colours to the correlations be displayed?}
 }
 \value{
 Plots a correlation data frame

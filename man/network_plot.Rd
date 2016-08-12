@@ -4,13 +4,15 @@
 \alias{network_plot}
 \title{Network plot of a correlation data frame}
 \usage{
-network_plot(x, min_cor)
+network_plot(x, min_cor = 0.3, legend = FALSE)
 }
 \arguments{
 \item{x}{cor_df. See \code{\link{correlate}}.}
 
 \item{min_cor}{Number from 0 to 1 indicating the minimum value of
 correlations (in absolute terms) to plot.}
+
+\item{legend}{Should a legend mapping the colours to the correlations be displayed?}
 }
 \description{
 Output a network plot of a correlation data frame in which variables that are

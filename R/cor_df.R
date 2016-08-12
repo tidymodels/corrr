@@ -112,7 +112,7 @@ stretch.cor_df <- function(x, na.rm = FALSE) {
 # Output --------------------------------------------------------------------
 
 #' @export
-rplot.cor_df <- function(x, print_cor = FALSE, shape = 16) {
+rplot.cor_df <- function(x, print_cor = FALSE, shape = 16, legend = FALSE) {
   # Store order for factoring the variables
   row_order <- x$rowname
   
@@ -125,8 +125,6 @@ rplot.cor_df <- function(x, print_cor = FALSE, shape = 16) {
                                                 r = quote(r)),
                                lazyeval::interp(~ as.character(fashion(r)),
                                                 r = quote(r))
-                               #lazyeval::interp(~ as.character(x),
-                              #                  x = quote(x))
                               ),
                      list("x", "y", "size", "label"))
   
@@ -148,18 +146,21 @@ rplot.cor_df <- function(x, print_cor = FALSE, shape = 16) {
                                         mid    = "white",
                                         high   = "skyblue1") +
         ggplot2::labs(x = "", y ="") +
-        ggplot2::theme_classic() +
-        ggplot2::theme(legend.position = "none")
+        ggplot2::theme_classic()
   
   if (print_cor) {
     p <- p + ggplot2::geom_text(color = "black", size = 3, show.legend = FALSE)
   }
-    
+   
+  if (!legend) {
+    p <- p + ggplot2::theme(legend.position = "none")
+  }
+
   p
 }
 
 #' @export
-network_plot.cor_df <- function(x, min_cor = .30) {
+network_plot.cor_df <- function(x, min_cor = .30, legend = FALSE) {
   
   if (min_cor < 0 || min_cor > 1) {
     stop ("min_cor must be a value ranging from zero to one.")
@@ -203,30 +204,41 @@ network_plot.cor_df <- function(x, min_cor = .30) {
   }
   
   # Produce the plot.
-  ggplot2::ggplot() +
-    # Plot the paths
-    ggplot2::geom_curve(data = paths,
-                        ggplot2::aes(x = x, y = y, xend = xend, yend = yend,
-                                     alpha = proximity, size = proximity,
-                                     colour = factor(sign)),
-                        show.legend = FALSE) +
-    ggplot2::scale_size(limits = c(0, 1)) +
-    ggplot2::scale_alpha(limits = c(0, 1)) +
-    # Plot the points
-    ggplot2::geom_point(data = points,
-                        ggplot2::aes(x, y),
-                        size = 3, shape = 19, colour = "white") +
-    # Plot variable labels
-    ggrepel::geom_text_repel(data = points,
-                             ggplot2::aes(x, y, label = id),
-                             fontface = 'bold', size = 5,
-                             segment.size = 0.0,
-                             segment.color = "white") +
-    # expand the axes to add space for curves
-    ggplot2::expand_limits(x = c(min(points$x) - .1,
-                                 max(points$x) + .1),
-                           y = c(min(points$y) - .1,
-                                 max(points$y) + .1)
-    ) +
-    ggplot2::theme_void()
+  p <- ggplot2::ggplot() +
+      # Plot the paths
+      ggplot2::geom_curve(data = paths,
+                          ggplot2::aes(x = x, y = y, xend = xend, yend = yend,
+                                       alpha = proximity,
+                                       size = proximity,
+                                       colour = proximity*sign),
+                          show.legend = FALSE) +
+      ggplot2::scale_alpha(limits = c(0, 1)) +
+      ggplot2::scale_size(limits = c(0, 1)) +
+      ggplot2::scale_colour_gradient2(limits = c(-1, 1),
+                                      low    = "indianred2",
+                                      mid    = "white",
+                                      high   = "skyblue1") +
+      # Plot the points
+      ggplot2::geom_point(data = points,
+                          ggplot2::aes(x, y),
+                          size = 3, shape = 19, colour = "white") +
+      # Plot variable labels
+      ggrepel::geom_text_repel(data = points,
+                               ggplot2::aes(x, y, label = id),
+                               fontface = 'bold', size = 5,
+                               segment.size = 0.0,
+                               segment.color = "white") +
+      # expand the axes to add space for curves
+      ggplot2::expand_limits(x = c(min(points$x) - .1,
+                                   max(points$x) + .1),
+                             y = c(min(points$y) - .1,
+                                   max(points$y) + .1)
+      ) +
+      ggplot2::theme_void()
+  
+  if (!legend) {
+    p <- p + ggplot2::theme(legend.position = "none")
+  }
+  
+  p
 }
