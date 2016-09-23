@@ -31,7 +31,7 @@ fashion.default <- function(x, decimals = 2, leading_zeros = FALSE, na_print = "
   if (is.numeric(x)) {
     tmp <- stats::na.omit(x)
     n_dig <- length(tmp)
-  
+    
     if (n_dig) {
       
       # Format to correct number of decimals and keep/remove any leading zeros
@@ -63,12 +63,13 @@ fashion.default <- function(x, decimals = 2, leading_zeros = FALSE, na_print = "
 
 #' Plot a correlation data frame.
 #' 
-#' Plot a correlation data frame using ggplot.
+#' Plot a correlation data frame using ggplot2.
 #' 
-#' @param x cor_df. See \code{\link{correlate}}.
-#' @param print_cor Boolean indicating whether the correlations should be printed over the shapes.
+#' @param rdf Correlation data frame (cor_df) created with \code{\link{correlate}}.
+#' @param legend Boolean indicating whether a legend mapping the colours to the correlations should be displayed.
 #' @param shape \code{\link{geom_point}} aesthetic.
-#' @param legend Should a legend mapping the colours to the correlations be displayed?
+#' @param print_cor Boolean indicating whether the correlations should be printed over the shapes.
+#' @inheritParams ggplot2::scale_fill_gradientn
 #' @return Plots a correlation data frame
 #' @export
 #' @examples 
@@ -80,7 +81,13 @@ fashion.default <- function(x, decimals = 2, leading_zeros = FALSE, na_print = "
 #' x <- shave(x)
 #' rplot(x)
 #' rplot(x, print_cor = TRUE)
-rplot <- function(x, print_cor = FALSE, shape = 16, legend = FALSE) {
+#' rplot(x, shape = 20, colors = c("red", "green"), legend = TRUE)
+rplot <- function(rdf,
+                  legend = FALSE,
+                  shape = 16,
+                  colours = c("indianred2", "white", "skyblue1"),
+                  print_cor = FALSE,
+                  colors) {
   UseMethod("rplot")
 }
 
@@ -92,16 +99,20 @@ rplot <- function(x, print_cor = FALSE, shape = 16, legend = FALSE) {
 #' negative). The proximity of the points are determined using multidimensional
 #' clustering.
 #' 
-#' @param x cor_df. See \code{\link{correlate}}.
+#' @inheritParams rplot
 #' @param min_cor Number from 0 to 1 indicating the minimum value of
 #'   correlations (in absolute terms) to plot.
-#' @param legend Should a legend mapping the colours to the correlations be displayed?
 #' @export
 #' @examples 
 #' x <- correlate(mtcars)
 #' network_plot(x)
 #' network_plot(x, min_cor = .1)
 #' network_plot(x, min_cor = .6)
-network_plot <- function(x, min_cor = .3, legend = FALSE) {
+#' network_plot(x, min_cor = .7, colors = c("red", "green"), legend = TRUE)
+network_plot <- function(rdf,
+                         min_cor = .3,
+                         legend = FALSE,
+                         colours = c("indianred2", "white", "skyblue1"),
+                         colors) {
   UseMethod("network_plot")
 }

@@ -4,15 +4,18 @@
 \alias{network_plot}
 \title{Network plot of a correlation data frame}
 \usage{
-network_plot(x, min_cor = 0.3, legend = FALSE)
+network_plot(rdf, min_cor = 0.3, legend = FALSE, colours = c("indianred2",
+  "white", "skyblue1"), colors)
 }
 \arguments{
-\item{x}{cor_df. See \code{\link{correlate}}.}
+\item{rdf}{Correlation data frame (cor_df) created with \code{\link{correlate}}.}
 
 \item{min_cor}{Number from 0 to 1 indicating the minimum value of
 correlations (in absolute terms) to plot.}
 
-\item{legend}{Should a legend mapping the colours to the correlations be displayed?}
+\item{legend}{Boolean indicating whether a legend mapping the colours to the correlations should be displayed.}
+
+\item{colours}{Vector of colours to use for n-colour gradient.}
 }
 \description{
 Output a network plot of a correlation data frame in which variables that are
@@ -26,5 +29,6 @@ x <- correlate(mtcars)
 network_plot(x)
 network_plot(x, min_cor = .1)
 network_plot(x, min_cor = .6)
+network_plot(x, min_cor = .7, colors = c("red", "green"), legend = TRUE)
 }
 

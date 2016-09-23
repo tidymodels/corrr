@@ -4,22 +4,25 @@
 \alias{rplot}
 \title{Plot a correlation data frame.}
 \usage{
-rplot(x, print_cor = FALSE, shape = 16, legend = FALSE)
+rplot(rdf, legend = FALSE, shape = 16, colours = c("indianred2", "white",
+  "skyblue1"), print_cor = FALSE, colors)
 }
 \arguments{
-\item{x}{cor_df. See \code{\link{correlate}}.}
+\item{rdf}{Correlation data frame (cor_df) created with \code{\link{correlate}}.}
 
-\item{print_cor}{Boolean indicating whether the correlations should be printed over the shapes.}
+\item{legend}{Boolean indicating whether a legend mapping the colours to the correlations should be displayed.}
 
 \item{shape}{\code{\link{geom_point}} aesthetic.}
 
-\item{legend}{Should a legend mapping the colours to the correlations be displayed?}
+\item{colours}{Vector of colours to use for n-colour gradient.}
+
+\item{print_cor}{Boolean indicating whether the correlations should be printed over the shapes.}
 }
 \value{
 Plots a correlation data frame
 }
 \description{
-Plot a correlation data frame using ggplot.
+Plot a correlation data frame using ggplot2.
 }
 \examples{
 x <- correlate(mtcars)
@@ -30,5 +33,6 @@ x <- rearrange(x, absolute = FALSE)
 x <- shave(x)
 rplot(x)
 rplot(x, print_cor = TRUE)
+rplot(x, shape = 20, colors = c("red", "green"), legend = TRUE)
 }
 

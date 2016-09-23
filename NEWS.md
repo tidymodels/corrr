@@ -2,8 +2,10 @@
 
 ## New Functionality
 
-- Can keep leading zeros when using `fashion()` with new arguement `leading_zeros = TRUE`.
-- Optional `legend` argument added to `network_plot()` and `rplot()` to display a legend mapping correlations to size and colour.
+- Can keep leading zeros when using `fashion()` with new argument `leading_zeros = TRUE`.
+- New optional arguments added to plotting functions, `network_plot()` and `rplot()`:
+  - `legend` to display a legend mapping correlations to size and colour.
+  - `colours` (or `colors`) to change colours in plot.
 
 ## Fixes
 
@@ -24,7 +26,7 @@
 
 ## Other
 
-- `na_omit` arguement in `stretch()` changed to `na.rm` to match `gather_()`.
+- `na_omit` argument in `stretch()` changed to `na.rm` to match `gather_()`.
 - Bug fixes.
 - Improvements.
 

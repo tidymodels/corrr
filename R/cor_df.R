@@ -2,7 +2,7 @@
 
 #' @export
 as_matrix.cor_df <- function(x, diagonal = 1) {
-
+  
   # Separate rownames
   row_names <- x$rowname
   x %<>% dplyr::select_("-rowname")
@@ -48,7 +48,7 @@ rearrange.cor_df <- function(x, method = "PCA", absolute = TRUE) {
   if (absolute) {
     m %<>% abs()
   }
-
+  
   if (method %in% c("BEA", "BEA_TSP", "PCA", "PCA_angle")) {
     ord <- m %>% seriation::seriate(method = method)
   } else {
@@ -56,7 +56,7 @@ rearrange.cor_df <- function(x, method = "PCA", absolute = TRUE) {
   }
   
   ord %<>% seriation::get_order()
-
+  
   # Arrange and return matrix
   # "c(1, 1 + ..." to handle rowname column
   x <- x[ord, c(1, 1 + ord)]
@@ -75,7 +75,7 @@ focus_.cor_df <- function(x, ..., .dots = NULL, mirror = FALSE) {
   
   # Select relevant columns
   x %<>% dplyr::select_(..., .dots = .dots)
-
+  
   # Get selected column names and
   # append back rownames if necessary
   vars <- colnames(x)
@@ -112,62 +112,75 @@ stretch.cor_df <- function(x, na.rm = FALSE) {
 # Output --------------------------------------------------------------------
 
 #' @export
-rplot.cor_df <- function(x, print_cor = FALSE, shape = 16, legend = FALSE) {
+rplot.cor_df <- function(rdf,
+                         legend = FALSE,
+                         shape = 16,
+                         colours = c("indianred2", "white", "skyblue1"),
+                         print_cor = FALSE,
+                         colors) {
+  
+  if (!missing(colors))
+    colours <- colors
+  
   # Store order for factoring the variables
-  row_order <- x$rowname
+  row_order <- rdf$rowname
   
   # Prep dots for mutate_
   dots <- stats::setNames(list(lazyeval::interp(~ factor(x, levels = row_order),
-                                           x = quote(x)),
+                                                x = quote(x)),
                                lazyeval::interp(~ factor(y, levels = rev(row_order)),
                                                 y = quote(y)),
                                lazyeval::interp(~ abs(r),
                                                 r = quote(r)),
                                lazyeval::interp(~ as.character(fashion(r)),
                                                 r = quote(r))
-                              ),
-                     list("x", "y", "size", "label"))
+  ),
+  list("x", "y", "size", "label"))
   
   # Convert data to relevant format and plot
-  p <- x %>%
-        # Convert to wide
-        stretch(na.rm = TRUE) %>%
-        # Factor x and y to correct order
-        # and add text column to fill diagonal
-        # See dots above
-        dplyr::mutate_(.dots = dots) %>% 
-        # plot
-        ggplot2::ggplot(ggplot2::aes_string(x = "x", y = "y", color = "r",
-                                            size = "size", alpha = "size",
-                                            label = "label")) +
-        ggplot2::geom_point(shape = shape) +
-        ggplot2::scale_colour_gradient2(limits = c(-1, 1),
-                                        low    = "indianred2",
-                                        mid    = "white",
-                                        high   = "skyblue1") +
-        ggplot2::labs(x = "", y ="") +
-        ggplot2::theme_classic()
+  p <- rdf %>%
+    # Convert to wide
+    stretch(na.rm = TRUE) %>%
+    # Factor x and y to correct order
+    # and add text column to fill diagonal
+    # See dots above
+    dplyr::mutate_(.dots = dots) %>% 
+    # plot
+    ggplot2::ggplot(ggplot2::aes_string(x = "x", y = "y", color = "r",
+                                        size = "size", alpha = "size",
+                                        label = "label")) +
+    ggplot2::geom_point(shape = shape) +
+    ggplot2::scale_colour_gradientn(limits = c(-1, 1), colors = colours) +
+    ggplot2::labs(x = "", y ="") +
+    ggplot2::theme_classic()
   
   if (print_cor) {
     p <- p + ggplot2::geom_text(color = "black", size = 3, show.legend = FALSE)
   }
-   
+  
   if (!legend) {
     p <- p + ggplot2::theme(legend.position = "none")
   }
-
+  
   p
 }
 
 #' @export
-network_plot.cor_df <- function(x, min_cor = .30, legend = FALSE) {
+network_plot.cor_df <- function(rdf,
+                                min_cor = .30,
+                                legend = FALSE,
+                                colours = c("indianred2", "white", "skyblue1"),
+                                colors) {
   
   if (min_cor < 0 || min_cor > 1) {
     stop ("min_cor must be a value ranging from zero to one.")
   }
   
-  x %<>% as_matrix()
-  distance <- sign(x) * (1 - abs(x))
+  if (!missing(colors))
+    colours <- colors
+  
+  rdf %<>% as_matrix()
+  distance <- sign(rdf) * (1 - abs(rdf))
   
   # Use multidimensional Scaling to obtain x and y coordinates for points.
   points <- distance %>%
@@ -178,7 +191,7 @@ network_plot.cor_df <- function(x, min_cor = .30, legend = FALSE) {
   points$id <- rownames(points)
   
   # Create a proximity matrix of the paths to be plotted.
-  proximity <- abs(x)
+  proximity <- abs(rdf)
   proximity[upper.tri(proximity)] <- NA
   diag(proximity) <- NA
   proximity[proximity < min_cor] <- NA
@@ -205,36 +218,33 @@ network_plot.cor_df <- function(x, min_cor = .30, legend = FALSE) {
   
   # Produce the plot.
   p <- ggplot2::ggplot() +
-      # Plot the paths
-      ggplot2::geom_curve(data = paths,
-                          ggplot2::aes(x = x, y = y, xend = xend, yend = yend,
-                                       alpha = proximity,
-                                       size = proximity,
-                                       colour = proximity*sign),
-                          show.legend = FALSE) +
-      ggplot2::scale_alpha(limits = c(0, 1)) +
-      ggplot2::scale_size(limits = c(0, 1)) +
-      ggplot2::scale_colour_gradient2(limits = c(-1, 1),
-                                      low    = "indianred2",
-                                      mid    = "white",
-                                      high   = "skyblue1") +
-      # Plot the points
-      ggplot2::geom_point(data = points,
-                          ggplot2::aes(x, y),
-                          size = 3, shape = 19, colour = "white") +
-      # Plot variable labels
-      ggrepel::geom_text_repel(data = points,
-                               ggplot2::aes(x, y, label = id),
-                               fontface = 'bold', size = 5,
-                               segment.size = 0.0,
-                               segment.color = "white") +
-      # expand the axes to add space for curves
-      ggplot2::expand_limits(x = c(min(points$x) - .1,
-                                   max(points$x) + .1),
-                             y = c(min(points$y) - .1,
-                                   max(points$y) + .1)
-      ) +
-      ggplot2::theme_void()
+    # Plot the paths
+    ggplot2::geom_curve(data = paths,
+                        ggplot2::aes(x = x, y = y, xend = xend, yend = yend,
+                                     alpha = proximity,
+                                     size = proximity,
+                                     colour = proximity*sign),
+                        show.legend = FALSE) +
+    ggplot2::scale_alpha(limits = c(0, 1)) +
+    ggplot2::scale_size(limits = c(0, 1)) +
+    ggplot2::scale_colour_gradientn(limits = c(-1, 1), colors = colours) +
+    # Plot the points
+    ggplot2::geom_point(data = points,
+                        ggplot2::aes(x, y),
+                        size = 3, shape = 19, colour = "white") +
+    # Plot variable labels
+    ggrepel::geom_text_repel(data = points,
+                             ggplot2::aes(x, y, label = id),
+                             fontface = 'bold', size = 5,
+                             segment.size = 0.0,
+                             segment.color = "white") +
+    # expand the axes to add space for curves
+    ggplot2::expand_limits(x = c(min(points$x) - .1,
+                                 max(points$x) + .1),
+                           y = c(min(points$y) - .1,
+                                 max(points$y) + .1)
+    ) +
+    ggplot2::theme_void()
   
   if (!legend) {
     p <- p + ggplot2::theme(legend.position = "none")
