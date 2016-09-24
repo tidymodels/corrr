@@ -35,7 +35,7 @@ pairwise deletion by default.
 \details{
 \itemize{
   This function returns a correlation matrix in the following format:
-  \item A tbl (tibble::data_frame)
+  \item A tibble (see \code{\link[tibble]{tibble}})
   \item An additional class, "cor_df"
   \item A "rowname" column
   \item Standardised variances (the matrix diagonal) set to missing values
