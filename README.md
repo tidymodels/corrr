@@ -81,7 +81,7 @@ x <- correlate(d)
 class(x)
 #> [1] "cor_df"     "tbl_df"     "tbl"        "data.frame"
 x
-#> # A tibble: 6 x 7
+#> # A tibble: 6 × 7
 #>   rowname            v1          v2           v3            v4          v5
 #>     <chr>         <dbl>       <dbl>        <dbl>         <dbl>       <dbl>
 #> 1      v1            NA  0.70986371  0.709330652  0.0001947192 0.021359764
@@ -100,7 +100,7 @@ library(dplyr)
 
 # Filter rows by correlation size
 x %>% filter(v1 > .6)
-#> # A tibble: 2 x 7
+#> # A tibble: 2 × 7
 #>   rowname        v1        v2        v3          v4          v5
 #>     <chr>     <dbl>     <dbl>     <dbl>       <dbl>       <dbl>
 #> 1      v2 0.7098637        NA 0.6974113 -0.01325755 0.009280530
@@ -137,7 +137,7 @@ rplot(x)
 
 datasets::airquality %>% 
   correlate() %>% 
-  network_plot(min_cor = .2)
+  network_plot(min_cor = .2, legend = TRUE)
 ```
 
 ![](README-combination-2.png)
