@@ -14,7 +14,7 @@ rplot(rdf, legend = FALSE, shape = 16, colours = c("indianred2", "white",
 
 \item{shape}{\code{\link{geom_point}} aesthetic.}
 
-\item{colours}{Vector of colours to use for n-colour gradient.}
+\item{colours, color}{Vector of colours to use for n-colour gradient.}
 
 \item{print_cor}{Boolean indicating whether the correlations should be printed over the shapes.}
 }

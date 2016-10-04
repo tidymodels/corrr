@@ -69,7 +69,7 @@ fashion.default <- function(x, decimals = 2, leading_zeros = FALSE, na_print = "
 #' @param legend Boolean indicating whether a legend mapping the colours to the correlations should be displayed.
 #' @param shape \code{\link{geom_point}} aesthetic.
 #' @param print_cor Boolean indicating whether the correlations should be printed over the shapes.
-#' @inheritParams ggplot2::scale_fill_gradientn
+#' @param colours,color Vector of colours to use for n-colour gradient.
 #' @return Plots a correlation data frame
 #' @export
 #' @examples 
@@ -99,9 +99,9 @@ rplot <- function(rdf,
 #' negative). The proximity of the points are determined using multidimensional
 #' clustering.
 #' 
-#' @inheritParams rplot
 #' @param min_cor Number from 0 to 1 indicating the minimum value of
 #'   correlations (in absolute terms) to plot.
+#' @param colours,color Vector of colours to use for n-colour gradient.
 #' @export
 #' @examples 
 #' x <- correlate(mtcars)
