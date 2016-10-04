@@ -55,6 +55,11 @@ Source: CRAN
 Version: 1.0-6
 Hash: 67d0775189fd0041d95abca618c5c07e
 
+Package: brew
+Source: CRAN
+Version: 1.0-6
+Hash: 931f9972deae0f205e1c78a51f33149b
+
 Package: caTools
 Source: CRAN
 Version: 1.17.1
@@ -71,11 +76,23 @@ Source: CRAN
 Version: 1.3.2
 Hash: 576a9d297a567d6a5ebd164ca5221590
 
+Package: curl
+Source: CRAN
+Version: 2.1
+Hash: e3d6a6a421b8418ae333894b6a16829f
+
 Package: dendextend
 Source: CRAN
 Version: 1.2.0
 Hash: fd858c4254ec5c9871a28e902ab01fa2
 Requires: fpc, ggplot2, magrittr, whisker
+
+Package: devtools
+Source: CRAN
+Version: 1.12.0
+Hash: bbad95109ae75cbb14099281cda43af2
+Requires: digest, git2r, httr, jsonlite, memoise, rstudioapi, whisker,
+    withr
 
 Package: dichromat
 Source: CRAN
@@ -151,6 +168,11 @@ Version: 0.5
 Hash: 5797fec8e2806fcb1d69a58b792d1446
 Requires: Rcpp, ggplot2
 
+Package: git2r
+Source: CRAN
+Version: 0.15.0
+Hash: 92d5a9f3cba5e146b92a76dabbc29fbb
+
 Package: gplots
 Source: CRAN
 Version: 3.0.1
@@ -177,6 +199,12 @@ Source: CRAN
 Version: 0.3.5
 Hash: a96dc1cfe628e66337c86be732567df2
 Requires: Rcpp, digest
+
+Package: httr
+Source: CRAN
+Version: 1.2.1
+Hash: 7de1f8f760441881804af7c1ff324340
+Requires: R6, curl, jsonlite, mime, openssl
 
 Package: iterators
 Source: CRAN
@@ -225,6 +253,12 @@ Source: CRAN
 Version: 5.2
 Hash: 77406ad6a64bb972a5e05b658161261d
 
+Package: memoise
+Source: CRAN
+Version: 1.0.0
+Hash: 56e7087c3559eb7ba72a9afb349bf896
+Requires: digest
+
 Package: mime
 Source: CRAN
 Version: 0.5
@@ -245,6 +279,11 @@ Package: mvtnorm
 Source: CRAN
 Version: 1.0-5
 Hash: 55a3581188e15f13f5ba19c18e151ac2
+
+Package: openssl
+Source: CRAN
+Version: 0.9.4
+Hash: 5ceb5d83bba44e8e5a764ac6ad32e9fb
 
 Package: packrat
 Source: CRAN
@@ -307,6 +346,17 @@ Version: 0.92-6
 Hash: 2819fff51bd1e827b611126fc0227d46
 Requires: DEoptimR
 
+Package: roxygen2
+Source: CRAN
+Version: 5.0.1
+Hash: 77e2e933d3709300a251c7ef9cef82fc
+Requires: Rcpp, brew, digest, stringi, stringr
+
+Package: rstudioapi
+Source: CRAN
+Version: 0.6
+Hash: fd256f8bfb9a64cc35f98b0decb1a79f
+
 Package: scales
 Source: CRAN
 Version: 0.4.0
@@ -357,6 +407,11 @@ Package: whisker
 Source: CRAN
 Version: 0.3-2
 Hash: 803d662762e532705c2c066a82d066e7
+
+Package: withr
+Source: CRAN
+Version: 1.0.2
+Hash: 774eb7be9087cdc24b53b74e5359cfac
 
 Package: yaml
 Source: CRAN
