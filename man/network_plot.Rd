@@ -8,8 +8,12 @@ network_plot(rdf, min_cor = 0.3, legend = FALSE, colours = c("indianred2",
   "white", "skyblue1"), colors)
 }
 \arguments{
+\item{rdf}{Correlation data frame (cor_df) created with \code{\link{correlate}}.}
+
 \item{min_cor}{Number from 0 to 1 indicating the minimum value of
 correlations (in absolute terms) to plot.}
+
+\item{legend}{Boolean indicating whether a legend mapping the colours to the correlations should be displayed.}
 
 \item{colours, color}{Vector of colours to use for n-colour gradient.}
 }

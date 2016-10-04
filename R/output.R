@@ -102,6 +102,7 @@ rplot <- function(rdf,
 #' @param min_cor Number from 0 to 1 indicating the minimum value of
 #'   correlations (in absolute terms) to plot.
 #' @param colours,color Vector of colours to use for n-colour gradient.
+#' @inheritParams rplot
 #' @export
 #' @examples 
 #' x <- correlate(mtcars)
