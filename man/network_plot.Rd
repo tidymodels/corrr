@@ -15,7 +15,7 @@ correlations (in absolute terms) to plot.}
 
 \item{legend}{Boolean indicating whether a legend mapping the colours to the correlations should be displayed.}
 
-\item{colours, color}{Vector of colours to use for n-colour gradient.}
+\item{colours, colors}{Vector of colours to use for n-colour gradient.}
 }
 \description{
 Output a network plot of a correlation data frame in which variables that are

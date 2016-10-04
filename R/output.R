@@ -69,7 +69,7 @@ fashion.default <- function(x, decimals = 2, leading_zeros = FALSE, na_print = "
 #' @param legend Boolean indicating whether a legend mapping the colours to the correlations should be displayed.
 #' @param shape \code{\link{geom_point}} aesthetic.
 #' @param print_cor Boolean indicating whether the correlations should be printed over the shapes.
-#' @param colours,color Vector of colours to use for n-colour gradient.
+#' @param colours,colors Vector of colours to use for n-colour gradient.
 #' @return Plots a correlation data frame
 #' @export
 #' @examples 
@@ -101,7 +101,7 @@ rplot <- function(rdf,
 #' 
 #' @param min_cor Number from 0 to 1 indicating the minimum value of
 #'   correlations (in absolute terms) to plot.
-#' @param colours,color Vector of colours to use for n-colour gradient.
+#' @param colours,colors Vector of colours to use for n-colour gradient.
 #' @inheritParams rplot
 #' @export
 #' @examples 
