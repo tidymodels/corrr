@@ -1,4 +1,4 @@
-# corrr 0.2.0.9000
+# corrr 0.2.1
 
 ## New Functionality
 
@@ -11,6 +11,7 @@
 
 - `network_plot()` no longer plots wrong colours if only positive correlations are included.
 - Colour scheme for `network_plot()` changed to match `rplot()`.
+- Other bug fixes.
 
 # corrr 0.2.0
 
