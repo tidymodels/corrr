@@ -15,9 +15,7 @@ install.packages("corrr")
 -   the latest development version from github with
 
 ``` r
-if (packageVersion("devtools") < 1.6) {
-  install.packages("devtools")
-}
+install.packages("devtools")  # run this line if devtools is not installed
 devtools::install_github("drsimonj/corrr")
 ```
 
