@@ -21,8 +21,8 @@ Hash: 0d74e13bdb47749dc511cee60e1a167e
 
 Package: R6
 Source: CRAN
-Version: 2.1.2
-Hash: c515e41c73294952cbb33ee1c1be5a2d
+Version: 2.1.3
+Hash: 1a8313c9df76d2a06aa27c13a4a71c73
 
 Package: RColorBrewer
 Source: CRAN
@@ -213,8 +213,8 @@ Hash: 488b93c2a4166db0d15f1e8d882cb1d4
 
 Package: jsonlite
 Source: CRAN
-Version: 1.0
-Hash: f32817e181c39ede83fdd3e699348b69
+Version: 1.1
+Hash: 86d4b85b84421a4815f1bb4872e30ef4
 
 Package: kernlab
 Source: CRAN
@@ -357,6 +357,12 @@ Source: CRAN
 Version: 0.6
 Hash: fd256f8bfb9a64cc35f98b0decb1a79f
 
+Package: rversions
+Source: CRAN
+Version: 1.0.3
+Hash: 44837671df6bf1d0b863dc6f83f42a16
+Requires: curl, xml2
+
 Package: scales
 Source: CRAN
 Version: 0.4.0
@@ -412,6 +418,12 @@ Package: withr
 Source: CRAN
 Version: 1.0.2
 Hash: 774eb7be9087cdc24b53b74e5359cfac
+
+Package: xml2
+Source: CRAN
+Version: 1.0.0
+Hash: a55c497b694e044296830eb8ac5c2fee
+Requires: BH, Rcpp
 
 Package: yaml
 Source: CRAN
