@@ -13,7 +13,7 @@ Authors@R: c(
   )
 URL: https://github.com/drsimonj/corrr
 BugReports: https://github.com/drsimonj/corrr/issues
-Depends: R (>= 3.3.1),
+Depends: R (>= 3.3.0),
     dplyr (>= 0.5.0)
 LazyData: yes
 License: MIT + file LICENSE
