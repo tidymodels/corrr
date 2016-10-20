@@ -14,7 +14,7 @@ first_col(df, ..., var = "rowname")
 \item{var}{Label for the column. Default is "rowname"}
 }
 \description{
-Add a first column to a data.frame. This is most commonly used toappend a
+Add a first column to a data.frame. This is most commonly used to append a
 rowname column to create a cor_df.
 }
 \examples{

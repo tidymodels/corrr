@@ -1,6 +1,41 @@
+#' Coerce lists and matrices to correlation data frames
+#' 
+#' A wrapper function to coerce objects in a valid format (such as correlation
+#' matrices created using the base function, \code{\link[stats]{cor}}) into a
+#' correlation data frame.
+#' 
+#' @param x A list, data frame or matrix that can be coerced into a correlation
+#'   data frame.
+#' @param diagonal Value (typically numeric or NA) to set the diagonal to.
+#' @return A correlation data frame
+#' @export
+#' @examples 
+#' x <- cor(mtcars)
+#' as_cordf(x)
+#' as_cordf(x, diagonal = 1)
+as_cordf <- function(x, diagonal = NA) {
+  
+  if(is(x, "cor_df")) {
+    warning("x is already a correlationdata frame.")
+    return(x)
+  }
+  
+  x <- tibble::as_tibble(x)
+  
+  if(ncol(x) != nrow(x)) {
+    stop("Input object x is not a square. ",
+         "The number of columns must be equal to the number of rows.")
+  }
+  
+  diag(x) <- diagonal
+  x <- first_col(x, names(x))
+  class(x) <- c("cor_df", class(x))
+  x
+}
+
 #' Add a first column to a data.frame
 #' 
-#' Add a first column to a data.frame. This is most commonly used toappend a
+#' Add a first column to a data.frame. This is most commonly used to append a
 #' rowname column to create a cor_df.
 #' 
 #' @param df Data frame
@@ -38,13 +73,12 @@ pair_n <- function(x, y = NULL) {
   x
 }
 
-#' Convert cor_df to original matrix.
+#' Convert a correlation data frame to matrix format
 #' 
 #' Convert a correlation data frame to original matrix format.
 #' 
-#' @param x cor_df. See \code{\link{correlate}}.
-#' @param diagonal Value (typically numeric or NA) to set the diagonal to.
-#'   Default = 1.
+#' @param x A correlation data frame. See \code{\link{correlate}} or \code{\link{as_cordf}}.
+#' @inheritParams as_cordf
 #' @return Correlation matrix
 #' @export
 #' @examples

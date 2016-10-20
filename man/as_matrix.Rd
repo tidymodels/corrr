@@ -2,15 +2,14 @@
 % Please edit documentation in R/utility.R
 \name{as_matrix}
 \alias{as_matrix}
-\title{Convert cor_df to original matrix.}
+\title{Convert a correlation data frame to matrix format}
 \usage{
 as_matrix(x, diagonal = 1)
 }
 \arguments{
-\item{x}{cor_df. See \code{\link{correlate}}.}
+\item{x}{A correlation data frame. See \code{\link{correlate}} or \code{\link{as_cordf}}.}
 
-\item{diagonal}{Value (typically numeric or NA) to set the diagonal to.
-Default = 1.}
+\item{diagonal}{Value (typically numeric or NA) to set the diagonal to.}
 }
 \value{
 Correlation matrix
