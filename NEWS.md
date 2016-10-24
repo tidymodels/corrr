@@ -1,5 +1,9 @@
 # corrr 0.2.1.9000
 
+## New Functionality
+
+- Can use arithmetic operators (e.g., + or -) on one or more correlation data frames whilst keeping cor_df class.
+
 # corrr 0.2.1
 
 ## New Functionality
