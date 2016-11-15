@@ -45,6 +45,12 @@ Source: CRAN
 Version: 0.1
 Hash: 0afb92b59b02593c70ff8046700ba9d3
 
+Package: badgecreatr
+Source: CRAN
+Version: 0.1.0
+Hash: 5f0441ad49972a36c301a5ad4a4b3993
+Requires: stringr
+
 Package: base64enc
 Source: CRAN
 Version: 0.1-3
