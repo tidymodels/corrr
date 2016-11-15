@@ -110,7 +110,10 @@ rplot.default <- function(rdf, ...) {
 #'   correlations (in absolute terms) to plot.
 #' @param colours,colors Vector of colours to use for n-colour gradient.
 #' @param repel Should variable labels repel each other? If TRUE, text is added
-#'   via ggrepel::geom_text_repel instead of ggplot2::geom_text
+#'   via \code{\link[ggrepel]{geom_text_repel}} instead of \code{\link[ggplot2]{geom_text}}
+#' @param curved Should the paths be curved? If TRUE, paths are added via
+#'   \code{\link[ggplot2]{geom_curve}}; if FALSE, via
+#'   \code{\link[ggplot2]{geom_segment}}
 #' @inheritParams rplot
 #' @export
 #' @examples 
@@ -124,6 +127,7 @@ network_plot <- function(rdf,
                          legend = FALSE,
                          colours = c("indianred2", "white", "skyblue1"),
                          repel = TRUE,
+                         curved = TRUE,
                          colors) {
   UseMethod("network_plot")
 }

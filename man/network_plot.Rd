@@ -5,7 +5,7 @@
 \title{Network plot of a correlation data frame}
 \usage{
 network_plot(rdf, min_cor = 0.3, legend = FALSE, colours = c("indianred2",
-  "white", "skyblue1"), repel = TRUE, colors)
+  "white", "skyblue1"), repel = TRUE, curved = TRUE, colors)
 }
 \arguments{
 \item{rdf}{Correlation data frame (see \code{\link{correlate}}) or object
@@ -19,7 +19,11 @@ correlations (in absolute terms) to plot.}
 \item{colours, colors}{Vector of colours to use for n-colour gradient.}
 
 \item{repel}{Should variable labels repel each other? If TRUE, text is added
-via ggrepel::geom_text_repel instead of ggplot2::geom_text}
+via \code{\link[ggrepel]{geom_text_repel}} instead of \code{\link[ggplot2]{geom_text}}}
+
+\item{curved}{Should the paths be curved? If TRUE, paths are added via
+\code{\link[ggplot2]{geom_curve}}; if FALSE, via
+\code{\link[ggplot2]{geom_segment}}}
 }
 \description{
 Output a network plot of a correlation data frame in which variables that are

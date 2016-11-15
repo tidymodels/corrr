@@ -189,6 +189,7 @@ network_plot.cor_df <- function(rdf,
                                 legend = FALSE,
                                 colours = c("indianred2", "white", "skyblue1"),
                                 repel = TRUE,
+                                curved = TRUE,
                                 colors) {
   
   if (min_cor < 0 || min_cor > 1) {
@@ -237,11 +238,14 @@ network_plot.cor_df <- function(rdf,
   
   plot_ <- list(
     # For plotting paths
-    geom_curve(data = paths,
-                      aes(x = x, y = y, xend = xend, yend = yend,
-                                   alpha = proximity,
-                                   size = proximity,
-                                   colour = proximity*sign)), 
+    if (curved) geom_curve(data = paths,
+                           aes(x = x, y = y, xend = xend, yend = yend,
+                               alpha = proximity, size = proximity,
+                               colour = proximity*sign)), 
+    if (!curved) geom_segment(data = paths,
+                              aes(x = x, y = y, xend = xend, yend = yend,
+                                  alpha = proximity, size = proximity,
+                                  colour = proximity*sign)), 
     scale_alpha(limits = c(0, 1)),
     scale_size(limits = c(0, 1)),
     scale_colour_gradientn(limits = c(-1, 1), colors = colours),
