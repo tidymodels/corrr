@@ -164,9 +164,9 @@ Requires: gtools
 
 Package: ggplot2
 Source: CRAN
-Version: 2.1.0
-Hash: 50e297b0191179c39c7dcae0eff72b51
-Requires: digest, gtable, plyr, reshape2, scales
+Version: 2.2.0
+Hash: 78c14285e0c114542d051a09bd552472
+Requires: digest, gtable, lazyeval, plyr, reshape2, scales, tibble
 
 Package: ggrepel
 Source: CRAN
@@ -370,14 +370,10 @@ Hash: 44837671df6bf1d0b863dc6f83f42a16
 Requires: curl, xml2
 
 Package: scales
-Source: github
-Version: 0.4.0.9003
-Hash: b59ba6a87db4db2098643038e8c75543
+Source: CRAN
+Version: 0.4.1
+Hash: c0b89e928595f6133fe9d5dc139060b0
 Requires: RColorBrewer, Rcpp, dichromat, labeling, munsell, plyr
-GithubRepo: scales
-GithubUsername: hadley
-GithubRef: master
-GithubSha1: d58d83a9a6b344c1cb1a9e15373c7cd2bfb7f3d1
 
 Package: seriation
 Source: CRAN
