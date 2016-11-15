@@ -164,20 +164,20 @@ rplot.cor_df <- function(rdf,
     # See dots above
     dplyr::mutate_(.dots = dots) %>% 
     # plot
-    ggplot2::ggplot(ggplot2::aes_string(x = "x", y = "y", color = "r",
+    ggplot(aes_string(x = "x", y = "y", color = "r",
                                         size = "size", alpha = "size",
                                         label = "label")) +
-    ggplot2::geom_point(shape = shape) +
-    ggplot2::scale_colour_gradientn(limits = c(-1, 1), colors = colours) +
-    ggplot2::labs(x = "", y ="") +
-    ggplot2::theme_classic()
+    geom_point(shape = shape) +
+    scale_colour_gradientn(limits = c(-1, 1), colors = colours) +
+    labs(x = "", y ="") +
+    theme_classic()
   
   if (print_cor) {
-    p <- p + ggplot2::geom_text(color = "black", size = 3, show.legend = FALSE)
+    p <- p + geom_text(color = "black", size = 3, show.legend = FALSE)
   }
   
   if (!legend) {
-    p <- p + ggplot2::theme(legend.position = "none")
+    p <- p + theme(legend.position = "none")
   }
   
   p
@@ -236,36 +236,38 @@ network_plot.cor_df <- function(rdf,
   
   plot_ <- list(
     # For plotting paths
-    ggplot2::geom_curve(data = paths,
-                      ggplot2::aes(x = x, y = y, xend = xend, yend = yend,
+    geom_curve(data = paths,
+                      aes(x = x, y = y, xend = xend, yend = yend,
                                    alpha = proximity,
                                    size = proximity,
-                                   colour = proximity*sign),
-                      show.legend = FALSE), 
-    ggplot2::scale_alpha(limits = c(0, 1)),
-    ggplot2::scale_size(limits = c(0, 1)),
-    ggplot2::scale_colour_gradientn(limits = c(-1, 1), colors = colours),
+                                   colour = proximity*sign)), 
+    scale_alpha(limits = c(0, 1)),
+    scale_size(limits = c(0, 1)),
+    scale_colour_gradientn(limits = c(-1, 1), colors = colours),
     # Plot the points
-    ggplot2::geom_point(data = points,
-                        ggplot2::aes(x, y),
+    geom_point(data = points,
+                        aes(x, y),
                         size = 3, shape = 19, colour = "white"),
     # Plot variable labels
     ggrepel::geom_text_repel(data = points,
-                             ggplot2::aes(x, y, label = id),
+                             aes(x, y, label = id),
                              fontface = 'bold', size = 5,
                              segment.size = 0.0,
                              segment.color = "white"),
     # expand the axes to add space for curves
-    ggplot2::expand_limits(x = c(min(points$x) - .1,
+    expand_limits(x = c(min(points$x) - .1,
                                  max(points$x) + .1),
                            y = c(min(points$y) - .1,
                                  max(points$y) + .1)
     ),
-    ggplot2::theme_void(),
-    if (!legend) ggplot2::theme(legend.position = "none")
+    # Theme and legends
+    theme_void(),
+    guides(size = "none", alpha = "none"),
+    if (legend)  labs(colour = NULL),
+    if (!legend) theme(legend.position = "none")
   )
 
-  ggplot2::ggplot() + plot_
+  ggplot() + plot_
 
 }
 
