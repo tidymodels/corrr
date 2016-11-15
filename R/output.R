@@ -109,6 +109,8 @@ rplot.default <- function(rdf, ...) {
 #' @param min_cor Number from 0 to 1 indicating the minimum value of
 #'   correlations (in absolute terms) to plot.
 #' @param colours,colors Vector of colours to use for n-colour gradient.
+#' @param repel Should variable labels repel each other? If TRUE, text is added
+#'   via ggrepel::geom_text_repel instead of ggplot2::geom_text
 #' @inheritParams rplot
 #' @export
 #' @examples 
@@ -121,6 +123,7 @@ network_plot <- function(rdf,
                          min_cor = .3,
                          legend = FALSE,
                          colours = c("indianred2", "white", "skyblue1"),
+                         repel = TRUE,
                          colors) {
   UseMethod("network_plot")
 }

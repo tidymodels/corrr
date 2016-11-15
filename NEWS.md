@@ -9,6 +9,7 @@
 
 - Can use arithmetic operators (e.g., `+` or `-`) with correlation data frames.
 - Plotting functions (`rplot` and `network_plot`) will attempt to coerce objects to a correlation data frame (via `as_cordf`) if needed, making it possible to directly use these functions with other square-matrix-like objects.
+- `repel` option added to `network_plot` (default = `TRUE`).
 
 ## Other
 

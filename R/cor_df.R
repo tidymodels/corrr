@@ -188,6 +188,7 @@ network_plot.cor_df <- function(rdf,
                                 min_cor = .30,
                                 legend = FALSE,
                                 colours = c("indianred2", "white", "skyblue1"),
+                                repel = TRUE,
                                 colors) {
   
   if (min_cor < 0 || min_cor > 1) {
@@ -249,11 +250,14 @@ network_plot.cor_df <- function(rdf,
                         aes(x, y),
                         size = 3, shape = 19, colour = "white"),
     # Plot variable labels
-    ggrepel::geom_text_repel(data = points,
-                             aes(x, y, label = id),
-                             fontface = 'bold', size = 5,
-                             segment.size = 0.0,
-                             segment.color = "white"),
+    if (repel) ggrepel::geom_text_repel(data = points,
+                                        aes(x, y, label = id),
+                                        fontface = 'bold', size = 5,
+                                        segment.size = 0.0,
+                                        segment.color = "white"),
+    if (!repel) geom_text(data = points,
+                          aes(x, y, label = id),
+                          fontface = 'bold', size = 5),
     # expand the axes to add space for curves
     expand_limits(x = c(min(points$x) - .1,
                                  max(points$x) + .1),
