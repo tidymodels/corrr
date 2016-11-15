@@ -155,32 +155,51 @@ rplot.cor_df <- function(rdf,
   ),
   list("x", "y", "size", "label"))
   
-  # Convert data to relevant format and plot
-  p <- rdf %>%
+  # Convert data to relevant format for plotting
+  pd <- rdf %>%
     # Convert to wide
     stretch(na.rm = TRUE) %>%
     # Factor x and y to correct order
     # and add text column to fill diagonal
     # See dots above
-    dplyr::mutate_(.dots = dots) %>% 
-    # plot
-    ggplot(aes_string(x = "x", y = "y", color = "r",
-                                        size = "size", alpha = "size",
-                                        label = "label")) +
-    geom_point(shape = shape) +
-    scale_colour_gradientn(limits = c(-1, 1), colors = colours) +
-    labs(x = "", y ="") +
-    theme_classic()
+    mutate_(.dots = dots)
   
-  if (print_cor) {
-    p <- p + geom_text(color = "black", size = 3, show.legend = FALSE)
-  }
+  plot_ <- list(
+    # Geoms
+    geom_point(shape = shape),
+    if (print_cor) geom_text(color = "black", size = 3, show.legend = FALSE),
+    scale_colour_gradientn(limits = c(-1, 1), colors = colours),
+    # Theme, labels, and legends
+    theme_classic(),
+    labs(x = "", y =""),
+    guides(size = "none", alpha = "none"),
+    if (legend)  labs(colour = NULL),
+    if (!legend) theme(legend.position = "none")
+  )
   
-  if (!legend) {
-    p <- p + theme(legend.position = "none")
-  }
+  ggplot(pd, aes_string(x = "x", y = "y", color = "r",
+                        size = "size", alpha = "size",
+                        label = "label")) +
+    plot_
   
-  p
+  #   # plot
+  #   ggplot(aes_string(x = "x", y = "y", color = "r",
+  #                                       size = "size", alpha = "size",
+  #                                       label = "label")) +
+  #   geom_point(shape = shape) +
+  #   scale_colour_gradientn(limits = c(-1, 1), colors = colours) +
+  #   labs(x = "", y ="") +
+  #   theme_classic()
+  # 
+  # if (print_cor) {
+  #   p <- p + geom_text(color = "black", size = 3, show.legend = FALSE)
+  # }
+  # 
+  # if (!legend) {
+  #   p <- p + theme(legend.position = "none")
+  # }
+  # 
+  # p
 }
 
 #' @export

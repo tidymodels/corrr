@@ -12,6 +12,10 @@
 - `repel` option added to `network_plot` (default = `TRUE`).
 - `curved` option added to `network_plot` (default = `TRUE`).
 
+## Fixes
+
+- When `legend = TRUE`, `rplot` and `network_plot` generate a single, unlabelled legend referring to the size of the correlations.
+
 ## Other
 
 - During the development of this version, ggplot v2.2.0 was released. Many changes in the plotting functions have been made to handle new features in the updated version of ggplot2.
