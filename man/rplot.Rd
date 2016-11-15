@@ -8,7 +8,8 @@ rplot(rdf, legend = FALSE, shape = 16, colours = c("indianred2", "white",
   "skyblue1"), print_cor = FALSE, colors)
 }
 \arguments{
-\item{rdf}{Correlation data frame (cor_df) created with \code{\link{correlate}}.}
+\item{rdf}{Correlation data frame (see \code{\link{correlate}}) or object
+that can be coerced to one (see \code{\link{as_cordf}}).}
 
 \item{legend}{Boolean indicating whether a legend mapping the colours to the correlations should be displayed.}
 

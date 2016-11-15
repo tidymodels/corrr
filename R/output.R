@@ -65,7 +65,8 @@ fashion.default <- function(x, decimals = 2, leading_zeros = FALSE, na_print = "
 #' 
 #' Plot a correlation data frame using ggplot2.
 #' 
-#' @param rdf Correlation data frame (cor_df) created with \code{\link{correlate}}.
+#' @param rdf Correlation data frame (see \code{\link{correlate}}) or object
+#'   that can be coerced to one (see \code{\link{as_cordf}}).
 #' @param legend Boolean indicating whether a legend mapping the colours to the correlations should be displayed.
 #' @param shape \code{\link{geom_point}} aesthetic.
 #' @param print_cor Boolean indicating whether the correlations should be printed over the shapes.
@@ -89,6 +90,12 @@ rplot <- function(rdf,
                   print_cor = FALSE,
                   colors) {
   UseMethod("rplot")
+}
+
+#' @export
+rplot.default <- function(rdf, ...) {
+  rdf <- as_cordf(rdf)
+  rplot.cor_df(rdf, ...)  
 }
 
 #' Network plot of a correlation data frame
@@ -116,4 +123,11 @@ network_plot <- function(rdf,
                          colours = c("indianred2", "white", "skyblue1"),
                          colors) {
   UseMethod("network_plot")
+}
+
+
+#' @export
+network_plot.default <- function(rdf, ...) {
+  rdf <- as_cordf(rdf)
+  network_plot.cor_df(rdf, ...)  
 }

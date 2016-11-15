@@ -8,7 +8,8 @@ network_plot(rdf, min_cor = 0.3, legend = FALSE, colours = c("indianred2",
   "white", "skyblue1"), colors)
 }
 \arguments{
-\item{rdf}{Correlation data frame (cor_df) created with \code{\link{correlate}}.}
+\item{rdf}{Correlation data frame (see \code{\link{correlate}}) or object
+that can be coerced to one (see \code{\link{as_cordf}}).}
 
 \item{min_cor}{Number from 0 to 1 indicating the minimum value of
 correlations (in absolute terms) to plot.}
