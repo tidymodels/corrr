@@ -10,6 +10,10 @@
 - Can use arithmetic operators (e.g., `+` or `-`) with correlation data frames.
 - Plotting functions (`rplot` and `network_plot`) will attempt to coerce objects to a correlation data frame (via `as_cordf`) if needed, making it possible to directly use these functions with other square-matrix-like objects.
 
+## Other
+
+- During the development of this version, ggplot v2.2.0 was released. Many changes in the plotting functions have been made to handle new features in the updated version of ggplot2.
+
 # corrr 0.2.1
 
 ## New Functionality
