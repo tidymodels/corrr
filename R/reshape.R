@@ -29,8 +29,41 @@ focus <- function(x, ..., mirror = FALSE) {
 
 #' @export
 #' @rdname focus
-focus_ <- function(x, ..., .dots, mirror) {
+focus_ <- function(x, .predicate, ..., .dots, mirror) {
   UseMethod("focus_")
+}
+
+#' Conditionally focus correlation data frame
+#' 
+#' Apply a predicate function to each colum of correlations. Columns that
+#' evaluate to TRUE will be included in a call to \code{\link{focus}}.
+#' 
+#' @param x Correlation data frame or object to be coerced to one via
+#'   \code{\link{as_cordf}}.
+#' @param .predicate A predicate function to be applied to the columns. The
+#'   columns for which .predicate returns TRUE will be included as variables in
+#'   \code{\link{focus}}.
+#' @param ... Additional arguments to pass to the predicate function if not anonymous. 
+#' @return A tibble or, if mirror = TRUE, a correlation data frame.
+#' @export
+#' @examples
+#' any_greater_than <- function(x, val) {
+#'   mean(abs(x), na.rm = TRUE) > val
+#' }
+#' 
+#' x <- correlate(mtcars)
+#' 
+#' x %>% focus_if(any_greater_than, .6)
+#' x %>% focus_if(any_greater_than, .6. mirror = TRUE) %>% network_plot()
+focus_if <- function(x, .predicate, ..., mirror = FALSE) {
+  UseMethod("focus_if")
+}
+
+#' @export
+focus_if.default <- function(x, .predicate, ..., mirror = FALSE) {
+  # Coerce to cor_df
+  x <- as_cordf(x)
+  focus_if.cor_df(x, .f = .f, mirror = mirror)
 }
 
 #' Stretch correlation data frame into long format.

@@ -7,7 +7,7 @@
 \usage{
 focus(x, ..., mirror = FALSE)
 
-focus_(x, ..., .dots, mirror)
+focus_(x, .predicate, ..., .dots, mirror)
 }
 \arguments{
 \item{x}{cor_df. See \code{\link{correlate}}.}

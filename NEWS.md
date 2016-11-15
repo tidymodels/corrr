@@ -2,7 +2,9 @@
 
 ## New Functionality
 
-- Can use arithmetic operators (e.g., + or -) on one or more correlation data frames whilst keeping cor_df class.
+- `as_cordf` added to coerce lists or matrices into correlation data frames.
+- Can use arithmetic operators (e.g., `+` or `-`) with correlation data frames.
+- `focus_if` added to enable conditional variable selection.
 
 # corrr 0.2.1
 

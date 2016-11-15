@@ -97,6 +97,24 @@ focus_.cor_df <- function(x, ..., .dots = NULL, mirror = FALSE) {
 }
 
 #' @export
+focus_if.cor_df <- function(x, .predicate, ..., mirror = FALSE) {
+  
+  # Identify which variables to keep
+  to_keep <- x %>% 
+    dplyr::select(-rowname) %>% 
+    purrr::map_lgl(~ .predicate(., ...))
+
+  to_keep <- names(to_keep)[!is.na(to_keep) & to_keep]
+  
+  if (!length(to_keep)) {
+    stop("No variables were TRUE given the function.")
+  }
+
+  # Create the network plot
+  focus_(x, .dots = to_keep, mirror = mirror)
+}
+
+#' @export
 stretch.cor_df <- function(x, na.rm = FALSE) {
   
   vars <- names(x)[names(x) != "rowname"]
