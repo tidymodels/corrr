@@ -2,8 +2,8 @@
 
 ## New Functions
 
-- `as_cordf` added to coerce lists or matrices into correlation data frames.
-- `focus_if` added to enable conditional variable selection.
+- `as_cordf` will coerce lists or matrices into correlation data frames if possible.
+- `focus_if` enables conditional variable selection.
 
 ## New Functionality
 
