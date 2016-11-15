@@ -1,10 +1,13 @@
 # corrr 0.2.1.9000
 
-## New Functionality
+## New Functions
 
 - `as_cordf` added to coerce lists or matrices into correlation data frames.
-- Can use arithmetic operators (e.g., `+` or `-`) with correlation data frames.
 - `focus_if` added to enable conditional variable selection.
+
+## New Functionality
+
+- Can use arithmetic operators (e.g., `+` or `-`) with correlation data frames.
 
 # corrr 0.2.1
 
