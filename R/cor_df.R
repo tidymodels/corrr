@@ -234,41 +234,39 @@ network_plot.cor_df <- function(rdf,
     }
   }
   
-  # Produce the plot.
-  p <- ggplot2::ggplot() +
-    # Plot the paths
+  plot_ <- list(
+    # For plotting paths
     ggplot2::geom_curve(data = paths,
-                        ggplot2::aes(x = x, y = y, xend = xend, yend = yend,
-                                     alpha = proximity,
-                                     size = proximity,
-                                     colour = proximity*sign),
-                        show.legend = FALSE) +
-    ggplot2::scale_alpha(limits = c(0, 1)) +
-    ggplot2::scale_size(limits = c(0, 1)) +
-    ggplot2::scale_colour_gradientn(limits = c(-1, 1), colors = colours) +
+                      ggplot2::aes(x = x, y = y, xend = xend, yend = yend,
+                                   alpha = proximity,
+                                   size = proximity,
+                                   colour = proximity*sign),
+                      show.legend = FALSE), 
+    ggplot2::scale_alpha(limits = c(0, 1)),
+    ggplot2::scale_size(limits = c(0, 1)),
+    ggplot2::scale_colour_gradientn(limits = c(-1, 1), colors = colours),
     # Plot the points
     ggplot2::geom_point(data = points,
                         ggplot2::aes(x, y),
-                        size = 3, shape = 19, colour = "white") +
+                        size = 3, shape = 19, colour = "white"),
     # Plot variable labels
     ggrepel::geom_text_repel(data = points,
                              ggplot2::aes(x, y, label = id),
                              fontface = 'bold', size = 5,
                              segment.size = 0.0,
-                             segment.color = "white") +
+                             segment.color = "white"),
     # expand the axes to add space for curves
     ggplot2::expand_limits(x = c(min(points$x) - .1,
                                  max(points$x) + .1),
                            y = c(min(points$y) - .1,
                                  max(points$y) + .1)
-    ) +
-    ggplot2::theme_void()
-  
-  if (!legend) {
-    p <- p + ggplot2::theme(legend.position = "none")
-  }
-  
-  p
+    ),
+    ggplot2::theme_void(),
+    if (!legend) ggplot2::theme(legend.position = "none")
+  )
+
+  ggplot2::ggplot() + plot_
+
 }
 
 
