@@ -305,7 +305,7 @@ network_plot.cor_df <- function(rdf,
 Ops.cor_df <- function(e1, e2) {
   e1 <- as_matrix(e1)
   
-  if(is(e2, "cor_df"))
+  if(methods::is(e2, "cor_df"))
     e2 <- as_matrix(e2)
 
  x <- callGeneric(e1, e2)
