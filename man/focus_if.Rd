@@ -15,6 +15,9 @@ columns for which .predicate returns TRUE will be included as variables in
 \code{\link{focus}}.}
 
 \item{...}{Additional arguments to pass to the predicate function if not anonymous.}
+
+\item{mirror}{Boolean. Whether to mirror the selected columns in the rows or
+not.}
 }
 \value{
 A tibble or, if mirror = TRUE, a correlation data frame.

@@ -29,7 +29,7 @@ focus <- function(x, ..., mirror = FALSE) {
 
 #' @export
 #' @rdname focus
-focus_ <- function(x, .predicate, ..., .dots, mirror) {
+focus_ <- function(x, ..., .dots, mirror) {
   UseMethod("focus_")
 }
 
@@ -44,6 +44,7 @@ focus_ <- function(x, .predicate, ..., .dots, mirror) {
 #'   columns for which .predicate returns TRUE will be included as variables in
 #'   \code{\link{focus}}.
 #' @param ... Additional arguments to pass to the predicate function if not anonymous. 
+#' @inheritParams focus
 #' @return A tibble or, if mirror = TRUE, a correlation data frame.
 #' @export
 #' @examples
