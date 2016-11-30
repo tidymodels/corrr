@@ -28,5 +28,5 @@ Imports: magrittr (>= 1.5),
     lazyeval (>= 0.2.0),
     purrr (>= 0.2.2),
     tibble (>= 1.1),
-    ggrepel (>= 0.6.3)
+    ggrepel (>= 0.6.5)
 VignetteBuilder: knitr
