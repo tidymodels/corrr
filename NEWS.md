@@ -11,6 +11,7 @@
 - Plotting functions (`rplot` and `network_plot`) will attempt to coerce objects to a correlation data frame (via `as_cordf`) if needed, making it possible to directly use these functions with other square-matrix-like objects.
 - `repel` option added to `network_plot` (default = `TRUE`).
 - `curved` option added to `network_plot` (default = `TRUE`).
+- `correlate()` now prints a message about the `method` and `use` parameters. Can be silenced with `quiet = TRUE`.
 
 ## Fixes
 
