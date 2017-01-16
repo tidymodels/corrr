@@ -16,6 +16,8 @@
 #' 
 #' @inheritParams stats::cor
 #' @inheritParams as_cordf
+#' @param quiet Set as TRUE to suppress message about `method` and `use`
+#'   parameters.
 #' @return A correlation data frame (cor_df)
 #' @export
 #' @examples
@@ -28,8 +30,13 @@
 correlate <- function(x, y = NULL,
                        use = "pairwise.complete.obs",
                        method = "pearson",
-                      diagonal = NA) {
+                      diagonal = NA,
+                      quiet = FALSE) {
   x <- stats::cor(x = x, y = y, use = use, method = method)
 
+  if (!quiet)
+    message("\nCorrelation method: '", method, "'",
+            "\nMissing treated using: '", use, "'\n")
+  
   as_cordf(x, diagonal = diagonal)
 }

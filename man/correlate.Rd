@@ -5,7 +5,7 @@
 \title{Correlation Data Frame}
 \usage{
 correlate(x, y = NULL, use = "pairwise.complete.obs", method = "pearson",
-  diagonal = NA)
+  diagonal = NA, quiet = FALSE)
 }
 \arguments{
 \item{x}{a numeric vector, matrix or data frame.}
@@ -26,6 +26,9 @@ correlate(x, y = NULL, use = "pairwise.complete.obs", method = "pearson",
     can be abbreviated.}
 
 \item{diagonal}{Value (typically numeric or NA) to set the diagonal to.}
+
+\item{quiet}{Set as TRUE to suppress message about `method` and `use`
+parameters.}
 }
 \value{
 A correlation data frame (cor_df)
