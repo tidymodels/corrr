@@ -30,29 +30,6 @@ correlate <- function(x, y = NULL,
                        method = "pearson",
                       diagonal = NA) {
   x <- stats::cor(x = x, y = y, use = use, method = method)
-  #diag(x) <- NA
-  #x <- dplyr::as_data_frame(x)
-  #x <- first_col(x, names(x))
-  #class(x) <- c("cor_df", class(x))
-  #x
+
   as_cordf(x, diagonal = diagonal)
 }
-
-# #' Coerce lists and matrices to correlation data frames
-# #' 
-# #' A wrapper function to coerce objects in a valid format (such as correlation
-# #' matrices created using the base function, \link{\code{cor}}) into a
-# #' correlation data frame.
-# #' 
-# #' @param x A list, data frame or matrix that can be coerced into a correlation
-# #'   data frame.
-# #' @param diagonal Value to set the diagonal to.
-# #' @return A correlation data frame (cor_df)
-# #' @export
-# as_cordf <- function(x, diagonal = NA) {
-#   x <- dplyr::as_data_frame(x)
-#   diag(x) <- NA
-#   x <- first_col(x, names(x))
-#   class(x) <- c("cor_df", class(x))
-#   x
-# }
