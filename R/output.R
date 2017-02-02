@@ -84,7 +84,7 @@ fashion.default <- function(x, decimals = 2, leading_zeros = FALSE, na_print = "
 #' rplot(x, print_cor = TRUE)
 #' rplot(x, shape = 20, colors = c("red", "green"), legend = TRUE)
 rplot <- function(rdf,
-                  legend = FALSE,
+                  legend = TRUE,
                   shape = 16,
                   colours = c("indianred2", "white", "skyblue1"),
                   print_cor = FALSE,
@@ -124,7 +124,7 @@ rplot.default <- function(rdf, ...) {
 #' network_plot(x, min_cor = .7, colors = c("red", "green"), legend = TRUE)
 network_plot <- function(rdf,
                          min_cor = .3,
-                         legend = FALSE,
+                         legend = TRUE,
                          colours = c("indianred2", "white", "skyblue1"),
                          repel = TRUE,
                          curved = TRUE,

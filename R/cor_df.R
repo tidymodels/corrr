@@ -131,7 +131,7 @@ stretch.cor_df <- function(x, na.rm = FALSE) {
 
 #' @export
 rplot.cor_df <- function(rdf,
-                         legend = FALSE,
+                         legend = TRUE,
                          shape = 16,
                          colours = c("indianred2", "white", "skyblue1"),
                          print_cor = FALSE,
@@ -205,7 +205,7 @@ rplot.cor_df <- function(rdf,
 #' @export
 network_plot.cor_df <- function(rdf,
                                 min_cor = .30,
-                                legend = FALSE,
+                                legend = TRUE,
                                 colours = c("indianred2", "white", "skyblue1"),
                                 repel = TRUE,
                                 curved = TRUE,

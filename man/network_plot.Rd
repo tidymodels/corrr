@@ -4,7 +4,7 @@
 \alias{network_plot}
 \title{Network plot of a correlation data frame}
 \usage{
-network_plot(rdf, min_cor = 0.3, legend = FALSE, colours = c("indianred2",
+network_plot(rdf, min_cor = 0.3, legend = TRUE, colours = c("indianred2",
   "white", "skyblue1"), repel = TRUE, curved = TRUE, colors)
 }
 \arguments{
