@@ -130,5 +130,5 @@ rplot(x)
 
 datasets::airquality %>% 
   correlate() %>% 
-  network_plot(min_cor = .2, legend = TRUE)
+  network_plot(min_cor = .2)
 ```
