@@ -15,7 +15,7 @@
 
 ## Fixes
 
-- When `legend = TRUE`, `rplot` and `network_plot` generate a single, unlabelled legend referring to the size of the correlations.
+- When `legend = TRUE` (now the default setting), `rplot` and `network_plot` generate a single, unlabelled legend referring to the size of the correlations.
 
 ## Other
 
