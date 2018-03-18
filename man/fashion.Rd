@@ -34,4 +34,3 @@ mtcars \%>\% correlate() \%>\% fashion(na_print = "*")
 mtcars \%>\% fashion(decimals = 3)
 c(0.234, 134.23, -.23, NA) \%>\% fashion(na_print = "X")
 }
-

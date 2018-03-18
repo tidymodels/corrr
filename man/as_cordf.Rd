@@ -25,4 +25,3 @@ x <- cor(mtcars)
 as_cordf(x)
 as_cordf(x, diagonal = 1)
 }
-

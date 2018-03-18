@@ -39,4 +39,3 @@ network_plot(x, min_cor = .1)
 network_plot(x, min_cor = .6)
 network_plot(x, min_cor = .7, colors = c("red", "green"), legend = TRUE)
 }
-

@@ -24,4 +24,3 @@ x <- correlate(mtcars)
 shave(x)  # Default; shave upper triangle
 shave(x, upper = FALSE)  # shave lower triangle
 }
-

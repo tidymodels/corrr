@@ -36,4 +36,3 @@ rplot(x)
 rplot(x, print_cor = TRUE)
 rplot(x, shape = 20, colors = c("red", "green"), legend = TRUE)
 }
-
