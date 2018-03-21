@@ -17,10 +17,11 @@ Depends: R (>= 3.3.0),
     dplyr (>= 0.5.0)
 LazyData: yes
 License: MIT + file LICENSE
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
 Suggests: testthat (>= 1.0.2),
     knitr (>= 1.13),
-    rmarkdown (>= 0.9.6)
+    rmarkdown (>= 0.9.6),
+    dbplyr (>= 1.2.1)
 Imports: magrittr (>= 1.5),
     tidyr (>= 0.5.1),
     ggplot2 (>= 2.2.0),
@@ -28,5 +29,6 @@ Imports: magrittr (>= 1.5),
     lazyeval (>= 0.2.0),
     purrr (>= 0.2.2),
     tibble (>= 1.1),
-    ggrepel (>= 0.6.5)
+    ggrepel (>= 0.6.5),
+    rlang (>= 0.2.0)
 VignetteBuilder: knitr
