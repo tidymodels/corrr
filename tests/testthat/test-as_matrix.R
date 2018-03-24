@@ -1,4 +1,4 @@
-context("test-as_matrix.R")
+context("as_matrix.R")
 
 x <- correlate(mtcars)
 y <- as_matrix(x)
