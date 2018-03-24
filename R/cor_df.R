@@ -102,7 +102,7 @@ focus_if.cor_df <- function(x, .predicate, ..., mirror = FALSE) {
   # Identify which variables to keep
   to_keep <- x %>% 
     dplyr::select(-rowname) %>% 
-    purrr::map_lgl(~ .predicate(., ...))
+    purrr::map_lgl(.predicate, ...)
 
   to_keep <- names(to_keep)[!is.na(to_keep) & to_keep]
   
