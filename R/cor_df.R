@@ -308,14 +308,6 @@ Ops.cor_df <- function(e1, e2) {
   if(methods::is(e2, "cor_df"))
     e2 <- as_matrix(e2)
 
-<<<<<<< HEAD
-<<<<<<< HEAD
  x <- methods::callGeneric(e1, e2)
-=======
- x <- callGeneric(e1, e2)
->>>>>>> 4d8818e... Fix focus_if error from devtools::check
-=======
- x <- callGeneric(e1, e2)
->>>>>>> 4d8818e... Fix focus_if error from devtools::check
  as_cordf(x)
 }
