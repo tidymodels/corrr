@@ -309,7 +309,11 @@ Ops.cor_df <- function(e1, e2) {
     e2 <- as_matrix(e2)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
  x <- methods::callGeneric(e1, e2)
+=======
+ x <- callGeneric(e1, e2)
+>>>>>>> 4d8818e... Fix focus_if error from devtools::check
 =======
  x <- callGeneric(e1, e2)
 >>>>>>> 4d8818e... Fix focus_if error from devtools::check
