@@ -23,4 +23,3 @@ Compute the number of complete cases in a pairwise fashion for \code{x} (and
 \examples{
 pair_n(mtcars)
 }
-

@@ -17,7 +17,7 @@ Depends: R (>= 3.3.0),
     dplyr (>= 0.5.0)
 LazyData: yes
 License: MIT + file LICENSE
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
 Suggests: testthat (>= 1.0.2),
     knitr (>= 1.13),
     rmarkdown (>= 0.9.6)

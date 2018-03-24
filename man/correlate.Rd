@@ -57,4 +57,3 @@ correlate(iris)
 correlate(mtcars)
 correlate(iris[-5])
 }
-

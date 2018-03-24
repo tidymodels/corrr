@@ -20,4 +20,3 @@ rowname column to create a cor_df.
 \examples{
 first_col(mtcars, 1:nrow(mtcars))
 }
-

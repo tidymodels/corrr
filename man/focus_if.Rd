@@ -36,4 +36,3 @@ x <- correlate(mtcars)
 x \%>\% focus_if(any_greater_than, .6)
 x \%>\% focus_if(any_greater_than, .6. mirror = TRUE) \%>\% network_plot()
 }
-
