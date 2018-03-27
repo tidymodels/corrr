@@ -30,5 +30,5 @@ Imports:
     purrr (>= 0.2.2),
     tibble (>= 1.1),
     ggrepel (>= 0.6.5),
-    methods
+    methods (>= 3.4.3)
 VignetteBuilder: knitr
