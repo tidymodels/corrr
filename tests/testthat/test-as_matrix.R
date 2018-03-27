@@ -1,6 +1,6 @@
 context("as_matrix.R")
 
-x <- correlate(mtcars)
+x <- correlate(mtcars, diagonal = 1)
 y <- as_matrix(x)
 
 test_that("Inherits correct classes", {
@@ -21,4 +21,8 @@ test_that("Yields correct columns and rows", {
 test_that("Diagonal sets correctly", {
   expect_true(all(diag(y) == 1))
   expect_true(all(diag(as_matrix(x, diagonal = 100)) == 100))
+})
+
+test_that("as_matrix preservers diag from correlate", {
+  expect_equal(diag(as.matrix(x[-1])), unname(diag(y)))
 })

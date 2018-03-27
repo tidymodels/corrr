@@ -1,4 +1,8 @@
-# corrr 0.2.1.9000
+# corrr 0.3.0.9999
+
+## Small breaking changes
+
+The `diagonal` argument of `as_matrix` and `as_matrix.cor_df` is now an optional argument rather than set to `1` by default [#52](https://github.com/drsimonj/corrr/issues/52)
 
 ## New Functions
 

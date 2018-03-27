@@ -1,13 +1,13 @@
 # Utility --------------------------------------------------------------
 
 #' @export
-as_matrix.cor_df <- function(x, diagonal = 1) {
+as_matrix.cor_df <- function(x, diagonal) {
   
   # Separate rownames
   row_names <- x$rowname
   x %<>% dplyr::select_("-rowname")
   # Return diagonal to 1
-  diag(x) <- diagonal
+  if (!missing(diagonal)) diag(x) <- diagonal
   
   # Convert to matrix and set rownames
   class(x) <- "data.frame"
@@ -43,7 +43,7 @@ shave.cor_df <- function(x, upper = TRUE) {
 rearrange.cor_df <- function(x, method = "PCA", absolute = TRUE) {
   
   # Convert to original matrix
-  m <- x %>% as_matrix()
+  m <- x %>% as_matrix(diagonal = 1)
   
   if (absolute) {
     m %<>% abs()
@@ -218,7 +218,7 @@ network_plot.cor_df <- function(rdf,
   if (!missing(colors))
     colours <- colors
   
-  rdf %<>% as_matrix()
+  rdf %<>% as_matrix(diagonal = 1)
   distance <- sign(rdf) * (1 - abs(rdf))
   
   # Use multidimensional Scaling to obtain x and y coordinates for points.
