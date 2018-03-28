@@ -55,7 +55,7 @@ focus_ <- function(x, ..., .dots, mirror) {
 #' x <- correlate(mtcars)
 #' 
 #' x %>% focus_if(any_greater_than, .6)
-#' x %>% focus_if(any_greater_than, .6. mirror = TRUE) %>% network_plot()
+#' x %>% focus_if(any_greater_than, .6, mirror = TRUE) %>% network_plot()
 focus_if <- function(x, .predicate, ..., mirror = FALSE) {
   UseMethod("focus_if")
 }
@@ -64,7 +64,7 @@ focus_if <- function(x, .predicate, ..., mirror = FALSE) {
 focus_if.default <- function(x, .predicate, ..., mirror = FALSE) {
   # Coerce to cor_df
   x <- as_cordf(x)
-  focus_if.cor_df(x, .f = .f, mirror = mirror)
+  focus_if.cor_df(x, .predicate, ..., mirror = mirror)
 }
 
 #' Stretch correlation data frame into long format.
