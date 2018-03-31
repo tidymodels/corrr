@@ -12,9 +12,20 @@ focus_(x, ..., .dots, mirror)
 \arguments{
 \item{x}{cor_df. See \code{\link{correlate}}.}
 
-\item{...}{Comma separated list of unquoted expressions. You can treat
-variable names like they are positions. Use positive values to select
-variables; use negative values to drop variables.}
+\item{...}{One or more unquoted expressions separated by commas.
+You can treat variable names like they are positions.
+
+Positive values select variables; negative values to drop variables.
+If the first expression is negative, \code{select()} will automatically
+start with all variables.
+
+Use named arguments to rename selected variables.
+
+These arguments are automatically \link[rlang:quo]{quoted} and
+\link[rlang:eval_tidy]{evaluated} in a context where column names
+represent column positions. They support
+\link[rlang:quasiquotation]{unquoting} and splicing. See
+\code{vignette("programming")} for an introduction to these concepts.}
 
 \item{mirror}{Boolean. Whether to mirror the selected columns in the rows or
 not.}
@@ -42,4 +53,3 @@ x <- correlate(iris[-5])
 focus(x, -matches("Sepal"))  # Focus on correlations of non-Sepal 
                              # variables with Sepal variables.
 }
-

@@ -30,4 +30,3 @@ x <- shave(x)  # use shave to set upper triangle to NA and then...
 stretch(x, na.rm = FALSE)  # omit all NAs, therefore keeping each
                              # correlation only once.
 }
-

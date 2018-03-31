@@ -21,4 +21,3 @@ Convert a correlation data frame to original matrix format.
 x <- correlate(mtcars)
 as_matrix(x)
 }
-
