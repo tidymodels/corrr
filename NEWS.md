@@ -5,6 +5,7 @@
 - `as_cordf` will coerce lists or matrices into correlation data frames if possible.
 - `focus_if` enables conditional variable selection.
 
+
 ## New Functionality
 
 - Can use arithmetic operators (e.g., `+` or `-`) with correlation data frames.
@@ -12,12 +13,15 @@
 - `repel` option added to `network_plot` (default = `TRUE`).
 - `curved` option added to `network_plot` (default = `TRUE`).
 - `correlate()` now prints a message about the `method` and `use` parameters. Can be silenced with `quiet = TRUE`.
+- `correlate()` now supports data frame with a SQL back-end (`tbl_sql`)
 
 ## Fixes
 
 - When `legend = TRUE` (now the default setting), `rplot` and `network_plot` generate a single, unlabelled legend referring to the size of the correlations.
 
 ## Other
+
+- `correlate()` is now an S3 method so that it can adapt to `x`'s object type.
 
 - During the development of this version, ggplot v2.2.0 was released. Many changes in the plotting functions have been made to handle new features in the updated version of ggplot2.
 

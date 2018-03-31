@@ -50,9 +50,18 @@ correlate.default <- function(x, y = NULL,
   as_cordf(x, diagonal = diagonal)
 }
 #' @export
-correlate.tbl_sql <- function(x) {
-  df <- x
+correlate.tbl_sql <- function(x, y = NULL,
+                              use = "pairwise.complete.obs",
+                              method = "pearson",
+                              diagonal = NA,
+                              quiet = FALSE) {
   
+  if(method != "pearson")   stop("Only person method is currently supported")
+  if(use != "complete.obs") stop("Only 'complete.obs' method are supported")
+  if(!is.null(y))           stop("y is not supported for tables with a SQL back-end")
+  if(!is.na(diagonal))      stop("Only NA's are supported for same field correlations")
+  
+  df <- x
   col_names <- colnames(df)
   col_no <- length(col_names)
   
@@ -90,8 +99,8 @@ correlate.tbl_sql <- function(x) {
       ~ tidyeval_cor(
         !! sym(combos$x[.x]),
         !! sym(combos$y[.x]),
-        pull(select(df_mean, combos$x[1])),
-        pull(select(df_mean, combos$y[1])) 
+        pull(select(df_mean, combos$x[.x])),
+        pull(select(df_mean, combos$y[.x])) 
       )
     )
   
@@ -101,13 +110,17 @@ correlate.tbl_sql <- function(x) {
     summarise(!!! cor_f) %>%
     collect() %>%
     as.tibble() %>%
-    gather(cn, cor) %>%
+    tidyr::gather(cn, cor) %>%
     right_join(full_combos, by = "cn") %>%
     select(-cn) %>%
-    spread(y, cor) %>%
+    tidyr::spread(y, cor) %>%
     rename(rowname = x)
   
   class(df_cor) <- c("cor_df", class(df_cor))
+  
+  if (!quiet)
+    message("\nCorrelation method: '", method, "'",
+            "\nMissing treated using: '", use, "'\n")
   
   df_cor
 }
@@ -116,7 +129,6 @@ correlate.tbl_sql <- function(x) {
 tidyeval_cor <- function(x, y, x_mean, y_mean) {
   x <- enexpr(x)
   y <- enexpr(y)
-  
   expr(
     sum((!! x - !! x_mean) * (!! y - !! y_mean), na.rm = TRUE) /
       sqrt(

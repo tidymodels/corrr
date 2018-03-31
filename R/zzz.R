@@ -5,8 +5,6 @@
 #' @importFrom purrr map
 #' @importFrom tibble tibble
 #' @importFrom tibble as.tibble
-#' @importFrom tidyr spread
-#' @importFrom tidyr gather
 #' @import rlang
 #' @import dplyr
 #' @import ggplot2
