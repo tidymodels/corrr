@@ -1,4 +1,4 @@
-# corrr 0.3.0.9999
+# corrr 0.2.1.9000
 
 ## Small breaking changes
 
@@ -16,12 +16,15 @@ The `diagonal` argument of `as_matrix` and `as_matrix.cor_df` is now an optional
 - `repel` option added to `network_plot` (default = `TRUE`).
 - `curved` option added to `network_plot` (default = `TRUE`).
 - `correlate()` now prints a message about the `method` and `use` parameters. Can be silenced with `quiet = TRUE`.
+- `correlate()` now supports data frame with a SQL back-end (`tbl_sql`)
 
 ## Fixes
 
 - When `legend = TRUE` (now the default setting), `rplot` and `network_plot` generate a single, unlabelled legend referring to the size of the correlations.
 
 ## Other
+
+- `correlate()` is now an S3 method so that it can adapt to `x`'s object type.
 
 - During the development of this version, ggplot v2.2.0 was released. Many changes in the plotting functions have been made to handle new features in the updated version of ggplot2.
 
@@ -60,4 +63,5 @@ The `diagonal` argument of `as_matrix` and `as_matrix.cor_df` is now an optional
 
 # corrr 0.1.0
 
+>>>>>>> b594f6382f9c21be8ae3b1c3720e76ad2453aefb
 - First corrr release!
