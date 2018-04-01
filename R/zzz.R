@@ -5,7 +5,7 @@
 #' @importFrom purrr map
 #' @importFrom tibble tibble
 #' @importFrom tibble as.tibble
-#' @import rlang
 #' @import dplyr
 #' @import ggplot2
 NULL
+utils::globalVariables(c(".", "cn", "cor"))

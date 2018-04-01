@@ -125,11 +125,11 @@ correlate.tbl_sql <- function(x, y = NULL,
   df_cor
 }
 
-
+#' @import rlang
 tidyeval_cor <- function(x, y, x_mean, y_mean) {
-  x <- enexpr(x)
-  y <- enexpr(y)
-  expr(
+  x <- rlang::enexpr(x)
+  y <- rlang::enexpr(y)
+  rlang::expr(
     sum((!! x - !! x_mean) * (!! y - !! y_mean), na.rm = TRUE) /
       sqrt(
         sum((!! x - !! x_mean) * (!! x - !! x_mean), na.rm = TRUE) *
