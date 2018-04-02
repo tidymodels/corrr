@@ -25,8 +25,23 @@
 #' correlate(iris)
 #' }
 #' 
-#' correlate(mtcars)
 #' correlate(iris[-5])
+#' 
+#' correlate(mtcars)
+#' 
+#' \dontrun{
+#' 
+#' # Also supports DB backend and collects results into memory
+#' 
+#' library(sparklyr)
+#' sc <- spark_connect(master = "local")
+#' mtcars_tbl <- copy_to(sc, mtcars)
+#' mtcars_cors <- mtcars_tbl %>% 
+#'   correlate(use = "complete.obs")
+#' mtcars_cors
+#' spark_disconnect(sc)
+#' 
+#' }
 #' 
 correlate <- function(x, y = NULL,
                       use = "pairwise.complete.obs",
@@ -114,7 +129,10 @@ correlate.tbl_sql <- function(x, y = NULL,
     right_join(full_combos, by = "cn") %>%
     select(-cn) %>%
     tidyr::spread(y, cor) %>%
-    rename(rowname = x)
+    rename(rowname = x) %>% 
+    # Put cols and rows into original order
+    select(rowname, !!col_names) %>% 
+    {.[match(col_names, .$rowname),]}
   
   class(df_cor) <- c("cor_df", class(df_cor))
   

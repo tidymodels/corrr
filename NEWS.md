@@ -63,5 +63,4 @@ The `diagonal` argument of `as_matrix` and `as_matrix.cor_df` is now an optional
 
 # corrr 0.1.0
 
->>>>>>> b594f6382f9c21be8ae3b1c3720e76ad2453aefb
 - First corrr release!
