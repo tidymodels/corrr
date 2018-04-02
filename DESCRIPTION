@@ -9,7 +9,8 @@ Description: A tool for exploring correlations.
     or rearranging and visualising the matrix in terms of the
     strength of the correlations.
 Authors@R: c(
-  person("Simon", "Jackson", email = "drsimonjackson@gmail.com", role = c("aut", "cre"))
+  person("Simon", "Jackson", email = "drsimonjackson@gmail.com", role = c("aut", "cre")),
+  person("Jorge", "Cimentada", email = "cimentadaj@gmail.com", role = c("ctb"))
   )
 URL: https://github.com/drsimonj/corrr
 BugReports: https://github.com/drsimonj/corrr/issues

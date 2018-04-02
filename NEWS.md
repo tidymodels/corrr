@@ -1,10 +1,13 @@
 # corrr 0.2.1.9000
 
+## Small breaking changes
+
+The `diagonal` argument of `as_matrix` and `as_matrix.cor_df` is now an optional argument rather than set to `1` by default [#52](https://github.com/drsimonj/corrr/issues/52)
+
 ## New Functions
 
 - `as_cordf` will coerce lists or matrices into correlation data frames if possible.
 - `focus_if` enables conditional variable selection.
-
 
 ## New Functionality
 
@@ -60,4 +63,5 @@
 
 # corrr 0.1.0
 
+>>>>>>> b594f6382f9c21be8ae3b1c3720e76ad2453aefb
 - First corrr release!
