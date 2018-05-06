@@ -9,7 +9,9 @@ Description: A tool for exploring correlations.
     or rearranging and visualising the matrix in terms of the
     strength of the correlations.
 Authors@R: c(
-  person("Simon", "Jackson", email = "drsimonjackson@gmail.com", role = c("aut", "cre"))
+  person("Simon", "Jackson", email = "drsimonjackson@gmail.com", role = c("aut", "cre")),
+  person("Jorge", "Cimentada", email = "cimentadaj@gmail.com", role = c("ctb"))
+  person("Edgar", "Ruiz", email = "edgararuiz@gmail.com", role = c("ctb"))
   )
 URL: https://github.com/drsimonj/corrr
 BugReports: https://github.com/drsimonj/corrr/issues
@@ -23,7 +25,9 @@ Suggests:
     testthat (>= 1.0.2),
     knitr (>= 1.13),
     rmarkdown (>= 0.9.6),
-    dbplyr (>= 1.2.1)
+    dbplyr (>= 1.2.1),
+    DBI(>=0.7),
+    RSQLite
 Imports: 
     magrittr (>= 1.5),
     tidyr (>= 0.5.1),
@@ -34,6 +38,5 @@ Imports:
     tibble (>= 1.1),
     ggrepel (>= 0.6.5),
     methods (>= 3.4.3), 
-    rlang(>= 0.2.0),
-    RSQLite
+    rlang(>= 0.2.0)
 VignetteBuilder: knitr
