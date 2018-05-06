@@ -84,6 +84,6 @@ pair_n <- function(x, y = NULL) {
 #' @examples
 #' x <- correlate(mtcars)
 #' as_matrix(x)
-as_matrix <- function(x, diagonal = 1) {
+as_matrix <- function(x, diagonal) {
   UseMethod("as_matrix")
 }

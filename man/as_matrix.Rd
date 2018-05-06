@@ -4,7 +4,7 @@
 \alias{as_matrix}
 \title{Convert a correlation data frame to matrix format}
 \usage{
-as_matrix(x, diagonal = 1)
+as_matrix(x, diagonal)
 }
 \arguments{
 \item{x}{A correlation data frame. See \code{\link{correlate}} or \code{\link{as_cordf}}.}

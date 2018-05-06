@@ -54,7 +54,22 @@ use of pairwise deletion by default.
 correlate(iris)
 }
 
-correlate(mtcars)
 correlate(iris[-5])
+
+correlate(mtcars)
+
+\dontrun{
+
+# Also supports DB backend and collects results into memory
+
+library(sparklyr)
+sc <- spark_connect(master = "local")
+mtcars_tbl <- copy_to(sc, mtcars)
+mtcars_cors <- mtcars_tbl \%>\% 
+  correlate(use = "complete.obs")
+mtcars_cors
+spark_disconnect(sc)
+
+}
 
 }
