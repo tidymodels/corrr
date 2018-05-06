@@ -34,5 +34,6 @@ Imports:
     tibble (>= 1.1),
     ggrepel (>= 0.6.5),
     methods (>= 3.4.3), 
-    rlang(>= 0.2.0)
+    rlang(>= 0.2.0),
+    RSQLite
 VignetteBuilder: knitr
