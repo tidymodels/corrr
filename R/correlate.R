@@ -155,3 +155,5 @@ tidyeval_cor <- function(x, y, x_mean, y_mean) {
       )
   )
 }
+
+utils::globalVariables(c("rowname"))
