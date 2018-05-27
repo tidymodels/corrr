@@ -1,7 +1,7 @@
-corrr
-================
-
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# corrr <img src="man/figures/logo.png" align="right" />
+
 [![Project Status: Active ? The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active) [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.3.0-6666ff.svg)](https://cran.r-project.org/) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/corrr)](https://cran.r-project.org/package=corrr) [![packageversion](https://img.shields.io/badge/Package%20version-0.2.1.9000-orange.svg?style=flat-square)](commits/master) [![Last-changedate](https://img.shields.io/badge/last%20change-2017--02--03-yellowgreen.svg)](/commits/master) [![Build Status](https://travis-ci.org/drsimonj/corrr.svg?branch=master)](https://travis-ci.org/drsimonj/corrr) [![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/corrr)](http://cran.rstudio.com/web/packages/corrr/index.html)
 
 corrr is a package for exploring **corr**elations in **R**. It focuses on creating and working with **data frames** of correlations (instead of matrices) that can be easily explored via corrr functions or by leveraging tools like those in the [tidyverse](http://tidyverse.org/). This, along with the primary corrr functions, is represented below:
