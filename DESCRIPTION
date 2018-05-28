@@ -16,8 +16,7 @@ Authors@R: c(
 URL: https://github.com/drsimonj/corrr
 BugReports: https://github.com/drsimonj/corrr/issues
 Depends: 
-    R (>= 3.3.0),
-    dplyr (>= 0.5.0)
+    R (>= 3.3.0)
 LazyData: yes
 License: MIT + file LICENSE
 RoxygenNote: 6.0.1
@@ -27,8 +26,10 @@ Suggests:
     rmarkdown (>= 0.9.6),
     dbplyr (>= 1.2.1),
     DBI,
-    RSQLite
+    RSQLite,
+    covr
 Imports: 
+    dplyr (>= 0.5.0),
     magrittr (>= 1.5),
     tidyr (>= 0.5.1),
     ggplot2 (>= 2.2.0),
