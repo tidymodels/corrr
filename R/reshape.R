@@ -16,6 +16,7 @@
 #' @return A tbl or, if mirror = TRUE, a cor_df (see \code{\link{correlate}}).
 #' @export
 #' @examples
+#' library(dplyr)
 #' x <- correlate(mtcars)
 #' focus(x, mpg, cyl)  # Focus on correlations of mpg and cyl with all other variables
 #' focus(x, -disp, - mpg, mirror = TRUE)  # Remove disp and mpg from columns and rows
@@ -48,6 +49,7 @@ focus_ <- function(x, ..., .dots, mirror) {
 #' @return A tibble or, if mirror = TRUE, a correlation data frame.
 #' @export
 #' @examples
+#' library(dplyr)
 #' any_greater_than <- function(x, val) {
 #'   mean(abs(x), na.rm = TRUE) > val
 #' }

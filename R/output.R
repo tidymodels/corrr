@@ -12,6 +12,7 @@
 #' @export
 #' @examples 
 #' # Examples with correlate()
+#' library(dplyr)
 #' mtcars %>% correlate() %>% fashion()
 #' mtcars %>% correlate() %>% fashion(decimals = 1)
 #' mtcars %>% correlate() %>% fashion(leading_zeros = TRUE)

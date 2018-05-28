@@ -45,6 +45,7 @@ rows based on `\code{same}. For a complete list of methods for using this
 function, see \code{\link[dplyr]{select}}.
 }
 \examples{
+library(dplyr)
 x <- correlate(mtcars)
 focus(x, mpg, cyl)  # Focus on correlations of mpg and cyl with all other variables
 focus(x, -disp, - mpg, mirror = TRUE)  # Remove disp and mpg from columns and rows

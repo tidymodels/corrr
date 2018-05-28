@@ -27,6 +27,7 @@ Apply a predicate function to each colum of correlations. Columns that
 evaluate to TRUE will be included in a call to \code{\link{focus}}.
 }
 \examples{
+library(dplyr)
 any_greater_than <- function(x, val) {
   mean(abs(x), na.rm = TRUE) > val
 }
