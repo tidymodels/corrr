@@ -1,4 +1,4 @@
-# corrr 0.2.1.9000
+# corrr 0.2.2
 
 ## Small breaking changes
 
@@ -27,6 +27,8 @@ The `diagonal` argument of `as_matrix` and `as_matrix.cor_df` is now an optional
 - `correlate()` is now an S3 method so that it can adapt to `x`'s object type.
 
 - During the development of this version, ggplot v2.2.0 was released. Many changes in the plotting functions have been made to handle new features in the updated version of ggplot2.
+
+- Improvements to the package folder structure
 
 # corrr 0.2.1
 
