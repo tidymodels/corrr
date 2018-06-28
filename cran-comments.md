@@ -1,23 +1,26 @@
+## Release summary
+
+- `as_cordf` will coerce lists or matrices into correlation data frames if possible
+
+- `focus_if` enables conditional variable selection
+
+- Can use arithmetic operators (e.g., `+` or `-`) with correlation data frames
+
+- `correlate()` now supports data frame with a SQL back-end (`tbl_sql`)
+
+- Small breaking change: The `diagonal` argument of `as_matrix` and `as_matrix.cor_df` is now an optional argument rather than set to `1` by default 
+
+- Other improvements and fixes
+
 ## Test environments
-* local Windows 10 install, R 3.3.1
-* ubuntu 12.04.5 LTS (on travis-ci), R 3.3.1
-* win-builder (devel and release)
+* local Windows 10 install, R 3.5.0
+* ubuntu 14.04 (on travis-ci)
+* Ubuntu 14.04.5 LTS with RStudio Server, R 3.4.3 
 
 ## R CMD check results
 
-Except for win-builder, there were no ERRORs, WARNINGs or NOTEs.
+- 0 errors | 0 warnings | 0 notes
 
-Via win-builder, there was 1 NOTE:
+## revdep check results
 
-  * checking CRAN incoming feasibility ... NOTE
-  Maintainer: 'Simon Jackson <drsimonjackson@gmail.com>'
-  
-  License components with restrictions and base license permitting such:
-    MIT + file LICENSE
-  File 'LICENSE':
-    YEAR: 2016
-    COPYRIGHT HOLDER: Simon Jackson
-
-## Downstream dependencies
-
-There are currently no downstream dependencies for this package.
+- 0 packages
