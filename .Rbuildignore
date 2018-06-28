@@ -5,7 +5,6 @@
 ^README_files
 ^cran-comments\.md$
 ^\.travis\.yml$
-^NEWS\.md$
 ^\.Rprofile$
 ^packrat/
 ^to-cor-df\.png$
