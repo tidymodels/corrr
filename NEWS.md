@@ -1,4 +1,4 @@
-# corrr 0.2.2
+# corrr 0.3.0
 
 ## Small breaking changes
 
