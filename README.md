@@ -1,85 +1,60 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+corrr <img src="man/figures/logo.png" align="right" />
+======================================================
 
-# corrr <img src="man/figures/logo.png" align="right" />
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/corrr)](https://cran.r-project.org/package=corrr) [![Build Status](https://travis-ci.org/drsimonj/corrr.svg?branch=master)](https://travis-ci.org/drsimonj/corrr) [![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/corrr)](http://cran.rstudio.com/web/packages/corrr/index.html)
 
-[![Project Status: Active ? The project has reached a stable, usable
-state and is being actively
-developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![minimal R
-version](https://img.shields.io/badge/R%3E%3D-3.3.0-6666ff.svg)](https://cran.r-project.org/)
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/corrr)](https://cran.r-project.org/package=corrr)
-[![packageversion](https://img.shields.io/badge/Package%20version-0.2.1.9000-orange.svg?style=flat-square)](commits/master)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2018--05--28-yellowgreen.svg)](/commits/master)
-[![Build
-Status](https://travis-ci.org/drsimonj/corrr.svg?branch=master)](https://travis-ci.org/drsimonj/corrr)
-[![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/corrr)](http://cran.rstudio.com/web/packages/corrr/index.html)
-
-corrr is a package for exploring **corr**elations in **R**. It focuses
-on creating and working with **data frames** of correlations (instead of
-matrices) that can be easily explored via corrr functions or by
-leveraging tools like those in the [tidyverse](http://tidyverse.org/).
-This, along with the primary corrr functions, is represented below:
+corrr is a package for exploring **corr**elations in **R**. It focuses on creating and working with **data frames** of correlations (instead of matrices) that can be easily explored via corrr functions or by leveraging tools like those in the [tidyverse](http://tidyverse.org/). This, along with the primary corrr functions, is represented below:
 
 <img src='tools/readme/to-cor-df.png'>
 
 You can install:
 
-  - the latest released version from CRAN with
-
-<!-- end list -->
+-   the latest released version from CRAN with
 
 ``` r
 install.packages("corrr")
 ```
 
-  - the latest development version from github
-with
-
-<!-- end list -->
+-   the latest development version from github with
 
 ``` r
 install.packages("devtools")  # run this line if devtools is not installed
 devtools::install_github("drsimonj/corrr")
 ```
 
-## Using corrr
+Using corrr
+-----------
 
-Using `corrr` typically starts with `correlate()`, which acts like the
-base correlation function `cor()`. It differs by defaulting to pairwise
-deletion, and returning a correlation data frame (`cor_df`) of the
-following structure:
+Using `corrr` typically starts with `correlate()`, which acts like the base correlation function `cor()`. It differs by defaulting to pairwise deletion, and returning a correlation data frame (`cor_df`) of the following structure:
 
-  - A `tbl` with an additional class, `cor_df`
-  - An extra “rowname” column
-  - Standardised variances (the matrix diagonal) set to missing values
-    (`NA`) so they can be ignored.
+-   A `tbl` with an additional class, `cor_df`
+-   An extra "rowname" column
+-   Standardised variances (the matrix diagonal) set to missing values (`NA`) so they can be ignored.
 
 ### API
 
-The corrr API is designed with data pipelines in mind (e.g., to use
-`%>%` from the magrittr package). After `correlate()`, the primary corrr
-functions take a `cor_df` as their first argument, and return a `cor_df`
-or `tbl` (or output like a plot). These functions serve one of three
-purposes:
+The corrr API is designed with data pipelines in mind (e.g., to use `%>%` from the magrittr package). After `correlate()`, the primary corrr functions take a `cor_df` as their first argument, and return a `cor_df` or `tbl` (or output like a plot). These functions serve one of three purposes:
 
 Internal changes (`cor_df` out):
 
-  - `shave()` the upper or lower triangle (set to NA).
-  - `rearrange()` the columns and rows based on correlation strengths.
+-   `shave()` the upper or lower triangle (set to NA).
+-   `rearrange()` the columns and rows based on correlation strengths.
 
 Reshape structure (`tbl` or `cor_df` out):
 
-  - `focus()` on select columns and rows.
-  - `stretch()` into a long format.
+-   `focus()` on select columns and rows.
+-   `stretch()` into a long format.
 
 Output/visualisations (console/plot out):
 
-  - `fashion()` the correlations for pretty printing.
-  - `rplot()` the correlations with shapes in place of the values.
-  - `network_plot()` the correlations in a network.
+-   `fashion()` the correlations for pretty printing.
+-   `rplot()` the correlations with shapes in place of the values.
+-   `network_plot()` the correlations in a network.
 
-## Examples
+Examples
+--------
 
 ``` r
 library(MASS)
@@ -120,8 +95,7 @@ x
 #> 6 v6       -0.0435    -0.0338   -0.0201    0.442     0.425    NA
 ```
 
-As a `tbl`, we can use functions from data frame packages like `dplyr`,
-`tidyr`, `ggplot2`:
+As a `tbl`, we can use functions from data frame packages like `dplyr`, `tidyr`, `ggplot2`:
 
 ``` r
 library(dplyr)
@@ -161,7 +135,7 @@ fashion(x)
 rplot(x)
 ```
 
-![](tools/readme/combination-1.png)<!-- -->
+![](tools/readme/combination-1.png)
 
 ``` r
 
@@ -173,4 +147,4 @@ datasets::airquality %>%
 #> Missing treated using: 'pairwise.complete.obs'
 ```
 
-![](tools/readme/combination-2.png)<!-- -->
+![](tools/readme/combination-2.png)
