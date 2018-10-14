@@ -111,64 +111,76 @@ correlate.tbl_sql <- function(x, y = NULL,
     
     if(method != "pearson")   stop("Only person method is currently supported")
     
-    df <- x
-    col_names <- colnames(df)
-    col_no <- length(col_names)
     
-    combos <- 1:(col_no - 1) %>%
-      map_df(~tibble(
-        x = col_names[.x],
-        y = col_names[(.x + 1):col_no],
-        cn = paste0(x, "_", y)
-      ))
+    minus_mean <- mutate_all(
+      x,
+      funs(. - mean(., na.rm = TRUE))
+    ) 
     
-    full_combos <- 1:(col_no) %>%
-      map_df(~
-               tibble(
-                 x = col_names[.x],
-                 y = col_names[.x:col_no],
-                 cn = paste0(x, "_", y)
-               ) %>%
-               bind_rows(
-                 tibble(
-                   x = col_names[.x:col_no],
-                   y = col_names[.x],
-                   cn = paste0(y, "_", x)
-                 )
-               )) %>%
-      filter(x != y)
+    col_names <- colnames(x)
+    col_no <- seq_along(col_names)
     
-    df <- df %>%
-      filter_all(all_vars(!is.na(.))) 
+    cols <- map(
+      col_no,
+      ~{
+        x <- .x
+        map(col_no, ~ c(.x, x))
+      }
+    )
+    cols <- flatten(cols)
+    cols <- map(cols, sort)
     
-    df_mean <- df %>%
-      summarise_all(mean, na.rm = TRUE)
+    dups <- map_lgl(cols, ~all.equal(.x[1], .x[2]) != TRUE)
     
-    cor_f <- 1:nrow(combos) %>%
-      map(
-        ~ tidyeval_cor(
-          !! sym(combos$x[.x]),
-          !! sym(combos$y[.x]),
-          pull(select(df_mean, combos$x[.x])),
-          pull(select(df_mean, combos$y[.x])) 
+    cols <- cols[dups]
+    
+    cols_names <-map(cols, paste0, collapse = ",")
+    
+    unique_cols <- unique(cols_names)
+    
+    combos <- map(
+      unique_cols,
+      ~ cols[cols_names == .x][[1]]
+    )
+    
+    f_cor <- map(
+      combos,
+      ~{
+        l <- col_names[.x[[1]]]
+        r <- col_names[.x[[2]]]
+        map2(
+          l,
+          r,
+          tidyeval_cor
         )
-      )
+      }
+    )
+    f_cor <- flatten(f_cor)
+    f_cor <- set_names(f_cor, unique_cols)
     
-    cor_f <- set_names(cor_f, combos$cn)
+    cors <- summarise(minus_mean, !!! f_cor)
+    cors <- collect(cors)
     
-    df_cor <- df %>%
-      summarise(!!! cor_f) %>%
-      collect() %>%
-      as.tibble() %>%
-      tidyr::gather(cn, cor) %>%
-      right_join(full_combos, by = "cn") %>%
-      select(-cn) %>%
-      tidyr::spread(y, cor) %>%
-      rename(rowname = x) %>% 
-      # Put cols and rows into original order
-      select(rowname, !!col_names) %>% 
-      {.[match(col_names, .$rowname),]}
+    cors_matrix <- matrix(
+      ncol = length(col_no), 
+      nrow = length(col_no)
+    )
     
+    for(i in seq_along(cors)){
+      loc <- combos[unique_cols == names(cors[i])][[1]]
+      cors_matrix[loc[1], loc[2]] <- cors[i][[1]]
+      cors_matrix[loc[2], loc[1]] <- cors[i][[1]]
+    }
+    
+    colnames(cors_matrix) <- col_names
+    
+    cors_tibble <- cbind(
+      rowname = col_names,
+      as.data.frame(cors_matrix)
+    )
+    
+    df_cor <- as.tibble(cors_tibble)
+    df_cor$rowname <- as.character(df_cor$rowname)
   }
  
   if(!is.null(df_cor)){
@@ -181,14 +193,14 @@ correlate.tbl_sql <- function(x, y = NULL,
 }
 
 #' @import rlang
-tidyeval_cor <- function(x, y, x_mean, y_mean) {
-  x <- rlang::enexpr(x)
-  y <- rlang::enexpr(y)
+tidyeval_cor <- function(x, y) {
+  x <- sym(enexpr(x))
+  y <- sym(enexpr(y))
   rlang::expr(
-    sum((!! x - !! x_mean) * (!! y - !! y_mean), na.rm = TRUE) /
+    sum(!! x * !! y , na.rm = TRUE) /
       sqrt(
-        sum((!! x - !! x_mean) * (!! x - !! x_mean), na.rm = TRUE) *
-          sum((!! y - !! y_mean) * (!! y - !! y_mean), na.rm = TRUE)
+        sum(!! x * !! x, na.rm = TRUE) *
+          sum(!! y * !! y, na.rm = TRUE)
       )
   )
 }
