@@ -9,3 +9,4 @@
 ^packrat/
 ^to-cor-df\.png$
 revdep
+^logs/

@@ -156,7 +156,6 @@ correlate.tbl_sql <- function(x, y = NULL,
   df_cor
 }
 
-#' @import rlang
 tidyeval_cor <- function(x, y) {
   x <- sym(enexpr(x))
   y <- sym(enexpr(y))
