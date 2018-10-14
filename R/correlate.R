@@ -65,25 +65,6 @@ correlate.default <- function(x, y = NULL,
   as_cordf(x, diagonal = diagonal)
 }
 
-spark_correlate <- function(x, method = "pearson") {
-  spark_corr <- ml_corr(x, method = method)
-  
-  local_corr <- map_df(
-    spark_corr,
-    ~{
-      ones <- .x == 1
-      res <- as.numeric(.x)
-      res[ones] <- NA
-      res
-    }
-  )
-  
-  as.tibble(cbind(
-    tibble(rowname = colnames(spark_corr)),
-    local_corr
-  ))
-}
-
 #' @export
 correlate.tbl_sql <- function(x, y = NULL,
                               use = "pairwise.complete.obs",
@@ -91,7 +72,7 @@ correlate.tbl_sql <- function(x, y = NULL,
                               diagonal = NA,
                               quiet = FALSE) {
 
-  if(use != "complete.obs") stop("Only 'complete.obs' method are supported")
+  if(use != "pairwise.complete.obs") stop("Only 'pairwise.complete.obs' method are supported")
   if(!is.null(y))           stop("y is not supported for tables with a SQL back-end")
   if(!is.na(diagonal))      stop("Only NA's are supported for same field correlations")
   df_cor <- NULL
@@ -101,21 +82,16 @@ correlate.tbl_sql <- function(x, y = NULL,
     if(!method %in% c("pearson", "spearman"))
       stop("Only person or spearman methods are currently supported")
     
-    df_cor <- spark_correlate(
-      x = x,
-      method = method
+    df_cor <- as_cordf(
+      sparklyr::ml_corr(x)
     )
   }
   
   if(is.null(df_cor)){
     
-    if(method != "pearson")   stop("Only person method is currently supported")
+    if(method != "pearson")   stop("Only 'pearson' method is currently supported")
     
-    
-    minus_mean <- mutate_all(
-      x,
-      funs(. - mean(., na.rm = TRUE))
-    ) 
+    minus_mean <- mutate_all(x, funs(. - mean(., na.rm = TRUE))) 
     
     col_names <- colnames(x)
     col_no <- seq_along(col_names)
@@ -148,11 +124,7 @@ correlate.tbl_sql <- function(x, y = NULL,
       ~{
         l <- col_names[.x[[1]]]
         r <- col_names[.x[[2]]]
-        map2(
-          l,
-          r,
-          tidyeval_cor
-        )
+        map2(l, r, tidyeval_cor)
       }
     )
     f_cor <- flatten(f_cor)
@@ -171,16 +143,8 @@ correlate.tbl_sql <- function(x, y = NULL,
       cors_matrix[loc[1], loc[2]] <- cors[i][[1]]
       cors_matrix[loc[2], loc[1]] <- cors[i][[1]]
     }
-    
     colnames(cors_matrix) <- col_names
-    
-    cors_tibble <- cbind(
-      rowname = col_names,
-      as.data.frame(cors_matrix)
-    )
-    
-    df_cor <- as.tibble(cors_tibble)
-    df_cor$rowname <- as.character(df_cor$rowname)
+    df_cor <- as_cordf(cors_matrix)
   }
  
   if(!is.null(df_cor)){
@@ -196,7 +160,7 @@ correlate.tbl_sql <- function(x, y = NULL,
 tidyeval_cor <- function(x, y) {
   x <- sym(enexpr(x))
   y <- sym(enexpr(y))
-  rlang::expr(
+  expr(
     sum(!! x * !! y , na.rm = TRUE) /
       sqrt(
         sum(!! x * !! x, na.rm = TRUE) *
