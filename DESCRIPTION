@@ -19,7 +19,7 @@ Depends:
     R (>= 3.3.0)
 LazyData: yes
 License: MIT + file LICENSE
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1
 Suggests: 
     testthat (>= 1.0.2),
     knitr (>= 1.13),
@@ -28,15 +28,16 @@ Suggests:
     DBI,
     RSQLite
 Imports: 
-    dplyr (>= 0.5.0),
+    dplyr (>= 0.8.0),
     magrittr (>= 1.5),
     tidyr (>= 0.5.1),
     ggplot2 (>= 2.2.0),
     seriation (>= 1.2-0),
     lazyeval (>= 0.2.0),
     purrr (>= 0.2.2),
-    tibble (>= 1.1),
+    tibble (>= 2.0),
     ggrepel (>= 0.6.5),
     methods (>= 3.4.3), 
     rlang(>= 0.2.0)
 VignetteBuilder: knitr
+Encoding: UTF-8

@@ -4,8 +4,8 @@
 \alias{rplot}
 \title{Plot a correlation data frame.}
 \usage{
-rplot(rdf, legend = TRUE, shape = 16, colours = c("indianred2", "white",
-  "skyblue1"), print_cor = FALSE, colors)
+rplot(rdf, legend = TRUE, shape = 16, colours = c("indianred2",
+  "white", "skyblue1"), print_cor = FALSE, colors)
 }
 \arguments{
 \item{rdf}{Correlation data frame (see \code{\link{correlate}}) or object
