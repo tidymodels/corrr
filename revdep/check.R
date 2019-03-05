@@ -1,5 +1,4 @@
-library("devtools")
+#devtools::install_github("r-lib/revdepcheck")
+library(revdepcheck)
 
 revdep_check()
-revdep_check_save_summary()
-revdep_check_print_problems()

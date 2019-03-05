@@ -1,6 +1,6 @@
 Package: corrr
 Type: Package
-Version: 0.3.0.9000
+Version: 0.3.1
 Title: Correlations in R
 Description: A tool for exploring correlations.
     It makes it possible to easily perform routine tasks when
@@ -11,8 +11,9 @@ Description: A tool for exploring correlations.
 Authors@R: c(
   person("Simon", "Jackson", email = "drsimonjackson@gmail.com", role = c("aut", "cre")),
   person("Jorge", "Cimentada", email = "cimentadaj@gmail.com", role = c("ctb")),
-  person("Edgar", "Ruiz", email = "edgararuiz@gmail.com", role = c("ctb"))
+  person("Edgar", "Ruiz", email = "edgararuiz@gmail.com", role = c("aut"))
   )
+Maintainer: Edgar Ruiz <edgararuiz@gmail.com>
 URL: https://github.com/drsimonj/corrr
 BugReports: https://github.com/drsimonj/corrr/issues
 Depends: 
