@@ -1,6 +1,6 @@
 ## Release summary
 
-- Adresses CRAN check failures
+- Addresses CRAN check failures
 
 - Designates Edgar Ruiz (`edgararuiz@gmail.com`) as the new package maintainer
 
