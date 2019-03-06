@@ -1,6 +1,10 @@
-# corrr 0.3.0.9000
+# corrr 0.3.1.9000
 
+# corrr 0.3.1
 
+- Fixes test and CRAN issues by removing `Ops.cor_df()`. 
+
+- Designates Edgar Ruiz as the new package maintainer
 
 # corrr 0.3.0
 

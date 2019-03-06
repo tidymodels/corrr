@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="author" content="Simon Jackson" />
+
+<meta name="date" content="2019-02-26" />
+
+<title>Using corrr</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#header {
+text-align: center;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Using corrr</h1>
+<h4 class="author"><em>Simon Jackson</em></h4>
+<h4 class="date"><em>2019-02-26</em></h4>
+
+
+
+<p>corrr is a package for exploring <strong>corr</strong>elations in <strong>R</strong>. It makes it possible to easily perform routine tasks when exploring correlation matrices such as ignoring the diagonal, focusing on the correlations of certain variables against others, or rearranging and visualising the matrix in terms of the strength of the correlations.</p>
+<div id="using-corrr" class="section level2">
+<h2>Using corrr</h2>
+<p>Using <code>corrr</code> starts with <code>correlate()</code>, which acts like the base correlation function <code>cor()</code>. It differs by defaulting to pairwise deletion, and returning a correlation data frame (<code>cor_df</code>) of the following structure:</p>
+<ul>
+<li>A <code>tbl</code> with an additional class, <code>cor_df</code></li>
+<li>An extra “rowname” column</li>
+<li>Standardised variances (the matrix diagonal) set to missing values (<code>NA</code>) so they can be ignored.</li>
+</ul>
+<p>To work with further, let’s create a correlation data frame using <code>correlate()</code> from the <code>mtcars</code> data that comes with R:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(corrr)</a>
+<a class="sourceLine" id="cb1-2" title="2">d &lt;-<span class="st"> </span><span class="kw">correlate</span>(mtcars)</a>
+<a class="sourceLine" id="cb1-3" title="3">d</a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="co">#&gt; # A tibble: 11 x 12</span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="co">#&gt;    rowname     mpg     cyl    disp      hp     drat      wt     qsec</span></a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="co">#&gt;    &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="co">#&gt;  1 mpg      NA      -0.852  -0.848  -0.776   0.681   -0.868   0.419 </span></a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="co">#&gt;  2 cyl      -0.852  NA       0.902   0.832  -0.700    0.782  -0.591 </span></a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="co">#&gt;  3 disp     -0.848   0.902  NA       0.791  -0.710    0.888  -0.434 </span></a>
+<a class="sourceLine" id="cb1-10" title="10"><span class="co">#&gt;  4 hp       -0.776   0.832   0.791  NA      -0.449    0.659  -0.708 </span></a>
+<a class="sourceLine" id="cb1-11" title="11"><span class="co">#&gt;  5 drat      0.681  -0.700  -0.710  -0.449  NA       -0.712   0.0912</span></a>
+<a class="sourceLine" id="cb1-12" title="12"><span class="co">#&gt;  6 wt       -0.868   0.782   0.888   0.659  -0.712   NA      -0.175 </span></a>
+<a class="sourceLine" id="cb1-13" title="13"><span class="co">#&gt;  7 qsec      0.419  -0.591  -0.434  -0.708   0.0912  -0.175  NA     </span></a>
+<a class="sourceLine" id="cb1-14" title="14"><span class="co">#&gt;  8 vs        0.664  -0.811  -0.710  -0.723   0.440   -0.555   0.745 </span></a>
+<a class="sourceLine" id="cb1-15" title="15"><span class="co">#&gt;  9 am        0.600  -0.523  -0.591  -0.243   0.713   -0.692  -0.230 </span></a>
+<a class="sourceLine" id="cb1-16" title="16"><span class="co">#&gt; 10 gear      0.480  -0.493  -0.556  -0.126   0.700   -0.583  -0.213 </span></a>
+<a class="sourceLine" id="cb1-17" title="17"><span class="co">#&gt; 11 carb     -0.551   0.527   0.395   0.750  -0.0908   0.428  -0.656 </span></a>
+<a class="sourceLine" id="cb1-18" title="18"><span class="co">#&gt; # ... with 4 more variables: vs &lt;dbl&gt;, am &lt;dbl&gt;, gear &lt;dbl&gt;, carb &lt;dbl&gt;</span></a></code></pre></div>
+</div>
+<div id="why-a-correlation-data-frame" class="section level2">
+<h2>Why a correlation data frame?</h2>
+<p>At first, a correlation data frame might seem like an unneccessary complexity compared to the traditional matrix. However, the purpose of corrr is to help use explore these correlations, not to do mathematical or statistical operations. Thus, by having the correlations in a data frame, we can make use of packages that help us work with data frames like <code>dplyr</code>, <code>tidyr</code>, <code>ggplot2</code>, and focus on using data pipelines. Lets look at some examples:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb2-2" title="2"></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="co"># Filter rows to occasions in which cyl has a correlation of .7 or more with</span></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="co"># another variable.</span></a>
+<a class="sourceLine" id="cb2-5" title="5">d <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(cyl <span class="op">&gt;</span><span class="st"> </span><span class="fl">.7</span>)</a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="co">#&gt; # A tibble: 3 x 12</span></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="co">#&gt;   rowname    mpg   cyl   disp     hp   drat     wt   qsec     vs     am</span></a>
+<a class="sourceLine" id="cb2-8" title="8"><span class="co">#&gt;   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb2-9" title="9"><span class="co">#&gt; 1 disp    -0.848 0.902 NA      0.791 -0.710  0.888 -0.434 -0.710 -0.591</span></a>
+<a class="sourceLine" id="cb2-10" title="10"><span class="co">#&gt; 2 hp      -0.776 0.832  0.791 NA     -0.449  0.659 -0.708 -0.723 -0.243</span></a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="co">#&gt; 3 wt      -0.868 0.782  0.888  0.659 -0.712 NA     -0.175 -0.555 -0.692</span></a>
+<a class="sourceLine" id="cb2-12" title="12"><span class="co">#&gt; # ... with 2 more variables: gear &lt;dbl&gt;, carb &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb2-13" title="13"></a>
+<a class="sourceLine" id="cb2-14" title="14"><span class="co"># Select the mpg, cyl and disp columns (and rowname)</span></a>
+<a class="sourceLine" id="cb2-15" title="15">d <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(rowname, mpg, cyl, disp)</a>
+<a class="sourceLine" id="cb2-16" title="16"><span class="co">#&gt; # A tibble: 11 x 4</span></a>
+<a class="sourceLine" id="cb2-17" title="17"><span class="co">#&gt;    rowname     mpg     cyl    disp</span></a>
+<a class="sourceLine" id="cb2-18" title="18"><span class="co">#&gt;    &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb2-19" title="19"><span class="co">#&gt;  1 mpg      NA      -0.852  -0.848</span></a>
+<a class="sourceLine" id="cb2-20" title="20"><span class="co">#&gt;  2 cyl      -0.852  NA       0.902</span></a>
+<a class="sourceLine" id="cb2-21" title="21"><span class="co">#&gt;  3 disp     -0.848   0.902  NA    </span></a>
+<a class="sourceLine" id="cb2-22" title="22"><span class="co">#&gt;  4 hp       -0.776   0.832   0.791</span></a>
+<a class="sourceLine" id="cb2-23" title="23"><span class="co">#&gt;  5 drat      0.681  -0.700  -0.710</span></a>
+<a class="sourceLine" id="cb2-24" title="24"><span class="co">#&gt;  6 wt       -0.868   0.782   0.888</span></a>
+<a class="sourceLine" id="cb2-25" title="25"><span class="co">#&gt;  7 qsec      0.419  -0.591  -0.434</span></a>
+<a class="sourceLine" id="cb2-26" title="26"><span class="co">#&gt;  8 vs        0.664  -0.811  -0.710</span></a>
+<a class="sourceLine" id="cb2-27" title="27"><span class="co">#&gt;  9 am        0.600  -0.523  -0.591</span></a>
+<a class="sourceLine" id="cb2-28" title="28"><span class="co">#&gt; 10 gear      0.480  -0.493  -0.556</span></a>
+<a class="sourceLine" id="cb2-29" title="29"><span class="co">#&gt; 11 carb     -0.551   0.527   0.395</span></a>
+<a class="sourceLine" id="cb2-30" title="30"></a>
+<a class="sourceLine" id="cb2-31" title="31"><span class="co"># Combine above in a single pipeline</span></a>
+<a class="sourceLine" id="cb2-32" title="32">d <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-33" title="33"><span class="st">  </span><span class="kw">filter</span>(cyl <span class="op">&gt;</span><span class="st"> </span><span class="fl">.7</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-34" title="34"><span class="st">  </span><span class="kw">select</span>(rowname, mpg, cyl, disp)</a>
+<a class="sourceLine" id="cb2-35" title="35"><span class="co">#&gt; # A tibble: 3 x 4</span></a>
+<a class="sourceLine" id="cb2-36" title="36"><span class="co">#&gt;   rowname    mpg   cyl   disp</span></a>
+<a class="sourceLine" id="cb2-37" title="37"><span class="co">#&gt;   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb2-38" title="38"><span class="co">#&gt; 1 disp    -0.848 0.902 NA    </span></a>
+<a class="sourceLine" id="cb2-39" title="39"><span class="co">#&gt; 2 hp      -0.776 0.832  0.791</span></a>
+<a class="sourceLine" id="cb2-40" title="40"><span class="co">#&gt; 3 wt      -0.868 0.782  0.888</span></a></code></pre></div>
+<p>Furthermore, by having the diagonal set to missing, we don’t need to put in extra effort to ignore them when summarising the correlations. For example:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="co"># Compute mean of each column</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="kw">library</span>(purrr)</a>
+<a class="sourceLine" id="cb3-3" title="3">d <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="op">-</span>rowname) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">map_dbl</span>(<span class="op">~</span><span class="st"> </span><span class="kw">mean</span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="co">#&gt;           mpg           cyl          disp            hp          drat </span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="co">#&gt; -0.1050454113 -0.0925483176 -0.0872737071  0.0006800268 -0.0037165212 </span></a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="co">#&gt;            wt          qsec            vs            am          gear </span></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="co">#&gt; -0.0828684293 -0.1752247305 -0.1145625942  0.0053087327  0.0484120552 </span></a>
+<a class="sourceLine" id="cb3-8" title="8"><span class="co">#&gt;          carb </span></a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="co">#&gt;  0.0563419513</span></a></code></pre></div>
+<div id="api" class="section level3">
+<h3>API</h3>
+<p>As the above section suggests, the corrr API is designed with data pipelines in mind (e.g., to use <code>%&gt;%</code> from the magrittr package). After <code>correlate()</code>, the primary corrr functions take a <code>cor_df</code> as their first argument, and return a <code>cor_df</code> or <code>tbl</code> (or output like a plot). These functions serve one of three purposes:</p>
+<p>Internal changes (<code>cor_df</code> out):</p>
+<ul>
+<li><code>shave()</code> the upper or lower triangle (set to NA).</li>
+<li><code>rearrange()</code> the columns and rows based on correlation strengths.</li>
+</ul>
+<p>Reshape structure (<code>tbl</code> or <code>cor_df</code> out):</p>
+<ul>
+<li><code>focus()</code> on select columns and rows.</li>
+<li><code>stretch()</code> into a long format.</li>
+</ul>
+<p>Output/visualisations (console/plot out):</p>
+<ul>
+<li><code>fashion()</code> the correlations for pretty printing.</li>
+<li><code>rplot()</code> a shape for each correlation.</li>
+<li><code>network_plot()</code> a point for each variable, joined by paths for correlations.</li>
+</ul>
+<p>By combing these functions in data pipelines, it’s possible to easily explore your correlations.</p>
+<p>For example, lets focus on the correlations of mpg and cyl with all the others:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">d <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">focus</span>(mpg, cyl)</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="co">#&gt; # A tibble: 9 x 3</span></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="co">#&gt;   rowname    mpg    cyl</span></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="co">#&gt;   &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="co">#&gt; 1 disp    -0.848  0.902</span></a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="co">#&gt; 2 hp      -0.776  0.832</span></a>
+<a class="sourceLine" id="cb4-7" title="7"><span class="co">#&gt; 3 drat     0.681 -0.700</span></a>
+<a class="sourceLine" id="cb4-8" title="8"><span class="co">#&gt; 4 wt      -0.868  0.782</span></a>
+<a class="sourceLine" id="cb4-9" title="9"><span class="co">#&gt; 5 qsec     0.419 -0.591</span></a>
+<a class="sourceLine" id="cb4-10" title="10"><span class="co">#&gt; 6 vs       0.664 -0.811</span></a>
+<a class="sourceLine" id="cb4-11" title="11"><span class="co">#&gt; 7 am       0.600 -0.523</span></a>
+<a class="sourceLine" id="cb4-12" title="12"><span class="co">#&gt; 8 gear     0.480 -0.493</span></a>
+<a class="sourceLine" id="cb4-13" title="13"><span class="co">#&gt; 9 carb    -0.551  0.527</span></a></code></pre></div>
+<p>Or maybe we want to focus in on a few variables (mirrored in rows too) and print the correlations without an upper triangle and fashioned to look nice:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">d <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="st">  </span><span class="kw">focus</span>(mpg<span class="op">:</span>drat, <span class="dt">mirror =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st">  </span><span class="co"># Focus only on mpg:drat</span></a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="st">  </span><span class="kw">shave</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Remove the upper triangle</span></a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="st">  </span><span class="kw">fashion</span>()   <span class="co"># Print in nice format </span></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="co">#&gt;   rowname  mpg  cyl disp   hp drat</span></a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="co">#&gt; 1     mpg                         </span></a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="co">#&gt; 2     cyl -.85                    </span></a>
+<a class="sourceLine" id="cb5-8" title="8"><span class="co">#&gt; 3    disp -.85  .90               </span></a>
+<a class="sourceLine" id="cb5-9" title="9"><span class="co">#&gt; 4      hp -.78  .83  .79          </span></a>
+<a class="sourceLine" id="cb5-10" title="10"><span class="co">#&gt; 5    drat  .68 -.70 -.71 -.45</span></a></code></pre></div>
+<p>Alternatively, we can visualise these correlations (let’s clear the lower triangle for a change):</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">d <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="st">  </span><span class="kw">focus</span>(mpg<span class="op">:</span>drat, <span class="dt">mirror =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="st">  </span><span class="kw">shave</span>(<span class="dt">upper =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="st">  </span><span class="kw">rplot</span>()     <span class="co"># Plot</span></a></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<p>Perhaps we’d like to rearrange the correlations so that the plot becomes easier to interpret. In this case, we can add <code>rearrange()</code> into our pipeline before shaving one of the triangles (we’ll take correlation sign into account with <code>absolute = FALSE</code>).</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">d <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="st">  </span><span class="kw">focus</span>(mpg<span class="op">:</span>drat, <span class="dt">mirror =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="st">  </span><span class="kw">rearrange</span>(<span class="dt">absolute =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb7-4" title="4"><span class="st">  </span><span class="kw">shave</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb7-5" title="5"><span class="st">  </span><span class="kw">rplot</span>()</a></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+</div>
+</div>
+<div id="other-resources" class="section level2">
+<h2>Other Resources</h2>
+<p>For other resources about how to use <code>corrr</code>, you’ll find plenty of posts explaining functions at <a href="https://drsimonj.svbtle.com/">blogR</a>, or keep up to date with these on Twitter by following <a href="https://twitter.com/drsimonj">@drsimonj</a>.</p>
+</div>
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

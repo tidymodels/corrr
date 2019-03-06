@@ -1,6 +1,6 @@
 Package: corrr
 Type: Package
-Version: 0.3.0.9000
+Version: 0.3.1.9000
 Title: Correlations in R
 Description: A tool for exploring correlations.
     It makes it possible to easily perform routine tasks when
@@ -8,18 +8,18 @@ Description: A tool for exploring correlations.
     focusing on the correlations of certain variables against others,
     or rearranging and visualising the matrix in terms of the
     strength of the correlations.
-Authors@R: c(
-  person("Simon", "Jackson", email = "drsimonjackson@gmail.com", role = c("aut", "cre")),
-  person("Jorge", "Cimentada", email = "cimentadaj@gmail.com", role = c("ctb")),
-  person("Edgar", "Ruiz", email = "edgararuiz@gmail.com", role = c("ctb"))
-  )
+Author:
+  Simon Jackson [aut, cre],
+  Jorge Cimentada [ctb],
+  Edgar Ruiz [aut]
+Maintainer: Edgar Ruiz <edgararuiz@gmail.com>
 URL: https://github.com/drsimonj/corrr
 BugReports: https://github.com/drsimonj/corrr/issues
 Depends: 
     R (>= 3.3.0)
 LazyData: yes
 License: MIT + file LICENSE
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
 Suggests: 
     testthat (>= 1.0.2),
     knitr (>= 1.13),
@@ -29,14 +29,14 @@ Suggests:
     RSQLite,
     sparklyr (>= 0.9)
 Imports: 
-    dplyr (>= 0.5.0),
+    dplyr (>= 0.8.0),
     magrittr (>= 1.5),
     tidyr (>= 0.5.1),
     ggplot2 (>= 2.2.0),
     seriation (>= 1.2-0),
     lazyeval (>= 0.2.0),
     purrr (>= 0.2.2),
-    tibble (>= 1.1),
+    tibble (>= 2.0),
     ggrepel (>= 0.6.5),
     methods (>= 3.4.3), 
     rlang(>= 0.2.0)

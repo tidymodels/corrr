@@ -301,13 +301,14 @@ network_plot.cor_df <- function(rdf,
 
 # Arithmetic --------------------------------------------------------------
 
-#' @export
-Ops.cor_df <- function(e1, e2) {
-  e1 <- as_matrix(e1)
-  
-  if(methods::is(e2, "cor_df"))
-    e2 <- as_matrix(e2)
-
- x <- methods::callGeneric(e1, e2)
- as_cordf(x)
-}
+# @export
+# 
+# Ops.cor_df <- function(e1, e2) {
+#   e1 <- as_matrix(e1)
+#   
+#   if(methods::is(e2, "cor_df"))
+#     e2 <- as_matrix(e2)
+# 
+#  x <- methods::callGeneric(e1, e2)
+#  as_cordf(x)
+# }
