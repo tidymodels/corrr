@@ -36,9 +36,8 @@
 #' library(sparklyr)
 #' sc <- spark_connect(master = "local")
 #' mtcars_tbl <- copy_to(sc, mtcars)
-#' mtcars_cors <- mtcars_tbl %>% 
-#'   correlate(use = "complete.obs")
-#' mtcars_cors
+#' mtcars_tbl %>% 
+#'   correlate(use = "pairwise.complete.obs", method = "spearman")
 #' spark_disconnect(sc)
 #' 
 #' }
@@ -80,10 +79,10 @@ correlate.tbl_sql <- function(x, y = NULL,
   if("tbl_spark" %in% class(x)){
     
     if(!method %in% c("pearson", "spearman"))
-      stop("Only person or spearman methods are currently supported")
+      stop("Only pearson or spearman methods are currently supported")
     
     df_cor <- as_cordf(
-      sparklyr::ml_corr(x)
+      sparklyr::ml_corr(x, method = method)
     )
   }
   
