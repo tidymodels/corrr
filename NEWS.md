@@ -1,5 +1,9 @@
 # corrr 0.3.1.9000
 
+- Improves support for `tbl_sql()` objects
+
+- Switches correlation calculation for `tbl_spark()` tables to `sparklyr::ml_corr()`
+
 - Adds package level doc (@jsta, #66)
 
 - Fixes typo on error message (@jsta)
