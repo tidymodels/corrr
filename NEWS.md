@@ -1,5 +1,9 @@
 # corrr 0.3.1.9000
 
+- Adds package level doc (@jsta, #66)
+
+- Fixes typo on error message (@jsta)
+
 # corrr 0.3.1
 
 - Fixes test and CRAN issues by removing `Ops.cor_df()`. 
