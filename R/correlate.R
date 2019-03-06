@@ -71,7 +71,7 @@ correlate.tbl_sql <- function(x, y = NULL,
                               diagonal = NA,
                               quiet = FALSE) {
   
-  if(method != "pearson")   stop("Only person method is currently supported")
+  if(method != "pearson")   stop("Only pearson method is currently supported")
   if(use != "complete.obs") stop("Only 'complete.obs' method are supported")
   if(!is.null(y))           stop("y is not supported for tables with a SQL back-end")
   if(!is.na(diagonal))      stop("Only NA's are supported for same field correlations")
