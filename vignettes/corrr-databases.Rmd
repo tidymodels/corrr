@@ -14,7 +14,7 @@ library(dplyr)
 library(dbplyr)
 library(corrr)
 
-knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", eval = FALSE)
 ```
 
 To calculate correlations with data inside databases, it is very common to import the data into R and then run the analysis.  This is not a desirable path, because of the overhead created by copying the data into memory.  
@@ -26,7 +26,10 @@ Taking advantage of the latest features offered by `dbplyr` and `tidyeveal`, via
 A simple SQLite database will be used to this example.  A temporary database is created, and the `mtcars` data set is copied to it.  The `db_mtcars` variable is only a pointer to the new table inside the database, it does not hold any data. 
 
 ```{r}
-con <- DBI::dbConnect(RSQLite::SQLite(), path = ":dbname:")
+library(RSQLite)
+
+con <- DBI::dbConnect(SQLite(), path = ":dbname:")
+initExtension(con)
 
 db_mtcars <- copy_to(con, mtcars)
 ```
@@ -40,14 +43,14 @@ library(dplyr)
 library(corrr)
 
 db_mtcars %>%
-  correlate(use = "complete.obs")
+  correlate()
 ```
 
 The `tidyeval`-based function ensures that a `cor_df` object is returned, so then it can be used with other functions in the `corrr` package.
 
 ```{r}
 db_mtcars %>%
-  correlate(use = "complete.obs") %>%
+  correlate() %>%
   rplot()
 ```
 
@@ -57,7 +60,7 @@ When using `correlate()` with a database-backed table, please make sure to keep 
 
 - Only the **pearson** method is supported.  It is the default method, so it is not necessary to pass it.  But if a different method is chosen, then the operation will return an error.
 
-- Only complete observations are used. Meaning that the `use` argument has to be set to `complete.obs`.  Since this is not the default of this argument, then the it will be necessary to specify it every time a database-backed table is used.
+- Only complete observations are used. Meaning that the `use` argument has to be set to `pairwise.complete.obs`.  Since this is not the default of this argument, then the it will be necessary to specify it every time a database-backed table is used.
 
 - The `y` argument is not supported.  This means that if 1-to-1 comparisons are needed, then pre-select the two variables prior passing it to the `correlate()` function.
 

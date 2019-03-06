@@ -26,7 +26,8 @@ Suggests:
     rmarkdown (>= 0.9.6),
     dbplyr (>= 1.2.1),
     DBI,
-    RSQLite
+    RSQLite,
+    sparklyr (>= 0.9)
 Imports: 
     dplyr (>= 0.8.0),
     magrittr (>= 1.5),
