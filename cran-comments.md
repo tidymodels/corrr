@@ -1,11 +1,13 @@
 ## Release summary
 
-- Addresses CRAN check failures
+- Performs some vignette maintenance
 
-- Designates Edgar Ruiz (`edgararuiz@gmail.com`) as the new package maintainer
+- Improves support for remote table operations
+
+- Improves some documentation
 
 ## Test environments
-* local Windows 10 install, R 3.5.2
+* local Windows 10 install, R 3.5.3
 * ubuntu 14.04 (on travis-ci)
 
 ## R CMD check results
@@ -14,4 +16,4 @@
 
 ## revdep check results
 
-- Package was removed from the CRAN repository. 
+- Package has no current reverse dependencies
