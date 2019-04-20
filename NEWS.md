@@ -8,6 +8,10 @@
 
 - Fixes typo on error message (@jsta)
 
+- Removes Database vignette. Plan to re-add later on (#76)
+
+- Minor updates to Using corrr vignette
+
 # corrr 0.3.1
 
 - Fixes test and CRAN issues by removing `Ops.cor_df()`. 

@@ -1,9 +1,11 @@
-## ----setup, echo = FALSE-------------------------------------------------
+## ----setup, include = FALSE----------------------------------------------
+library(dplyr)
+library(corrr)
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
 
 ## ---- message = F, warning = F-------------------------------------------
 library(corrr)
-d <- correlate(mtcars)
+d <- correlate(mtcars, quiet = TRUE)
 d
 
 ## ---- message=F, warning=F-----------------------------------------------
@@ -24,7 +26,9 @@ d %>%
 ## ---- warning = FALSE, message = FALSE-----------------------------------
 # Compute mean of each column
 library(purrr)
-d %>% select(-rowname) %>% map_dbl(~ mean(., na.rm = TRUE))
+d %>% 
+  select(-rowname) %>% 
+  map_dbl(~ mean(., na.rm = TRUE))
 
 ## ------------------------------------------------------------------------
 d %>% focus(mpg, cyl)
