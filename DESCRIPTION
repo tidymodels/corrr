@@ -1,6 +1,6 @@
 Package: corrr
 Type: Package
-Version: 0.3.2
+Version: 0.3.2.9000
 Title: Correlations in R
 Description: A tool for exploring correlations.
     It makes it possible to easily perform routine tasks when
