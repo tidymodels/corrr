@@ -8,3 +8,6 @@ include:
   - r: release
   - r: oldrel
   - r: devel
+
+after_success:
+  - Rscript -e 'covr::codecov()'
