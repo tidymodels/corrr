@@ -116,16 +116,12 @@ focus_if.cor_df <- function(x, .predicate, ..., mirror = FALSE) {
 
 #' @export
 stretch.cor_df <- function(x, na.rm = FALSE) {
-  
-  vars <- names(x)[names(x) != "rowname"]
-  
-  x %<>%
-    tidyr::gather_("x", "r", vars, na.rm) %>% 
-    dplyr::rename("y" = "rowname")
-  
-  x[, c("x", "y", "r")]
+  row_name <- x$rowname
+  x <- x[, colnames(x) != "rowname"]
+  tb <- imap_dfr(x, ~tibble(x = .y, y = row_name, r = .x))
+  if(na.rm) tb <- tb[!is.na(tb$r), ]
+  tb
 }
-
 
 # Output --------------------------------------------------------------------
 
