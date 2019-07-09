@@ -11,3 +11,5 @@
 ^to-cor-df\.png$
 revdep
 ^logs/
+codecov.yml
+^docs
