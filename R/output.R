@@ -47,9 +47,10 @@ fashion.default <- function(x, decimals = 2, leading_zeros = FALSE, na_print = "
       if (n_dig > 1) {
         n_chars <- nchar(tmp)
         longest <- max(n_chars)
-        tmp <- (longest - n_chars) %>%
-          purrr::map_chr(~paste(rep(" ", .), collapse = "")) %>% 
-          paste0(tmp) 
+        tmp1 <- purrr::map_chr(
+          (longest - n_chars), 
+          ~paste(rep(" ", .), collapse = "")) 
+        tmp <- paste0(tmp1, tmp) 
       }
       
       # Insert back to x

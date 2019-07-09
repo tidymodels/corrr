@@ -17,10 +17,8 @@ Depends:
     R (>= 3.3.0)
 Imports: 
     dplyr (>= 0.8),
-    magrittr (>= 1.5),
     ggplot2 (>= 2.2.0),
     seriation (>= 1.2-0),
-    lazyeval (>= 0.2.0),
     purrr (>= 0.2.2),
     tibble (>= 2.0),
     ggrepel (>= 0.6.5),
