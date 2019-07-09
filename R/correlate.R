@@ -81,9 +81,7 @@ correlate.tbl_sql <- function(x, y = NULL,
     if(!method %in% c("pearson", "spearman"))
       stop("Only pearson or spearman methods are currently supported")
     
-    df_cor <- as_cordf(
-      sparklyr::ml_corr(x, method = method)
-    )
+    df_cor <- as_cordf(sparklyr::ml_corr(x, method = method))
   }
   
   if(is.null(df_cor)){

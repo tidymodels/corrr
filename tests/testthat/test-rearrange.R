@@ -4,6 +4,13 @@ d <- datasets::iris[, 1:4]
 d[1, 1] <- NA
 d <- correlate(d)
 
+test_that("Rearrange return correct order", {
+  expect_equal(
+    colnames(rearrange(d)),
+    c("rowname", "Sepal.Length", "Petal.Width", "Petal.Length", "Sepal.Width")
+  )
+})
+
 test_that("Converts to proper structure", {
   expect_equal(
     nrow(stretch(d)),

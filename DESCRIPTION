@@ -28,7 +28,7 @@ Imports:
     methods (>= 3.4.3), 
     rlang(>= 0.4.0)
 Suggests: 
-    testthat (>= 1.0.2),
+    testthat (>= 2.1.0),
     knitr (>= 1.13),
     rmarkdown (>= 0.9.6),
     dbplyr (>= 1.2.1),

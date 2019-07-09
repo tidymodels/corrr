@@ -45,3 +45,13 @@ test_that("Selects/excludes in rows", {
     0
   )
 })
+
+test_that("focus_if works", {
+  any_greater_than <- function(x, val) {
+    mean(abs(x), na.rm = TRUE) > val
+  }
+  expect_is(
+    focus_if(d, any_greater_than, .6),
+    "tbl_df"
+  )
+})

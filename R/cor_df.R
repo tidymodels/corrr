@@ -101,7 +101,7 @@ focus_if.cor_df <- function(x, .predicate, ..., mirror = FALSE) {
   
   # Identify which variables to keep
   to_keep <- x %>% 
-    dplyr::select_("-rowname") %>% 
+    dplyr::select(-rowname) %>% 
     purrr::map_lgl(.predicate, ...)
 
   to_keep <- names(to_keep)[!is.na(to_keep) & to_keep]
@@ -143,26 +143,10 @@ rplot.cor_df <- function(rdf,
   # Store order for factoring the variables
   row_order <- rdf$rowname
   
-  # Prep dots for mutate_
-  dots <- stats::setNames(list(lazyeval::interp(~ factor(x, levels = row_order),
-                                                x = quote(x)),
-                               lazyeval::interp(~ factor(y, levels = rev(row_order)),
-                                                y = quote(y)),
-                               lazyeval::interp(~ abs(r),
-                                                r = quote(r)),
-                               lazyeval::interp(~ as.character(fashion(r)),
-                                                r = quote(r))
-  ),
-  list("x", "y", "size", "label"))
-  
   # Convert data to relevant format for plotting
   pd <- rdf %>%
-    # Convert to wide
     stretch(na.rm = TRUE) %>%
-    # Factor x and y to correct order
-    # and add text column to fill diagonal
-    # See dots above
-    mutate_(.dots = dots)
+    mutate(size = abs(r), label = fashion(r))
   
   plot_ <- list(
     # Geoms
@@ -298,17 +282,4 @@ network_plot.cor_df <- function(rdf,
 
 }
 
-
-# Arithmetic --------------------------------------------------------------
-
-# @export
-# 
-# Ops.cor_df <- function(e1, e2) {
-#   e1 <- as_matrix(e1)
-#   
-#   if(methods::is(e2, "cor_df"))
-#     e2 <- as_matrix(e2)
-# 
-#  x <- methods::callGeneric(e1, e2)
-#  as_cordf(x)
-# }
+globalVariables(c("r"))
