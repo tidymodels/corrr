@@ -14,9 +14,8 @@ knitr::opts_chunk$set(
 
 # corrr <img src="man/figures/logo.png" align="right" />
 
+[![Build Status](https://travis-ci.org/tidymodels/corrr.svg?branch=master)](https://travis-ci.org/tidymodels/corrr)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/corrr)](https://cran.r-project.org/package=corrr)
-[![Build Status](https://travis-ci.org/drsimonj/corrr.svg?branch=master)](https://travis-ci.org/drsimonj/corrr)
-[![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/corrr)](http://cran.rstudio.com/web/packages/corrr/index.html)
 
 corrr is a package for exploring **corr**elations in **R**. It focuses on creating and working with **data frames** of correlations (instead of matrices) that can be easily explored via corrr functions or by leveraging tools like those in the [tidyverse](http://tidyverse.org/). This, along with the primary corrr functions, is represented below:
 
@@ -27,14 +26,14 @@ You can install:
 - the latest released version from CRAN with
 
 ```{r install_cran, eval = FALSE}
-install.packages("corrr")
+# install.packages("corrr")
 ```
 
-- the latest development version from github with
+- the latest development version from GitHub with
 
 ```{r install_git, eval = FALSE}
-install.packages("devtools")  # run this line if devtools is not installed
-devtools::install_github("drsimonj/corrr")
+# install.packages("remotes") 
+# remotes::install_github("drsimonj/corrr")
 ```
 
 ## Using corrr
