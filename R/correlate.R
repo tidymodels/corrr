@@ -90,7 +90,7 @@ correlate.tbl_sql <- function(x, y = NULL,
     
     if(method != "pearson")   stop("Only 'pearson' method is currently supported")
     
-    minus_mean <- mutate_all(x, funs(. - mean(., na.rm = TRUE))) 
+    minus_mean <- mutate_all(x, ~(. - mean(., na.rm = TRUE))) 
     
     col_names <- colnames(x)
     col_no <- seq_along(col_names)

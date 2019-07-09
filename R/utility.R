@@ -53,7 +53,7 @@ first_col <- function(df, ..., var = "rowname") {
   new_col <- tibble::tibble(...)
   names(new_col) <- var
   new_df <- c(new_col, df)
-  dplyr::as_data_frame(new_df)
+  dplyr::as_tibble(new_df)
 }
 
 #' Number of pairwise complete cases.

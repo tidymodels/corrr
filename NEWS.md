@@ -1,5 +1,9 @@
 # corrr (development version)
 
+# corrr 0.3.2.9001
+
+- Fixes compatability issues with `dplyr` 
+
 # corrr 0.3.2
 
 - Improves support for `tbl_sql()` objects

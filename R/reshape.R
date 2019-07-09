@@ -25,7 +25,12 @@
 #' focus(x, -matches("Sepal"))  # Focus on correlations of non-Sepal 
 #'                              # variables with Sepal variables.
 focus <- function(x, ..., mirror = FALSE) {
-  focus_(x, .dots = lazyeval::lazy_dots(...), mirror = mirror)
+  focus_(
+    x = x, 
+    .dots = ..., 
+    ... = ...,
+    mirror = mirror
+    )
 }
 
 #' @export

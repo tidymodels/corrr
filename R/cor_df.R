@@ -5,7 +5,7 @@ as_matrix.cor_df <- function(x, diagonal) {
   
   # Separate rownames
   row_names <- x$rowname
-  x %<>% dplyr::select_("-rowname")
+  x %<>% dplyr::select(-rowname)
   # Return diagonal to 1
   if (!missing(diagonal)) diag(x) <- diagonal
   
@@ -24,7 +24,7 @@ shave.cor_df <- function(x, upper = TRUE) {
   
   # Separate rownames
   row_names <- x$rowname
-  x %<>% dplyr::select_("-rowname")
+  x %<>% dplyr::select(-rowname)
   
   # Remove upper matrix
   if (upper) {
@@ -69,20 +69,20 @@ rearrange.cor_df <- function(x, method = "PCA", absolute = TRUE) {
 
 #' @export
 focus_.cor_df <- function(x, ..., .dots = NULL, mirror = FALSE) {
-  
-  # Store rownames in case they're dropped in next step
+  vars <- enquos(...)
   row_names <- x$rowname
-  
-  # Select relevant columns
-  x %<>% dplyr::select_(..., .dots = .dots)
-  
+  if(length(vars) > 0) {
+    x <-  dplyr::select(x, !!! vars)  
+  } else {
+    x <-  dplyr::select(x, .dots)
+  }
   # Get selected column names and
   # append back rownames if necessary
   vars <- colnames(x)
   if ("rowname" %in% vars) {
     vars <- vars[vars != "rowname"]
   } else {
-    x %<>% first_col(row_names)
+    x <-  first_col(x, row_names)
   }
   
   # Exclude these or others from the rows
@@ -121,7 +121,7 @@ stretch.cor_df <- function(x, na.rm = FALSE) {
   
   x %<>%
     tidyr::gather_("x", "r", vars, na.rm) %>% 
-    dplyr::rename_("y" = "rowname")
+    dplyr::rename("y" = "rowname")
   
   x[, c("x", "y", "r")]
 }
@@ -226,7 +226,7 @@ network_plot.cor_df <- function(rdf,
     abs() %>%
     stats::cmdscale() %>%
     data.frame() %>%
-    dplyr::rename_(x = "X1", y = "X2")
+    dplyr::rename(x = "X1", y = "X2")
   points$id <- rownames(points)
   
   # Create a proximity matrix of the paths to be plotted.

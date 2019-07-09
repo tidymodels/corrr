@@ -18,8 +18,8 @@ A tool for exploring correlations.
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/drsimonj/corrr}
-  \item Report bugs at \url{https://github.com/drsimonj/corrr/issues}
+  \item \url{https://github.com/tidymodels/corrr}
+  \item Report bugs at \url{https://github.com/tidymodels/corrr/issues}
 }
 
 }
