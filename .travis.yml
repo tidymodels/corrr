@@ -6,13 +6,18 @@ cache: packages
 
 cran: https://cran.rstudio.com
 
-include:
+matrix:
+  include:
   - r: devel
   - r: release
   - r: 3.5
   - r: 3.4
   - r: 3.3
   - r: 3.2
+
+env:
+  global:
+  - MAKEFLAGS="-j 2"
 
 after_success:
   - Rscript -e 'covr::codecov()'
