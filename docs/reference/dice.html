@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Articles • corrr</title>
+<title>Returns a correlation table with the selected fields only — dice • corrr</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -31,7 +31,9 @@
 
 
 
-<meta property="og:title" content="Articles" />
+<meta property="og:title" content="Returns a correlation table with the selected fields only — dice" />
+
+<meta property="og:description" content="Returns a correlation table with the selected fields only" />
 
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -58,7 +60,7 @@
   </head>
 
   <body>
-    <div class="container template-article-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -122,17 +124,53 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Articles</h1>
+    <h1>Returns a correlation table with the selected fields only</h1>
+    <small class="dont-index">Source: <a href='https://github.com/tidymodels/corrr/blob/master/R/reshape.R'><code>R/reshape.R</code></a></small>
+    <div class="hidden name"><code>dice.Rd</code></div>
     </div>
 
-    <div class="section ">
-      <h3>All vignettes</h3>
-      <p class="section-desc"></p>
-
-      <ul>
-        <li><a href="using-corrr.html">Using corrr</a></li>
-      </ul>
+    <div class="ref-description">
+    
+    <p>Returns a correlation table with the selected fields only</p>
+    
     </div>
+
+    <pre class="usage"><span class='fu'>dice</span>(<span class='no'>x</span>, <span class='no'>...</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>A correlation table, class cor_df</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>A list of variables in the correlation table</p></td>
+    </tr>
+    </table>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='fu'>dice</span>(<span class='fu'><a href='correlate.html'>correlate</a></span>(<span class='no'>mtcars</span>), <span class='no'>mpg</span>, <span class='no'>wt</span>, <span class='no'>am</span>)</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Correlation method: 'pearson'</span>
+#&gt; <span class='message'>Missing treated using: 'pairwise.complete.obs'</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3 x 4</span><span>
+#&gt;   rowname    mpg     wt     am
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> mpg     </span><span style='color: #BB0000;'>NA</span><span>     -</span><span style='color: #BB0000;'>0.868</span><span>  0.600
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> wt      -</span><span style='color: #BB0000;'>0.868</span><span> </span><span style='color: #BB0000;'>NA</span><span>     -</span><span style='color: #BB0000;'>0.692</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> am       0.600 -</span><span style='color: #BB0000;'>0.692</span><span> </span><span style='color: #BB0000;'>NA</span><span>    </div><div class='input'>
+</div></span></pre>
+  </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+            
+      <li><a href="#examples">Examples</a></li>
+    </ul>
+
   </div>
 </div>
 
