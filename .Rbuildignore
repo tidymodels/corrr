@@ -13,3 +13,4 @@ revdep
 ^logs/
 codecov.yml
 ^docs
+_pkgdown.yml
