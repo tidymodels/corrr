@@ -1,6 +1,8 @@
 # corrr (development version)
 
-# corrr 0.3.2.9003
+# corrr 0.3.2.9004
+
+- Improves `correlate()` for database backed tables
 
 - Adds `remove.dups` argument to `stretch()`.  It removes duplicates with out removing all NAs (#57)
 
