@@ -3,6 +3,7 @@
 #' @importFrom purrr map_dfr
 #' @importFrom purrr map_dfc
 #' @importFrom purrr map_lgl
+#' @importFrom purrr map_chr
 #' @importFrom purrr map
 #' @importFrom purrr map2
 #' @importFrom purrr imap_dfr

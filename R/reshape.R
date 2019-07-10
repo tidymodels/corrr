@@ -103,6 +103,7 @@ focus_if.default <- function(x, .predicate, ..., mirror = FALSE) {
 #' @param na.rm Boolean. Whether rows with an NA correlation (originally the
 #'   matrix diagonal) should be dropped? Will automatically be set to TRUE if
 #'   mirror is FALSE.
+#' @param remove.dups Removes duplicate entries, without removing all NAs
 #' @return tbl with three colums (x and y variables, and their correlation)
 #' @export
 #' @examples
@@ -113,6 +114,43 @@ focus_if.default <- function(x, .predicate, ..., mirror = FALSE) {
 #' x <- shave(x)  # use shave to set upper triangle to NA and then...
 #' stretch(x, na.rm = FALSE)  # omit all NAs, therefore keeping each
 #'                              # correlation only once.
-stretch <- function(x, na.rm = FALSE) {
+stretch <- function(x, na.rm = FALSE, remove.dups =  FALSE) {
   UseMethod("stretch")
+}
+
+#' @export
+stretch.cor_df <- function(x, na.rm = FALSE, remove.dups =  FALSE) {
+  if(remove.dups) x <- shave(x)
+  row_name <- x$rowname
+  x <- x[, colnames(x) != "rowname"]
+  tb <- imap_dfr(x, ~tibble(x = .y, y = row_name, r = .x))
+  if(na.rm) tb <- tb[!is.na(tb$r), ]
+  if(remove.dups) {
+    stretch_unique(tb)
+  } else {
+    tb
+  }
+}
+
+stretch_unique <- function(.data,  x = x, y = y, val = r) {
+  val <- enquo(val)
+  y <- enquo(y)
+  x <- enquo(x)
+  row_names <- unique(.data[, as_label(y)][[1]])
+  td <- purrr::transpose(.data)
+  combos <- map_chr(
+    td,
+    ~paste0(sort(c(.x$x, .x$y)), collapse = " | ")
+  )
+  .data$combos <- combos
+  map_dfr(
+    unique(combos),
+    ~{ 
+      cr <- .data[.data$combos == .x, ]
+      vl <- cr[, as_label(val)][[1]]
+      if(nrow(cr) == 2) cr <- cr[!is.na(vl), ]
+      if(nrow(cr) != 1) stop("Error deduplicating stretched table")
+      cr[, colnames(cr) != "combos"]
+    }
+  )
 }

@@ -36,3 +36,6 @@ test_that("retract works", {
   expect_is(d, "cor_df")
 })
 
+test_that("remove.dups works", {
+  expect_is(stretch(d, remove.dups = TRUE), "data.frame")
+})

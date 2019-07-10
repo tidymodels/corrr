@@ -110,15 +110,6 @@ focus_if.cor_df <- function(x, .predicate, ..., mirror = FALSE) {
   focus_(x, .dots = to_keep, mirror = mirror)
 }
 
-#' @export
-stretch.cor_df <- function(x, na.rm = FALSE) {
-  row_name <- x$rowname
-  x <- x[, colnames(x) != "rowname"]
-  tb <- imap_dfr(x, ~tibble(x = .y, y = row_name, r = .x))
-  if(na.rm) tb <- tb[!is.na(tb$r), ]
-  tb
-}
-
 # Output --------------------------------------------------------------------
 
 #' @export
