@@ -4,6 +4,8 @@ language: R
 sudo: false
 cache: packages
 
+cran: https://cran.rstudio.com
+
 include:
   - r: devel
   - r: release
