@@ -1,6 +1,8 @@
 # corrr (development version)
 
-# corrr 0.3.2.9001
+# corrr 0.3.2.9002
+
+- Adds `retract()` function (#65)
 
 - Fixes compatability issues with `dplyr` 
 

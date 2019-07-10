@@ -29,3 +29,10 @@ test_that("na.rm", {
     0
   )
 })
+
+test_that("retract works", {
+  cd <- as_cordf(retract(stretch(d)))
+  expect_equal(d, cd)
+  expect_is(d, "cor_df")
+})
+

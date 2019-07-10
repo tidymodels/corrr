@@ -14,19 +14,18 @@
 #' as_cordf(x)
 #' as_cordf(x, diagonal = 1)
 as_cordf <- function(x, diagonal = NA) {
-  
   if(methods::is(x, "cor_df")) {
     warning("x is already a correlation data frame.")
     return(x)
   }
-  
-  x <- tibble::as_tibble(x)
-  
+  x <- as.data.frame(x)
+  row_name <- x$rowname
+  x <- x[, colnames(x) != "rowname"]
+  rownames(x) <- row_name
   if(ncol(x) != nrow(x)) {
     stop("Input object x is not a square. ",
          "The number of columns must be equal to the number of rows.")
   }
-  
   diag(x) <- diagonal
   x <- first_col(x, names(x))
   class(x) <- c("cor_df", class(x))

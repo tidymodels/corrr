@@ -71,3 +71,6 @@ test_that("Vectors and padding", {
   )
 })
 
+test_that("Fashion works against matrix", {
+  expect_is(fashion(as.matrix(correlate(mtcars))), "data.frame")
+})
