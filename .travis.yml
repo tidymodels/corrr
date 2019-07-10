@@ -10,10 +10,6 @@ matrix:
   include:
   - r: devel
   - r: release
-  - r: 3.5
-  - r: 3.4
-  - r: 3.3
-  - r: 3.2
 
 env:
   global:
