@@ -142,17 +142,18 @@ x <- datasets::mtcars %>%
 #>   reorder.hclust gclus
        
 fashion(x)
-#>   rowname   am drat gear   wt disp  mpg   hp qsec carb
-#> 1      am                                             
-#> 2    drat  .71                                        
-#> 3    gear  .79  .70                                   
-#> 4      wt -.69 -.71 -.58                              
-#> 5    disp -.59 -.71 -.56  .89                         
-#> 6     mpg  .60  .68  .48 -.87 -.85                    
-#> 7      hp -.24 -.45 -.13  .66  .79 -.78               
-#> 8    qsec -.23  .09 -.21 -.17 -.43  .42 -.71          
-#> 9    carb  .06 -.09  .27  .43  .39 -.55  .75 -.66
+#>   rowname  mpg drat   am gear qsec carb   hp   wt disp
+#> 1     mpg                                             
+#> 2    drat  .68                                        
+#> 3      am  .60  .71                                   
+#> 4    gear  .48  .70  .79                              
+#> 5    qsec  .42  .09 -.23 -.21                         
+#> 6    carb -.55 -.09  .06  .27 -.66                    
+#> 7      hp -.78 -.45 -.24 -.13 -.71  .75               
+#> 8      wt -.87 -.71 -.69 -.58 -.17  .43  .66          
+#> 9    disp -.85 -.71 -.59 -.56 -.43  .39  .79  .89
 rplot(x)
+#> Don't know how to automatically pick scale for object of type noquote. Defaulting to continuous.
 ```
 
 ![](tools/readme/combination-1.png)<!-- -->

@@ -23,4 +23,14 @@ Useful links:
 }
 
 }
+\author{
+\strong{Maintainer}: Edgar Ruiz \email{edgararuiz@gmail.com}
+
+Authors:
+\itemize{
+  \item Simon Jackson
+  \item Jorge Cimentada
+}
+
+}
 \keyword{internal}
