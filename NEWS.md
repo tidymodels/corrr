@@ -2,7 +2,9 @@
 
 # corrr 0.3.2.9002
 
-- Adds `retract()` function (#65)
+- Adds `dice()` function, wraps `focus(x,..., mirror = TRUE)` (#64)
+
+- Adds `retract()` function, opposite of `stretch()` (#65)
 
 - Fixes compatability issues with `dplyr` 
 

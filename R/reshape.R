@@ -33,6 +33,25 @@ focus <- function(x, ..., mirror = FALSE) {
     )
 }
 
+#' Returns a correlation table with the selected fields only
+#' 
+#' @param x A correlation table, class cor_df
+#' @param ... A list of variables in the correlation table
+#' 
+#' @examples 
+#' 
+#' dice(correlate(mtcars), mpg, wt, am)
+#' 
+#' @export
+dice <- function(x, ...) {
+  UseMethod("dice")
+}
+
+#' @export
+dice.cor_df <- function(x, ...) {
+  focus(x, ..., mirror = TRUE)
+}
+
 #' @export
 #' @rdname focus
 focus_ <- function(x, ..., .dots, mirror) {
