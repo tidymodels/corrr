@@ -41,7 +41,7 @@
         <a class="navbar-brand" href="../index.html">corrr</a>
         <div class="info">
           <span class="partof">part of <a href="https://github.com/tidymodels">tidymodels</a></span>
-          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2.9003</span>
+          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2.9004</span>
         </div>
       </div>
     </div>
@@ -64,6 +64,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/databases.html">Using corrr with databases</a>
+    </li>
+    <li>
       <a href="../articles/using-corrr.html">Using corrr</a>
     </li>
   </ul>
@@ -113,81 +116,81 @@
 <li>Standardised variances (the matrix diagonal) set to missing values (<code>NA</code>) so they can be ignored.</li>
 </ul>
 <p>To work with further, let’s create a correlation data frame using <code><a href="../reference/correlate.html">correlate()</a></code> from the <code>mtcars</code> data that comes with R:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(corrr)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">d &lt;-<span class="st"> </span><span class="kw"><a href="../reference/correlate.html">correlate</a></span>(mtcars, <span class="dt">quiet =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3">d</a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co">#&gt; # A tibble: 11 x 12</span></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co">#&gt;    rowname    mpg    cyl   disp     hp    drat     wt    qsec     vs</span></a>
-<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="co">#&gt;    &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co">#&gt;  1 mpg     NA     -0.852 -0.848 -0.776  0.681  -0.868  0.419   0.664</span></a>
-<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="co">#&gt;  2 cyl     -0.852 NA      0.902  0.832 -0.700   0.782 -0.591  -0.811</span></a>
-<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="co">#&gt;  3 disp    -0.848  0.902 NA      0.791 -0.710   0.888 -0.434  -0.710</span></a>
-<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="co">#&gt;  4 hp      -0.776  0.832  0.791 NA     -0.449   0.659 -0.708  -0.723</span></a>
-<a class="sourceLine" id="cb1-11" data-line-number="11"><span class="co">#&gt;  5 drat     0.681 -0.700 -0.710 -0.449 NA      -0.712  0.0912  0.440</span></a>
-<a class="sourceLine" id="cb1-12" data-line-number="12"><span class="co">#&gt;  6 wt      -0.868  0.782  0.888  0.659 -0.712  NA     -0.175  -0.555</span></a>
-<a class="sourceLine" id="cb1-13" data-line-number="13"><span class="co">#&gt;  7 qsec     0.419 -0.591 -0.434 -0.708  0.0912 -0.175 NA       0.745</span></a>
-<a class="sourceLine" id="cb1-14" data-line-number="14"><span class="co">#&gt;  8 vs       0.664 -0.811 -0.710 -0.723  0.440  -0.555  0.745  NA    </span></a>
-<a class="sourceLine" id="cb1-15" data-line-number="15"><span class="co">#&gt;  9 am       0.600 -0.523 -0.591 -0.243  0.713  -0.692 -0.230   0.168</span></a>
-<a class="sourceLine" id="cb1-16" data-line-number="16"><span class="co">#&gt; 10 gear     0.480 -0.493 -0.556 -0.126  0.700  -0.583 -0.213   0.206</span></a>
-<a class="sourceLine" id="cb1-17" data-line-number="17"><span class="co">#&gt; 11 carb    -0.551  0.527  0.395  0.750 -0.0908  0.428 -0.656  -0.570</span></a>
-<a class="sourceLine" id="cb1-18" data-line-number="18"><span class="co">#&gt; # … with 3 more variables: am &lt;dbl&gt;, gear &lt;dbl&gt;, carb &lt;dbl&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(corrr)</a>
+<a class="sourceLine" id="cb1-2" title="2">d &lt;-<span class="st"> </span><span class="kw"><a href="../reference/correlate.html">correlate</a></span>(mtcars, <span class="dt">quiet =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb1-3" title="3">d</a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="co">#&gt; # A tibble: 11 x 12</span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="co">#&gt;    rowname    mpg    cyl   disp     hp    drat     wt    qsec     vs</span></a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="co">#&gt;    &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="co">#&gt;  1 mpg     NA     -0.852 -0.848 -0.776  0.681  -0.868  0.419   0.664</span></a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="co">#&gt;  2 cyl     -0.852 NA      0.902  0.832 -0.700   0.782 -0.591  -0.811</span></a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="co">#&gt;  3 disp    -0.848  0.902 NA      0.791 -0.710   0.888 -0.434  -0.710</span></a>
+<a class="sourceLine" id="cb1-10" title="10"><span class="co">#&gt;  4 hp      -0.776  0.832  0.791 NA     -0.449   0.659 -0.708  -0.723</span></a>
+<a class="sourceLine" id="cb1-11" title="11"><span class="co">#&gt;  5 drat     0.681 -0.700 -0.710 -0.449 NA      -0.712  0.0912  0.440</span></a>
+<a class="sourceLine" id="cb1-12" title="12"><span class="co">#&gt;  6 wt      -0.868  0.782  0.888  0.659 -0.712  NA     -0.175  -0.555</span></a>
+<a class="sourceLine" id="cb1-13" title="13"><span class="co">#&gt;  7 qsec     0.419 -0.591 -0.434 -0.708  0.0912 -0.175 NA       0.745</span></a>
+<a class="sourceLine" id="cb1-14" title="14"><span class="co">#&gt;  8 vs       0.664 -0.811 -0.710 -0.723  0.440  -0.555  0.745  NA    </span></a>
+<a class="sourceLine" id="cb1-15" title="15"><span class="co">#&gt;  9 am       0.600 -0.523 -0.591 -0.243  0.713  -0.692 -0.230   0.168</span></a>
+<a class="sourceLine" id="cb1-16" title="16"><span class="co">#&gt; 10 gear     0.480 -0.493 -0.556 -0.126  0.700  -0.583 -0.213   0.206</span></a>
+<a class="sourceLine" id="cb1-17" title="17"><span class="co">#&gt; 11 carb    -0.551  0.527  0.395  0.750 -0.0908  0.428 -0.656  -0.570</span></a>
+<a class="sourceLine" id="cb1-18" title="18"><span class="co">#&gt; # ... with 3 more variables: am &lt;dbl&gt;, gear &lt;dbl&gt;, carb &lt;dbl&gt;</span></a></code></pre></div>
 </div>
 <div id="why-a-correlation-data-frame" class="section level2">
 <h2 class="hasAnchor">
 <a href="#why-a-correlation-data-frame" class="anchor"></a>Why a correlation data frame?</h2>
 <p>At first, a correlation data frame might seem like an unneccessary complexity compared to the traditional matrix. However, the purpose of corrr is to help use explore these correlations, not to do mathematical or statistical operations. Thus, by having the correlations in a data frame, we can make use of packages that help us work with data frames like <code>dplyr</code>, <code>tidyr</code>, <code>ggplot2</code>, and focus on using data pipelines. Lets look at some examples:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co"># Filter rows to occasions in which cyl has a correlation of .7 or more with</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co"># another variable.</span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5">d <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(cyl <span class="op">&gt;</span><span class="st"> </span><span class="fl">.7</span>)</a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; # A tibble: 3 x 12</span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt;   rowname    mpg   cyl   disp     hp   drat     wt   qsec     vs     am</span></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt;   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt; 1 disp    -0.848 0.902 NA      0.791 -0.710  0.888 -0.434 -0.710 -0.591</span></a>
-<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt; 2 hp      -0.776 0.832  0.791 NA     -0.449  0.659 -0.708 -0.723 -0.243</span></a>
-<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt; 3 wt      -0.868 0.782  0.888  0.659 -0.712 NA     -0.175 -0.555 -0.692</span></a>
-<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt; # … with 2 more variables: gear &lt;dbl&gt;, carb &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb2-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co"># Select the mpg, cyl and disp columns (and rowname)</span></a>
-<a class="sourceLine" id="cb2-15" data-line-number="15">d <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(rowname, mpg, cyl, disp)</a>
-<a class="sourceLine" id="cb2-16" data-line-number="16"><span class="co">#&gt; # A tibble: 11 x 4</span></a>
-<a class="sourceLine" id="cb2-17" data-line-number="17"><span class="co">#&gt;    rowname    mpg    cyl   disp</span></a>
-<a class="sourceLine" id="cb2-18" data-line-number="18"><span class="co">#&gt;    &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb2-19" data-line-number="19"><span class="co">#&gt;  1 mpg     NA     -0.852 -0.848</span></a>
-<a class="sourceLine" id="cb2-20" data-line-number="20"><span class="co">#&gt;  2 cyl     -0.852 NA      0.902</span></a>
-<a class="sourceLine" id="cb2-21" data-line-number="21"><span class="co">#&gt;  3 disp    -0.848  0.902 NA    </span></a>
-<a class="sourceLine" id="cb2-22" data-line-number="22"><span class="co">#&gt;  4 hp      -0.776  0.832  0.791</span></a>
-<a class="sourceLine" id="cb2-23" data-line-number="23"><span class="co">#&gt;  5 drat     0.681 -0.700 -0.710</span></a>
-<a class="sourceLine" id="cb2-24" data-line-number="24"><span class="co">#&gt;  6 wt      -0.868  0.782  0.888</span></a>
-<a class="sourceLine" id="cb2-25" data-line-number="25"><span class="co">#&gt;  7 qsec     0.419 -0.591 -0.434</span></a>
-<a class="sourceLine" id="cb2-26" data-line-number="26"><span class="co">#&gt;  8 vs       0.664 -0.811 -0.710</span></a>
-<a class="sourceLine" id="cb2-27" data-line-number="27"><span class="co">#&gt;  9 am       0.600 -0.523 -0.591</span></a>
-<a class="sourceLine" id="cb2-28" data-line-number="28"><span class="co">#&gt; 10 gear     0.480 -0.493 -0.556</span></a>
-<a class="sourceLine" id="cb2-29" data-line-number="29"><span class="co">#&gt; 11 carb    -0.551  0.527  0.395</span></a>
-<a class="sourceLine" id="cb2-30" data-line-number="30"></a>
-<a class="sourceLine" id="cb2-31" data-line-number="31"><span class="co"># Combine above in a single pipeline</span></a>
-<a class="sourceLine" id="cb2-32" data-line-number="32">d <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-33" data-line-number="33"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(cyl <span class="op">&gt;</span><span class="st"> </span><span class="fl">.7</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb2-34" data-line-number="34"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(rowname, mpg, cyl, disp)</a>
-<a class="sourceLine" id="cb2-35" data-line-number="35"><span class="co">#&gt; # A tibble: 3 x 4</span></a>
-<a class="sourceLine" id="cb2-36" data-line-number="36"><span class="co">#&gt;   rowname    mpg   cyl   disp</span></a>
-<a class="sourceLine" id="cb2-37" data-line-number="37"><span class="co">#&gt;   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb2-38" data-line-number="38"><span class="co">#&gt; 1 disp    -0.848 0.902 NA    </span></a>
-<a class="sourceLine" id="cb2-39" data-line-number="39"><span class="co">#&gt; 2 hp      -0.776 0.832  0.791</span></a>
-<a class="sourceLine" id="cb2-40" data-line-number="40"><span class="co">#&gt; 3 wt      -0.868 0.782  0.888</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr)</a>
+<a class="sourceLine" id="cb2-2" title="2"></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="co"># Filter rows to occasions in which cyl has a correlation of .7 or more with</span></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="co"># another variable.</span></a>
+<a class="sourceLine" id="cb2-5" title="5">d <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(cyl <span class="op">&gt;</span><span class="st"> </span><span class="fl">.7</span>)</a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="co">#&gt; # A tibble: 3 x 12</span></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="co">#&gt;   rowname    mpg   cyl   disp     hp   drat     wt   qsec     vs     am</span></a>
+<a class="sourceLine" id="cb2-8" title="8"><span class="co">#&gt;   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb2-9" title="9"><span class="co">#&gt; 1 disp    -0.848 0.902 NA      0.791 -0.710  0.888 -0.434 -0.710 -0.591</span></a>
+<a class="sourceLine" id="cb2-10" title="10"><span class="co">#&gt; 2 hp      -0.776 0.832  0.791 NA     -0.449  0.659 -0.708 -0.723 -0.243</span></a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="co">#&gt; 3 wt      -0.868 0.782  0.888  0.659 -0.712 NA     -0.175 -0.555 -0.692</span></a>
+<a class="sourceLine" id="cb2-12" title="12"><span class="co">#&gt; # ... with 2 more variables: gear &lt;dbl&gt;, carb &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb2-13" title="13"></a>
+<a class="sourceLine" id="cb2-14" title="14"><span class="co"># Select the mpg, cyl and disp columns (and rowname)</span></a>
+<a class="sourceLine" id="cb2-15" title="15">d <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(rowname, mpg, cyl, disp)</a>
+<a class="sourceLine" id="cb2-16" title="16"><span class="co">#&gt; # A tibble: 11 x 4</span></a>
+<a class="sourceLine" id="cb2-17" title="17"><span class="co">#&gt;    rowname    mpg    cyl   disp</span></a>
+<a class="sourceLine" id="cb2-18" title="18"><span class="co">#&gt;    &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb2-19" title="19"><span class="co">#&gt;  1 mpg     NA     -0.852 -0.848</span></a>
+<a class="sourceLine" id="cb2-20" title="20"><span class="co">#&gt;  2 cyl     -0.852 NA      0.902</span></a>
+<a class="sourceLine" id="cb2-21" title="21"><span class="co">#&gt;  3 disp    -0.848  0.902 NA    </span></a>
+<a class="sourceLine" id="cb2-22" title="22"><span class="co">#&gt;  4 hp      -0.776  0.832  0.791</span></a>
+<a class="sourceLine" id="cb2-23" title="23"><span class="co">#&gt;  5 drat     0.681 -0.700 -0.710</span></a>
+<a class="sourceLine" id="cb2-24" title="24"><span class="co">#&gt;  6 wt      -0.868  0.782  0.888</span></a>
+<a class="sourceLine" id="cb2-25" title="25"><span class="co">#&gt;  7 qsec     0.419 -0.591 -0.434</span></a>
+<a class="sourceLine" id="cb2-26" title="26"><span class="co">#&gt;  8 vs       0.664 -0.811 -0.710</span></a>
+<a class="sourceLine" id="cb2-27" title="27"><span class="co">#&gt;  9 am       0.600 -0.523 -0.591</span></a>
+<a class="sourceLine" id="cb2-28" title="28"><span class="co">#&gt; 10 gear     0.480 -0.493 -0.556</span></a>
+<a class="sourceLine" id="cb2-29" title="29"><span class="co">#&gt; 11 carb    -0.551  0.527  0.395</span></a>
+<a class="sourceLine" id="cb2-30" title="30"></a>
+<a class="sourceLine" id="cb2-31" title="31"><span class="co"># Combine above in a single pipeline</span></a>
+<a class="sourceLine" id="cb2-32" title="32">d <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-33" title="33"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(cyl <span class="op">&gt;</span><span class="st"> </span><span class="fl">.7</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-34" title="34"><span class="st">  </span><span class="kw">select</span>(rowname, mpg, cyl, disp)</a>
+<a class="sourceLine" id="cb2-35" title="35"><span class="co">#&gt; # A tibble: 3 x 4</span></a>
+<a class="sourceLine" id="cb2-36" title="36"><span class="co">#&gt;   rowname    mpg   cyl   disp</span></a>
+<a class="sourceLine" id="cb2-37" title="37"><span class="co">#&gt;   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb2-38" title="38"><span class="co">#&gt; 1 disp    -0.848 0.902 NA    </span></a>
+<a class="sourceLine" id="cb2-39" title="39"><span class="co">#&gt; 2 hp      -0.776 0.832  0.791</span></a>
+<a class="sourceLine" id="cb2-40" title="40"><span class="co">#&gt; 3 wt      -0.868 0.782  0.888</span></a></code></pre></div>
 <p>Furthermore, by having the diagonal set to missing, we don’t need to put in extra effort to ignore them when summarising the correlations. For example:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># Compute mean of each column</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(purrr)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">d <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="op">-</span>rowname) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="https://purrr.tidyverse.org/reference/map.html">map_dbl</a></span>(<span class="op">~</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/mean">mean</a></span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt;           mpg           cyl          disp            hp          drat </span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; -0.1050454113 -0.0925483176 -0.0872737071  0.0006800268 -0.0037165212 </span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt;            wt          qsec            vs            am          gear </span></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; -0.0828684293 -0.1752247305 -0.1145625942  0.0053087327  0.0484120552 </span></a>
-<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt;          carb </span></a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt;  0.0563419513</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="co"># Compute mean of each column</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(purrr)</a>
+<a class="sourceLine" id="cb3-3" title="3">d <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>rowname) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="st">  </span><span class="kw">map_dbl</span>(<span class="op">~</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/mean">mean</a></span>(., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="co">#&gt;           mpg           cyl          disp            hp          drat </span></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="co">#&gt; -0.1050454113 -0.0925483176 -0.0872737071  0.0006800268 -0.0037165212 </span></a>
+<a class="sourceLine" id="cb3-8" title="8"><span class="co">#&gt;            wt          qsec            vs            am          gear </span></a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="co">#&gt; -0.0828684293 -0.1752247305 -0.1145625942  0.0053087327  0.0484120552 </span></a>
+<a class="sourceLine" id="cb3-10" title="10"><span class="co">#&gt;          carb </span></a>
+<a class="sourceLine" id="cb3-11" title="11"><span class="co">#&gt;  0.0563419513</span></a></code></pre></div>
 <div id="api" class="section level3">
 <h3 class="hasAnchor">
 <a href="#api" class="anchor"></a>API</h3>
@@ -217,47 +220,47 @@
 </ul>
 <p>By combing these functions in data pipelines, it’s possible to easily explore your correlations.</p>
 <p>For example, lets focus on the correlations of mpg and cyl with all the others:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">d <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/focus.html">focus</a></span>(mpg, cyl)</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; # A tibble: 9 x 3</span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt;   rowname    mpg    cyl</span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt;   &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; 1 disp    -0.848  0.902</span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; 2 hp      -0.776  0.832</span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; 3 drat     0.681 -0.700</span></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; 4 wt      -0.868  0.782</span></a>
-<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; 5 qsec     0.419 -0.591</span></a>
-<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt; 6 vs       0.664 -0.811</span></a>
-<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt; 7 am       0.600 -0.523</span></a>
-<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt; 8 gear     0.480 -0.493</span></a>
-<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co">#&gt; 9 carb    -0.551  0.527</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">d <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/focus.html">focus</a></span>(mpg, cyl)</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="co">#&gt; # A tibble: 9 x 3</span></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="co">#&gt;   rowname    mpg    cyl</span></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="co">#&gt;   &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="co">#&gt; 1 disp    -0.848  0.902</span></a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="co">#&gt; 2 hp      -0.776  0.832</span></a>
+<a class="sourceLine" id="cb4-7" title="7"><span class="co">#&gt; 3 drat     0.681 -0.700</span></a>
+<a class="sourceLine" id="cb4-8" title="8"><span class="co">#&gt; 4 wt      -0.868  0.782</span></a>
+<a class="sourceLine" id="cb4-9" title="9"><span class="co">#&gt; 5 qsec     0.419 -0.591</span></a>
+<a class="sourceLine" id="cb4-10" title="10"><span class="co">#&gt; 6 vs       0.664 -0.811</span></a>
+<a class="sourceLine" id="cb4-11" title="11"><span class="co">#&gt; 7 am       0.600 -0.523</span></a>
+<a class="sourceLine" id="cb4-12" title="12"><span class="co">#&gt; 8 gear     0.480 -0.493</span></a>
+<a class="sourceLine" id="cb4-13" title="13"><span class="co">#&gt; 9 carb    -0.551  0.527</span></a></code></pre></div>
 <p>Or maybe we want to focus in on a few variables (mirrored in rows too) and print the correlations without an upper triangle and fashioned to look nice:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">d <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/focus.html">focus</a></span>(mpg<span class="op">:</span>drat, <span class="dt">mirror =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st">  </span><span class="co"># Focus only on mpg:drat</span></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/shave.html">shave</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Remove the upper triangle</span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../reference/fashion.html">fashion</a></span>()   <span class="co"># Print in nice format </span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt;   rowname  mpg  cyl disp   hp drat</span></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt; 1     mpg                         </span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; 2     cyl -.85                    </span></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; 3    disp -.85  .90               </span></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; 4      hp -.78  .83  .79          </span></a>
-<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt; 5    drat  .68 -.70 -.71 -.45</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">d <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="st">  </span><span class="kw"><a href="../reference/focus.html">focus</a></span>(mpg<span class="op">:</span>drat, <span class="dt">mirror =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st">  </span><span class="co"># Focus only on mpg:drat</span></a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="st">  </span><span class="kw"><a href="../reference/shave.html">shave</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Remove the upper triangle</span></a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="st">  </span><span class="kw"><a href="../reference/fashion.html">fashion</a></span>()   <span class="co"># Print in nice format </span></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="co">#&gt;   rowname  mpg  cyl disp   hp drat</span></a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="co">#&gt; 1     mpg                         </span></a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="co">#&gt; 2     cyl -.85                    </span></a>
+<a class="sourceLine" id="cb5-8" title="8"><span class="co">#&gt; 3    disp -.85  .90               </span></a>
+<a class="sourceLine" id="cb5-9" title="9"><span class="co">#&gt; 4      hp -.78  .83  .79          </span></a>
+<a class="sourceLine" id="cb5-10" title="10"><span class="co">#&gt; 5    drat  .68 -.70 -.71 -.45</span></a></code></pre></div>
 <p>Alternatively, we can visualise these correlations (let’s clear the lower triangle for a change):</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">d <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/focus.html">focus</a></span>(mpg<span class="op">:</span>drat, <span class="dt">mirror =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/shave.html">shave</a></span>(<span class="dt">upper =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../reference/rplot.html">rplot</a></span>()     <span class="co"># Plot</span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt; Don't know how to automatically pick scale for object of type noquote. Defaulting to continuous.</span></a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">d <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="st">  </span><span class="kw"><a href="../reference/focus.html">focus</a></span>(mpg<span class="op">:</span>drat, <span class="dt">mirror =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="st">  </span><span class="kw"><a href="../reference/shave.html">shave</a></span>(<span class="dt">upper =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="st">  </span><span class="kw"><a href="../reference/rplot.html">rplot</a></span>()     <span class="co"># Plot</span></a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="co">#&gt; Don't know how to automatically pick scale for object of type noquote. Defaulting to continuous.</span></a></code></pre></div>
 <p><img src="using-corrr_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
 <p>Perhaps we’d like to rearrange the correlations so that the plot becomes easier to interpret. In this case, we can add <code><a href="../reference/rearrange.html">rearrange()</a></code> into our pipeline before shaving one of the triangles (we’ll take correlation sign into account with <code>absolute = FALSE</code>).</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">d <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/focus.html">focus</a></span>(mpg<span class="op">:</span>drat, <span class="dt">mirror =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/rearrange.html">rearrange</a></span>(<span class="dt">absolute =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../reference/shave.html">shave</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="../reference/rplot.html">rplot</a></span>()</a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt; Registered S3 method overwritten by 'seriation':</span></a>
-<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#&gt;   method         from </span></a>
-<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co">#&gt;   reorder.hclust gclus</span></a>
-<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="co">#&gt; Don't know how to automatically pick scale for object of type noquote. Defaulting to continuous.</span></a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">d <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="st">  </span><span class="kw"><a href="../reference/focus.html">focus</a></span>(mpg<span class="op">:</span>drat, <span class="dt">mirror =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="st">  </span><span class="kw"><a href="../reference/rearrange.html">rearrange</a></span>(<span class="dt">absolute =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb7-4" title="4"><span class="st">  </span><span class="kw"><a href="../reference/shave.html">shave</a></span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb7-5" title="5"><span class="st">  </span><span class="kw"><a href="../reference/rplot.html">rplot</a></span>()</a>
+<a class="sourceLine" id="cb7-6" title="6"><span class="co">#&gt; Registered S3 method overwritten by 'seriation':</span></a>
+<a class="sourceLine" id="cb7-7" title="7"><span class="co">#&gt;   method         from </span></a>
+<a class="sourceLine" id="cb7-8" title="8"><span class="co">#&gt;   reorder.hclust gclus</span></a>
+<a class="sourceLine" id="cb7-9" title="9"><span class="co">#&gt; Don't know how to automatically pick scale for object of type noquote. Defaulting to continuous.</span></a></code></pre></div>
 <p><img src="using-corrr_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
 </div>
 </div>

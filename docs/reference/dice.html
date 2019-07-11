@@ -76,7 +76,7 @@
         <a class="navbar-brand" href="../index.html">corrr</a>
         <div class="info">
           <span class="partof">part of <a href="https://github.com/tidymodels">tidymodels</a></span>
-          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2.9003</span>
+          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2.9004</span>
         </div>
       </div>
     </div>
@@ -98,6 +98,9 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/databases.html">Using corrr with databases</a>
+    </li>
     <li>
       <a href="../articles/using-corrr.html">Using corrr</a>
     </li>
@@ -155,12 +158,12 @@
     <pre class="examples"><div class='input'>
 <span class='fu'>dice</span>(<span class='fu'><a href='correlate.html'>correlate</a></span>(<span class='no'>mtcars</span>), <span class='no'>mpg</span>, <span class='no'>wt</span>, <span class='no'>am</span>)</div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'>Correlation method: 'pearson'</span>
-#&gt; <span class='message'>Missing treated using: 'pairwise.complete.obs'</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3 x 4</span><span>
+#&gt; <span class='message'>Missing treated using: 'pairwise.complete.obs'</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 3 x 4</span><span>
 #&gt;   rowname    mpg     wt     am
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> mpg     </span><span style='color: #BB0000;'>NA</span><span>     -</span><span style='color: #BB0000;'>0.868</span><span>  0.600
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> wt      -</span><span style='color: #BB0000;'>0.868</span><span> </span><span style='color: #BB0000;'>NA</span><span>     -</span><span style='color: #BB0000;'>0.692</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> am       0.600 -</span><span style='color: #BB0000;'>0.692</span><span> </span><span style='color: #BB0000;'>NA</span><span>    </div><div class='input'>
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> mpg     </span><span style='color: #BB0000;'>NA</span><span>     -</span><span style='color: #BB0000;'>0.868</span><span>  0.600
+#&gt; </span><span style='color: #555555;'>2</span><span> wt      -</span><span style='color: #BB0000;'>0.868</span><span> </span><span style='color: #BB0000;'>NA</span><span>     -</span><span style='color: #BB0000;'>0.692</span><span>
+#&gt; </span><span style='color: #555555;'>3</span><span> am       0.600 -</span><span style='color: #BB0000;'>0.692</span><span> </span><span style='color: #BB0000;'>NA</span><span>    </div><div class='input'>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
