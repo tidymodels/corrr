@@ -33,7 +33,7 @@ You can install:
 
 ``` r
 # install.packages("remotes") 
-# remotes::install_github("drsimonj/corrr")
+# remotes::install_github("tidymodels/corrr")
 ```
 
 ## Using corrr

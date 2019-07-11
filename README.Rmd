@@ -34,7 +34,7 @@ You can install:
 
 ```{r install_git, eval = FALSE}
 # install.packages("remotes") 
-# remotes::install_github("drsimonj/corrr")
+# remotes::install_github("tidymodels/corrr")
 ```
 
 ## Using corrr
