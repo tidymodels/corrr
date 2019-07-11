@@ -72,6 +72,13 @@ Output/visualisations (console/plot out):
   - `rplot()` the correlations with shapes in place of the values.
   - `network_plot()` the correlations in a network.
 
+## Databases and Spark
+
+The `correlate()` function also works with database tables. The function
+will automatically push the calculations of the correlations to the
+database, collect the results in R, and return the `cor_df` object. This
+allows for those results integrate with the rest of the `corrr` API.
+
 ## Examples
 
 ``` r
