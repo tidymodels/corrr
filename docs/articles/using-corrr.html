@@ -104,7 +104,7 @@
 
     
     
-<p>corrr is a package for exploring <strong>corr</strong>elations in <strong>R</strong>. It makes it possible to easily perform routine tasks when exploring correlation matrices such as ignoring the diagonal, focusing on the correlations of certain variables against others, or rearranging and visualising the matrix in terms of the strength of the correlations.</p>
+<p>corrr is a package for exploring <strong>corr</strong>elations in <strong>R</strong>. It makes it possible to easily perform routine tasks when exploring correlation matrices such as ignoring the diagonal, focusing on the correlations of certain variables against others, or rearranging and visualizing the matrix in terms of the strength of the correlations.</p>
 <div id="using-corrr" class="section level2">
 <h2 class="hasAnchor">
 <a href="#using-corrr" class="anchor"></a>Using corrr</h2>
@@ -113,7 +113,7 @@
 <li>A <code>tbl</code> with an additional class, <code>cor_df</code>
 </li>
 <li>An extra “rowname” column</li>
-<li>Standardised variances (the matrix diagonal) set to missing values (<code>NA</code>) so they can be ignored.</li>
+<li>Standardized variances (the matrix diagonal) set to missing values (<code>NA</code>) so they can be ignored.</li>
 </ul>
 <p>To work with further, let’s create a correlation data frame using <code><a href="../reference/correlate.html">correlate()</a></code> from the <code>mtcars</code> data that comes with R:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(corrr)</a>
@@ -138,7 +138,7 @@
 <div id="why-a-correlation-data-frame" class="section level2">
 <h2 class="hasAnchor">
 <a href="#why-a-correlation-data-frame" class="anchor"></a>Why a correlation data frame?</h2>
-<p>At first, a correlation data frame might seem like an unneccessary complexity compared to the traditional matrix. However, the purpose of corrr is to help use explore these correlations, not to do mathematical or statistical operations. Thus, by having the correlations in a data frame, we can make use of packages that help us work with data frames like <code>dplyr</code>, <code>tidyr</code>, <code>ggplot2</code>, and focus on using data pipelines. Lets look at some examples:</p>
+<p>At first, a correlation data frame might seem like an unnecessary complexity compared to the traditional matrix. However, the purpose of corrr is to help use explore these correlations, not to do mathematical or statistical operations. Thus, by having the correlations in a data frame, we can make use of packages that help us work with data frames like <code>dplyr</code>, <code>tidyr</code>, <code>ggplot2</code>, and focus on using data pipelines. Lets look at some examples:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr)</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co"># Filter rows to occasions in which cyl has a correlation of .7 or more with</span></a>
@@ -179,7 +179,7 @@
 <a class="sourceLine" id="cb2-38" data-line-number="38"><span class="co">#&gt; 1 disp    -0.848 0.902 NA    </span></a>
 <a class="sourceLine" id="cb2-39" data-line-number="39"><span class="co">#&gt; 2 hp      -0.776 0.832  0.791</span></a>
 <a class="sourceLine" id="cb2-40" data-line-number="40"><span class="co">#&gt; 3 wt      -0.868 0.782  0.888</span></a></code></pre></div>
-<p>Furthermore, by having the diagonal set to missing, we don’t need to put in extra effort to ignore them when summarising the correlations. For example:</p>
+<p>Furthermore, by having the diagonal set to missing, we don’t need to put in extra effort to ignore them when summarizing the correlations. For example:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># Compute mean of each column</span></a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(purrr)</a>
 <a class="sourceLine" id="cb3-3" data-line-number="3">d <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -209,7 +209,7 @@
 <li>
 <code><a href="../reference/stretch.html">stretch()</a></code> into a long format.</li>
 </ul>
-<p>Output/visualisations (console/plot out):</p>
+<p>Output/visualizations (console/plot out):</p>
 <ul>
 <li>
 <code><a href="../reference/fashion.html">fashion()</a></code> the correlations for pretty printing.</li>
@@ -244,7 +244,7 @@
 <a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; 3    disp -.85  .90               </span></a>
 <a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; 4      hp -.78  .83  .79          </span></a>
 <a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt; 5    drat  .68 -.70 -.71 -.45</span></a></code></pre></div>
-<p>Alternatively, we can visualise these correlations (let’s clear the lower triangle for a change):</p>
+<p>Alternatively, we can visualize these correlations (let’s clear the lower triangle for a change):</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">d <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb6-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/focus.html">focus</a></span>(mpg<span class="op">:</span>drat, <span class="dt">mirror =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb6-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/shave.html">shave</a></span>(<span class="dt">upper =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span></a>
