@@ -60,7 +60,7 @@ focus_ <- function(x, ..., .dots, mirror) {
 
 #' Conditionally focus correlation data frame
 #' 
-#' Apply a predicate function to each colum of correlations. Columns that
+#' Apply a predicate function to each column of correlations. Columns that
 #' evaluate to TRUE will be included in a call to \code{\link{focus}}.
 #' 
 #' @param x Correlation data frame or object to be coerced to one via
@@ -104,7 +104,7 @@ focus_if.default <- function(x, .predicate, ..., mirror = FALSE) {
 #'   matrix diagonal) should be dropped? Will automatically be set to TRUE if
 #'   mirror is FALSE.
 #' @param remove.dups Removes duplicate entries, without removing all NAs
-#' @return tbl with three colums (x and y variables, and their correlation)
+#' @return tbl with three columns (x and y variables, and their correlation)
 #' @export
 #' @examples
 #' x <- correlate(mtcars)

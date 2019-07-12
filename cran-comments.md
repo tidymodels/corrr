@@ -4,7 +4,7 @@
 * Adds `dice()` function, wraps `focus(x,..., mirror = TRUE)`
 * Adds `retract()` function, opposite of `stretch()` 
 * Improves `correlate()` for database backed tables
-* Fixes compatability issues with `dplyr` 
+* Fixes compatibility issues with `dplyr` 
 
 ## Test environments
 * Local windows 10 install, R 3.6.0

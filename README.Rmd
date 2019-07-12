@@ -43,7 +43,7 @@ Using `corrr` typically starts with `correlate()`, which acts like the base corr
 
 - A `tbl` with an additional class, `cor_df`
 - An extra "rowname" column
-- Standardised variances (the matrix diagonal) set to missing values (`NA`) so they can be ignored.
+- Standardized variances (the matrix diagonal) set to missing values (`NA`) so they can be ignored.
 
 ### API
 
@@ -59,7 +59,7 @@ Reshape structure (`tbl` or `cor_df` out):
 - `focus()` on select columns and rows.
 - `stretch()` into a long format.
 
-Output/visualisations (console/plot out):
+Output/visualizations (console/plot out):
 
 - `fashion()` the correlations for pretty printing.
 - `rplot()` the correlations with shapes in place of the values.

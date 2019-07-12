@@ -69,10 +69,10 @@ fashion.default <- function(x, decimals = 2, leading_zeros = FALSE, na_print = "
 #' 
 #' @param rdf Correlation data frame (see \code{\link{correlate}}) or object
 #'   that can be coerced to one (see \code{\link{as_cordf}}).
-#' @param legend Boolean indicating whether a legend mapping the colours to the correlations should be displayed.
+#' @param legend Boolean indicating whether a legend mapping the colors to the correlations should be displayed.
 #' @param shape \code{\link{geom_point}} aesthetic.
 #' @param print_cor Boolean indicating whether the correlations should be printed over the shapes.
-#' @param colours,colors Vector of colours to use for n-colour gradient.
+#' @param colours,colors Vector of colors to use for n-color gradient.
 #' @return Plots a correlation data frame
 #' @export
 #' @examples 
@@ -104,13 +104,13 @@ rplot.default <- function(rdf, ...) {
 #' 
 #' Output a network plot of a correlation data frame in which variables that are
 #' more highly correlated appear closer together and are joined by stronger
-#' paths. Paths are also coloured by their sign (blue for positive and red for
+#' paths. Paths are also colored by their sign (blue for positive and red for
 #' negative). The proximity of the points are determined using multidimensional
 #' clustering.
 #' 
 #' @param min_cor Number from 0 to 1 indicating the minimum value of
 #'   correlations (in absolute terms) to plot.
-#' @param colours,colors Vector of colours to use for n-colour gradient.
+#' @param colours,colors Vector of colors to use for n-color gradient.
 #' @param repel Should variable labels repel each other? If TRUE, text is added
 #'   via \code{\link[ggrepel]{geom_text_repel}} instead of \code{\link[ggplot2]{geom_text}}
 #' @param curved Should the paths be curved? If TRUE, paths are added via

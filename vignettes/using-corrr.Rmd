@@ -15,7 +15,7 @@ library(corrr)
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
 ```
 
-corrr is a package for exploring **corr**elations in **R**. It makes it possible to easily perform routine tasks when exploring correlation matrices such as ignoring the diagonal, focusing on the correlations of certain variables against others, or rearranging and visualising the matrix in terms of the strength of the correlations.
+corrr is a package for exploring **corr**elations in **R**. It makes it possible to easily perform routine tasks when exploring correlation matrices such as ignoring the diagonal, focusing on the correlations of certain variables against others, or rearranging and visualizing the matrix in terms of the strength of the correlations.
 
 ## Using corrr
 
@@ -23,7 +23,7 @@ Using `corrr` starts with `correlate()`, which acts like the base correlation fu
 
 - A `tbl` with an additional class, `cor_df`
 - An extra "rowname" column
-- Standardised variances (the matrix diagonal) set to missing values (`NA`) so they can be ignored.
+- Standardized variances (the matrix diagonal) set to missing values (`NA`) so they can be ignored.
 
 To work with further, let's create a correlation data frame using `correlate()` from the `mtcars` data that comes with R:
 
@@ -35,7 +35,7 @@ d
 
 ## Why a correlation data frame?
 
-At first, a correlation data frame might seem like an unneccessary complexity compared to the traditional matrix. However, the purpose of corrr is to help use explore these correlations, not to do mathematical or statistical operations. Thus, by having the correlations in a data frame, we can make use of packages that help us work with data frames like `dplyr`, `tidyr`, `ggplot2`, and focus on using data pipelines. Lets look at some examples:
+At first, a correlation data frame might seem like an unnecessary complexity compared to the traditional matrix. However, the purpose of corrr is to help use explore these correlations, not to do mathematical or statistical operations. Thus, by having the correlations in a data frame, we can make use of packages that help us work with data frames like `dplyr`, `tidyr`, `ggplot2`, and focus on using data pipelines. Lets look at some examples:
 
 ```{r, message=F, warning=F}
 library(dplyr)
@@ -53,7 +53,7 @@ d %>%
   select(rowname, mpg, cyl, disp)
 ```
 
-Furthermore, by having the diagonal set to missing, we don't need to put in extra effort to ignore them when summarising the correlations. For example:
+Furthermore, by having the diagonal set to missing, we don't need to put in extra effort to ignore them when summarizing the correlations. For example:
 
 ```{r, warning = FALSE, message = FALSE}
 # Compute mean of each column
@@ -77,7 +77,7 @@ Reshape structure (`tbl` or `cor_df` out):
 - `focus()` on select columns and rows.
 - `stretch()` into a long format.
 
-Output/visualisations (console/plot out):
+Output/visualizations (console/plot out):
 
 - `fashion()` the correlations for pretty printing.
 - `rplot()` a shape for each correlation.
@@ -100,7 +100,7 @@ d %>%
   fashion()   # Print in nice format 
 ```
 
-Alternatively, we can visualise these correlations (let's clear the lower triangle for a change):
+Alternatively, we can visualize these correlations (let's clear the lower triangle for a change):
 
 ```{r, warning = FALSE}
 d %>%

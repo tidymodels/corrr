@@ -15,9 +15,9 @@ that can be coerced to one (see \code{\link{as_cordf}}).}
 \item{min_cor}{Number from 0 to 1 indicating the minimum value of
 correlations (in absolute terms) to plot.}
 
-\item{legend}{Boolean indicating whether a legend mapping the colours to the correlations should be displayed.}
+\item{legend}{Boolean indicating whether a legend mapping the colors to the correlations should be displayed.}
 
-\item{colours, colors}{Vector of colours to use for n-colour gradient.}
+\item{colours, colors}{Vector of colors to use for n-color gradient.}
 
 \item{repel}{Should variable labels repel each other? If TRUE, text is added
 via \code{\link[ggrepel]{geom_text_repel}} instead of \code{\link[ggplot2]{geom_text}}}
@@ -29,7 +29,7 @@ via \code{\link[ggrepel]{geom_text_repel}} instead of \code{\link[ggplot2]{geom_
 \description{
 Output a network plot of a correlation data frame in which variables that are
 more highly correlated appear closer together and are joined by stronger
-paths. Paths are also coloured by their sign (blue for positive and red for
+paths. Paths are also colored by their sign (blue for positive and red for
 negative). The proximity of the points are determined using multidimensional
 clustering.
 }

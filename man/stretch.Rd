@@ -16,7 +16,7 @@ mirror is FALSE.}
 \item{remove.dups}{Removes duplicate entries, without removing all NAs}
 }
 \value{
-tbl with three colums (x and y variables, and their correlation)
+tbl with three columns (x and y variables, and their correlation)
 }
 \description{
 \code{stretch} is a specified implementation of tidyr::gather() to be applied

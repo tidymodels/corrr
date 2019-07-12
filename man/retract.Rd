@@ -2,7 +2,7 @@
 % Please edit documentation in R/retract.R
 \name{retract}
 \alias{retract}
-\title{Creates a data frame from a streched correlation table}
+\title{Creates a data frame from a stretched correlation table}
 \usage{
 retract(.data, x, y, val)
 }

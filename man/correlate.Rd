@@ -45,7 +45,7 @@ use of pairwise deletion by default.
   \item A tibble (see \code{\link[tibble]{tibble}})
   \item An additional class, "cor_df"
   \item A "rowname" column
-  \item Standardised variances (the matrix diagonal) set to missing values by
+  \item Standardized variances (the matrix diagonal) set to missing values by
   default (\code{NA}) so they can be ignored in calculations.
 }
 }

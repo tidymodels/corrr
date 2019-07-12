@@ -8,7 +8,7 @@
 
 - Improves `correlate()` for database backed tables
 
-- Fixes compatability issues with `dplyr` 
+- Fixes compatibility issues with `dplyr` 
 
 # corrr 0.3.2
 
@@ -52,7 +52,7 @@ The `diagonal` argument of `as_matrix` and `as_matrix.cor_df` is now an optional
 
 ## Fixes
 
-- When `legend = TRUE` (now the default setting), `rplot` and `network_plot` generate a single, unlabelled legend referring to the size of the correlations.
+- When `legend = TRUE` (now the default setting), `rplot` and `network_plot` generate a single, unlabeled legend referring to the size of the correlations.
 
 ## Other
 

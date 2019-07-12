@@ -1,4 +1,4 @@
-#' Creates a data frame from a streched correlation table
+#' Creates a data frame from a stretched correlation table
 #' 
 #' \code{retract} does the opposite of what \code{stretch} does
 #' 

@@ -23,7 +23,7 @@ not.}
 A tibble or, if mirror = TRUE, a correlation data frame.
 }
 \description{
-Apply a predicate function to each colum of correlations. Columns that
+Apply a predicate function to each column of correlations. Columns that
 evaluate to TRUE will be included in a call to \code{\link{focus}}.
 }
 \examples{
