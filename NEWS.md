@@ -1,14 +1,12 @@
-# corrr (development version)
-
-# corrr 0.3.2.9004
-
-- Improves `correlate()` for database backed tables
+# corrr 0.4.0
 
 - Adds `remove.dups` argument to `stretch()`.  It removes duplicates with out removing all NAs (#57)
 
 - Adds `dice()` function, wraps `focus(x,..., mirror = TRUE)` (#64)
 
 - Adds `retract()` function, opposite of `stretch()` (#65)
+
+- Improves `correlate()` for database backed tables
 
 - Fixes compatability issues with `dplyr` 
 

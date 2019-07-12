@@ -41,7 +41,7 @@
         <a class="navbar-brand" href="../index.html">corrr</a>
         <div class="info">
           <span class="partof">part of <a href="https://github.com/tidymodels">tidymodels</a></span>
-          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2.9004</span>
+          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
         </div>
       </div>
     </div>
@@ -94,7 +94,7 @@
     <div class="page-header toc-ignore">
       <h1>Using corrr with databases</h1>
             
-            <h4 class="date">2019-07-10</h4>
+            <h4 class="date">2019-07-12</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/tidymodels/corrr/blob/master/vignettes/databases.Rmd"><code>vignettes/databases.Rmd</code></a></small>
       <div class="hidden name"><code>databases.Rmd</code></div>
@@ -109,34 +109,34 @@
 <h2 class="hasAnchor">
 <a href="#an-example" class="anchor"></a>An example</h2>
 <p>A simple SQLite database will be used to this example. A temporary database is created, and the <code>mtcars</code> data set is copied to it. The <code>db_mtcars</code> variable is only a pointer to the new table inside the database, it does not hold any data.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">con &lt;-<span class="st"> </span>DBI<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/DBI/topics/dbConnect">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/RSQLite/topics/SQLite">SQLite</a></span>(), <span class="dt">path =</span> <span class="st">":dbname:"</span>)</a>
-<a class="sourceLine" id="cb1-2" title="2">db_mtcars &lt;-<span class="st"> </span><span class="kw">copy_to</span>(con, mtcars)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">con &lt;-<span class="st"> </span>DBI<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/DBI/topics/dbConnect">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/RSQLite/topics/SQLite">SQLite</a></span>(), <span class="dt">path =</span> <span class="st">":dbname:"</span>)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">db_mtcars &lt;-<span class="st"> </span><span class="kw">copy_to</span>(con, mtcars)</a></code></pre></div>
 <p>Even though it is not a formal <code>data.frame</code> object, <code>db_mtcars</code> can be use as if it was a <code>data.frame</code> and simply pipe it into the <code><a href="../reference/correlate.html">correlate()</a></code> function.</p>
 <p>The <code><a href="../reference/correlate.html">correlate()</a></code> function will check the type of object passed, if it is a database-backed table, meaning a <code>tbl_sql()</code> object class, then it will use the new <code>tidyeval</code> code to calculate the correlations inside the database. The function will automatically retrieve only the results of the operation.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr)</a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(corrr)</a>
-<a class="sourceLine" id="cb2-3" title="3">db_mtcars <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-4" title="4"><span class="st">  </span><span class="kw"><a href="../reference/correlate.html">correlate</a></span>(<span class="dt">quiet =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb2-5" title="5"><span class="co">#&gt; # A tibble: 11 x 12</span></a>
-<a class="sourceLine" id="cb2-6" title="6"><span class="co">#&gt;    rowname    mpg    cyl   disp     hp    drat     wt    qsec     vs</span></a>
-<a class="sourceLine" id="cb2-7" title="7"><span class="co">#&gt;    &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb2-8" title="8"><span class="co">#&gt;  1 mpg     NA     -0.852 -0.848 -0.776  0.681  -0.868  0.419   0.664</span></a>
-<a class="sourceLine" id="cb2-9" title="9"><span class="co">#&gt;  2 cyl     -0.852 NA      0.902  0.832 -0.700   0.782 -0.591  -0.811</span></a>
-<a class="sourceLine" id="cb2-10" title="10"><span class="co">#&gt;  3 disp    -0.848  0.902 NA      0.791 -0.710   0.888 -0.434  -0.710</span></a>
-<a class="sourceLine" id="cb2-11" title="11"><span class="co">#&gt;  4 hp      -0.776  0.832  0.791 NA     -0.449   0.659 -0.708  -0.723</span></a>
-<a class="sourceLine" id="cb2-12" title="12"><span class="co">#&gt;  5 drat     0.681 -0.700 -0.710 -0.449 NA      -0.712  0.0912  0.440</span></a>
-<a class="sourceLine" id="cb2-13" title="13"><span class="co">#&gt;  6 wt      -0.868  0.782  0.888  0.659 -0.712  NA     -0.175  -0.555</span></a>
-<a class="sourceLine" id="cb2-14" title="14"><span class="co">#&gt;  7 qsec     0.419 -0.591 -0.434 -0.708  0.0912 -0.175 NA       0.745</span></a>
-<a class="sourceLine" id="cb2-15" title="15"><span class="co">#&gt;  8 vs       0.664 -0.811 -0.710 -0.723  0.440  -0.555  0.745  NA    </span></a>
-<a class="sourceLine" id="cb2-16" title="16"><span class="co">#&gt;  9 am       0.600 -0.523 -0.591 -0.243  0.713  -0.692 -0.230   0.168</span></a>
-<a class="sourceLine" id="cb2-17" title="17"><span class="co">#&gt; 10 gear     0.480 -0.493 -0.556 -0.126  0.700  -0.583 -0.213   0.206</span></a>
-<a class="sourceLine" id="cb2-18" title="18"><span class="co">#&gt; 11 carb    -0.551  0.527  0.395  0.750 -0.0908  0.428 -0.656  -0.570</span></a>
-<a class="sourceLine" id="cb2-19" title="19"><span class="co">#&gt; # ... with 3 more variables: am &lt;dbl&gt;, gear &lt;dbl&gt;, carb &lt;dbl&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(corrr)</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">db_mtcars <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../reference/correlate.html">correlate</a></span>(<span class="dt">quiet =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt; # A tibble: 11 x 12</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt;    rowname    mpg    cyl   disp     hp    drat     wt    qsec     vs</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt;    &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt;  1 mpg     NA     -0.852 -0.848 -0.776  0.681  -0.868  0.419   0.664</span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt;  2 cyl     -0.852 NA      0.902  0.832 -0.700   0.782 -0.591  -0.811</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt;  3 disp    -0.848  0.902 NA      0.791 -0.710   0.888 -0.434  -0.710</span></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt;  4 hp      -0.776  0.832  0.791 NA     -0.449   0.659 -0.708  -0.723</span></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt;  5 drat     0.681 -0.700 -0.710 -0.449 NA      -0.712  0.0912  0.440</span></a>
+<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co">#&gt;  6 wt      -0.868  0.782  0.888  0.659 -0.712  NA     -0.175  -0.555</span></a>
+<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co">#&gt;  7 qsec     0.419 -0.591 -0.434 -0.708  0.0912 -0.175 NA       0.745</span></a>
+<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co">#&gt;  8 vs       0.664 -0.811 -0.710 -0.723  0.440  -0.555  0.745  NA    </span></a>
+<a class="sourceLine" id="cb2-16" data-line-number="16"><span class="co">#&gt;  9 am       0.600 -0.523 -0.591 -0.243  0.713  -0.692 -0.230   0.168</span></a>
+<a class="sourceLine" id="cb2-17" data-line-number="17"><span class="co">#&gt; 10 gear     0.480 -0.493 -0.556 -0.126  0.700  -0.583 -0.213   0.206</span></a>
+<a class="sourceLine" id="cb2-18" data-line-number="18"><span class="co">#&gt; 11 carb    -0.551  0.527  0.395  0.750 -0.0908  0.428 -0.656  -0.570</span></a>
+<a class="sourceLine" id="cb2-19" data-line-number="19"><span class="co">#&gt; # … with 3 more variables: am &lt;dbl&gt;, gear &lt;dbl&gt;, carb &lt;dbl&gt;</span></a></code></pre></div>
 <p>The <code>tidyeval</code>-based function ensures that a <code>cor_df</code> object is returned, so then it can be used with other functions in the <code>corrr</code> package.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">db_mtcars <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="st">  </span><span class="kw"><a href="../reference/correlate.html">correlate</a></span>(<span class="dt">quiet =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="st">  </span><span class="kw"><a href="../reference/rplot.html">rplot</a></span>()</a>
-<a class="sourceLine" id="cb3-4" title="4"><span class="co">#&gt; Don't know how to automatically pick scale for object of type noquote. Defaulting to continuous.</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">db_mtcars <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/correlate.html">correlate</a></span>(<span class="dt">quiet =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/rplot.html">rplot</a></span>()</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt; Don't know how to automatically pick scale for object of type noquote. Defaulting to continuous.</span></a></code></pre></div>
 <p><img src="databases_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
 </div>
 <div id="sparklyr" class="section level2">

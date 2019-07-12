@@ -9,10 +9,8 @@
 #' @importFrom purrr map
 #' @importFrom purrr map2
 #' @importFrom purrr imap_dfr
-#' @importFrom purrr flatten
 #' @importFrom purrr set_names
 #' @importFrom purrr transpose
-#' @importFrom rlang as_label
 #' @importFrom dplyr select
 #' @importFrom dplyr mutate_all
 #' @importFrom dplyr filter
@@ -21,6 +19,7 @@
 #' @importFrom tibble tibble
 #' @importFrom tibble as_tibble
 #' @import ggplot2
+#' @import rlang
 #' @keywords internal
 "_PACKAGE"
 NULL
