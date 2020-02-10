@@ -32,13 +32,12 @@
 
 
 <meta property="og:title" content="Coerce lists and matrices to correlation data frames — as_cordf" />
-
 <meta property="og:description" content="A wrapper function to coerce objects in a valid format (such as correlation
 matrices created using the base function, cor) into a
 correlation data frame." />
-
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -59,6 +58,7 @@ correlation data frame." />
 
  gtag('config', 'UA-115082821-1');
 </script>
+
   </head>
 
   <body>
@@ -78,7 +78,7 @@ correlation data frame." />
         <a class="navbar-brand" href="../index.html">corrr</a>
         <div class="info">
           <span class="partof">part of <a href="https://github.com/tidymodels">tidymodels</a></span>
-          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
+          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.1</span>
         </div>
       </div>
     </div>
@@ -86,7 +86,7 @@ correlation data frame." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -113,7 +113,7 @@ correlation data frame." />
 </li>
         <li>
   <a href="https://github.com/tidymodels/corrr">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -124,6 +124,7 @@ correlation data frame." />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -135,15 +136,13 @@ correlation data frame." />
     </div>
 
     <div class="ref-description">
-    
     <p>A wrapper function to coerce objects in a valid format (such as correlation
-matrices created using the base function, <code><a href='https://www.rdocumentation.org/packages/stats/topics/cor'>cor</a></code>) into a
+matrices created using the base function, <code><a href='https://rdrr.io/r/stats/cor.html'>cor</a></code>) into a
 correlation data frame.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>as_cordf</span>(<span class='no'>x</span>, <span class='kw'>diagonal</span> <span class='kw'>=</span> <span class='fl'>NA</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -157,14 +156,13 @@ data frame.</p></td>
       <td><p>Value (typically numeric or NA) to set the diagonal to.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A correlation data frame</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/cor'>cor</a></span>(<span class='no'>mtcars</span>)
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>cor</a></span>(<span class='no'>mtcars</span>)
 <span class='fu'>as_cordf</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 11 x 12</span><span>
 #&gt;    rowname    mpg    cyl   disp     hp    drat     wt    qsec     vs      am
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
@@ -199,14 +197,13 @@ data frame.</p></td>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
 </div>
+
 
       <footer>
       <div class="tidyverse">
@@ -215,15 +212,18 @@ data frame.</p></td>
 
 <div class="author">
   <p>
-    Developed by Edgar Ruiz, Simon Jackson, Jorge Cimentada.
+    Developed by Max Kuhn, Simon Jackson, Jorge Cimentada.
     Site built by <a href="https://pkgdown.r-lib.org">pkgdown</a>.
   </p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

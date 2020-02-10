@@ -32,13 +32,12 @@
 
 
 <meta property="og:title" content="Correlation Data Frame — correlate" />
-
 <meta property="og:description" content="An implementation of stats::cor(), which returns a correlation data frame
 rather than a matrix. See details below. Additional adjustment include the
 use of pairwise deletion by default." />
-
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -59,6 +58,7 @@ use of pairwise deletion by default." />
 
  gtag('config', 'UA-115082821-1');
 </script>
+
   </head>
 
   <body>
@@ -78,7 +78,7 @@ use of pairwise deletion by default." />
         <a class="navbar-brand" href="../index.html">corrr</a>
         <div class="info">
           <span class="partof">part of <a href="https://github.com/tidymodels">tidymodels</a></span>
-          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
+          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.1</span>
         </div>
       </div>
     </div>
@@ -86,7 +86,7 @@ use of pairwise deletion by default." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -113,7 +113,7 @@ use of pairwise deletion by default." />
 </li>
         <li>
   <a href="https://github.com/tidymodels/corrr">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -124,6 +124,7 @@ use of pairwise deletion by default." />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -135,16 +136,20 @@ use of pairwise deletion by default." />
     </div>
 
     <div class="ref-description">
-    
     <p>An implementation of stats::cor(), which returns a correlation data frame
 rather than a matrix. See details below. Additional adjustment include the
 use of pairwise deletion by default.</p>
-    
     </div>
 
-    <pre class="usage"><span class='fu'>correlate</span>(<span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>use</span> <span class='kw'>=</span> <span class='st'>"pairwise.complete.obs"</span>,
-  <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"pearson"</span>, <span class='kw'>diagonal</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
-    
+    <pre class="usage"><span class='fu'>correlate</span>(
+  <span class='no'>x</span>,
+  <span class='kw'>y</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>use</span> <span class='kw'>=</span> <span class='st'>"pairwise.complete.obs"</span>,
+  <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"pearson"</span>,
+  <span class='kw'>diagonal</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)</pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -183,26 +188,27 @@ use of pairwise deletion by default.</p>
 parameters.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A correlation data frame (cor_df)</p>
-    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <ul>
+    
+<ul>
 <li><p>A tibble (see <code><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></code>)</p></li>
 <li><p>An additional class, "cor_df"</p></li>
 <li><p>A "rowname" column</p></li>
 <li><p>Standardized variances (the matrix diagonal) set to missing values by
   default (<code>NA</code>) so they can be ignored in calculations.</p></li>
 </ul>
-    
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='fu'>correlate</span>(<span class='no'>iris</span>)
-<span class='co'># }</span><div class='input'>
+}
+
 <span class='fu'>correlate</span>(<span class='no'>iris</span>[-<span class='fl'>5</span>])</div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'>Correlation method: 'pearson'</span>
 #&gt; <span class='message'>Missing treated using: 'pairwise.complete.obs'</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 4 x 5</span><span>
@@ -229,33 +235,31 @@ parameters.</p></td>
 #&gt; </span><span style='color: #BCBCBC;'>10</span><span> gear     0.480 -</span><span style='color: #BB0000;'>0.493</span><span> -</span><span style='color: #BB0000;'>0.556</span><span> -</span><span style='color: #BB0000;'>0.126</span><span>  0.700  -</span><span style='color: #BB0000;'>0.583</span><span> -</span><span style='color: #BB0000;'>0.213</span><span>   0.206  0.794 
 #&gt; </span><span style='color: #BCBCBC;'>11</span><span> carb    -</span><span style='color: #BB0000;'>0.551</span><span>  0.527  0.395  0.750 -</span><span style='color: #BB0000;'>0.090</span><span style='color: #BB0000;text-decoration: underline;'>8</span><span>  0.428 -</span><span style='color: #BB0000;'>0.656</span><span>  -</span><span style='color: #BB0000;'>0.570</span><span>  0.057</span><span style='text-decoration: underline;'>5</span><span>
 #&gt; </span><span style='color: #949494;'># … with 2 more variables: gear </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, carb </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span></div><div class='input'>
-</div></span><span class='co'># NOT RUN {</span>
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+
 <span class='co'># Also supports DB backend and collects results into memory</span>
 
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>sparklyr</span>)
-<span class='no'>sc</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/sparklyr/topics/spark-connections'>spark_connect</a></span>(<span class='kw'>master</span> <span class='kw'>=</span> <span class='st'>"local"</span>)
-<span class='no'>mtcars_tbl</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/sparklyr/topics/copy_to'>copy_to</a></span>(<span class='no'>sc</span>, <span class='no'>mtcars</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>sparklyr</span>)
+<span class='no'>sc</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/sparklyr/man/spark-connections.html'>spark_connect</a></span>(<span class='kw'>master</span> <span class='kw'>=</span> <span class='st'>"local"</span>)
+<span class='no'>mtcars_tbl</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/sparklyr/man/copy_to.html'>copy_to</a></span>(<span class='no'>sc</span>, <span class='no'>mtcars</span>)
 <span class='no'>mtcars_tbl</span> <span class='kw'>%&gt;%</span>
   <span class='fu'>correlate</span>(<span class='kw'>use</span> <span class='kw'>=</span> <span class='st'>"pairwise.complete.obs"</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"spearman"</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/sparklyr/topics/spark-connections'>spark_disconnect</a></span>(<span class='no'>sc</span>)
+<span class='fu'><a href='https://rdrr.io/pkg/sparklyr/man/spark-connections.html'>spark_disconnect</a></span>(<span class='no'>sc</span>)
 
-<span class='co'># }</span><div class='input'>
-</div></pre>
+}</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-
       <li><a href="#details">Details</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
 </div>
+
 
       <footer>
       <div class="tidyverse">
@@ -264,15 +268,18 @@ parameters.</p></td>
 
 <div class="author">
   <p>
-    Developed by Edgar Ruiz, Simon Jackson, Jorge Cimentada.
+    Developed by Max Kuhn, Simon Jackson, Jorge Cimentada.
     Site built by <a href="https://pkgdown.r-lib.org">pkgdown</a>.
   </p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

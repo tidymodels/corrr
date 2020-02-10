@@ -31,7 +31,7 @@
 </script>
 </head>
 <body>
-    <div class="container template-article">
+    <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -46,7 +46,7 @@
         <a class="navbar-brand" href="index.html">corrr</a>
         <div class="info">
           <span class="partof">part of <a href="https://github.com/tidymodels">tidymodels</a></span>
-          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
+          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.1</span>
         </div>
       </div>
     </div>
@@ -54,7 +54,7 @@
       <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -81,7 +81,7 @@
 </li>
         <li>
   <a href="https://github.com/tidymodels/corrr">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -94,13 +94,9 @@
 <!--/.navbar -->
 
       
-      </header><div class="row">
-  <div class="col-md-9 contents">
-    
 
-    
-    
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+      </header><div class="row">
+  <div class="contents col-md-9">
 <div id="corrr" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#corrr" class="anchor"></a>corrr <img src="reference/figures/logo.png" align="right">
@@ -112,16 +108,16 @@
 <ul>
 <li>the latest released version from CRAN with</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.packages("corrr")</span></a></code></pre></div>
+<!-- end list --><div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.packages("corrr")</span></a></code></pre></div>
 <ul>
 <li>the latest development version from GitHub with</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># install.packages("remotes") </span></a>
+<!-- end list --><div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># install.packages("remotes") </span></a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co"># remotes::install_github("tidymodels/corrr")</span></a></code></pre></div>
 <div id="using-corrr" class="section level2">
 <h2 class="hasAnchor">
 <a href="#using-corrr" class="anchor"></a>Using corrr</h2>
-<p>Using <code>corrr</code> typically starts with <code><a href="reference/correlate.html">correlate()</a></code>, which acts like the base correlation function <code><a href="https://www.rdocumentation.org/packages/stats/topics/cor">cor()</a></code>. It differs by defaulting to pairwise deletion, and returning a correlation data frame (<code>cor_df</code>) of the following structure:</p>
+<p>Using <code>corrr</code> typically starts with <code><a href="reference/correlate.html">correlate()</a></code>, which acts like the base correlation function <code><a href="https://rdrr.io/r/stats/cor.html">cor()</a></code>. It differs by defaulting to pairwise deletion, and returning a correlation data frame (<code>cor_df</code>) of the following structure:</p>
 <ul>
 <li>A <code>tbl</code> with an additional class, <code>cor_df</code>
 </li>
@@ -131,7 +127,7 @@
 <div id="api" class="section level3">
 <h3 class="hasAnchor">
 <a href="#api" class="anchor"></a>API</h3>
-<p>The corrr API is designed with data pipelines in mind (e.g., to use <code>%&gt;%</code> from the magrittr package). After <code><a href="reference/correlate.html">correlate()</a></code>, the primary corrr functions take a <code>cor_df</code> as their first argument, and return a <code>cor_df</code> or <code>tbl</code> (or output like a plot). These functions serve one of three purposes:</p>
+<p>The corrr API is designed with data pipelines in mind (e.g., to use <code><a href="https://dplyr.tidyverse.org/reference/reexports.html">%&gt;%</a></code> from the magrittr package). After <code><a href="reference/correlate.html">correlate()</a></code>, the primary corrr functions take a <code>cor_df</code> as their first argument, and return a <code>cor_df</code> or <code>tbl</code> (or output like a plot). These functions serve one of three purposes:</p>
 <p>Internal changes (<code>cor_df</code> out):</p>
 <ul>
 <li>
@@ -165,31 +161,31 @@
 <div id="examples" class="section level2">
 <h2 class="hasAnchor">
 <a href="#examples" class="anchor"></a>Examples</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(MASS)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(corrr)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Random">set.seed</a></span>(<span class="dv">1</span>)</a>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(MASS)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(corrr)</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="dv">1</span>)</a>
 <a class="sourceLine" id="cb3-4" data-line-number="4"></a>
 <a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co"># Simulate three columns correlating about .7 with each other</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6">mu &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rep">rep</a></span>(<span class="dv">0</span>, <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb3-7" data-line-number="7">Sigma &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/matrix">matrix</a></span>(.<span class="dv">7</span>, <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/diag">diag</a></span>(<span class="dv">3</span>)<span class="op">*</span>.<span class="dv">3</span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8">seven &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/MASS/topics/mvrnorm">mvrnorm</a></span>(<span class="dt">n =</span> <span class="dv">1000</span>, <span class="dt">mu =</span> mu, <span class="dt">Sigma =</span> Sigma)</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">mu &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="dv">0</span>, <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7">Sigma &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span>(.<span class="dv">7</span>, <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/diag.html">diag</a></span>(<span class="dv">3</span>)<span class="op">*</span>.<span class="dv">3</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8">seven &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/MASS/man/mvrnorm.html">mvrnorm</a></span>(<span class="dt">n =</span> <span class="dv">1000</span>, <span class="dt">mu =</span> mu, <span class="dt">Sigma =</span> Sigma)</a>
 <a class="sourceLine" id="cb3-9" data-line-number="9"></a>
 <a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co"># Simulate three columns correlating about .4 with each other</span></a>
-<a class="sourceLine" id="cb3-11" data-line-number="11">mu &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rep">rep</a></span>(<span class="dv">0</span>, <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb3-12" data-line-number="12">Sigma &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/matrix">matrix</a></span>(.<span class="dv">4</span>, <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/diag">diag</a></span>(<span class="dv">3</span>)<span class="op">*</span>.<span class="dv">6</span></a>
-<a class="sourceLine" id="cb3-13" data-line-number="13">four &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/MASS/topics/mvrnorm">mvrnorm</a></span>(<span class="dt">n =</span> <span class="dv">1000</span>, <span class="dt">mu =</span> mu, <span class="dt">Sigma =</span> Sigma)</a>
+<a class="sourceLine" id="cb3-11" data-line-number="11">mu &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="dv">0</span>, <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb3-12" data-line-number="12">Sigma &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span>(.<span class="dv">4</span>, <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/diag.html">diag</a></span>(<span class="dv">3</span>)<span class="op">*</span>.<span class="dv">6</span></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13">four &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/MASS/man/mvrnorm.html">mvrnorm</a></span>(<span class="dt">n =</span> <span class="dv">1000</span>, <span class="dt">mu =</span> mu, <span class="dt">Sigma =</span> Sigma)</a>
 <a class="sourceLine" id="cb3-14" data-line-number="14"></a>
 <a class="sourceLine" id="cb3-15" data-line-number="15"><span class="co"># Bind together</span></a>
-<a class="sourceLine" id="cb3-16" data-line-number="16">d &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cbind">cbind</a></span>(seven, four)</a>
-<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/colnames">colnames</a></span>(d) &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/paste">paste0</a></span>(<span class="st">"v"</span>, <span class="dv">1</span><span class="op">:</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">ncol</a></span>(d))</a>
+<a class="sourceLine" id="cb3-16" data-line-number="16">d &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span>(seven, four)</a>
+<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="kw"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(d) &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="st">"v"</span>, <span class="dv">1</span><span class="op">:</span><span class="kw"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span>(d))</a>
 <a class="sourceLine" id="cb3-18" data-line-number="18"></a>
 <a class="sourceLine" id="cb3-19" data-line-number="19"><span class="co"># Insert some missing values</span></a>
-<a class="sourceLine" id="cb3-20" data-line-number="20">d[<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sample">sample</a></span>(<span class="dv">1</span><span class="op">:</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">nrow</a></span>(d), <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), <span class="dv">1</span>] &lt;-<span class="st"> </span><span class="ot">NA</span></a>
-<a class="sourceLine" id="cb3-21" data-line-number="21">d[<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sample">sample</a></span>(<span class="dv">1</span><span class="op">:</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">nrow</a></span>(d), <span class="dv">200</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), <span class="dv">5</span>] &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb3-20" data-line-number="20">d[<span class="kw"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(<span class="dv">1</span><span class="op">:</span><span class="kw"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(d), <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), <span class="dv">1</span>] &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb3-21" data-line-number="21">d[<span class="kw"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(<span class="dv">1</span><span class="op">:</span><span class="kw"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(d), <span class="dv">200</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), <span class="dv">5</span>] &lt;-<span class="st"> </span><span class="ot">NA</span></a>
 <a class="sourceLine" id="cb3-22" data-line-number="22"></a>
 <a class="sourceLine" id="cb3-23" data-line-number="23"><span class="co"># Correlate</span></a>
 <a class="sourceLine" id="cb3-24" data-line-number="24">x &lt;-<span class="st"> </span><span class="kw"><a href="reference/correlate.html">correlate</a></span>(d)</a>
-<a class="sourceLine" id="cb3-25" data-line-number="25"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/class">class</a></span>(x)</a>
+<a class="sourceLine" id="cb3-25" data-line-number="25"><span class="kw"><a href="https://rdrr.io/r/base/class.html">class</a></span>(x)</a>
 <a class="sourceLine" id="cb3-26" data-line-number="26"><span class="co">#&gt; [1] "cor_df"     "tbl_df"     "tbl"        "data.frame"</span></a>
 <a class="sourceLine" id="cb3-27" data-line-number="27">x</a>
 <a class="sourceLine" id="cb3-28" data-line-number="28"><span class="co">#&gt; # A tibble: 6 x 7</span></a>
@@ -202,7 +198,7 @@
 <a class="sourceLine" id="cb3-35" data-line-number="35"><span class="co">#&gt; 5 v5       0.00906  0.0221 -0.0166  0.452  NA        0.425 </span></a>
 <a class="sourceLine" id="cb3-36" data-line-number="36"><span class="co">#&gt; 6 v6      -0.0467  -0.0338 -0.0201  0.442   0.425   NA</span></a></code></pre></div>
 <p>As a <code>tbl</code>, we can use functions from data frame packages like <code>dplyr</code>, <code>tidyr</code>, <code>ggplot2</code>:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr)</a>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co"># Filter rows by correlation size</span></a>
 <a class="sourceLine" id="cb4-4" data-line-number="4">x <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(v1 <span class="op">&gt;</span><span class="st"> </span><span class="fl">.6</span>)</a>
@@ -237,7 +233,7 @@
 <a class="sourceLine" id="cb5-23" data-line-number="23"><span class="co">#&gt; 9    disp -.85 -.71 -.59 -.56 -.43  .39  .79  .89</span></a>
 <a class="sourceLine" id="cb5-24" data-line-number="24"><span class="kw"><a href="reference/rplot.html">rplot</a></span>(x)</a>
 <a class="sourceLine" id="cb5-25" data-line-number="25"><span class="co">#&gt; Don't know how to automatically pick scale for object of type noquote. Defaulting to continuous.</span></a></code></pre></div>
-<p><img src="tools/readme/combination-1.png" width="480"></p>
+<p><img src="tools/readme/combination-1.png"><!-- --></p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"></a>
 <a class="sourceLine" id="cb6-2" data-line-number="2">datasets<span class="op">::</span>airquality <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb6-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="reference/correlate.html">correlate</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -245,7 +241,7 @@
 <a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; Correlation method: 'pearson'</span></a>
 <a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; Missing treated using: 'pairwise.complete.obs'</span></a></code></pre></div>
-<p><img src="tools/readme/combination-2.png" width="480"></p>
+<p><img src="tools/readme/combination-2.png"><!-- --></p>
 </div>
 </div>
   </div>
@@ -273,13 +269,13 @@
 <div class="developers">
 <h2>Developers</h2>
 <ul class="list-unstyled">
-<li>Edgar Ruiz <br><small class="roles"> Author, maintainer </small>  </li>
+<li>Max Kuhn <br><small class="roles"> Author, maintainer </small>  </li>
 <li>Simon Jackson <br><small class="roles"> Author </small>  </li>
 <li>Jorge Cimentada <br><small class="roles"> Author </small>  </li>
 </ul>
 </div>
 
-      <div class="dev-status">
+  <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://travis-ci.org/tidymodels/corrr"><img src="https://travis-ci.org/tidymodels/corrr.svg?branch=master" alt="Build Status"></a></li>
@@ -288,7 +284,6 @@
 </ul>
 </div>
 </div>
-
 </div>
 
 
@@ -298,14 +293,16 @@
 
 <div class="author">
   <p>
-    Developed by Edgar Ruiz, Simon Jackson, Jorge Cimentada.
+    Developed by Max Kuhn, Simon Jackson, Jorge Cimentada.
     Site built by <a href="https://pkgdown.r-lib.org">pkgdown</a>.
   </p>
 </div>
+
       </footer>
 </div>
 
   
+
 
   </body>
 </html>

@@ -32,15 +32,14 @@
 
 
 <meta property="og:title" content="Network plot of a correlation data frame — network_plot" />
-
 <meta property="og:description" content="Output a network plot of a correlation data frame in which variables that are
 more highly correlated appear closer together and are joined by stronger
 paths. Paths are also colored by their sign (blue for positive and red for
 negative). The proximity of the points are determined using multidimensional
 clustering." />
-
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -61,6 +60,7 @@ clustering." />
 
  gtag('config', 'UA-115082821-1');
 </script>
+
   </head>
 
   <body>
@@ -80,7 +80,7 @@ clustering." />
         <a class="navbar-brand" href="../index.html">corrr</a>
         <div class="info">
           <span class="partof">part of <a href="https://github.com/tidymodels">tidymodels</a></span>
-          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
+          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.1</span>
         </div>
       </div>
     </div>
@@ -88,7 +88,7 @@ clustering." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -115,7 +115,7 @@ clustering." />
 </li>
         <li>
   <a href="https://github.com/tidymodels/corrr">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -126,6 +126,7 @@ clustering." />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -137,19 +138,23 @@ clustering." />
     </div>
 
     <div class="ref-description">
-    
     <p>Output a network plot of a correlation data frame in which variables that are
 more highly correlated appear closer together and are joined by stronger
 paths. Paths are also colored by their sign (blue for positive and red for
 negative). The proximity of the points are determined using multidimensional
 clustering.</p>
-    
     </div>
 
-    <pre class="usage"><span class='fu'>network_plot</span>(<span class='no'>rdf</span>, <span class='kw'>min_cor</span> <span class='kw'>=</span> <span class='fl'>0.3</span>, <span class='kw'>legend</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>colours</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"indianred2"</span>, <span class='st'>"white"</span>, <span class='st'>"skyblue1"</span>), <span class='kw'>repel</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>curved</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>colors</span>)</pre>
-    
+    <pre class="usage"><span class='fu'>network_plot</span>(
+  <span class='no'>rdf</span>,
+  <span class='kw'>min_cor</span> <span class='kw'>=</span> <span class='fl'>0.3</span>,
+  <span class='kw'>legend</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>colours</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"indianred2"</span>, <span class='st'>"white"</span>, <span class='st'>"skyblue1"</span>),
+  <span class='kw'>repel</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>curved</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='no'>colors</span>
+)</pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -174,7 +179,7 @@ correlations (in absolute terms) to plot.</p></td>
     <tr>
       <th>repel</th>
       <td><p>Should variable labels repel each other? If TRUE, text is added
-via <code><a href='https://www.rdocumentation.org/packages/ggrepel/topics/geom_text_repel'>geom_text_repel</a></code> instead of <code><a href='https://ggplot2.tidyverse.org/reference/geom_text.html'>geom_text</a></code></p></td>
+via <code><a href='https://rdrr.io/pkg/ggrepel/man/geom_text_repel.html'>geom_text_repel</a></code> instead of <code><a href='https://ggplot2.tidyverse.org/reference/geom_text.html'>geom_text</a></code></p></td>
     </tr>
     <tr>
       <th>curved</th>
@@ -183,23 +188,23 @@ via <code><a href='https://www.rdocumentation.org/packages/ggrepel/topics/geom_t
 <code><a href='https://ggplot2.tidyverse.org/reference/geom_segment.html'>geom_segment</a></code></p></td>
     </tr>
     </table>
-    
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='correlate.html'>correlate</a></span>(<span class='no'>mtcars</span>)</div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'>Correlation method: 'pearson'</span>
-#&gt; <span class='message'>Missing treated using: 'pairwise.complete.obs'</span></div><div class='input'><span class='fu'>network_plot</span>(<span class='no'>x</span>)</div><div class='img'><img src='network_plot-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>network_plot</span>(<span class='no'>x</span>, <span class='kw'>min_cor</span> <span class='kw'>=</span> <span class='fl'>.1</span>)</div><div class='img'><img src='network_plot-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>network_plot</span>(<span class='no'>x</span>, <span class='kw'>min_cor</span> <span class='kw'>=</span> <span class='fl'>.6</span>)</div><div class='img'><img src='network_plot-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>network_plot</span>(<span class='no'>x</span>, <span class='kw'>min_cor</span> <span class='kw'>=</span> <span class='fl'>.7</span>, <span class='kw'>colors</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"red"</span>, <span class='st'>"green"</span>), <span class='kw'>legend</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='img'><img src='network_plot-4.png' alt='' width='700' height='433' /></div></pre>
+#&gt; <span class='message'>Missing treated using: 'pairwise.complete.obs'</span></div><div class='input'><span class='fu'>network_plot</span>(<span class='no'>x</span>)</div><div class='img'><img src='network_plot-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>network_plot</span>(<span class='no'>x</span>, <span class='kw'>min_cor</span> <span class='kw'>=</span> <span class='fl'>.1</span>)</div><div class='img'><img src='network_plot-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>network_plot</span>(<span class='no'>x</span>, <span class='kw'>min_cor</span> <span class='kw'>=</span> <span class='fl'>.6</span>)</div><div class='img'><img src='network_plot-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>network_plot</span>(<span class='no'>x</span>, <span class='kw'>min_cor</span> <span class='kw'>=</span> <span class='fl'>.7</span>, <span class='kw'>colors</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"red"</span>, <span class='st'>"green"</span>), <span class='kw'>legend</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='img'><img src='network_plot-4.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-            
       <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
 </div>
+
 
       <footer>
       <div class="tidyverse">
@@ -208,15 +213,18 @@ via <code><a href='https://www.rdocumentation.org/packages/ggrepel/topics/geom_t
 
 <div class="author">
   <p>
-    Developed by Edgar Ruiz, Simon Jackson, Jorge Cimentada.
+    Developed by Max Kuhn, Simon Jackson, Jorge Cimentada.
     Site built by <a href="https://pkgdown.r-lib.org">pkgdown</a>.
   </p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

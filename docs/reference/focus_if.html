@@ -32,12 +32,11 @@
 
 
 <meta property="og:title" content="Conditionally focus correlation data frame — focus_if" />
-
 <meta property="og:description" content="Apply a predicate function to each column of correlations. Columns that
 evaluate to TRUE will be included in a call to focus." />
-
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -58,6 +57,7 @@ evaluate to TRUE will be included in a call to focus." />
 
  gtag('config', 'UA-115082821-1');
 </script>
+
   </head>
 
   <body>
@@ -77,7 +77,7 @@ evaluate to TRUE will be included in a call to focus." />
         <a class="navbar-brand" href="../index.html">corrr</a>
         <div class="info">
           <span class="partof">part of <a href="https://github.com/tidymodels">tidymodels</a></span>
-          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
+          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.1</span>
         </div>
       </div>
     </div>
@@ -85,7 +85,7 @@ evaluate to TRUE will be included in a call to focus." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -112,7 +112,7 @@ evaluate to TRUE will be included in a call to focus." />
 </li>
         <li>
   <a href="https://github.com/tidymodels/corrr">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -123,6 +123,7 @@ evaluate to TRUE will be included in a call to focus." />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -134,14 +135,12 @@ evaluate to TRUE will be included in a call to focus." />
     </div>
 
     <div class="ref-description">
-    
     <p>Apply a predicate function to each column of correlations. Columns that
 evaluate to TRUE will be included in a call to <code><a href='focus.html'>focus</a></code>.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>focus_if</span>(<span class='no'>x</span>, <span class='no'>.predicate</span>, <span class='no'>...</span>, <span class='kw'>mirror</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -166,16 +165,15 @@ columns for which .predicate returns TRUE will be included as variables in
 not.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A tibble or, if mirror = TRUE, a correlation data frame.</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>dplyr</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
 <span class='no'>any_greater_than</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>x</span>, <span class='no'>val</span>) {
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/mean'>mean</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/MathFun'>abs</a></span>(<span class='no'>x</span>), <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>) <span class='kw'>&gt;</span> <span class='no'>val</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span>(<span class='no'>x</span>), <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>) <span class='kw'>&gt;</span> <span class='no'>val</span>
 }
 
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='correlate.html'>correlate</a></span>(<span class='no'>mtcars</span>)</div><div class='output co'>#&gt; <span class='message'></span>
@@ -195,14 +193,13 @@ not.</p></td>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
 </div>
+
 
       <footer>
       <div class="tidyverse">
@@ -211,15 +208,18 @@ not.</p></td>
 
 <div class="author">
   <p>
-    Developed by Edgar Ruiz, Simon Jackson, Jorge Cimentada.
+    Developed by Max Kuhn, Simon Jackson, Jorge Cimentada.
     Site built by <a href="https://pkgdown.r-lib.org">pkgdown</a>.
   </p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

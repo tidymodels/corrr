@@ -32,7 +32,6 @@
 
 
 <meta property="og:title" content="Focus on section of a correlation data frame. — focus" />
-
 <meta property="og:description" content="Convenience function to select a set of variables from a correlation matrix
 to keep as the columns, and exclude these or all other variables from the rows. This
 function will take a correlate correlation matrix, and
@@ -40,9 +39,9 @@ expression(s) suited for dplyr::select(). The selected variables will remain
 in the columns, and these, or all other variables, will be excluded from the
 rows based on `same. For a complete list of methods for using this
 function, see select." />
-
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -63,6 +62,7 @@ function, see select." />
 
  gtag('config', 'UA-115082821-1');
 </script>
+
   </head>
 
   <body>
@@ -82,7 +82,7 @@ function, see select." />
         <a class="navbar-brand" href="../index.html">corrr</a>
         <div class="info">
           <span class="partof">part of <a href="https://github.com/tidymodels">tidymodels</a></span>
-          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
+          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.1</span>
         </div>
       </div>
     </div>
@@ -90,7 +90,7 @@ function, see select." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -117,7 +117,7 @@ function, see select." />
 </li>
         <li>
   <a href="https://github.com/tidymodels/corrr">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -128,6 +128,7 @@ function, see select." />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -139,7 +140,6 @@ function, see select." />
     </div>
 
     <div class="ref-description">
-    
     <p>Convenience function to select a set of variables from a correlation matrix
 to keep as the columns, and exclude these or all other variables from the rows. This
 function will take a <code><a href='correlate.html'>correlate</a></code> correlation matrix, and
@@ -147,13 +147,12 @@ expression(s) suited for dplyr::select(). The selected variables will remain
 in the columns, and these, or all other variables, will be excluded from the
 rows based on `<code>same</code>. For a complete list of methods for using this
 function, see <code><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></code>.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>focus</span>(<span class='no'>x</span>, <span class='no'>...</span>, <span class='kw'>mirror</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='fu'>focus_</span>(<span class='no'>x</span>, <span class='no'>...</span>, <span class='no'>.dots</span>, <span class='no'>mirror</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -170,12 +169,12 @@ use expressions like <code>x:y</code> to select ranges of variables.</p>
 If the first expression is negative, <code>select()</code> will automatically
 start with all variables.</p>
 <p>Use named arguments, e.g. <code>new_name = old_name</code>, to rename selected variables.</p>
-<p>The arguments in <code>...</code> are automatically <a href='https://rlang.r-lib.org/reference/quotation.html'>quoted</a> and
+<p>The arguments in <code>...</code> are automatically <a href='https://rlang.r-lib.org/reference/nse-defuse.html'>quoted</a> and
 <a href='https://rlang.r-lib.org/reference/eval_tidy.html'>evaluated</a> in a context where column names
 represent column positions. They also support
-<a href='https://rlang.r-lib.org/reference/quasiquotation.html'>unquoting</a> and splicing. See
+<a href='https://rlang.r-lib.org/reference/nse-force.html'>unquoting</a> and splicing. See
 <code>vignette("programming")</code> for an introduction to these concepts.</p>
-<p>See <a href='https://www.rdocumentation.org/packages/tidyselect/topics/select_helpers'>select helpers</a> for more details and
+<p>See <a href='https://rdrr.io/pkg/tidyselect/man/select_helpers.html'>select helpers</a> for more details and
 examples about tidyselect helpers such as <code>starts_with()</code>, <code>everything()</code>, ...</p></td>
     </tr>
     <tr>
@@ -188,14 +187,13 @@ not.</p></td>
       <td><p>Use focus_ to do standard evaluations. See <code><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></code>.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A tbl or, if mirror = TRUE, a cor_df (see <code><a href='correlate.html'>correlate</a></code>).</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>dplyr</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='correlate.html'>correlate</a></span>(<span class='no'>mtcars</span>)</div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'>Correlation method: 'pearson'</span>
 #&gt; <span class='message'>Missing treated using: 'pairwise.complete.obs'</span></div><div class='input'><span class='fu'>focus</span>(<span class='no'>x</span>, <span class='no'>mpg</span>, <span class='no'>cyl</span>)  <span class='co'># Focus on correlations of mpg and cyl with all other variables</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 9 x 3</span><span>
@@ -234,14 +232,13 @@ not.</p></td>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
 </div>
+
 
       <footer>
       <div class="tidyverse">
@@ -250,15 +247,18 @@ not.</p></td>
 
 <div class="author">
   <p>
-    Developed by Edgar Ruiz, Simon Jackson, Jorge Cimentada.
+    Developed by Max Kuhn, Simon Jackson, Jorge Cimentada.
     Site built by <a href="https://pkgdown.r-lib.org">pkgdown</a>.
   </p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

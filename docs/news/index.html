@@ -32,9 +32,9 @@
 
 
 <meta property="og:title" content="Changelog" />
-
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -55,6 +55,7 @@
 
  gtag('config', 'UA-115082821-1');
 </script>
+
   </head>
 
   <body>
@@ -74,7 +75,7 @@
         <a class="navbar-brand" href="../index.html">corrr</a>
         <div class="info">
           <span class="partof">part of <a href="https://github.com/tidymodels">tidymodels</a></span>
-          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
+          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.1</span>
         </div>
       </div>
     </div>
@@ -82,7 +83,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -109,7 +110,7 @@
 </li>
         <li>
   <a href="https://github.com/tidymodels/corrr">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -120,6 +121,7 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -129,6 +131,14 @@
       <small>Source: <a href='https://github.com/tidymodels/corrr/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="corrr-0-4-1" class="section level1">
+<h1 class="page-header">
+<a href="#corrr-0-4-1" class="anchor"></a>corrr 0.4.1<small> Unreleased </small>
+</h1>
+<ul>
+<li>Updates maintainer</li>
+</ul>
+</div>
     <div id="corrr-0-4-0" class="section level1">
 <h1 class="page-header">
 <a href="#corrr-0-4-0" class="anchor"></a>corrr 0.4.0<small> 2019-07-12 </small>
@@ -147,7 +157,7 @@
 </h1>
 <ul>
 <li><p>Improves support for <code>tbl_sql()</code> objects</p></li>
-<li><p>Switches correlation calculation for <code>tbl_spark()</code> tables to <code><a href="https://www.rdocumentation.org/packages/sparklyr/topics/ml_corr">sparklyr::ml_corr()</a></code></p></li>
+<li><p>Switches correlation calculation for <code>tbl_spark()</code> tables to <code><a href="https://rdrr.io/pkg/sparklyr/man/ml_corr.html">sparklyr::ml_corr()</a></code></p></li>
 <li><p>Adds package level doc (<a href='https://github.com/jsta'>@jsta</a>, <a href='https://github.com/tidymodels/corrr/issues/66'>#66</a>)</p></li>
 <li><p>Fixes typo on error message (<a href='https://github.com/jsta'>@jsta</a>)</p></li>
 <li><p>Removes Database vignette. Plan to re-add later on (<a href='https://github.com/tidymodels/corrr/issues/76'>#76</a>)</p></li>
@@ -186,7 +196,7 @@
 <h2 class="hasAnchor">
 <a href="#new-functionality" class="anchor"></a>New Functionality</h2>
 <ul>
-<li>Can use arithmetic operators (e.g., <code>+</code> or <code>-</code>) with correlation data frames.</li>
+<li>Can use arithmetic operators (e.g., <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code> or <code><a href="https://rdrr.io/r/base/Arithmetic.html">-</a></code>) with correlation data frames.</li>
 <li>Plotting functions (<code>rplot</code> and <code>network_plot</code>) will attempt to coerce objects to a correlation data frame (via <code>as_cordf</code>) if needed, making it possible to directly use these functions with other square-matrix-like objects.</li>
 <li>
 <code>repel</code> option added to <code>network_plot</code> (default = <code>TRUE</code>).</li>
@@ -294,6 +304,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#corrr-0-4-1">0.4.1</a></li>
         <li><a href="#corrr-0-4-0">0.4.0</a></li>
         <li><a href="#corrr-0-3-2">0.3.2</a></li>
         <li><a href="#corrr-0-3-1">0.3.1</a></li>
@@ -307,6 +318,7 @@
 
 </div>
 
+
       <footer>
       <div class="tidyverse">
   <p><code>corrr</code> is a part of the <strong>tidymodels</strong> ecosystem, a collection of modeling packages designed with common APIs and a shared philosophy.</p>
@@ -314,15 +326,18 @@
 
 <div class="author">
   <p>
-    Developed by Edgar Ruiz, Simon Jackson, Jorge Cimentada.
+    Developed by Max Kuhn, Simon Jackson, Jorge Cimentada.
     Site built by <a href="https://pkgdown.r-lib.org">pkgdown</a>.
   </p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 
