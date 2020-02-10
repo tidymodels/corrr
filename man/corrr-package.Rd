@@ -6,7 +6,7 @@
 \alias{corrr-package}
 \title{corrr: Correlations in R}
 \description{
-\if{html}{\figure{logo.png}{options: align='right'}}
+\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
 A tool for exploring correlations.
     It makes it possible to easily perform routine tasks when
@@ -24,7 +24,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Edgar Ruiz \email{edgararuiz@gmail.com}
+\strong{Maintainer}: Max Kuhn \email{max@rstudio.com}
 
 Authors:
 \itemize{

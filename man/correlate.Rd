@@ -4,8 +4,14 @@
 \alias{correlate}
 \title{Correlation Data Frame}
 \usage{
-correlate(x, y = NULL, use = "pairwise.complete.obs",
-  method = "pearson", diagonal = NA, quiet = FALSE)
+correlate(
+  x,
+  y = NULL,
+  use = "pairwise.complete.obs",
+  method = "pearson",
+  diagonal = NA,
+  quiet = FALSE
+)
 }
 \arguments{
 \item{x}{a numeric vector, matrix or data frame.}
