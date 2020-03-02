@@ -50,7 +50,7 @@ test_that("focus_if works", {
   any_greater_than <- function(x, val) {
     mean(abs(x), na.rm = TRUE) > val
   }
-  expect_is(
+  expect_s3_class(
     focus_if(d, any_greater_than, .6),
     "tbl_df"
   )

@@ -29,7 +29,6 @@ Imports:
     purrr (>= 0.2.2),
     tibble (>= 2.0),
     ggrepel (>= 0.6.5),
-    methods (>= 3.4.3), 
     rlang(>= 0.4.0)
 Suggests: 
     testthat (>= 2.1.0),

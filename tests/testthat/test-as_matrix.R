@@ -4,7 +4,7 @@ x <- correlate(mtcars, diagonal = 1)
 y <- as_matrix(x)
 
 test_that("Inherits correct classes", {
-  expect_is(y, "matrix")
+  expect_s3_class(y, "matrix")
 })
 
 test_that("Converts values accurately", {

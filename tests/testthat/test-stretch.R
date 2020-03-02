@@ -33,9 +33,9 @@ test_that("na.rm", {
 test_that("retract works", {
   cd <- as_cordf(retract(stretch(d)))
   expect_equal(d, cd)
-  expect_is(d, "cor_df")
+  expect_s3_class(cd, "cor_df")
 })
 
 test_that("remove.dups works", {
-  expect_is(stretch(d, remove.dups = TRUE), "data.frame")
+  expect_s3_class(stretch(d, remove.dups = TRUE), "data.frame")
 })

@@ -3,8 +3,8 @@ context("as_cordf")
 d <- cor(mtcars)
 
 test_that("Inherits correct classes", {
-  expect_is(as_cordf(d), "cor_df")
-  expect_is(as_cordf(d), "tbl")
+  expect_s3_class(as_cordf(d), "cor_df")
+  expect_s3_class(as_cordf(d), "tbl")
   expect_warning(as_cordf(as_cordf(d)), "x is already a correlation")
 })
 

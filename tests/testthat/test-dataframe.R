@@ -1,5 +1,5 @@
 context("dataframe")
 
 test_that("Fashion works", {
-  expect_is(fashion(mtcars), "data.frame")
+  expect_s3_class(fashion(mtcars), "data.frame")
 })

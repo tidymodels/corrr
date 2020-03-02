@@ -14,7 +14,7 @@
 #' as_cordf(x)
 #' as_cordf(x, diagonal = 1)
 as_cordf <- function(x, diagonal = NA) {
-  if(methods::is(x, "cor_df")) {
+  if(inherits(x, "cor_df")) {
     warning("x is already a correlation data frame.")
     return(x)
   }
