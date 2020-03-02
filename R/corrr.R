@@ -11,6 +11,7 @@
 #' @importFrom purrr imap_dfr
 #' @importFrom purrr set_names
 #' @importFrom purrr transpose
+#' @importFrom dplyr n
 #' @importFrom dplyr select
 #' @importFrom dplyr mutate_all
 #' @importFrom dplyr filter
