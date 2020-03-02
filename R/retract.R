@@ -1,7 +1,7 @@
 #' Creates a data frame from a stretched correlation table
-#' 
+#'
 #' \code{retract} does the opposite of what \code{stretch} does
-#' 
+#'
 #' @param .data A data.frame or tibble containing at least three variables: x, y and the value
 #' @param x The name of the column to use from .data as x
 #' @param y The name of the column to use from .data as y
