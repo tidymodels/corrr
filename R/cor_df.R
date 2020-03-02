@@ -6,11 +6,11 @@ as_matrix.cor_df <- function(x, diagonal) {
   # Separate rownames
   row_name <- x$rowname
   x <- x[, colnames(x) != "rowname"]
-  # Return diagonal to 1
-  if (!missing(diagonal)) diag(x) <- diagonal
   # Convert to matrix and set rownames
   class(x) <- "data.frame"
   x <- as.matrix(x)
+  # Reset diagonal
+  if (!missing(diagonal)) diag(x) <- diagonal
   rownames(x) <- row_name
   x
 }

@@ -9,13 +9,12 @@ test_that("Converts to proper structure", {
     nrow(stretch(d)),
     nrow(d) * nrow(d)
   )
-  expect_output(
-    str(stretch(d)),
-    "16 obs. of  3 variables:"
-  )
   expect_equal(
     colnames(stretch(d)),
     c("x", "y", "r")
+  )
+  verify_output("stretch.txt",
+    str(stretch(d))
   )
 })
 
