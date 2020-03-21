@@ -1,6 +1,6 @@
 Package: corrr
 Type: Package
-Version: 0.4.1
+Version: 0.4.1.9000
 Title: Correlations in R
 Description: A tool for exploring correlations.
     It makes it possible to easily perform routine tasks when
@@ -46,4 +46,4 @@ LazyData: yes
 License: MIT + file LICENSE
 URL: https://github.com/tidymodels/corrr
 BugReports: https://github.com/tidymodels/corrr/issues
-RoxygenNote: 7.0.2
+RoxygenNote: 7.0.2.9000

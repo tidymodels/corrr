@@ -1,3 +1,7 @@
+# corrr 0.4.2
+
+- Updates to work with tibble 3.0.0  and dplyr 1.0.0
+
 # corrr 0.4.1
 
 - Updates maintainer
