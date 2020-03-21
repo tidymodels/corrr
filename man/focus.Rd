@@ -12,24 +12,9 @@ focus_(x, ..., .dots, mirror)
 \arguments{
 \item{x}{cor_df. See \code{\link{correlate}}.}
 
-\item{...}{One or more unquoted expressions separated by commas.
-You can treat variable names like they are positions, so you can
-use expressions like \code{x:y} to select ranges of variables.
-
-Positive values select variables; negative values drop variables.
-If the first expression is negative, \code{select()} will automatically
-start with all variables.
-
-Use named arguments, e.g. \code{new_name = old_name}, to rename selected variables.
-
-The arguments in \code{...} are automatically \link[rlang:quo]{quoted} and
-\link[rlang:eval_tidy]{evaluated} in a context where column names
-represent column positions. They also support
-\link[rlang:quasiquotation]{unquoting} and splicing. See
-\code{vignette("programming")} for an introduction to these concepts.
-
-See \link[tidyselect:select_helpers]{select helpers} for more details and
-examples about tidyselect helpers such as \code{starts_with()}, \code{everything()}, ...}
+\item{...}{One or more unquoted expressions separated by commas. Variable 
+names can be used as if they were positions in the data frame, so 
+expressions like `x:y`` can be used to select a range of variables.}
 
 \item{mirror}{Boolean. Whether to mirror the selected columns in the rows or
 not.}
