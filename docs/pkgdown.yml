@@ -1,7 +1,8 @@
-pandoc: 2.3.1
-pkgdown: 1.4.1
-pkgdown_sha: ~
+pandoc: 2.9.1
+pkgdown: 1.4.1.9000
+pkgdown_sha: 9d04de4c67c741a87a28665846451705eea6265b
 articles:
   databases: databases.html
   using-corrr: using-corrr.html
+last_built: 2020-03-21T20:51Z
 
