@@ -4,7 +4,7 @@ d <- datasets::iris[, 1:4]
 d[1, 1] <- NA
 
 remote_mtcars <- mtcars
-class(remote_mtcars) <- c(class(remote_mtcars), "tbl_sql")
+class(remote_mtcars) <- c("tbl_sql", class(remote_mtcars))
 
 test_that("Fails when non supported arguments are passed",{
   expect_error(correlate(remote_d, y = remote_d))
@@ -32,10 +32,6 @@ test_that("tbl_sql routine's results are within the 0.01 threshold",{
     compare_corr(
       correlate(mtcars, quiet = TRUE),
       correlate(remote_mtcars, quiet = TRUE)
-      )
     )
-  })
-
-
-
-
+  )
+})
