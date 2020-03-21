@@ -12,10 +12,9 @@ focus_(x, ..., .dots, mirror)
 \arguments{
 \item{x}{cor_df. See \code{\link{correlate}}.}
 
-\item{...}{<\code{\link[dplyr:dplyr_tidy_select]{tidy-select}}> One or more unquoted
-expressions separated by commas. Variable names can be used as if they
-were positions in the data frame, so expressions like \code{x:y} can
-be used to select a range of variables.}
+\item{...}{One or more unquoted expressions separated by commas. Variable 
+names can be used as if they were positions in the data frame, so 
+expressions like `x:y`` can be used to select a range of variables.}
 
 \item{mirror}{Boolean. Whether to mirror the selected columns in the rows or
 not.}
