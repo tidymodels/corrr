@@ -8,6 +8,8 @@ Status](https://travis-ci.org/tidymodels/corrr.svg?branch=master)](https://travi
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/corrr)](https://cran.r-project.org/package=corrr)
 [![Coverage
 Status](https://img.shields.io/codecov/c/github/tidymodels/corrr/master.svg)](https://codecov.io/github/tidymodels/corrr?branch=master)
+[![R build
+status](https://github.com/tidymodels/corrr/workflows/R-CMD-check/badge.svg)](https://github.com/tidymodels/corrr/actions)
 
 corrr is a package for exploring **corr**elations in **R**. It focuses
 on creating and working with **data frames** of correlations (instead of
