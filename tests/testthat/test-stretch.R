@@ -13,8 +13,11 @@ test_that("Converts to proper structure", {
     colnames(stretch(d)),
     c("x", "y", "r")
   )
-  verify_output("stretch.txt",
-    str(stretch(d))
+  verify_output("stretch-keep.order_TRUE.txt",
+                str(stretch(d))
+  )
+  verify_output("stretch-keep.order_FALSE.txt",
+    str(stretch(d, keep.order = FALSE))
   )
 })
 

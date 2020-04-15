@@ -73,6 +73,7 @@ fashion.default <- function(x, decimals = 2, leading_zeros = FALSE, na_print = "
 #' @param shape \code{\link{geom_point}} aesthetic.
 #' @param print_cor Boolean indicating whether the correlations should be printed over the shapes.
 #' @param colours,colors Vector of colors to use for n-color gradient.
+#' @param keep.order Boolean indicating whether axis ordering should be the same as \code{rdf}. Argument passed on to \code{\link{stretch}}.
 #' @return Plots a correlation data frame
 #' @export
 #' @examples 
@@ -90,7 +91,8 @@ rplot <- function(rdf,
                   shape = 16,
                   colours = c("indianred2", "white", "skyblue1"),
                   print_cor = FALSE,
-                  colors) {
+                  colors, 
+                  keep.order = TRUE) {
   UseMethod("rplot")
 }
 

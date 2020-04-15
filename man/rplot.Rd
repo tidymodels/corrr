@@ -10,7 +10,8 @@ rplot(
   shape = 16,
   colours = c("indianred2", "white", "skyblue1"),
   print_cor = FALSE,
-  colors
+  colors,
+  keep.order = TRUE
 )
 }
 \arguments{
@@ -24,6 +25,8 @@ that can be coerced to one (see \code{\link{as_cordf}}).}
 \item{colours, colors}{Vector of colors to use for n-color gradient.}
 
 \item{print_cor}{Boolean indicating whether the correlations should be printed over the shapes.}
+
+\item{keep.order}{Boolean indicating whether axis ordering should be the same as \code{rdf}. Argument passed on to \code{\link{stretch}}.}
 }
 \value{
 Plots a correlation data frame
