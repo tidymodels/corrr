@@ -19,7 +19,7 @@ fashion(x, decimals = 2, leading_zeros = FALSE, na_print = "")
 noquote. Also a data frame if x is a matrix or data frame.
 }
 \description{
-For the purpose of printing, convert a correlation data frame into a noquote 
+For the purpose of printing, convert a correlation data frame into a noquote
 matrix with the correlations cleanly formatted (leading zeros removed; spaced
 for signs) and the diagonal (or any NA) left blank.
 }

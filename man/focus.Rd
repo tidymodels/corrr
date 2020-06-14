@@ -40,6 +40,6 @@ focus(x, mpg, cyl)  # Focus on correlations of mpg and cyl with all other variab
 focus(x, -disp, - mpg, mirror = TRUE)  # Remove disp and mpg from columns and rows
 
 x <- correlate(iris[-5])
-focus(x, -matches("Sepal"))  # Focus on correlations of non-Sepal 
+focus(x, -matches("Sepal"))  # Focus on correlations of non-Sepal
                              # variables with Sepal variables.
 }

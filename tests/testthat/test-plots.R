@@ -5,7 +5,7 @@ d <- correlate(d)
 context("network")
 
 test_that("Network plot works", {
-  expect_is(network_plot(d), "ggplot")  
+  expect_is(network_plot(d), "ggplot")
   expect_is(network_plot(d, colors = c("indianred2", "white", "skyblue1")), "ggplot")
 })
 
