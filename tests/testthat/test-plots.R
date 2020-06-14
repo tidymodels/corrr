@@ -1,4 +1,4 @@
-d <- datasets::iris[, 1:4]
+d <- datasets::anscombe[, 1:7]
 d[1, 1] <- NA
 d <- correlate(d)
 
