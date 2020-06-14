@@ -1,6 +1,6 @@
 Package: corrr
 Type: Package
-Version: 0.4.0
+Version: 0.4.1.9000
 Title: Correlations in R
 Description: A tool for exploring correlations.
     It makes it possible to easily perform routine tasks when
@@ -9,9 +9,9 @@ Description: A tool for exploring correlations.
     or rearranging and visualizing the matrix in terms of the
     strength of the correlations.
 Authors@R: 
-    c(person(given = "Edgar",
-             family = "Ruiz",
-             email = "edgararuiz@gmail.com",
+    c(person(given = "Max",
+             family = "Kuhn",
+             email = "max@rstudio.com",
              role = c("aut", "cre")),
       person(given = "Simon",
             family = "Jackson",
@@ -44,6 +44,6 @@ VignetteBuilder: knitr
 Encoding: UTF-8
 LazyData: yes
 License: MIT + file LICENSE
-URL: https://github.com/tidymodels/corrr
+URL: https://github.com/tidymodels/corrr, https://corrr.tidymodels.org
 BugReports: https://github.com/tidymodels/corrr/issues
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.0.9000

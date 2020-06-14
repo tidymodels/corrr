@@ -6,7 +6,7 @@
 \alias{corrr-package}
 \title{corrr: Correlations in R}
 \description{
-\if{html}{\figure{logo.png}{options: align='right'}}
+\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
 A tool for exploring correlations.
     It makes it possible to easily perform routine tasks when
@@ -19,12 +19,13 @@ A tool for exploring correlations.
 Useful links:
 \itemize{
   \item \url{https://github.com/tidymodels/corrr}
+  \item \url{https://corrr.tidymodels.org}
   \item Report bugs at \url{https://github.com/tidymodels/corrr/issues}
 }
 
 }
 \author{
-\strong{Maintainer}: Edgar Ruiz \email{edgararuiz@gmail.com}
+\strong{Maintainer}: Max Kuhn \email{max@rstudio.com}
 
 Authors:
 \itemize{

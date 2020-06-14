@@ -4,8 +4,14 @@
 \alias{correlate}
 \title{Correlation Data Frame}
 \usage{
-correlate(x, y = NULL, use = "pairwise.complete.obs",
-  method = "pearson", diagonal = NA, quiet = FALSE)
+correlate(
+  x,
+  y = NULL,
+  use = "pairwise.complete.obs",
+  method = "pearson",
+  diagonal = NA,
+  quiet = FALSE
+)
 }
 \arguments{
 \item{x}{a numeric vector, matrix or data frame.}
@@ -65,7 +71,7 @@ correlate(mtcars)
 library(sparklyr)
 sc <- spark_connect(master = "local")
 mtcars_tbl <- copy_to(sc, mtcars)
-mtcars_tbl \%>\% 
+mtcars_tbl \%>\%
   correlate(use = "pairwise.complete.obs", method = "spearman")
 spark_disconnect(sc)
 
