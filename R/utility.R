@@ -27,7 +27,13 @@ as_cordf <- function(x, diagonal = NA) {
          "The number of columns must be equal to the number of rows.")
   }
   diag(x) <- diagonal
-  x <- first_col(x, names(x))
+  new_cordf(x, names(x))
+}
+
+new_cordf <- function(x, rowname = NULL) {
+  if (!is.null(rowname)) {
+    x <- first_col(x, rowname)
+  }
   class(x) <- c("cor_df", class(x))
   x
 }

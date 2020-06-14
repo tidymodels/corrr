@@ -161,7 +161,7 @@ correlate.tbl_sql <- function(x, y = NULL,
   }
 
   if(!is.null(df_cor)){
-    class(df_cor) <- c("cor_df", class(df_cor))
+    df_cor <- new_cordf(df_cor)
     if (!quiet)
       message("\nCorrelation method: '", method, "'",
               "\nMissing treated using: '", use, "'\n")

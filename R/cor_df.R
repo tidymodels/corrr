@@ -32,9 +32,7 @@ shave.cor_df <- function(x, upper = TRUE) {
   }
 
   # Reappend rownames and class
-  x <-  first_col(x, row_name)
-  class(x) <- c("cor_df", class(x))
-  x
+  new_cordf(x, row_name)
 }
 
 #' @export
@@ -56,8 +54,7 @@ rearrange.cor_df <- function(x, method = "PCA", absolute = TRUE) {
   # Arrange and return matrix
   # "c(1, 1 + ..." to handle rowname column
   x <- x[ord, c(1, 1 + ord)]
-  class(x) <- c("cor_df", class(x))
-  return(x)
+  new_cordf(x)
 }
 
 
@@ -84,8 +81,7 @@ focus_.cor_df <- function(x, ..., .dots = NULL, mirror = FALSE) {
   # Exclude these or others from the rows
   vars <- x$rowname %in% vars
   if (mirror) {
-    x <- x[vars, ]
-    class(x) <- c("cor_df", class(x))
+    x <- new_cordf(x[vars, ])
   } else {
     x <- x[!vars, ]
   }
