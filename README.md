@@ -3,6 +3,8 @@
 
 # corrr <img src="man/figures/logo.png" align="right" />
 
+[![R build
+status](https://github.com/tidymodels/corrr/workflows/R-CMD-check/badge.svg)](https://github.com/tidymodels/corrr/actions)
 [![Build
 Status](https://travis-ci.org/tidymodels/corrr.svg?branch=master)](https://travis-ci.org/tidymodels/corrr)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/corrr)](https://cran.r-project.org/package=corrr)
