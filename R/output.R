@@ -114,7 +114,7 @@ rplot.default <- function(rdf, ...) {
 #' @param repel Should variable labels repel each other? If TRUE, text is added
 #'   via \code{\link[ggrepel]{geom_text_repel}} instead of \code{\link[ggplot2]{geom_text}}
 #' @param curved Should the paths be curved? If TRUE, paths are added via
-#'   \code{\link[ggplot2]{geom_curve}}; if FALSE, via
+#'   \code{\link[ggplot2:geom_segment]{geom_curve}}; if FALSE, via
 #'   \code{\link[ggplot2]{geom_segment}}
 #' @inheritParams rplot
 #' @export

@@ -29,7 +29,7 @@ correlations (in absolute terms) to plot.}
 via \code{\link[ggrepel]{geom_text_repel}} instead of \code{\link[ggplot2]{geom_text}}}
 
 \item{curved}{Should the paths be curved? If TRUE, paths are added via
-\code{\link[ggplot2]{geom_curve}}; if FALSE, via
+\code{\link[ggplot2:geom_segment]{geom_curve}}; if FALSE, via
 \code{\link[ggplot2]{geom_segment}}}
 }
 \description{
