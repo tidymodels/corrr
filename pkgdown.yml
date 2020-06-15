@@ -4,7 +4,7 @@ pkgdown_sha: e3235d58b2c539f6aa34a0be88363c6998c9d5ca
 articles:
   databases: databases.html
   using-corrr: using-corrr.html
-last_built: 2020-06-15T02:09Z
+last_built: 2020-06-15T02:32Z
 urls:
   reference: https://corrr.tidymodels.org/reference
   article: https://corrr.tidymodels.org/articles
