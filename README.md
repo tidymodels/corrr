@@ -17,7 +17,7 @@ matrices) that can be easily explored via corrr functions or by
 leveraging tools like those in the [tidyverse](http://tidyverse.org/).
 This, along with the primary corrr functions, is represented below:
 
-<img src='tools/readme/to-cor-df.png'>
+<img src='tools/to-cor-df.png'>
 
 You can install:
 
@@ -167,7 +167,7 @@ rplot(x)
 #> Don't know how to automatically pick scale for object of type noquote. Defaulting to continuous.
 ```
 
-![](tools/readme/combination-1.png)<!-- -->
+![](tools/README-combination-1.png)<!-- -->
 
 ``` r
 
@@ -179,4 +179,4 @@ datasets::airquality %>%
 #> Missing treated using: 'pairwise.complete.obs'
 ```
 
-![](tools/readme/combination-2.png)<!-- -->
+![](tools/README-combination-2.png)<!-- -->
