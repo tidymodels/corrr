@@ -1,15 +1,16 @@
-# corrr 0.4.2
-
-- Updates to work with tibble 3.0.0  and dplyr 1.0.0
+# corrr 0.4.2.9000
 
 - Fix EOL issues and class attribute (@krlmlr, #93 and #90)
 
 - Handle correlation of exactly zero or 1 in `network_plot()` (@s-scherrer, #89)
 
+# corrr 0.4.2
+
+- Updates to work with tibble 3.0.0  and dplyr 1.0.0
+
 # corrr 0.4.1
 
 - Updates maintainer
-
 
 # corrr 0.4.0
 
