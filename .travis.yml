@@ -8,7 +8,6 @@ cran: https://cran.rstudio.com
 
 matrix:
   include:
-  - r: devel
   - r: release
 
 env:
