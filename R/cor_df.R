@@ -182,10 +182,10 @@ network_plot.cor_df <- function(rdf,
     colours <- colors
 
   rdf <-  as_matrix(rdf, diagonal = 1)
-  distance <- sign(rdf) * (1 - abs(rdf))
+  distance <- 1 - abs(rdf)
 
   # Use multidimensional Scaling to obtain x and y coordinates for points.
-  points <- data.frame(stats::cmdscale(abs(distance)))
+  points <- data.frame(stats::cmdscale(distance))
   colnames(points) <-  c("x", "y")
   points$id <- rownames(points)
 
@@ -204,7 +204,7 @@ network_plot.cor_df <- function(rdf,
     for(col in 1:ncol(proximity)) {
       path_proximity <- proximity[row, col]
       if (!is.na(path_proximity)) {
-        path_sign <- sign(distance[row, col])
+        path_sign <- sign(rdf[row, col])
         x    <- points$x[row]
         y    <- points$y[row]
         xend <- points$x[col]
