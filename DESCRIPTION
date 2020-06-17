@@ -39,6 +39,8 @@ Suggests:
     RSQLite,
     sparklyr (>= 0.9),
     covr
+Remotes:
+    rstudio/rmarkdown    
 VignetteBuilder: knitr
 Encoding: UTF-8
 LazyData: yes
