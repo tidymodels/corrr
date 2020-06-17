@@ -117,12 +117,16 @@
 <ul>
 <li>the latest released version from CRAN with</li>
 </ul>
-<!-- end list --><div class="sourceCode" id="cb1"><pre class="r"><span class="co"># install.packages("corrr")</span></pre></div>
+<!-- end list --><div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="co"># install.packages("corrr")</span>
+</pre></div>
 <ul>
 <li>the latest development version from GitHub with</li>
 </ul>
-<!-- end list --><div class="sourceCode" id="cb2"><pre class="r"><span class="co"># install.packages("remotes") </span>
-<span class="co"># remotes::install_github("tidymodels/corrr")</span></pre></div>
+<!-- end list --><div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="co"># install.packages("remotes") </span>
+<span class="co"># remotes::install_github("tidymodels/corrr")</span>
+</pre></div>
 <div id="using-corrr" class="section level2">
 <h2 class="hasAnchor">
 <a href="#using-corrr" class="anchor"></a>Using corrr</h2>
@@ -136,7 +140,7 @@
 <div id="api" class="section level3">
 <h3 class="hasAnchor">
 <a href="#api" class="anchor"></a>API</h3>
-<p>The corrr API is designed with data pipelines in mind (e.g., to use <code><a href="https://dplyr.tidyverse.org/reference/reexports.html">%&gt;%</a></code> from the magrittr package). After <code><a href="reference/correlate.html">correlate()</a></code>, the primary corrr functions take a <code>cor_df</code> as their first argument, and return a <code>cor_df</code> or <code>tbl</code> (or output like a plot). These functions serve one of three purposes:</p>
+<p>The corrr API is designed with data pipelines in mind (e.g., to use <code><a href="https://rdrr.io/pkg/magrittr/man/pipe.html">%&gt;%</a></code> from the magrittr package). After <code><a href="reference/correlate.html">correlate()</a></code>, the primary corrr functions take a <code>cor_df</code> as their first argument, and return a <code>cor_df</code> or <code>tbl</code> (or output like a plot). These functions serve one of three purposes:</p>
 <p>Internal changes (<code>cor_df</code> out):</p>
 <ul>
 <li>
@@ -170,33 +174,34 @@
 <div id="examples" class="section level2">
 <h2 class="hasAnchor">
 <a href="#examples" class="anchor"></a>Examples</h2>
-<div class="sourceCode" id="cb3"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">MASS</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">corrr</span>)
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://www.stats.ox.ac.uk/pub/MASS4">MASS</a></span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/tidymodels/corrr">corrr</a></span>)
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">1</span>)
 
 <span class="co"># Simulate three columns correlating about .7 with each other</span>
-<span class="no">mu</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="fl">0</span>, <span class="fl">3</span>)
-<span class="no">Sigma</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span>(<span class="fl">.7</span>, <span class="kw">nrow</span> <span class="kw">=</span> <span class="fl">3</span>, <span class="kw">ncol</span> <span class="kw">=</span> <span class="fl">3</span>) + <span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span>(<span class="fl">3</span>)*<span class="fl">.3</span>
-<span class="no">seven</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/MASS/man/mvrnorm.html">mvrnorm</a></span>(<span class="kw">n</span> <span class="kw">=</span> <span class="fl">1000</span>, <span class="kw">mu</span> <span class="kw">=</span> <span class="no">mu</span>, <span class="kw">Sigma</span> <span class="kw">=</span> <span class="no">Sigma</span>)
+<span class="kw">mu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="fl">0</span>, <span class="fl">3</span>)
+<span class="kw">Sigma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span>(<span class="fl">.7</span>, nrow = <span class="fl">3</span>, ncol = <span class="fl">3</span>) <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span>(<span class="fl">3</span>)<span class="op">*</span><span class="fl">.3</span>
+<span class="kw">seven</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/MASS/man/mvrnorm.html">mvrnorm</a></span>(n = <span class="fl">1000</span>, mu = <span class="kw">mu</span>, Sigma = <span class="kw">Sigma</span>)
 
 <span class="co"># Simulate three columns correlating about .4 with each other</span>
-<span class="no">mu</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="fl">0</span>, <span class="fl">3</span>)
-<span class="no">Sigma</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span>(<span class="fl">.4</span>, <span class="kw">nrow</span> <span class="kw">=</span> <span class="fl">3</span>, <span class="kw">ncol</span> <span class="kw">=</span> <span class="fl">3</span>) + <span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span>(<span class="fl">3</span>)*<span class="fl">.6</span>
-<span class="no">four</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/MASS/man/mvrnorm.html">mvrnorm</a></span>(<span class="kw">n</span> <span class="kw">=</span> <span class="fl">1000</span>, <span class="kw">mu</span> <span class="kw">=</span> <span class="no">mu</span>, <span class="kw">Sigma</span> <span class="kw">=</span> <span class="no">Sigma</span>)
+<span class="kw">mu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="fl">0</span>, <span class="fl">3</span>)
+<span class="kw">Sigma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span>(<span class="fl">.4</span>, nrow = <span class="fl">3</span>, ncol = <span class="fl">3</span>) <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span>(<span class="fl">3</span>)<span class="op">*</span><span class="fl">.6</span>
+<span class="kw">four</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/MASS/man/mvrnorm.html">mvrnorm</a></span>(n = <span class="fl">1000</span>, mu = <span class="kw">mu</span>, Sigma = <span class="kw">Sigma</span>)
 
 <span class="co"># Bind together</span>
-<span class="no">d</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span>(<span class="no">seven</span>, <span class="no">four</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(<span class="no">d</span>) <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="st">"v"</span>, <span class="fl">1</span>:<span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span>(<span class="no">d</span>))
+<span class="kw">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span>(<span class="kw">seven</span>, <span class="kw">four</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(<span class="kw">d</span>) <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="st">"v"</span>, <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span>(<span class="kw">d</span>))
 
 <span class="co"># Insert some missing values</span>
-<span class="no">d</span>[<span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(<span class="fl">1</span>:<span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="no">d</span>), <span class="fl">100</span>, <span class="kw">replace</span> <span class="kw">=</span> <span class="fl">TRUE</span>), <span class="fl">1</span>] <span class="kw">&lt;-</span> <span class="fl">NA</span>
-<span class="no">d</span>[<span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(<span class="fl">1</span>:<span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="no">d</span>), <span class="fl">200</span>, <span class="kw">replace</span> <span class="kw">=</span> <span class="fl">TRUE</span>), <span class="fl">5</span>] <span class="kw">&lt;-</span> <span class="fl">NA</span>
+<span class="kw">d</span>[<span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(<span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="kw">d</span>), <span class="fl">100</span>, replace = <span class="fl">TRUE</span>), <span class="fl">1</span>] <span class="op">&lt;-</span> <span class="fl">NA</span>
+<span class="kw">d</span>[<span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(<span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="kw">d</span>), <span class="fl">200</span>, replace = <span class="fl">TRUE</span>), <span class="fl">5</span>] <span class="op">&lt;-</span> <span class="fl">NA</span>
 
 <span class="co"># Correlate</span>
-<span class="no">x</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/correlate.html">correlate</a></span>(<span class="no">d</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span>(<span class="no">x</span>)
+<span class="kw">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/correlate.html">correlate</a></span>(<span class="kw">d</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span>(<span class="kw">x</span>)
 <span class="co">#&gt; [1] "cor_df"     "tbl_df"     "tbl"        "data.frame"</span>
-<span class="no">x</span>
+<span class="kw">x</span>
 <span class="co">#&gt; # A tibble: 6 x 7</span>
 <span class="co">#&gt;   rowname       v1      v2      v3      v4       v5      v6</span>
 <span class="co">#&gt;   &lt;chr&gt;      &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;</span>
@@ -205,22 +210,26 @@
 <span class="co">#&gt; 3 v3       0.705    0.697  NA      -0.0253 -0.0166  -0.0201</span>
 <span class="co">#&gt; 4 v4       0.0137  -0.0133 -0.0253 NA       0.452    0.442 </span>
 <span class="co">#&gt; 5 v5       0.00906  0.0221 -0.0166  0.452  NA        0.425 </span>
-<span class="co">#&gt; 6 v6      -0.0467  -0.0338 -0.0201  0.442   0.425   NA</span></pre></div>
+<span class="co">#&gt; 6 v6      -0.0467  -0.0338 -0.0201  0.442   0.425   NA</span>
+</pre></div>
 <p>As a <code>tbl</code>, we can use functions from data frame packages like <code>dplyr</code>, <code>tidyr</code>, <code>ggplot2</code>:</p>
-<div class="sourceCode" id="cb4"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">dplyr</span>)
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org">dplyr</a></span>)
 
 <span class="co"># Filter rows by correlation size</span>
-<span class="no">x</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">v1</span> <span class="kw">&gt;</span> <span class="fl">.6</span>)
+<span class="kw">x</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">v1</span> <span class="op">&gt;</span> <span class="fl">.6</span>)
 <span class="co">#&gt; # A tibble: 2 x 7</span>
 <span class="co">#&gt;   rowname    v1     v2     v3      v4      v5      v6</span>
 <span class="co">#&gt;   &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 v2      0.696 NA      0.697 -0.0133  0.0221 -0.0338</span>
-<span class="co">#&gt; 2 v3      0.705  0.697 NA     -0.0253 -0.0166 -0.0201</span></pre></div>
+<span class="co">#&gt; 2 v3      0.705  0.697 NA     -0.0253 -0.0166 -0.0201</span>
+</pre></div>
 <p>corrr functions work in pipelines (<code>cor_df</code> in; <code>cor_df</code> or <code>tbl</code> out):</p>
-<div class="sourceCode" id="cb5"><pre class="r"><span class="no">x</span> <span class="kw">&lt;-</span> <span class="kw pkg">datasets</span><span class="kw ns">::</span><span class="no"><a href="https://rdrr.io/r/datasets/mtcars.html">mtcars</a></span> <span class="kw">%&gt;%</span>
-       <span class="fu"><a href="reference/correlate.html">correlate</a></span>() <span class="kw">%&gt;%</span>    <span class="co"># Create correlation data frame (cor_df)</span>
-       <span class="fu"><a href="reference/focus.html">focus</a></span>(-<span class="no">cyl</span>, -<span class="no">vs</span>, <span class="kw">mirror</span> <span class="kw">=</span> <span class="fl">TRUE</span>) <span class="kw">%&gt;%</span>  <span class="co"># Focus on cor_df without 'cyl' and 'vs'</span>
-       <span class="fu"><a href="reference/rearrange.html">rearrange</a></span>() <span class="kw">%&gt;%</span>  <span class="co"># rearrange by correlations</span>
+<div class="sourceCode" id="cb5"><pre class="downlit">
+<span class="kw">x</span> <span class="op">&lt;-</span> <span class="kw">datasets</span>::<span class="kw"><a href="https://rdrr.io/r/datasets/mtcars.html">mtcars</a></span> <span class="op">%&gt;%</span>
+       <span class="fu"><a href="reference/correlate.html">correlate</a></span>() <span class="op">%&gt;%</span>    <span class="co"># Create correlation data frame (cor_df)</span>
+       <span class="fu"><a href="reference/focus.html">focus</a></span>(<span class="op">-</span><span class="kw">cyl</span>, <span class="op">-</span><span class="kw">vs</span>, mirror = <span class="fl">TRUE</span>) <span class="op">%&gt;%</span>  <span class="co"># Focus on cor_df without 'cyl' and 'vs'</span>
+       <span class="fu"><a href="reference/rearrange.html">rearrange</a></span>() <span class="op">%&gt;%</span>  <span class="co"># rearrange by correlations</span>
        <span class="fu"><a href="reference/shave.html">shave</a></span>() <span class="co"># Shave off the upper triangle for a clean result</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Correlation method: 'pearson'</span>
@@ -228,8 +237,8 @@
 <span class="co">#&gt; Registered S3 method overwritten by 'seriation':</span>
 <span class="co">#&gt;   method         from </span>
 <span class="co">#&gt;   reorder.hclust gclus</span>
-
-<span class="fu"><a href="reference/fashion.html">fashion</a></span>(<span class="no">x</span>)
+       
+<span class="fu"><a href="reference/fashion.html">fashion</a></span>(<span class="kw">x</span>)
 <span class="co">#&gt;   rowname  mpg drat   am gear qsec carb   hp   wt disp</span>
 <span class="co">#&gt; 1     mpg                                             </span>
 <span class="co">#&gt; 2    drat  .68                                        </span>
@@ -240,16 +249,19 @@
 <span class="co">#&gt; 7      hp -.78 -.45 -.24 -.13 -.71  .75               </span>
 <span class="co">#&gt; 8      wt -.87 -.71 -.69 -.58 -.17  .43  .66          </span>
 <span class="co">#&gt; 9    disp -.85 -.71 -.59 -.56 -.43  .39  .79  .89</span>
-<span class="fu"><a href="reference/rplot.html">rplot</a></span>(<span class="no">x</span>)
-<span class="co">#&gt; Don't know how to automatically pick scale for object of type noquote. Defaulting to continuous.</span></pre></div>
+<span class="fu"><a href="reference/rplot.html">rplot</a></span>(<span class="kw">x</span>)
+<span class="co">#&gt; Don't know how to automatically pick scale for object of type noquote. Defaulting to continuous.</span>
+</pre></div>
 <p><img src="reference/figures/README-combination-1.png"><!-- --></p>
-<div class="sourceCode" id="cb6"><pre class="r">
-<span class="kw pkg">datasets</span><span class="kw ns">::</span><span class="no"><a href="https://rdrr.io/r/datasets/airquality.html">airquality</a></span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="reference/correlate.html">correlate</a></span>() <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="reference/network_plot.html">network_plot</a></span>(<span class="kw">min_cor</span> <span class="kw">=</span> <span class="fl">.2</span>)
+<div class="sourceCode" id="cb6"><pre class="downlit">
+
+<span class="kw">datasets</span>::<span class="kw"><a href="https://rdrr.io/r/datasets/airquality.html">airquality</a></span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="reference/correlate.html">correlate</a></span>() <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="reference/network_plot.html">network_plot</a></span>(min_cor = <span class="fl">.2</span>)
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Correlation method: 'pearson'</span>
-<span class="co">#&gt; Missing treated using: 'pairwise.complete.obs'</span></pre></div>
+<span class="co">#&gt; Missing treated using: 'pairwise.complete.obs'</span>
+</pre></div>
 <p><img src="reference/figures/README-combination-2.png"><!-- --></p>
 </div>
 </div>

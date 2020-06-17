@@ -156,7 +156,7 @@
 </h1>
 <ul>
 <li><p>Fix EOL issues and class attribute (<a href='https://github.com/krlmlr'>@krlmlr</a>, <a href='https://github.com/tidymodels/corrr/issues/93'>#93</a> and <a href='https://github.com/tidymodels/corrr/issues/90'>#90</a>)</p></li>
-<li><p>Handle correlation of exactly zero or 1 in <code><a href="../reference/network_plot.html">network_plot()</a></code> (<a href='https://github.com/s-scherrer'>@s-scherrer</a>, <a href='https://github.com/tidymodels/corrr/issues/89'>#89</a>)</p></li>
+<li><p>Handle correlation of exactly zero or 1 in <code><a href="https://corrr.tidymodels.org/reference/network_plot.html">network_plot()</a></code> (<a href='https://github.com/s-scherrer'>@s-scherrer</a>, <a href='https://github.com/tidymodels/corrr/issues/89'>#89</a>)</p></li>
 </ul>
 </div>
     <div id="corrr-042" class="section level1">
@@ -180,10 +180,10 @@
 <a href="#corrr-040" class="anchor"></a>corrr 0.4.0<small> 2019-07-12 </small>
 </h1>
 <ul>
-<li><p>Adds <code>remove.dups</code> argument to <code><a href="../reference/stretch.html">stretch()</a></code>. It removes duplicates with out removing all NAs (<a href='https://github.com/tidymodels/corrr/issues/57'>#57</a>)</p></li>
-<li><p>Adds <code><a href="../reference/dice.html">dice()</a></code> function, wraps <code><a href="../reference/focus.html">focus(x,..., mirror = TRUE)</a></code> (<a href='https://github.com/tidymodels/corrr/issues/64'>#64</a>)</p></li>
-<li><p>Adds <code><a href="../reference/retract.html">retract()</a></code> function, opposite of <code><a href="../reference/stretch.html">stretch()</a></code> (<a href='https://github.com/tidymodels/corrr/issues/65'>#65</a>)</p></li>
-<li><p>Improves <code><a href="../reference/correlate.html">correlate()</a></code> for database backed tables</p></li>
+<li><p>Adds <code>remove.dups</code> argument to <code><a href="https://corrr.tidymodels.org/reference/stretch.html">stretch()</a></code>. It removes duplicates with out removing all NAs (<a href='https://github.com/tidymodels/corrr/issues/57'>#57</a>)</p></li>
+<li><p>Adds <code><a href="https://corrr.tidymodels.org/reference/dice.html">dice()</a></code> function, wraps <code><a href="https://corrr.tidymodels.org/reference/focus.html">focus(x,..., mirror = TRUE)</a></code> (<a href='https://github.com/tidymodels/corrr/issues/64'>#64</a>)</p></li>
+<li><p>Adds <code><a href="https://corrr.tidymodels.org/reference/retract.html">retract()</a></code> function, opposite of <code><a href="https://corrr.tidymodels.org/reference/stretch.html">stretch()</a></code> (<a href='https://github.com/tidymodels/corrr/issues/65'>#65</a>)</p></li>
+<li><p>Improves <code><a href="https://corrr.tidymodels.org/reference/correlate.html">correlate()</a></code> for database backed tables</p></li>
 <li><p>Fixes compatibility issues with <code>dplyr</code></p></li>
 </ul>
 </div>
@@ -239,9 +239,9 @@
 <li>
 <code>curved</code> option added to <code>network_plot</code> (default = <code>TRUE</code>).</li>
 <li>
-<code><a href="../reference/correlate.html">correlate()</a></code> now prints a message about the <code>method</code> and <code>use</code> parameters. Can be silenced with <code>quiet = TRUE</code>.</li>
+<code><a href="https://corrr.tidymodels.org/reference/correlate.html">correlate()</a></code> now prints a message about the <code>method</code> and <code>use</code> parameters. Can be silenced with <code>quiet = TRUE</code>.</li>
 <li>
-<code><a href="../reference/correlate.html">correlate()</a></code> now supports data frame with a SQL back-end (<code>tbl_sql</code>)</li>
+<code><a href="https://corrr.tidymodels.org/reference/correlate.html">correlate()</a></code> now supports data frame with a SQL back-end (<code>tbl_sql</code>)</li>
 </ul>
 </div>
 <div id="fixes" class="section level2">
@@ -255,7 +255,7 @@
 <h2 class="hasAnchor">
 <a href="#other" class="anchor"></a>Other</h2>
 <ul>
-<li><p><code><a href="../reference/correlate.html">correlate()</a></code> is now an S3 method so that it can adapt to <code>x</code>’s object type.</p></li>
+<li><p><code><a href="https://corrr.tidymodels.org/reference/correlate.html">correlate()</a></code> is now an S3 method so that it can adapt to <code>x</code>’s object type.</p></li>
 <li><p>During the development of this version, ggplot v2.2.0 was released. Many changes in the plotting functions have been made to handle new features in the updated version of ggplot2.</p></li>
 <li><p>Improvements to the package folder structure</p></li>
 </ul>
@@ -269,8 +269,8 @@
 <h2 class="hasAnchor">
 <a href="#new-functionality-1" class="anchor"></a>New Functionality</h2>
 <ul>
-<li>Can keep leading zeros when using <code><a href="../reference/fashion.html">fashion()</a></code> with new argument <code>leading_zeros = TRUE</code>.</li>
-<li>New optional arguments added to plotting functions, <code><a href="../reference/network_plot.html">network_plot()</a></code> and <code><a href="../reference/rplot.html">rplot()</a></code>:
+<li>Can keep leading zeros when using <code><a href="https://corrr.tidymodels.org/reference/fashion.html">fashion()</a></code> with new argument <code>leading_zeros = TRUE</code>.</li>
+<li>New optional arguments added to plotting functions, <code><a href="https://corrr.tidymodels.org/reference/network_plot.html">network_plot()</a></code> and <code><a href="https://corrr.tidymodels.org/reference/rplot.html">rplot()</a></code>:
 <ul>
 <li>
 <code>legend</code> to display a legend mapping correlations to size and colour.</li>
@@ -285,8 +285,8 @@
 <a href="#fixes-1" class="anchor"></a>Fixes</h2>
 <ul>
 <li>
-<code><a href="../reference/network_plot.html">network_plot()</a></code> no longer plots wrong colours if only positive correlations are included.</li>
-<li>Colour scheme for <code><a href="../reference/network_plot.html">network_plot()</a></code> changed to match <code><a href="../reference/rplot.html">rplot()</a></code>.</li>
+<code><a href="https://corrr.tidymodels.org/reference/network_plot.html">network_plot()</a></code> no longer plots wrong colours if only positive correlations are included.</li>
+<li>Colour scheme for <code><a href="https://corrr.tidymodels.org/reference/network_plot.html">network_plot()</a></code> changed to match <code><a href="https://corrr.tidymodels.org/reference/rplot.html">rplot()</a></code>.</li>
 <li>Other bug fixes.</li>
 </ul>
 </div>
@@ -300,9 +300,9 @@
 <a href="#new-functions-1" class="anchor"></a>New Functions</h2>
 <ul>
 <li>
-<code><a href="../reference/network_plot.html">network_plot()</a></code> the correlations.</li>
+<code><a href="https://corrr.tidymodels.org/reference/network_plot.html">network_plot()</a></code> the correlations.</li>
 <li>
-<code><a href="../reference/focus.html">focus_()</a></code> for standard evaluation version of <code><a href="../reference/focus.html">focus()</a></code>.</li>
+<code><a href="https://corrr.tidymodels.org/reference/focus.html">focus_()</a></code> for standard evaluation version of <code><a href="https://corrr.tidymodels.org/reference/focus.html">focus()</a></code>.</li>
 </ul>
 </div>
 <div id="new-functionality-2" class="section level2">
@@ -310,9 +310,9 @@
 <a href="#new-functionality-2" class="anchor"></a>New Functionality</h2>
 <ul>
 <li>
-<code><a href="../reference/fashion.html">fashion()</a></code> will now attempt to work on any object (not just <code>cor_df</code>), making it useful for printing any data frame, matrix, vector, etc.</li>
+<code><a href="https://corrr.tidymodels.org/reference/fashion.html">fashion()</a></code> will now attempt to work on any object (not just <code>cor_df</code>), making it useful for printing any data frame, matrix, vector, etc.</li>
 <li>
-<code>print_cor</code> argument added to <code><a href="../reference/rplot.html">rplot()</a></code> to overlay the correlations as text.</li>
+<code>print_cor</code> argument added to <code><a href="https://corrr.tidymodels.org/reference/rplot.html">rplot()</a></code> to overlay the correlations as text.</li>
 </ul>
 </div>
 <div id="other-1" class="section level2">
@@ -320,7 +320,7 @@
 <a href="#other-1" class="anchor"></a>Other</h2>
 <ul>
 <li>
-<code>na_omit</code> argument in <code><a href="../reference/stretch.html">stretch()</a></code> changed to <code>na.rm</code> to match <code>gather_()</code>.</li>
+<code>na_omit</code> argument in <code><a href="https://corrr.tidymodels.org/reference/stretch.html">stretch()</a></code> changed to <code>na.rm</code> to match <code>gather_()</code>.</li>
 <li>Bug fixes.</li>
 <li>Improvements.</li>
 </ul>

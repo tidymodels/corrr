@@ -155,10 +155,10 @@ evaluate to TRUE will be included in a call to focus." />
 
     <div class="ref-description">
     <p>Apply a predicate function to each column of correlations. Columns that
-evaluate to TRUE will be included in a call to <code><a href='focus.html'>focus</a></code>.</p>
+evaluate to TRUE will be included in a call to <code><a href='https://corrr.tidymodels.org/reference/focus.html'>focus</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>focus_if</span>(<span class='no'>x</span>, <span class='no'>.predicate</span>, <span class='no'>...</span>, <span class='kw'>mirror</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'><a href='https://corrr.tidymodels.org/reference/focus_if.html'>focus_if</a></span>(<span class='kw'>x</span>, <span class='kw'>.predicate</span>, <span class='kw'>...</span>, mirror = <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -166,13 +166,13 @@ evaluate to TRUE will be included in a call to <code><a href='focus.html'>focus<
     <tr>
       <th>x</th>
       <td><p>Correlation data frame or object to be coerced to one via
-<code><a href='as_cordf.html'>as_cordf</a></code>.</p></td>
+<code><a href='https://corrr.tidymodels.org/reference/as_cordf.html'>as_cordf</a></code>.</p></td>
     </tr>
     <tr>
       <th>.predicate</th>
       <td><p>A predicate function to be applied to the columns. The
 columns for which .predicate returns TRUE will be included as variables in
-<code><a href='focus.html'>focus</a></code>.</p></td>
+<code><a href='https://corrr.tidymodels.org/reference/focus.html'>focus</a></code>.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -190,15 +190,15 @@ not.</p></td>
     <p>A tibble or, if mirror = TRUE, a correlation data frame.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
-<span class='no'>any_greater_than</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>x</span>, <span class='no'>val</span>) {
-  <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span>(<span class='no'>x</span>), <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>) <span class='kw'>&gt;</span> <span class='no'>val</span>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://dplyr.tidyverse.org'>dplyr</a></span>)
+<span class='kw'>any_greater_than</span> <span class='op'>&lt;-</span> <span class='fu'>function</span>(<span class='kw'>x</span>, <span class='kw'>val</span>) {
+  <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span>(<span class='kw'>x</span>), na.rm = <span class='fl'>TRUE</span>) <span class='op'>&gt;</span> <span class='kw'>val</span>
 }
 
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='correlate.html'>correlate</a></span>(<span class='no'>mtcars</span>)</div><div class='output co'>#&gt; <span class='message'></span>
+<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://corrr.tidymodels.org/reference/correlate.html'>correlate</a></span>(<span class='kw'>mtcars</span>)</div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'>Correlation method: 'pearson'</span>
 #&gt; <span class='message'>Missing treated using: 'pairwise.complete.obs'</span></div><div class='input'>
-<span class='no'>x</span> <span class='kw'>%&gt;%</span> <span class='fu'>focus_if</span>(<span class='no'>any_greater_than</span>, <span class='fl'>.6</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 6 x 6</span><span>
+<span class='kw'>x</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://corrr.tidymodels.org/reference/focus_if.html'>focus_if</a></span>(<span class='kw'>any_greater_than</span>, <span class='fl'>.6</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 6 x 6</span><span>
 #&gt;   rowname    mpg    cyl   disp     hp     wt
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #555555;'>1</span><span> drat     0.681 -</span><span style='color: #BB0000;'>0.700</span><span> -</span><span style='color: #BB0000;'>0.710</span><span> -</span><span style='color: #BB0000;'>0.449</span><span> -</span><span style='color: #BB0000;'>0.712</span><span>
@@ -206,7 +206,7 @@ not.</p></td>
 #&gt; </span><span style='color: #555555;'>3</span><span> vs       0.664 -</span><span style='color: #BB0000;'>0.811</span><span> -</span><span style='color: #BB0000;'>0.710</span><span> -</span><span style='color: #BB0000;'>0.723</span><span> -</span><span style='color: #BB0000;'>0.555</span><span>
 #&gt; </span><span style='color: #555555;'>4</span><span> am       0.600 -</span><span style='color: #BB0000;'>0.523</span><span> -</span><span style='color: #BB0000;'>0.591</span><span> -</span><span style='color: #BB0000;'>0.243</span><span> -</span><span style='color: #BB0000;'>0.692</span><span>
 #&gt; </span><span style='color: #555555;'>5</span><span> gear     0.480 -</span><span style='color: #BB0000;'>0.493</span><span> -</span><span style='color: #BB0000;'>0.556</span><span> -</span><span style='color: #BB0000;'>0.126</span><span> -</span><span style='color: #BB0000;'>0.583</span><span>
-#&gt; </span><span style='color: #555555;'>6</span><span> carb    -</span><span style='color: #BB0000;'>0.551</span><span>  0.527  0.395  0.750  0.428</div><div class='input'><span class='no'>x</span> <span class='kw'>%&gt;%</span> <span class='fu'>focus_if</span>(<span class='no'>any_greater_than</span>, <span class='fl'>.6</span>, <span class='kw'>mirror</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='network_plot.html'>network_plot</a></span>()</div><div class='img'><img src='focus_if-1.png' alt='' width='700' height='433' /></div></span></pre>
+#&gt; </span><span style='color: #555555;'>6</span><span> carb    -</span><span style='color: #BB0000;'>0.551</span><span>  0.527  0.395  0.750  0.428</div><div class='input'><span class='kw'>x</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://corrr.tidymodels.org/reference/focus_if.html'>focus_if</a></span>(<span class='kw'>any_greater_than</span>, <span class='fl'>.6</span>, mirror = <span class='fl'>TRUE</span>) <span class='op'>%&gt;%</span> <span class='fu'><a href='https://corrr.tidymodels.org/reference/network_plot.html'>network_plot</a></span>()</div><div class='img'><img src='focus_if-1.png' alt='' width='700' height='433' /></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

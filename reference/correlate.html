@@ -160,13 +160,13 @@ rather than a matrix. See details below. Additional adjustment include the
 use of pairwise deletion by default.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>correlate</span>(
-  <span class='no'>x</span>,
-  <span class='kw'>y</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>use</span> <span class='kw'>=</span> <span class='st'>"pairwise.complete.obs"</span>,
-  <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"pearson"</span>,
-  <span class='kw'>diagonal</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+    <pre class="usage"><span class='fu'><a href='https://corrr.tidymodels.org/reference/correlate.html'>correlate</a></span>(
+  <span class='kw'>x</span>,
+  y = <span class='kw'>NULL</span>,
+  use = <span class='st'>"pairwise.complete.obs"</span>,
+  method = <span class='st'>"pearson"</span>,
+  diagonal = <span class='fl'>NA</span>,
+  quiet = <span class='fl'>FALSE</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -224,11 +224,11 @@ parameters.</p></td>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>correlate</span>(<span class='no'>iris</span>)
+    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='fu'><a href='https://corrr.tidymodels.org/reference/correlate.html'>correlate</a></span>(<span class='kw'>iris</span>)
 }
 
-<span class='fu'>correlate</span>(<span class='no'>iris</span>[-<span class='fl'>5</span>])</div><div class='output co'>#&gt; <span class='message'></span>
+<span class='fu'><a href='https://corrr.tidymodels.org/reference/correlate.html'>correlate</a></span>(<span class='kw'>iris</span>[<span class='op'>-</span><span class='fl'>5</span>])</div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'>Correlation method: 'pearson'</span>
 #&gt; <span class='message'>Missing treated using: 'pairwise.complete.obs'</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 4 x 5</span><span>
 #&gt;   rowname      Sepal.Length Sepal.Width Petal.Length Petal.Width
@@ -237,7 +237,7 @@ parameters.</p></td>
 #&gt; </span><span style='color: #555555;'>2</span><span> Sepal.Width        -</span><span style='color: #BB0000;'>0.118</span><span>      </span><span style='color: #BB0000;'>NA</span><span>           -</span><span style='color: #BB0000;'>0.428</span><span>      -</span><span style='color: #BB0000;'>0.366</span><span>
 #&gt; </span><span style='color: #555555;'>3</span><span> Petal.Length        0.872      -</span><span style='color: #BB0000;'>0.428</span><span>       </span><span style='color: #BB0000;'>NA</span><span>           0.963
 #&gt; </span><span style='color: #555555;'>4</span><span> Petal.Width         0.818      -</span><span style='color: #BB0000;'>0.366</span><span>        0.963      </span><span style='color: #BB0000;'>NA</span><span>    </div><div class='input'>
-<span class='fu'>correlate</span>(<span class='no'>mtcars</span>)</div><div class='output co'>#&gt; <span class='message'></span>
+<span class='fu'><a href='https://corrr.tidymodels.org/reference/correlate.html'>correlate</a></span>(<span class='kw'>mtcars</span>)</div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'>Correlation method: 'pearson'</span>
 #&gt; <span class='message'>Missing treated using: 'pairwise.complete.obs'</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 11 x 12</span><span>
 #&gt;    rowname    mpg    cyl   disp     hp    drat     wt    qsec     vs      am
@@ -254,18 +254,19 @@ parameters.</p></td>
 #&gt; </span><span style='color: #555555;'>10</span><span> gear     0.480 -</span><span style='color: #BB0000;'>0.493</span><span> -</span><span style='color: #BB0000;'>0.556</span><span> -</span><span style='color: #BB0000;'>0.126</span><span>  0.700  -</span><span style='color: #BB0000;'>0.583</span><span> -</span><span style='color: #BB0000;'>0.213</span><span>   0.206  0.794 
 #&gt; </span><span style='color: #555555;'>11</span><span> carb    -</span><span style='color: #BB0000;'>0.551</span><span>  0.527  0.395  0.750 -</span><span style='color: #BB0000;'>0.090</span><span style='color: #BB0000;text-decoration: underline;'>8</span><span>  0.428 -</span><span style='color: #BB0000;'>0.656</span><span>  -</span><span style='color: #BB0000;'>0.570</span><span>  0.057</span><span style='text-decoration: underline;'>5</span><span>
 #&gt; </span><span style='color: #555555;'># … with 2 more variables: gear </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, carb </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span></div><div class='input'>
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='co'>if</span> (<span class='fl'>FALSE</span>) {
 
 <span class='co'># Also supports DB backend and collects results into memory</span>
 
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>sparklyr</span>)
-<span class='no'>sc</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/sparklyr/man/spark-connections.html'>spark_connect</a></span>(<span class='kw'>master</span> <span class='kw'>=</span> <span class='st'>"local"</span>)
-<span class='no'>mtcars_tbl</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/sparklyr/man/copy_to.html'>copy_to</a></span>(<span class='no'>sc</span>, <span class='no'>mtcars</span>)
-<span class='no'>mtcars_tbl</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'>correlate</span>(<span class='kw'>use</span> <span class='kw'>=</span> <span class='st'>"pairwise.complete.obs"</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"spearman"</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/sparklyr/man/spark-connections.html'>spark_disconnect</a></span>(<span class='no'>sc</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='http://spark.rstudio.com'>sparklyr</a></span>)
+<span class='kw'>sc</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/sparklyr/man/spark-connections.html'>spark_connect</a></span>(master = <span class='st'>"local"</span>)
+<span class='kw'>mtcars_tbl</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/sparklyr/man/copy_to.html'>copy_to</a></span>(<span class='kw'>sc</span>, <span class='kw'>mtcars</span>)
+<span class='kw'>mtcars_tbl</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://corrr.tidymodels.org/reference/correlate.html'>correlate</a></span>(use = <span class='st'>"pairwise.complete.obs"</span>, method = <span class='st'>"spearman"</span>)
+<span class='fu'><a href='https://rdrr.io/pkg/sparklyr/man/spark-connections.html'>spark_disconnect</a></span>(<span class='kw'>sc</span>)
 
-}</div></span></pre>
+}
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

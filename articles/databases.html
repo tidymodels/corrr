@@ -104,7 +104,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Using corrr with databases</h1>
             
-            <h4 class="date">2020-06-15</h4>
+            <h4 class="date">2020-06-17</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/tidymodels/corrr/blob/master/vignettes/databases.Rmd"><code>vignettes/databases.Rmd</code></a></small>
       <div class="hidden name"><code>databases.Rmd</code></div>
@@ -119,14 +119,17 @@
 <h2 class="hasAnchor">
 <a href="#an-example" class="anchor"></a>An example</h2>
 <p>A simple SQLite database will be used to this example. A temporary database is created, and the <code>mtcars</code> data set is copied to it. The <code>db_mtcars</code> variable is only a pointer to the new table inside the database, it does not hold any data.</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="no">con</span> <span class="kw">&lt;-</span> <span class="kw pkg">DBI</span><span class="kw ns">::</span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbConnect.html">dbConnect</a></span>(<span class="kw pkg">RSQLite</span><span class="kw ns">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="kw">path</span> <span class="kw">=</span> <span class="st">":dbname:"</span>)
-<span class="no">db_mtcars</span> <span class="kw">&lt;-</span> <span class="fu">copy_to</span>(<span class="no">con</span>, <span class="no">mtcars</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="kw">con</span> <span class="op">&lt;-</span> <span class="kw">DBI</span>::<span class="fu"><a href="https://dbi.r-dbi.org/reference/dbConnect.html">dbConnect</a></span>(<span class="kw">RSQLite</span>::<span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), path = <span class="st">":dbname:"</span>)
+<span class="kw">db_mtcars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/copy_to.html">copy_to</a></span>(<span class="kw">con</span>, <span class="kw">mtcars</span>)
+</pre></div>
 <p>Even though it is not a formal <code>data.frame</code> object, <code>db_mtcars</code> can be use as if it was a <code>data.frame</code> and simply pipe it into the <code><a href="../reference/correlate.html">correlate()</a></code> function.</p>
 <p>The <code><a href="../reference/correlate.html">correlate()</a></code> function will check the type of object passed, if it is a database-backed table, meaning a <code>tbl_sql()</code> object class, then it will use the new <code>tidyeval</code> code to calculate the correlations inside the database. The function will automatically retrieve only the results of the operation.</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">dplyr</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">corrr</span>)
-<span class="no">db_mtcars</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="../reference/correlate.html">correlate</a></span>(<span class="kw">quiet</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org">dplyr</a></span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/tidymodels/corrr">corrr</a></span>)
+<span class="kw">db_mtcars</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/correlate.html">correlate</a></span>(quiet = <span class="fl">TRUE</span>)
 <span class="co">#&gt; # A tibble: 11 x 12</span>
 <span class="co">#&gt;    rowname    mpg    cyl   disp     hp    drat     wt    qsec     vs      am</span>
 <span class="co">#&gt;    &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;</span>
@@ -141,19 +144,22 @@
 <span class="co">#&gt;  9 am       0.600 -0.523 -0.591 -0.243  0.713  -0.692 -0.230   0.168 NA     </span>
 <span class="co">#&gt; 10 gear     0.480 -0.493 -0.556 -0.126  0.700  -0.583 -0.213   0.206  0.794 </span>
 <span class="co">#&gt; 11 carb    -0.551  0.527  0.395  0.750 -0.0908  0.428 -0.656  -0.570  0.0575</span>
-<span class="co">#&gt; # … with 2 more variables: gear &lt;dbl&gt;, carb &lt;dbl&gt;</span></pre></body></html></div>
+<span class="co">#&gt; # … with 2 more variables: gear &lt;dbl&gt;, carb &lt;dbl&gt;</span>
+</pre></div>
 <p>The <code>tidyeval</code>-based function ensures that a <code>cor_df</code> object is returned, so then it can be used with other functions in the <code>corrr</code> package.</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="no">db_mtcars</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="../reference/correlate.html">correlate</a></span>(<span class="kw">quiet</span> <span class="kw">=</span> <span class="fl">TRUE</span>) <span class="kw">%&gt;%</span>
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="kw">db_mtcars</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/correlate.html">correlate</a></span>(quiet = <span class="fl">TRUE</span>) <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/rplot.html">rplot</a></span>()
-<span class="co">#&gt; Don't know how to automatically pick scale for object of type noquote. Defaulting to continuous.</span></pre></body></html></div>
+<span class="co">#&gt; Don't know how to automatically pick scale for object of type noquote. Defaulting to continuous.</span>
+</pre></div>
 <p><img src="databases_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
 </div>
 <div id="sparklyr" class="section level2">
 <h2 class="hasAnchor">
 <a href="#sparklyr" class="anchor"></a><code>sparklyr</code>
 </h2>
-<p>For connections using <code>sparklyr</code>, <code>corrr</code> will use that package function called <code>ml_corr()</code> to run all of the correlations at the same time. That is all done under the hood. The user just needs to pass a <code>tbl_spark</code> object to the <code><a href="../reference/correlate.html">correlate()</a></code> function, and <code>corrr</code> will automatically select the right function to run.</p>
+<p>For connections using <code>sparklyr</code>, <code>corrr</code> will use that package function called <code><a href="https://rdrr.io/pkg/sparklyr/man/ml_corr.html">ml_corr()</a></code> to run all of the correlations at the same time. That is all done under the hood. The user just needs to pass a <code>tbl_spark</code> object to the <code><a href="../reference/correlate.html">correlate()</a></code> function, and <code>corrr</code> will automatically select the right function to run.</p>
 </div>
 <div id="limitations" class="section level2">
 <h2 class="hasAnchor">
