@@ -19,6 +19,7 @@ A tool for exploring correlations.
 Useful links:
 \itemize{
   \item \url{https://github.com/tidymodels/corrr}
+  \item \url{https://corrr.tidymodels.org}
   \item Report bugs at \url{https://github.com/tidymodels/corrr/issues}
 }
 

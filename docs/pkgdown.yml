@@ -1,7 +1,0 @@
-pandoc: 2.3.1
-pkgdown: 1.4.1
-pkgdown_sha: ~
-articles:
-  databases: databases.html
-  using-corrr: using-corrr.html
-

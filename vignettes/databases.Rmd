@@ -3,7 +3,7 @@ title: "Using corrr with databases"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{corrr databases}
+  %\VignetteIndexEntry{Using corrr with databases}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

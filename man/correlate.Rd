@@ -71,7 +71,7 @@ correlate(mtcars)
 library(sparklyr)
 sc <- spark_connect(master = "local")
 mtcars_tbl <- copy_to(sc, mtcars)
-mtcars_tbl \%>\% 
+mtcars_tbl \%>\%
   correlate(use = "pairwise.complete.obs", method = "spearman")
 spark_disconnect(sc)
 

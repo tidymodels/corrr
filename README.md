@@ -3,11 +3,13 @@
 
 # corrr <img src="man/figures/logo.png" align="right" />
 
+[![R build
+status](https://github.com/tidymodels/corrr/workflows/R-CMD-check/badge.svg)](https://github.com/tidymodels/corrr/actions)
 [![Build
 Status](https://travis-ci.org/tidymodels/corrr.svg?branch=master)](https://travis-ci.org/tidymodels/corrr)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/corrr)](https://cran.r-project.org/package=corrr)
-[![Coverage
-Status](https://img.shields.io/codecov/c/github/tidymodels/corrr/master.svg)](https://codecov.io/github/tidymodels/corrr?branch=master)
+[![Codecov test
+coverage](https://codecov.io/gh/tidymodels/corrr/branch/master/graph/badge.svg)](https://codecov.io/gh/tidymodels/corrr?branch=master)
 
 corrr is a package for exploring **corr**elations in **R**. It focuses
 on creating and working with **data frames** of correlations (instead of
@@ -15,7 +17,7 @@ matrices) that can be easily explored via corrr functions or by
 leveraging tools like those in the [tidyverse](http://tidyverse.org/).
 This, along with the primary corrr functions, is represented below:
 
-<img src='tools/readme/to-cor-df.png'>
+<img src='man/figures/to-cor-df.png'>
 
 You can install:
 
@@ -165,7 +167,7 @@ rplot(x)
 #> Don't know how to automatically pick scale for object of type noquote. Defaulting to continuous.
 ```
 
-![](tools/readme/combination-1.png)<!-- -->
+![](man/figures/README-combination-1.png)<!-- -->
 
 ``` r
 
@@ -177,4 +179,4 @@ datasets::airquality %>%
 #> Missing treated using: 'pairwise.complete.obs'
 ```
 
-![](tools/readme/combination-2.png)<!-- -->
+![](man/figures/README-combination-2.png)<!-- -->
