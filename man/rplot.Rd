@@ -11,22 +11,26 @@ rplot(
   colours = c("indianred2", "white", "skyblue1"),
   print_cor = FALSE,
   colors,
-  keep.order = TRUE
+  .order = c("default", "alphabet")
 )
 }
 \arguments{
 \item{rdf}{Correlation data frame (see \code{\link{correlate}}) or object
 that can be coerced to one (see \code{\link{as_cordf}}).}
 
-\item{legend}{Boolean indicating whether a legend mapping the colors to the correlations should be displayed.}
+\item{legend}{Boolean indicating whether a legend mapping the colors to the
+correlations should be displayed.}
 
 \item{shape}{\code{\link{geom_point}} aesthetic.}
 
 \item{colours, colors}{Vector of colors to use for n-color gradient.}
 
-\item{print_cor}{Boolean indicating whether the correlations should be printed over the shapes.}
+\item{print_cor}{Boolean indicating whether the correlations should be
+printed over the shapes.}
 
-\item{keep.order}{Boolean indicating whether axis ordering should be the same as \code{rdf}. Argument passed on to \code{\link{stretch}}.}
+\item{.order}{Either "default", meaning x and y variables keep the same order
+as the columns in \code{x}, or "alphabet", meaning the variables are
+alphabetized.}
 }
 \value{
 Plots a correlation data frame

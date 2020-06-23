@@ -4,7 +4,12 @@
 \alias{stretch}
 \title{Stretch correlation data frame into long format.}
 \usage{
-stretch(x, na.rm = FALSE, remove.dups = FALSE, keep.order = TRUE)
+stretch(
+  x,
+  na.rm = FALSE,
+  remove.dups = FALSE,
+  .order = c("default", "alphabet")
+)
 }
 \arguments{
 \item{x}{cor_df. See \code{\link{correlate}}.}
@@ -15,7 +20,9 @@ mirror is FALSE.}
 
 \item{remove.dups}{Removes duplicate entries, without removing all NAs}
 
-\item{keep.order}{Boolean. Should x and y variables keep the same order as the columns in \code{x}? Default is \code{TRUE}.}
+\item{.order}{Either "default", meaning x and y variables keep the same order
+as the columns in \code{x}, or "alphabet", meaning the variables are
+alphabetized.}
 }
 \value{
 tbl with three columns (x and y variables, and their correlation)

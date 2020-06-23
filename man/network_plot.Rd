@@ -21,7 +21,8 @@ that can be coerced to one (see \code{\link{as_cordf}}).}
 \item{min_cor}{Number from 0 to 1 indicating the minimum value of
 correlations (in absolute terms) to plot.}
 
-\item{legend}{Boolean indicating whether a legend mapping the colors to the correlations should be displayed.}
+\item{legend}{Boolean indicating whether a legend mapping the colors to the
+correlations should be displayed.}
 
 \item{colours, colors}{Vector of colors to use for n-color gradient.}
 
