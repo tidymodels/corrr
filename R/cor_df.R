@@ -115,7 +115,7 @@ rplot.cor_df <- function(rdf,
                          colours = c("indianred2", "white", "skyblue1"),
                          print_cor = FALSE,
                          colors,
-                         keep.order = TRUE) {
+                         .order = "default") {
 
   if (!missing(colors))
     colours <- colors
@@ -124,7 +124,7 @@ rplot.cor_df <- function(rdf,
   row_order <- rdf$rowname
 
   # Convert data to relevant format for plotting
-  pd <- stretch(rdf, na.rm = TRUE, keep.order = TRUE)
+  pd <- stretch(rdf, na.rm = TRUE, .order = .order)
   pd$size = abs(pd$r)
   pd$label = fashion(pd$r)
 

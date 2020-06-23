@@ -69,11 +69,15 @@ fashion.default <- function(x, decimals = 2, leading_zeros = FALSE, na_print = "
 #'
 #' @param rdf Correlation data frame (see \code{\link{correlate}}) or object
 #'   that can be coerced to one (see \code{\link{as_cordf}}).
-#' @param legend Boolean indicating whether a legend mapping the colors to the correlations should be displayed.
+#' @param legend Boolean indicating whether a legend mapping the colors to the
+#'   correlations should be displayed.
 #' @param shape \code{\link{geom_point}} aesthetic.
-#' @param print_cor Boolean indicating whether the correlations should be printed over the shapes.
+#' @param print_cor Boolean indicating whether the correlations should be
+#'   printed over the shapes.
 #' @param colours,colors Vector of colors to use for n-color gradient.
-#' @param keep.order Boolean indicating whether axis ordering should be the same as \code{rdf}. Argument passed on to \code{\link{stretch}}.
+#' @param .order Either "default", meaning x and y variables keep the same order
+#'   as the columns in \code{x}, or "alphabet", meaning the variables are
+#'   alphabetized.
 #' @return Plots a correlation data frame
 #' @export
 #' @examples
@@ -91,8 +95,9 @@ rplot <- function(rdf,
                   shape = 16,
                   colours = c("indianred2", "white", "skyblue1"),
                   print_cor = FALSE,
-                  colors, 
-                  keep.order = TRUE) {
+                  colors,
+                  .order = c("default", "alphabet")) {
+  .order <- match.arg(.order)
   UseMethod("rplot")
 }
 
