@@ -1,3 +1,0 @@
-> str(stretch(d, .order = FALSE))
-Error in match.arg(.order): 'arg' must be NULL or a character vector
-

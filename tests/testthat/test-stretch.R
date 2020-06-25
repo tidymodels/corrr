@@ -13,12 +13,6 @@ test_that("Converts to proper structure", {
     colnames(stretch(d)),
     c("x", "y", "r")
   )
-  verify_output("stretch-keep.order_default.txt",
-                str(stretch(d))
-  )
-  verify_output("stretch-keep.order_alphabet.txt",
-    str(stretch(d, .order = FALSE))
-  )
 
   exp_res <-
     tibble::tribble(
@@ -40,8 +34,7 @@ test_that("Converts to proper structure", {
       "Petal.Width", "Petal.Length",  0.962865431402796,
       "Petal.Width",  "Petal.Width",                 NA
     )
-  expect_equivalent(as.data.frame(stretch(d, .order = "alphabet")),
-                    as.data.frame(exp_res))
+  expect_equivalent(as.data.frame(stretch(d)), as.data.frame(exp_res))
 })
 
 test_that("na.rm", {

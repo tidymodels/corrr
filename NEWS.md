@@ -4,7 +4,7 @@
 
 - Handle correlation of exactly zero or 1 in `network_plot()` (@s-scherrer, #89)
 
-- Add `.order` argument to `stretch()` with options "default" and "alphabet" (@mattwarkentin, #99)
+- Add `.order` argument to `rplot()` with options "default" and "alphabet" (@mattwarkentin, #99)
 
 # corrr 0.4.2
 

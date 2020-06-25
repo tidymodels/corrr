@@ -32,7 +32,7 @@ focus <- function(x, ..., mirror = FALSE) {
     .dots = ...,
     ... = ...,
     mirror = mirror
-    )
+  )
 }
 
 #' Returns a correlation table with the selected fields only
@@ -106,9 +106,6 @@ focus_if.default <- function(x, .predicate, ..., mirror = FALSE) {
 #'   matrix diagonal) should be dropped? Will automatically be set to TRUE if
 #'   mirror is FALSE.
 #' @param remove.dups Removes duplicate entries, without removing all NAs
-#' @param .order Either "default", meaning x and y variables keep the same order
-#'   as the columns in \code{x}, or "alphabet", meaning the variables are
-#'   alphabetized.
 #' @return tbl with three columns (x and y variables, and their correlation)
 #' @export
 #' @examples
@@ -119,23 +116,16 @@ focus_if.default <- function(x, .predicate, ..., mirror = FALSE) {
 #' x <- shave(x)  # use shave to set upper triangle to NA and then...
 #' stretch(x, na.rm = FALSE)  # omit all NAs, therefore keeping each
 #'                              # correlation only once.
-stretch <- function(x, na.rm = FALSE, remove.dups =  FALSE,
-                    .order = c("default", "alphabet")) {
-  .order <- match.arg(.order)
+stretch <- function(x, na.rm = FALSE, remove.dups =  FALSE) {
   UseMethod("stretch")
 }
 
 #' @export
-stretch.cor_df <- function(x, na.rm = FALSE, remove.dups =  FALSE,
-                           .order = c("default", "alphabet")) {
-  .order <- match.arg(.order)
+stretch.cor_df <- function(x, na.rm = FALSE, remove.dups =  FALSE) {
   if(remove.dups) x <- shave(x)
   row_name <- x$rowname
   x <- x[, colnames(x) != "rowname"]
   tb <- imap_dfr(x, ~tibble(x = .y, y = row_name, r = .x))
-  if(.order == "default")  {
-    tb[,c("x", "y")] <-  map_dfc(tb[,c("x", "y")], factor, levels = row_name)
-  }
   if(na.rm) tb <- tb[!is.na(tb$r), ]
   if(remove.dups) {
     stretch_unique(tb)
