@@ -162,7 +162,8 @@
   shape = <span class='fl'>16</span>,
   colours = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"indianred2"</span>, <span class='st'>"white"</span>, <span class='st'>"skyblue1"</span>),
   print_cor = <span class='fl'>FALSE</span>,
-  <span class='kw'>colors</span>
+  <span class='kw'>colors</span>,
+  .order = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"default"</span>, <span class='st'>"alphabet"</span>)
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -175,7 +176,8 @@ that can be coerced to one (see <code><a href='https://corrr.tidymodels.org/refe
     </tr>
     <tr>
       <th>legend</th>
-      <td><p>Boolean indicating whether a legend mapping the colors to the correlations should be displayed.</p></td>
+      <td><p>Boolean indicating whether a legend mapping the colors to the
+correlations should be displayed.</p></td>
     </tr>
     <tr>
       <th>shape</th>
@@ -187,7 +189,14 @@ that can be coerced to one (see <code><a href='https://corrr.tidymodels.org/refe
     </tr>
     <tr>
       <th>print_cor</th>
-      <td><p>Boolean indicating whether the correlations should be printed over the shapes.</p></td>
+      <td><p>Boolean indicating whether the correlations should be
+printed over the shapes.</p></td>
+    </tr>
+    <tr>
+      <th>.order</th>
+      <td><p>Either "default", meaning x and y variables keep the same order
+as the columns in <code>x</code>, or "alphabet", meaning the variables are
+alphabetized.</p></td>
     </tr>
     </table>
 
