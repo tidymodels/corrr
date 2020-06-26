@@ -95,7 +95,7 @@ focus_if.cor_df <- function(x, .predicate, ..., mirror = FALSE) {
   to_keep <- map_lgl(
     x[, colnames(x) != "rowname"],
     .predicate, ...
-    )
+  )
 
   to_keep <- names(to_keep)[!is.na(to_keep) & to_keep]
 
@@ -114,7 +114,10 @@ rplot.cor_df <- function(rdf,
                          shape = 16,
                          colours = c("indianred2", "white", "skyblue1"),
                          print_cor = FALSE,
-                         colors) {
+                         colors,
+                         .order = c("default", "alphabet")) {
+
+  .order <- match.arg(.order)
 
   if (!missing(colors))
     colours <- colors
@@ -126,6 +129,11 @@ rplot.cor_df <- function(rdf,
   pd <- stretch(rdf, na.rm = TRUE)
   pd$size = abs(pd$r)
   pd$label = fashion(pd$r)
+
+  if(.order == "default") {
+    pd$x <- factor(pd$x, levels = row_order)
+    pd$y <- factor(pd$y, levels = rev(row_order))
+  }
 
   plot_ <- list(
     # Geoms
@@ -230,8 +238,8 @@ network_plot.cor_df <- function(rdf,
     scale_colour_gradientn(limits = c(-1, 1), colors = colours),
     # Plot the points
     geom_point(data = points,
-                        aes(x, y),
-                        size = 3, shape = 19, colour = "white"),
+               aes(x, y),
+               size = 3, shape = 19, colour = "white"),
     # Plot variable labels
     if (repel) ggrepel::geom_text_repel(data = points,
                                         aes(x, y, label = id),
@@ -243,9 +251,9 @@ network_plot.cor_df <- function(rdf,
                           fontface = 'bold', size = 5),
     # expand the axes to add space for curves
     expand_limits(x = c(min(points$x) - .1,
-                                 max(points$x) + .1),
-                           y = c(min(points$y) - .1,
-                                 max(points$y) + .1)
+                        max(points$x) + .1),
+                  y = c(min(points$y) - .1,
+                        max(points$y) + .1)
     ),
     # Theme and legends
     theme_void(),
