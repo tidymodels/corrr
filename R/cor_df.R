@@ -193,7 +193,34 @@ network_plot.cor_df <- function(rdf,
   distance <- 1 - abs(rdf)
 
   # Use multidimensional Scaling to obtain x and y coordinates for points.
-  points <- data.frame(stats::cmdscale(distance))
+  points <- suppressWarnings(stats::cmdscale(distance))
+
+
+  if(ncol(points) < 2){
+    rlang::warn("Matrix of coordinates has dimension < 2")
+    cont_flag <- FALSE
+    shift_matrix <- matrix(1, nrow = nrow(rdf),
+                           ncol = ncol(rdf))
+    diag(shift_matrix) <- 0
+
+    for (shift in 10^(-6:-1)){
+      shifted_distance <- distance + shift*shift_matrix
+      points <- suppressWarnings(stats::cmdscale(shifted_distance))
+
+      if(ncol(points) > 1){
+
+        cont_flag <- TRUE
+        break
+      }
+      rlang::warn("Matrix of coordinates has dimension < 2")
+    }
+
+    if(!cont_flag)rlang::abort("Can't generate network plot.\n✖ Attempts to generate 2-d coordinates failed.")
+  }
+
+
+
+  points <- data.frame(points)
   colnames(points) <-  c("x", "y")
   points$id <- rownames(points)
 
