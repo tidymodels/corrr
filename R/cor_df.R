@@ -215,7 +215,7 @@ network_plot.cor_df <- function(rdf,
       rlang::warn("Matrix of coordinates has dimension < 2")
     }
 
-    if(!cont_flag)rlang::abort("Can't generate network plot.\n✖ Attempts to generate 2-d coordinates failed.")
+    if(!cont_flag)rlang::abort("Can't generate network plot.\nAttempts to generate 2-d coordinates failed.")
   }
 
 
