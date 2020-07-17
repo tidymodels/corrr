@@ -65,7 +65,7 @@ fashion.default <- function(x, decimals = 2, leading_zeros = FALSE, na_print = "
 
 #' Plot a correlation data frame.
 #'
-#' Plot a correlation data frame using ggplot2.
+#' Plot a correlation data frame using ggplot2 with correlation represented by color and absolute value of correlation represented as size.
 #'
 #' @param rdf Correlation data frame (see \code{\link{correlate}}) or object
 #'   that can be coerced to one (see \code{\link{as_cordf}}).
