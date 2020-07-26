@@ -197,7 +197,7 @@ network_plot.cor_df <- function(rdf,
 
 
   if(ncol(points) < 2){
-    rlang::warn("Plot coordinates derived from correlation matrix have dimension < 2.\nPairwise distances have been adjusted to facilitate plotting.")
+
     cont_flag <- FALSE
     shift_matrix <- matrix(1, nrow = nrow(rdf),
                            ncol = ncol(rdf))
@@ -212,10 +212,11 @@ network_plot.cor_df <- function(rdf,
         cont_flag <- TRUE
         break
       }
-      rlang::warn("Plot coordinates derived from correlation matrix have dimension < 2.\nPairwise distances have been adjusted to facilitate plotting.")
     }
 
     if(!cont_flag)rlang::abort("Can't generate network plot.\nAttempts to generate 2-d coordinates failed.")
+    
+    rlang::warn("Plot coordinates derived from correlation matrix have dimension < 2.\nPairwise distances have been adjusted to facilitate plotting.")
   }
 
 
