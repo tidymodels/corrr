@@ -156,14 +156,14 @@
     <p>Plot a correlation data frame using ggplot2.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://corrr.tidymodels.org/reference/rplot.html'>rplot</a></span>(
-  <span class='kw'>rdf</span>,
-  legend = <span class='fl'>TRUE</span>,
-  shape = <span class='fl'>16</span>,
-  colours = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"indianred2"</span>, <span class='st'>"white"</span>, <span class='st'>"skyblue1"</span>),
-  print_cor = <span class='fl'>FALSE</span>,
-  <span class='kw'>colors</span>,
-  .order = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"default"</span>, <span class='st'>"alphabet"</span>)
+    <pre class="usage"><span class='fu'>rplot</span>(
+  <span class='no'>rdf</span>,
+  <span class='kw'>legend</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>shape</span> <span class='kw'>=</span> <span class='fl'>16</span>,
+  <span class='kw'>colours</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"indianred2"</span>, <span class='st'>"white"</span>, <span class='st'>"skyblue1"</span>),
+  <span class='kw'>print_cor</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='no'>colors</span>,
+  <span class='kw'>.order</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"default"</span>, <span class='st'>"alphabet"</span>)
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -171,8 +171,8 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>rdf</th>
-      <td><p>Correlation data frame (see <code><a href='https://corrr.tidymodels.org/reference/correlate.html'>correlate</a></code>) or object
-that can be coerced to one (see <code><a href='https://corrr.tidymodels.org/reference/as_cordf.html'>as_cordf</a></code>).</p></td>
+      <td><p>Correlation data frame (see <code><a href='correlate.html'>correlate</a></code>) or object
+that can be coerced to one (see <code><a href='as_cordf.html'>as_cordf</a></code>).</p></td>
     </tr>
     <tr>
       <th>legend</th>
@@ -205,13 +205,13 @@ alphabetized.</p></td>
     <p>Plots a correlation data frame</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://corrr.tidymodels.org/reference/correlate.html'>correlate</a></span>(<span class='kw'>mtcars</span>)</div><div class='output co'>#&gt; <span class='message'></span>
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='correlate.html'>correlate</a></span>(<span class='no'>mtcars</span>)</div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'>Correlation method: 'pearson'</span>
-#&gt; <span class='message'>Missing treated using: 'pairwise.complete.obs'</span></div><div class='input'><span class='fu'><a href='https://corrr.tidymodels.org/reference/rplot.html'>rplot</a></span>(<span class='kw'>x</span>)</div><div class='output co'>#&gt; <span class='message'>Don't know how to automatically pick scale for object of type noquote. Defaulting to continuous.</span></div><div class='img'><img src='rplot-1.png' alt='' width='700' height='433' /></div><div class='input'>
+#&gt; <span class='message'>Missing treated using: 'pairwise.complete.obs'</span></div><div class='input'><span class='fu'>rplot</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='message'>Don't know how to automatically pick scale for object of type noquote. Defaulting to continuous.</span></div><div class='img'><img src='rplot-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Common use is following rearrange and shave</span>
-<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://corrr.tidymodels.org/reference/rearrange.html'>rearrange</a></span>(<span class='kw'>x</span>, absolute = <span class='fl'>FALSE</span>)
-<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://corrr.tidymodels.org/reference/shave.html'>shave</a></span>(<span class='kw'>x</span>)
-<span class='fu'><a href='https://corrr.tidymodels.org/reference/rplot.html'>rplot</a></span>(<span class='kw'>x</span>)</div><div class='output co'>#&gt; <span class='message'>Don't know how to automatically pick scale for object of type noquote. Defaulting to continuous.</span></div><div class='img'><img src='rplot-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://corrr.tidymodels.org/reference/rplot.html'>rplot</a></span>(<span class='kw'>x</span>, print_cor = <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Don't know how to automatically pick scale for object of type noquote. Defaulting to continuous.</span></div><div class='output co'>#&gt; <span class='message'>Don't know how to automatically pick scale for object of type noquote. Defaulting to continuous.</span></div><div class='img'><img src='rplot-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://corrr.tidymodels.org/reference/rplot.html'>rplot</a></span>(<span class='kw'>x</span>, shape = <span class='fl'>20</span>, colors = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"red"</span>, <span class='st'>"green"</span>), legend = <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Don't know how to automatically pick scale for object of type noquote. Defaulting to continuous.</span></div><div class='img'><img src='rplot-4.png' alt='' width='700' height='433' /></div></pre>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='rearrange.html'>rearrange</a></span>(<span class='no'>x</span>, <span class='kw'>absolute</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='shave.html'>shave</a></span>(<span class='no'>x</span>)
+<span class='fu'>rplot</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='message'>Don't know how to automatically pick scale for object of type noquote. Defaulting to continuous.</span></div><div class='img'><img src='rplot-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>rplot</span>(<span class='no'>x</span>, <span class='kw'>print_cor</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Don't know how to automatically pick scale for object of type noquote. Defaulting to continuous.</span></div><div class='output co'>#&gt; <span class='message'>Don't know how to automatically pick scale for object of type noquote. Defaulting to continuous.</span></div><div class='img'><img src='rplot-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>rplot</span>(<span class='no'>x</span>, <span class='kw'>shape</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>colors</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"red"</span>, <span class='st'>"green"</span>), <span class='kw'>legend</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Don't know how to automatically pick scale for object of type noquote. Defaulting to continuous.</span></div><div class='img'><img src='rplot-4.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
