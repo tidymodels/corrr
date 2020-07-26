@@ -6,6 +6,8 @@
 
 - Add `.order` argument to `rplot()` with options "default" and "alphabet" (@mattwarkentin, #99)
 
+- Make `network_plot()` more robust, for example to highly correlated data (@thisisdaryn, #107)
+
 # corrr 0.4.2
 
 - Updates to work with tibble 3.0.0  and dplyr 1.0.0
