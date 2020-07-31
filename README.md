@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# corrr <a href='https://corr.tidymodels.org'><img src='man/figures/logo.png' align="right" height="139" /></a>
+# corrr <a href='https://corrr.tidymodels.org'><img src='man/figures/logo.png' align="right" height="139" /></a>
 
 [![R build
 status](https://github.com/tidymodels/corrr/workflows/R-CMD-check/badge.svg)](https://github.com/tidymodels/corrr/actions)
