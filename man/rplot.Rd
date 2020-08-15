@@ -38,6 +38,13 @@ Plots a correlation data frame
 \description{
 Plot a correlation data frame using ggplot2.
 }
+\details{
+Each value in the correlation data frame is represented by one point/circle
+in the output plot. The size of each point corresponds to the absolute value
+of the correlation (via the \code{size} aesthetic). The color of each point
+corresponds to the signed value of the correlation (via the \code{color}
+aesthetic).
+}
 \examples{
 x <- correlate(mtcars)
 rplot(x)
