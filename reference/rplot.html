@@ -203,6 +203,13 @@ alphabetized.</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>Plots a correlation data frame</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Each value in the correlation data frame is represented by one point/circle
+in the output plot. The size of each point corresponds to the absolute value
+of the correlation (via the <code>size</code> aesthetic). The color of each point
+corresponds to the signed value of the correlation (via the <code>color</code>
+aesthetic).</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='correlate.html'>correlate</a></span>(<span class='no'>mtcars</span>)</div><div class='output co'>#&gt; <span class='message'></span>
