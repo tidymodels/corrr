@@ -4,7 +4,7 @@
 
 - Handle correlation of exactly zero or 1 in `network_plot()` (@s-scherrer, #89)
 
-- Add `.order` argument to `rplot()` with options "default" and "alphabet" (@mattwarkentin, #99)
+- Add `.order` argument to `rplot()` with options "default" and "alphabet" plus improved documentation (@mattwarkentin, #99 and @thisisdaryn, #114)
 
 - Make `network_plot()` more robust, for example to highly correlated data (@thisisdaryn, #107)
 

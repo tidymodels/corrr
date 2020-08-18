@@ -67,6 +67,13 @@ fashion.default <- function(x, decimals = 2, leading_zeros = FALSE, na_print = "
 #'
 #' Plot a correlation data frame using ggplot2.
 #'
+#' Each value in the correlation data frame is represented by one point/circle
+#' in the output plot. The size of each point corresponds to the absolute value
+#' of the correlation (via the \code{size} aesthetic). The color of each point
+#' corresponds to the signed value of the correlation (via the \code{color}
+#' aesthetic).
+#'
+#'
 #' @param rdf Correlation data frame (see \code{\link{correlate}}) or object
 #'   that can be coerced to one (see \code{\link{as_cordf}}).
 #' @param legend Boolean indicating whether a legend mapping the colors to the
