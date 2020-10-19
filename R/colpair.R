@@ -7,8 +7,8 @@
 #' @param .data A data frame or data frame extension (e.g. a tibble).
 #' @param .f A function.
 #' @param ... Additional arguments passed on to the mapped function.
-#' @param .diagonal Value at which to set the diagonal (defaults to NA).
-#' @return A correlation data frame (cor_df).
+#' @param .diagonal Value at which to set the diagonal (defaults to `NA`).
+#' @return A correlation data frame (`cor_df`).
 #' @importFrom dplyr summarise across
 #' @importFrom purrr map_dfr
 #' @examples

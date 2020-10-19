@@ -13,20 +13,21 @@ colpair_map(.data, .f, ..., .diagonal = NA)
 
 \item{...}{Additional arguments passed on to the mapped function.}
 
-\item{.diagonal}{Value at which to set the diagonal (defaults to NA).}
+\item{.diagonal}{Value at which to set the diagonal (defaults to \code{NA}).}
 }
 \value{
-A correlation data frame (cor_df).
+A correlation data frame (\code{cor_df}).
 }
 \description{
-`colpair_map()` transforms a data frame by applying a function to each pair
-  of its columns.The result is a correlation data frame (see
-  \code{\link{correlate}} for details).
+\code{colpair_map()} transforms a data frame by applying a function to each pair
+of its columns.The result is a correlation data frame (see
+\code{\link{correlate}} for details).
 }
 \examples{
 ## Using `stats::cov` produces a covariance data frame.
 colpair_map(mtcars, cov)
 
+## Function to get the p-value from a t-test:
 calc_p_value <- function(vec_a, vec_b){
   t.test(vec_a, vec_b)$p.value
 }
