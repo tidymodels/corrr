@@ -47,4 +47,5 @@ LazyData: yes
 License: MIT + file LICENSE
 URL: https://github.com/tidymodels/corrr, https://corrr.tidymodels.org
 BugReports: https://github.com/tidymodels/corrr/issues
+Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
