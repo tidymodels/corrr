@@ -8,6 +8,11 @@
 
 - Make `network_plot()` more robust, for example to highly correlated data (@thisisdaryn, #107)
 
+- `correlate()` now works with single-column data.frames and numeric vectors (@antoine-sachet, #122)
+
+- `network_plot()` now works with `cor_df` objects with only 1 or 2 columns (@antoine-sachet, #122)
+
+
 # corrr 0.4.2
 
 - Updates to work with tibble 3.0.0  and dplyr 1.0.0

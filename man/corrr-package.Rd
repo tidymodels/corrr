@@ -33,5 +33,10 @@ Authors:
   \item Jorge Cimentada
 }
 
+Other contributors:
+\itemize{
+  \item Sachet Antoine \email{antoine.sac@gmail.com} [contributor]
+}
+
 }
 \keyword{internal}

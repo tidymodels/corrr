@@ -18,7 +18,9 @@ Authors@R:
             role = c("aut")),
       person(given = "Jorge",
             family = "Cimentada",
-            role = c("aut"))                      
+            role = c("aut")),
+      person(given = "Sachet", family = "Antoine",
+             email = "antoine.sac@gmail.com", role = "ctb")                         
              )
 Depends: 
     R (>= 3.3.0)
