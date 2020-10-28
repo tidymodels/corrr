@@ -192,8 +192,13 @@ network_plot.cor_df <- function(rdf,
   rdf <-  as_matrix(rdf, diagonal = 1)
   distance <- 1 - abs(rdf)
 
-  # Use multidimensional Scaling to obtain x and y coordinates for points.
-  points <- suppressWarnings(stats::cmdscale(distance))
+  points <- if (ncol(rdf) == 2) {
+    # 2 vars: 2 opposing points
+    matrix(c(0, -0.1, 0, 0.1), ncol = 2, dimnames = list(colnames(rdf)))
+  } else {
+    # More than 2 vars: multidimensional scaling to obtain x and y coordinates for points.
+    suppressWarnings(stats::cmdscale(distance, k = 2))
+  }
 
   if(ncol(points) < 2){
 
