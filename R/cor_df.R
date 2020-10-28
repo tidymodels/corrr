@@ -5,7 +5,7 @@ as_matrix.cor_df <- function(x, diagonal) {
 
   # Separate rownames
   row_name <- x$rowname
-  x <- x[, colnames(x) != "rowname"]
+  x <- x[colnames(x) != "rowname"]
   # Convert to matrix and set rownames
   class(x) <- "data.frame"
   x <- as.matrix(x)
@@ -22,7 +22,7 @@ shave.cor_df <- function(x, upper = TRUE) {
 
   # Separate rownames
   row_name <- x$rowname
-  x <- x[, colnames(x) != "rowname"]
+  x <- x[colnames(x) != "rowname"]
 
   # Remove upper matrix
   if (upper) {
@@ -93,7 +93,7 @@ focus_if.cor_df <- function(x, .predicate, ..., mirror = FALSE) {
 
   # Identify which variables to keep
   to_keep <- map_lgl(
-    x[, colnames(x) != "rowname"],
+    x[colnames(x) != "rowname"],
     .predicate, ...
   )
 
