@@ -192,7 +192,10 @@ network_plot.cor_df <- function(rdf,
   rdf <-  as_matrix(rdf, diagonal = 1)
   distance <- 1 - abs(rdf)
 
-  points <- if (ncol(rdf) == 2) {
+  points <- if (ncol(rdf) == 1) {
+    # 1 var: a single central point
+    matrix(c(0, 0), ncol = 2, dimnames = list(colnames(rdf)))
+  } else if (ncol(rdf) == 2) {
     # 2 vars: 2 opposing points
     matrix(c(0, -0.1, 0, 0.1), ncol = 2, dimnames = list(colnames(rdf)))
   } else {

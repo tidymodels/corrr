@@ -17,6 +17,12 @@ test_that("Network plot works with 2 variables", {
   expect_s3_class(network_plot(d2, colors = c("indianred2", "white", "skyblue1")), "ggplot")
 })
 
+test_that("Network plot works with 1 variable", {
+  d1 <- correlate(datasets::anscombe["x1"])
+  expect_s3_class(network_plot(d1), "ggplot")
+  expect_s3_class(network_plot(d1, colors = c("indianred2", "white", "skyblue1")), "ggplot")
+})
+
 context("rplot")
 
 test_that("rplot works", {
