@@ -26,7 +26,7 @@ as_cordf <- function(x, diagonal = NA) {
     stop("Input object x is not a square. ",
          "The number of columns must be equal to the number of rows.")
   }
-  diag(x) <- diagonal
+  if (ncol(x) > 1) diag(x) <- diagonal
   new_cordf(x, names(x))
 }
 
