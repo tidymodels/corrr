@@ -38,9 +38,7 @@ Suggests:
     DBI,
     RSQLite,
     sparklyr (>= 0.9),
-    covr,
-    broom,
-    rcompanion
+    covr
 VignetteBuilder: knitr
 Encoding: UTF-8
 LazyData: yes
