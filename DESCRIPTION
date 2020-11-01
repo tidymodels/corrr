@@ -18,10 +18,7 @@ Authors@R:
             role = c("aut")),
       person(given = "Jorge",
             family = "Cimentada",
-            role = c("aut")),
-      person(given = "Sachet", family = "Antoine",
-             email = "antoine.sac@gmail.com", role = "ctb")                         
-             )
+            role = c("aut")))
 Depends: 
     R (>= 3.3.0)
 Imports: 

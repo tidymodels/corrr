@@ -8,8 +8,7 @@
 
 - Make `network_plot()` more robust, for example to highly correlated data (@thisisdaryn, #107)
 
-- `correlate()` now works with single-column data.frames and numeric vectors (@antoine-sachet, #122)
-  Note the `diagonal` argument is ignored in these 2 cases.
+- `correlate()` now works with single-column data.frames and numeric vectors (@antoine-sachet, #122). Note the `diagonal` argument is ignored in these 2 cases.
   
 - `network_plot()` now works with `cor_df` objects with only 1 or 2 columns (@antoine-sachet, #122)
 
