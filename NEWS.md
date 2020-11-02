@@ -8,10 +8,11 @@
 
 - Make `network_plot()` more robust, for example to highly correlated data (@thisisdaryn, #107)
 
+- New `colpair_map()` allows for column comparisons using the values returned by an arbitrary function (@jameslairdsmith, #94).
+
 - `correlate()` now works with single-column data.frames and numeric vectors (@antoine-sachet, #122). Note the `diagonal` argument is ignored in these 2 cases.
   
 - `network_plot()` now works with `cor_df` objects with only 1 or 2 columns (@antoine-sachet, #122)
-
 
 # corrr 0.4.2
 
