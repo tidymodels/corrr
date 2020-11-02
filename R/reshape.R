@@ -124,7 +124,7 @@ stretch <- function(x, na.rm = FALSE, remove.dups =  FALSE) {
 stretch.cor_df <- function(x, na.rm = FALSE, remove.dups =  FALSE) {
   if(remove.dups) x <- shave(x)
   row_name <- x$rowname
-  x <- x[, colnames(x) != "rowname"]
+  x <- x[colnames(x) != "rowname"]
   tb <- imap_dfr(x, ~tibble(x = .y, y = row_name, r = .x))
   if(na.rm) tb <- tb[!is.na(tb$r), ]
   if(remove.dups) {

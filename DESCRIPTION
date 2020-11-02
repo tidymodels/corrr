@@ -18,8 +18,7 @@ Authors@R:
             role = c("aut")),
       person(given = "Jorge",
             family = "Cimentada",
-            role = c("aut"))                      
-             )
+            role = c("aut")))
 Depends: 
     R (>= 3.3.0)
 Imports: 

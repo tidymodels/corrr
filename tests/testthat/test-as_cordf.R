@@ -18,3 +18,9 @@ test_that("Diagonal sets correctly", {
   expect_equal(all(is.na(diag(as.matrix(as_cordf(d, diagonal = NA)[, -1])))), TRUE)
   expect_equal(all(diag(as.matrix(as_cordf(d, diagonal = 100)[, -1] == 100))), TRUE)
 })
+
+test_that("as_cordf handles single correlation", {
+  d1 <- cor(mtcars["cyl"])
+  expect_s3_class(as_cordf(d1), "cor_df")
+  expect_equal(colnames(as_cordf(d1)), c("rowname", colnames(d1)))
+})

@@ -5,7 +5,7 @@ as_matrix.cor_df <- function(x, diagonal) {
 
   # Separate rownames
   row_name <- x$rowname
-  x <- x[, colnames(x) != "rowname"]
+  x <- x[colnames(x) != "rowname"]
   # Convert to matrix and set rownames
   class(x) <- "data.frame"
   x <- as.matrix(x)
@@ -22,7 +22,7 @@ shave.cor_df <- function(x, upper = TRUE) {
 
   # Separate rownames
   row_name <- x$rowname
-  x <- x[, colnames(x) != "rowname"]
+  x <- x[colnames(x) != "rowname"]
 
   # Remove upper matrix
   if (upper) {
@@ -93,7 +93,7 @@ focus_if.cor_df <- function(x, .predicate, ..., mirror = FALSE) {
 
   # Identify which variables to keep
   to_keep <- map_lgl(
-    x[, colnames(x) != "rowname"],
+    x[colnames(x) != "rowname"],
     .predicate, ...
   )
 
@@ -192,8 +192,16 @@ network_plot.cor_df <- function(rdf,
   rdf <-  as_matrix(rdf, diagonal = 1)
   distance <- 1 - abs(rdf)
 
-  # Use multidimensional Scaling to obtain x and y coordinates for points.
-  points <- suppressWarnings(stats::cmdscale(distance))
+  points <- if (ncol(rdf) == 1) {
+    # 1 var: a single central point
+    matrix(c(0, 0), ncol = 2, dimnames = list(colnames(rdf)))
+  } else if (ncol(rdf) == 2) {
+    # 2 vars: 2 opposing points
+    matrix(c(0, -0.1, 0, 0.1), ncol = 2, dimnames = list(colnames(rdf)))
+  } else {
+    # More than 2 vars: multidimensional scaling to obtain x and y coordinates for points.
+    suppressWarnings(stats::cmdscale(distance, k = 2))
+  }
 
   if(ncol(points) < 2){
 

@@ -20,13 +20,13 @@ as_cordf <- function(x, diagonal = NA) {
   }
   x <- as.data.frame(x)
   row_name <- x$rowname
-  x <- x[, colnames(x) != "rowname"]
+  x <- x[colnames(x) != "rowname"]
   rownames(x) <- row_name
   if(ncol(x) != nrow(x)) {
     stop("Input object x is not a square. ",
          "The number of columns must be equal to the number of rows.")
   }
-  diag(x) <- diagonal
+  if (ncol(x) > 1) diag(x) <- diagonal
   new_cordf(x, names(x))
 }
 
