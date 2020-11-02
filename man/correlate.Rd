@@ -33,7 +33,7 @@ correlate(
 
 \item{diagonal}{Value (typically numeric or NA) to set the diagonal to.}
 
-\item{quiet}{Set as TRUE to suppress message about `method` and `use`
+\item{quiet}{Set as TRUE to suppress message about \code{method} and \code{use}
 parameters.}
 }
 \value{
@@ -46,13 +46,13 @@ use of pairwise deletion by default.
 }
 \details{
 \itemize{
-  This function returns a correlation matrix as a correlation data frame in
-  the following format:
-  \item A tibble (see \code{\link[tibble]{tibble}})
-  \item An additional class, "cor_df"
-  \item A "rowname" column
-  \item Standardized variances (the matrix diagonal) set to missing values by
-  default (\code{NA}) so they can be ignored in calculations.
+This function returns a correlation matrix as a correlation data frame in
+the following format:
+\item A tibble (see \code{\link[tibble]{tibble}})
+\item An additional class, "cor_df"
+\item A "rowname" column
+\item Standardized variances (the matrix diagonal) set to missing values by
+default (\code{NA}) so they can be ignored in calculations.
 }
 }
 \examples{

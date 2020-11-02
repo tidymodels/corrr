@@ -23,13 +23,13 @@ Authors@R:
 Depends: 
     R (>= 3.3.0)
 Imports: 
-    dplyr (>= 0.8),
+    dplyr (>= 1.0.0),
     ggplot2 (>= 2.2.0),
     seriation (>= 1.2-0),
     purrr (>= 0.2.2),
     tibble (>= 2.0),
     ggrepel (>= 0.6.5),
-    rlang(>= 0.4.0)
+    rlang (>= 0.4.0)
 Suggests: 
     testthat (>= 2.1.0),
     knitr (>= 1.13),
@@ -45,4 +45,5 @@ LazyData: yes
 License: MIT + file LICENSE
 URL: https://github.com/tidymodels/corrr, https://corrr.tidymodels.org
 BugReports: https://github.com/tidymodels/corrr/issues
+Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
