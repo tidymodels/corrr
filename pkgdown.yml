@@ -1,10 +1,10 @@
 pandoc: 2.7.3
-pkgdown: 1.5.1
+pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   databases: databases.html
   using-corrr: using-corrr.html
-last_built: 2020-08-18T15:59Z
+last_built: 2020-11-02T18:08Z
 urls:
   reference: https://corrr.tidymodels.org/reference
   article: https://corrr.tidymodels.org/articles
