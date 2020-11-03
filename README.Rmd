@@ -43,7 +43,7 @@ You can install:
 Using `corrr` typically starts with `correlate()`, which acts like the base correlation function `cor()`. It differs by defaulting to pairwise deletion, and returning a correlation data frame (`cor_df`) of the following structure:
 
 - A `tbl` with an additional class, `cor_df`
-- An extra "term" column
+- An extra "rowname" column
 - Standardized variances (the matrix diagonal) set to missing values (`NA`) so they can be ignored.
 
 ### API

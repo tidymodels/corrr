@@ -19,8 +19,8 @@ as_cordf <- function(x, diagonal = NA) {
     return(x)
   }
   x <- as.data.frame(x)
-  row_name <- x$term
-  x <- x[colnames(x) != "term"]
+  row_name <- x$rowname
+  x <- x[colnames(x) != "rowname"]
   rownames(x) <- row_name
   if(ncol(x) != nrow(x)) {
     stop("Input object x is not a square. ",
@@ -30,9 +30,9 @@ as_cordf <- function(x, diagonal = NA) {
   new_cordf(x, names(x))
 }
 
-new_cordf <- function(x, term = NULL) {
-  if (!is.null(term)) {
-    x <- first_col(x, term)
+new_cordf <- function(x, rowname = NULL) {
+  if (!is.null(rowname)) {
+    x <- first_col(x, rowname)
   }
   class(x) <- c("cor_df", class(x))
   x
@@ -41,15 +41,15 @@ new_cordf <- function(x, term = NULL) {
 #' Add a first column to a data.frame
 #'
 #' Add a first column to a data.frame. This is most commonly used to append a
-#' term column to create a cor_df.
+#' rowname column to create a cor_df.
 #'
 #' @param df Data frame
 #' @param ... Values to go into the column
-#' @param var Label for the column. Default is "term"
+#' @param var Label for the column. Default is "rowname"
 #' @export
 #' @examples
 #' first_col(mtcars, 1:nrow(mtcars))
-first_col <- function(df, ..., var = "term") {
+first_col <- function(df, ..., var = "rowname") {
   stopifnot(is.data.frame(df))
 
   if (tibble::has_name(df, var))

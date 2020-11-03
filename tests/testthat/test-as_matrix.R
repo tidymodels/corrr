@@ -12,9 +12,9 @@ test_that("Converts values accurately", {
 })
 
 test_that("Yields correct columns and rows", {
-  expect_equal(colnames(x), c("term", colnames(y)))
+  expect_equal(colnames(x), c("rowname", colnames(y)))
   expect_equal(nrow(x), ncol(y))
-  expect_equal(x$term, colnames(y))
+  expect_equal(x$rowname, colnames(y))
   expect_equal(rownames(y), colnames(y))
 })
 

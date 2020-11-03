@@ -22,7 +22,7 @@ corrr is a package for exploring **corr**elations in **R**. It makes it possible
 Using `corrr` starts with `correlate()`, which acts like the base correlation function `cor()`. It differs by defaulting to pairwise deletion, and returning a correlation data frame (`cor_df`) of the following structure:
 
 - A `tbl` with an additional class, `cor_df`
-- An extra "term" column
+- An extra "rowname" column
 - Standardized variances (the matrix diagonal) set to missing values (`NA`) so they can be ignored.
 
 To work with further, let's create a correlation data frame using `correlate()` from the `mtcars` data that comes with R:
@@ -44,13 +44,13 @@ library(dplyr)
 # another variable.
 d %>% filter(cyl > .7)
 
-# Select the mpg, cyl and disp columns (and term)
-d %>% select(term, mpg, cyl, disp)
+# Select the mpg, cyl and disp columns (and rowname)
+d %>% select(rowname, mpg, cyl, disp)
 
 # Combine above in a single pipeline
 d %>%
   filter(cyl > .7) %>% 
-  select(term, mpg, cyl, disp)
+  select(rowname, mpg, cyl, disp)
 ```
 
 Furthermore, by having the diagonal set to missing, we don't need to put in extra effort to ignore them when summarizing the correlations. For example:
@@ -59,7 +59,7 @@ Furthermore, by having the diagonal set to missing, we don't need to put in extr
 # Compute mean of each column
 library(purrr)
 d %>% 
-  select(-term) %>% 
+  select(-rowname) %>% 
   map_dbl(~ mean(., na.rm = TRUE))
 ```
 

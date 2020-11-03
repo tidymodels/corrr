@@ -7,6 +7,6 @@ d <- correlate(d)
 test_that("Rearrange return correct order", {
   expect_equal(
     colnames(rearrange(d)),
-    c("term", "Petal.Length", "Petal.Width", "Sepal.Length", "Sepal.Width")
+    c("rowname", "Petal.Length", "Petal.Width", "Sepal.Length", "Sepal.Width")
   )
 })
