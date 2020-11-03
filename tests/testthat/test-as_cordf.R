@@ -9,9 +9,9 @@ test_that("Inherits correct classes", {
 })
 
 test_that("Yields correct columns and rows", {
-  expect_equal(colnames(as_cordf(d)), c("rowname", colnames(d)))
+  expect_equal(colnames(as_cordf(d)), c("term", colnames(d)))
   expect_equal(nrow(as_cordf(d)), ncol(d))
-  expect_equal(as_cordf(d)$rowname, colnames(d))
+  expect_equal(as_cordf(d)$term, colnames(d))
 })
 
 test_that("Diagonal sets correctly", {
@@ -22,5 +22,5 @@ test_that("Diagonal sets correctly", {
 test_that("as_cordf handles single correlation", {
   d1 <- cor(mtcars["cyl"])
   expect_s3_class(as_cordf(d1), "cor_df")
-  expect_equal(colnames(as_cordf(d1)), c("rowname", colnames(d1)))
+  expect_equal(colnames(as_cordf(d1)), c("term", colnames(d1)))
 })
