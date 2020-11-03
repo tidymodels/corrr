@@ -3,9 +3,9 @@
 #' @export
 as_matrix.cor_df <- function(x, diagonal) {
 
-  # Separate rownames
-  row_name <- x$rowname
-  x <- x[colnames(x) != "rowname"]
+  # Separate term names from the numerical values
+  row_name <- x$term
+  x <- x[colnames(x) != "term"]
   # Convert to matrix and set rownames
   class(x) <- "data.frame"
   x <- as.matrix(x)
@@ -20,9 +20,9 @@ as_matrix.cor_df <- function(x, diagonal) {
 #' @export
 shave.cor_df <- function(x, upper = TRUE) {
 
-  # Separate rownames
-  row_name <- x$rowname
-  x <- x[colnames(x) != "rowname"]
+  # Separate term names from numerical values
+  row_name <- x$term
+  x <- x[colnames(x) != "term"]
 
   # Remove upper matrix
   if (upper) {
@@ -31,7 +31,7 @@ shave.cor_df <- function(x, upper = TRUE) {
     x[lower.tri(x)] <- NA
   }
 
-  # Reappend rownames and class
+  # Reappend the term names and class
   new_cordf(x, row_name)
 }
 
@@ -52,7 +52,7 @@ rearrange.cor_df <- function(x, method = "PCA", absolute = TRUE) {
   ord <- seriation::get_order(ord)
 
   # Arrange and return matrix
-  # "c(1, 1 + ..." to handle rowname column
+  # "c(1, 1 + ..." to handle term column
   x <- x[ord, c(1, 1 + ord)]
   new_cordf(x)
 }
@@ -63,23 +63,23 @@ rearrange.cor_df <- function(x, method = "PCA", absolute = TRUE) {
 #' @export
 focus_.cor_df <- function(x, ..., .dots = NULL, mirror = FALSE) {
   vars <- enquos(...)
-  row_name <- x$rowname
+  row_name <- x$term
   if(length(vars) > 0) {
     x <-  dplyr::select(x, !!! vars)
   } else {
     x <-  dplyr::select(x, .dots)
   }
   # Get selected column names and
-  # append back rownames if necessary
+  # append back term if necessary
   vars <- colnames(x)
-  if ("rowname" %in% vars) {
-    vars <- vars[vars != "rowname"]
+  if ("term" %in% vars) {
+    vars <- vars[vars != "term"]
   } else {
     x <-  first_col(x, row_name)
   }
 
   # Exclude these or others from the rows
-  vars <- x$rowname %in% vars
+  vars <- x$term %in% vars
   if (mirror) {
     x <- new_cordf(x[vars, ])
   } else {
@@ -93,7 +93,7 @@ focus_if.cor_df <- function(x, .predicate, ..., mirror = FALSE) {
 
   # Identify which variables to keep
   to_keep <- map_lgl(
-    x[colnames(x) != "rowname"],
+    x[colnames(x) != "term"],
     .predicate, ...
   )
 
@@ -123,7 +123,7 @@ rplot.cor_df <- function(rdf,
     colours <- colors
 
   # Store order for factoring the variables
-  row_order <- rdf$rowname
+  row_order <- rdf$term
 
   # Convert data to relevant format for plotting
   pd <- stretch(rdf, na.rm = TRUE)

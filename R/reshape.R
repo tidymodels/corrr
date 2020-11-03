@@ -99,7 +99,7 @@ focus_if.default <- function(x, .predicate, ..., mirror = FALSE) {
 #'
 #' \code{stretch} is a specified implementation of tidyr::gather() to be applied
 #' to a correlation data frame. It will gather the columns into a long-format
-#' data frame. The rowname column is handled automatically.
+#' data frame. The term column is handled automatically.
 #'
 #' @param x cor_df. See \code{\link{correlate}}.
 #' @param na.rm Boolean. Whether rows with an NA correlation (originally the
@@ -123,8 +123,8 @@ stretch <- function(x, na.rm = FALSE, remove.dups =  FALSE) {
 #' @export
 stretch.cor_df <- function(x, na.rm = FALSE, remove.dups =  FALSE) {
   if(remove.dups) x <- shave(x)
-  row_name <- x$rowname
-  x <- x[colnames(x) != "rowname"]
+  row_name <- x$term
+  x <- x[colnames(x) != "term"]
   tb <- imap_dfr(x, ~tibble(x = .y, y = row_name, r = .x))
   if(na.rm) tb <- tb[!is.na(tb$r), ]
   if(remove.dups) {

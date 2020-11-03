@@ -4,18 +4,18 @@
 \alias{first_col}
 \title{Add a first column to a data.frame}
 \usage{
-first_col(df, ..., var = "rowname")
+first_col(df, ..., var = "term")
 }
 \arguments{
 \item{df}{Data frame}
 
 \item{...}{Values to go into the column}
 
-\item{var}{Label for the column. Default is "rowname"}
+\item{var}{Label for the column. Default is "term"}
 }
 \description{
 Add a first column to a data.frame. This is most commonly used to append a
-rowname column to create a cor_df.
+term column to create a cor_df.
 }
 \examples{
 first_col(mtcars, 1:nrow(mtcars))
