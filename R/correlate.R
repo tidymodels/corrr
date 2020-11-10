@@ -14,14 +14,14 @@
 #'   default (\code{NA}) so they can be ignored in calculations.
 #' }
 #'
-#' As of version 0.4.3 the first column of a \code{cor_df} object is named "term".
-#' In previous versions it was named "rowname"
+#' As of version 0.4.3, the first column of a `cor_df` object is named "term".
+#' In previous versions this first column was named "rowname".
 #'
 #' @inheritParams stats::cor
 #' @inheritParams as_cordf
 #' @param quiet Set as TRUE to suppress message about `method` and `use`
 #'   parameters.
-#' @return A correlation data frame (cor_df)
+#' @return A correlation data frame `cor_df`
 #' @export
 #' @examples
 #' \dontrun{

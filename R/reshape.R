@@ -15,7 +15,7 @@
 #' @param .dots Use focus_ to do standard evaluations. See \code{\link[dplyr]{select}}.
 #' @param mirror Boolean. Whether to mirror the selected columns in the rows or
 #'   not.
-#' @return A tbl or, if mirror = TRUE, a cor_df (see \code{\link{correlate}}).
+#' @return A tbl or, if mirror = TRUE, a `cor_df` (see \code{\link{correlate}}).
 #' @export
 #' @examples
 #' library(dplyr)

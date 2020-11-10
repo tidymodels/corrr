@@ -22,7 +22,7 @@ not.}
 \item{.dots}{Use focus_ to do standard evaluations. See \code{\link[dplyr]{select}}.}
 }
 \value{
-A tbl or, if mirror = TRUE, a cor_df (see \code{\link{correlate}}).
+A tbl or, if mirror = TRUE, a \code{cor_df} (see \code{\link{correlate}}).
 }
 \description{
 Convenience function to select a set of variables from a correlation matrix

@@ -37,7 +37,7 @@ correlate(
 parameters.}
 }
 \value{
-A correlation data frame (cor_df)
+A correlation data frame \code{cor_df}
 }
 \description{
 An implementation of stats::cor(), which returns a correlation data frame
@@ -55,8 +55,8 @@ the following format:
 default (\code{NA}) so they can be ignored in calculations.
 }
 
-As of version 0.4.3 the first column of a \code{cor_df} object is named "term".
-In previous versions it was named "rowname"
+As of version 0.4.3, the first column of a \code{cor_df} object is named "term".
+In previous versions this first column was named "rowname".
 }
 \examples{
 \dontrun{
