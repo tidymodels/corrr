@@ -7,14 +7,14 @@
 status](https://github.com/tidymodels/corrr/workflows/R-CMD-check/badge.svg)](https://github.com/tidymodels/corrr/actions)
 [![Build
 Status](https://travis-ci.org/tidymodels/corrr.svg?branch=master)](https://travis-ci.org/tidymodels/corrr)
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/corrr)](https://cran.r-project.org/package=corrr)
+[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/corrr)](https://cran.r-project.org/package=corrr)
 [![Codecov test
 coverage](https://codecov.io/gh/tidymodels/corrr/branch/master/graph/badge.svg)](https://codecov.io/gh/tidymodels/corrr?branch=master)
 
 corrr is a package for exploring **corr**elations in **R**. It focuses
 on creating and working with **data frames** of correlations (instead of
 matrices) that can be easily explored via corrr functions or by
-leveraging tools like those in the [tidyverse](http://tidyverse.org/).
+leveraging tools like those in the [tidyverse](https://tidyverse.org/).
 This, along with the primary corrr functions, is represented below:
 
 <img src='man/figures/to-cor-df.png'>
