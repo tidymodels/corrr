@@ -101,6 +101,8 @@ class(x)
 x
 ```
 
+**NOTE: Previous to corrr 0.4.3, the first column of a `cor_df` dataframe was named "rowname". As of corrr 0.4.3, the name of this first column changed to "term".**
+
 As a `tbl`, we can use functions from data frame packages like `dplyr`, `tidyr`, `ggplot2`:
 
 ```{r, message = FALSE, warning = FALSE}
