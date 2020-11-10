@@ -9,7 +9,7 @@ as_matrix(x, diagonal)
 \arguments{
 \item{x}{A correlation data frame. See \code{\link{correlate}} or \code{\link{as_cordf}}.}
 
-\item{diagonal}{Value (typically numeric or NA) to set the diagonal to.}
+\item{diagonal}{Value (typically numeric or NA) to set the diagonal to}
 }
 \value{
 Correlation matrix

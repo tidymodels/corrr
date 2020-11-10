@@ -31,7 +31,7 @@ correlate(
     \code{"pearson"} (default), \code{"kendall"}, or \code{"spearman"}:
     can be abbreviated.}
 
-\item{diagonal}{Value (typically numeric or NA) to set the diagonal to.}
+\item{diagonal}{Value (typically numeric or NA) to set the diagonal to}
 
 \item{quiet}{Set as TRUE to suppress message about \code{method} and \code{use}
 parameters.}

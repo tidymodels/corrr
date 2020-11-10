@@ -10,7 +10,7 @@ as_cordf(x, diagonal = NA)
 \item{x}{A list, data frame or matrix that can be coerced into a correlation
 data frame.}
 
-\item{diagonal}{Value (typically numeric or NA) to set the diagonal to.}
+\item{diagonal}{Value (typically numeric or NA) to set the diagonal to}
 }
 \value{
 A correlation data frame

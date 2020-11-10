@@ -6,7 +6,7 @@
 #'
 #' @param x A list, data frame or matrix that can be coerced into a correlation
 #'   data frame.
-#' @param diagonal Value (typically numeric or NA) to set the diagonal to.
+#' @param diagonal Value (typically numeric or NA) to set the diagonal to
 #' @return A correlation data frame
 #' @export
 #' @examples
@@ -45,7 +45,7 @@ new_cordf <- function(x, term = NULL) {
 #'
 #' @param df Data frame
 #' @param ... Values to go into the column
-#' @param var Label for the column. Default is "term"
+#' @param var Label for the column, with the default "term"
 #' @export
 #' @examples
 #' first_col(mtcars, 1:nrow(mtcars))

@@ -11,7 +11,7 @@ first_col(df, ..., var = "term")
 
 \item{...}{Values to go into the column}
 
-\item{var}{Label for the column. Default is "term"}
+\item{var}{Label for the column, with the default "term"}
 }
 \description{
 Add a first column to a data.frame. This is most commonly used to append a
