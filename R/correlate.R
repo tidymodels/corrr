@@ -9,16 +9,19 @@
 #'   the following format:
 #'   \item A tibble (see \code{\link[tibble]{tibble}})
 #'   \item An additional class, "cor_df"
-#'   \item A "rowname" column
+#'   \item A "term" column
 #'   \item Standardized variances (the matrix diagonal) set to missing values by
 #'   default (\code{NA}) so they can be ignored in calculations.
 #' }
+#'
+#' As of version 0.4.3, the first column of a `cor_df` object is named "term".
+#' In previous versions this first column was named "rowname".
 #'
 #' @inheritParams stats::cor
 #' @inheritParams as_cordf
 #' @param quiet Set as TRUE to suppress message about `method` and `use`
 #'   parameters.
-#' @return A correlation data frame (cor_df)
+#' @return A correlation data frame `cor_df`
 #' @export
 #' @examples
 #' \dontrun{
@@ -168,4 +171,4 @@ correlate.tbl_sql <- function(x, y = NULL,
   }
   df_cor
 }
-utils::globalVariables(c("rowname"))
+utils::globalVariables(c("term"))

@@ -6,7 +6,7 @@
 #'
 #' @param x A list, data frame or matrix that can be coerced into a correlation
 #'   data frame.
-#' @param diagonal Value (typically numeric or NA) to set the diagonal to.
+#' @param diagonal Value (typically numeric or NA) to set the diagonal to
 #' @return A correlation data frame
 #' @export
 #' @examples
@@ -19,8 +19,8 @@ as_cordf <- function(x, diagonal = NA) {
     return(x)
   }
   x <- as.data.frame(x)
-  row_name <- x$rowname
-  x <- x[colnames(x) != "rowname"]
+  row_name <- x$term
+  x <- x[colnames(x) != "term"]
   rownames(x) <- row_name
   if(ncol(x) != nrow(x)) {
     stop("Input object x is not a square. ",
@@ -30,9 +30,9 @@ as_cordf <- function(x, diagonal = NA) {
   new_cordf(x, names(x))
 }
 
-new_cordf <- function(x, rowname = NULL) {
-  if (!is.null(rowname)) {
-    x <- first_col(x, rowname)
+new_cordf <- function(x, term = NULL) {
+  if (!is.null(term)) {
+    x <- first_col(x, term)
   }
   class(x) <- c("cor_df", class(x))
   x
@@ -41,15 +41,15 @@ new_cordf <- function(x, rowname = NULL) {
 #' Add a first column to a data.frame
 #'
 #' Add a first column to a data.frame. This is most commonly used to append a
-#' rowname column to create a cor_df.
+#' term column to create a cor_df.
 #'
 #' @param df Data frame
 #' @param ... Values to go into the column
-#' @param var Label for the column. Default is "rowname"
+#' @param var Label for the column, with the default "term"
 #' @export
 #' @examples
 #' first_col(mtcars, 1:nrow(mtcars))
-first_col <- function(df, ..., var = "rowname") {
+first_col <- function(df, ..., var = "term") {
   stopifnot(is.data.frame(df))
 
   if (tibble::has_name(df, var))

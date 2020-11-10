@@ -21,7 +21,7 @@ tbl with three columns (x and y variables, and their correlation)
 \description{
 \code{stretch} is a specified implementation of tidyr::gather() to be applied
 to a correlation data frame. It will gather the columns into a long-format
-data frame. The rowname column is handled automatically.
+data frame. The term column is handled automatically.
 }
 \examples{
 x <- correlate(mtcars)

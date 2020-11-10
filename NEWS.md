@@ -14,6 +14,8 @@
   
 - `network_plot()` now works with `cor_df` objects with only 1 or 2 columns (@antoine-sachet, #122)
 
+- The first column of a `cor_df` object is now named "term". Previously it was named "rowname" (@thisisdaryn, #117).
+
 # corrr 0.4.2
 
 - Updates to work with tibble 3.0.0  and dplyr 1.0.0

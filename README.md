@@ -7,14 +7,14 @@
 status](https://github.com/tidymodels/corrr/workflows/R-CMD-check/badge.svg)](https://github.com/tidymodels/corrr/actions)
 [![Build
 Status](https://travis-ci.org/tidymodels/corrr.svg?branch=master)](https://travis-ci.org/tidymodels/corrr)
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/corrr)](https://cran.r-project.org/package=corrr)
+[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/corrr)](https://cran.r-project.org/package=corrr)
 [![Codecov test
 coverage](https://codecov.io/gh/tidymodels/corrr/branch/master/graph/badge.svg)](https://codecov.io/gh/tidymodels/corrr?branch=master)
 
 corrr is a package for exploring **corr**elations in **R**. It focuses
 on creating and working with **data frames** of correlations (instead of
 matrices) that can be easily explored via corrr functions or by
-leveraging tools like those in the [tidyverse](http://tidyverse.org/).
+leveraging tools like those in the [tidyverse](https://tidyverse.org/).
 This, along with the primary corrr functions, is represented below:
 
 <img src='man/figures/to-cor-df.png'>
@@ -46,7 +46,7 @@ deletion, and returning a correlation data frame (`cor_df`) of the
 following structure:
 
   - A `tbl` with an additional class, `cor_df`
-  - An extra “rowname” column
+  - An extra “term” column
   - Standardized variances (the matrix diagonal) set to missing values
     (`NA`) so they can be ignored.
 
@@ -112,15 +112,19 @@ class(x)
 #> [1] "cor_df"     "tbl_df"     "tbl"        "data.frame"
 x
 #> # A tibble: 6 x 7
-#>   rowname       v1      v2      v3      v4       v5      v6
-#>   <chr>      <dbl>   <dbl>   <dbl>   <dbl>    <dbl>   <dbl>
-#> 1 v1      NA        0.696   0.705   0.0137  0.00906 -0.0467
-#> 2 v2       0.696   NA       0.697  -0.0133  0.0221  -0.0338
-#> 3 v3       0.705    0.697  NA      -0.0253 -0.0166  -0.0201
-#> 4 v4       0.0137  -0.0133 -0.0253 NA       0.452    0.442 
-#> 5 v5       0.00906  0.0221 -0.0166  0.452  NA        0.425 
-#> 6 v6      -0.0467  -0.0338 -0.0201  0.442   0.425   NA
+#>   term        v1      v2      v3      v4       v5      v6
+#>   <chr>    <dbl>   <dbl>   <dbl>   <dbl>    <dbl>   <dbl>
+#> 1 v1    NA        0.696   0.705   0.0137  0.00906 -0.0467
+#> 2 v2     0.696   NA       0.697  -0.0133  0.0221  -0.0338
+#> 3 v3     0.705    0.697  NA      -0.0253 -0.0166  -0.0201
+#> 4 v4     0.0137  -0.0133 -0.0253 NA       0.452    0.442 
+#> 5 v5     0.00906  0.0221 -0.0166  0.452  NA        0.425 
+#> 6 v6    -0.0467  -0.0338 -0.0201  0.442   0.425   NA
 ```
+
+**NOTE: Previous to corrr 0.4.3, the first column of a `cor_df`
+dataframe was named “rowname”. As of corrr 0.4.3, the name of this first
+column changed to “term”.**
 
 As a `tbl`, we can use functions from data frame packages like `dplyr`,
 `tidyr`, `ggplot2`:
@@ -131,10 +135,10 @@ library(dplyr)
 # Filter rows by correlation size
 x %>% filter(v1 > .6)
 #> # A tibble: 2 x 7
-#>   rowname    v1     v2     v3      v4      v5      v6
-#>   <chr>   <dbl>  <dbl>  <dbl>   <dbl>   <dbl>   <dbl>
-#> 1 v2      0.696 NA      0.697 -0.0133  0.0221 -0.0338
-#> 2 v3      0.705  0.697 NA     -0.0253 -0.0166 -0.0201
+#>   term     v1     v2     v3      v4      v5      v6
+#>   <chr> <dbl>  <dbl>  <dbl>   <dbl>   <dbl>   <dbl>
+#> 1 v2    0.696 NA      0.697 -0.0133  0.0221 -0.0338
+#> 2 v3    0.705  0.697 NA     -0.0253 -0.0166 -0.0201
 ```
 
 corrr functions work in pipelines (`cor_df` in; `cor_df` or `tbl` out):
@@ -148,21 +152,18 @@ x <- datasets::mtcars %>%
 #> 
 #> Correlation method: 'pearson'
 #> Missing treated using: 'pairwise.complete.obs'
-#> Registered S3 method overwritten by 'seriation':
-#>   method         from 
-#>   reorder.hclust gclus
        
 fashion(x)
-#>   rowname  mpg drat   am gear qsec carb   hp   wt disp
-#> 1     mpg                                             
-#> 2    drat  .68                                        
-#> 3      am  .60  .71                                   
-#> 4    gear  .48  .70  .79                              
-#> 5    qsec  .42  .09 -.23 -.21                         
-#> 6    carb -.55 -.09  .06  .27 -.66                    
-#> 7      hp -.78 -.45 -.24 -.13 -.71  .75               
-#> 8      wt -.87 -.71 -.69 -.58 -.17  .43  .66          
-#> 9    disp -.85 -.71 -.59 -.56 -.43  .39  .79  .89
+#>   term  mpg drat   am gear qsec carb   hp   wt disp
+#> 1  mpg                                             
+#> 2 drat  .68                                        
+#> 3   am  .60  .71                                   
+#> 4 gear  .48  .70  .79                              
+#> 5 qsec  .42  .09 -.23 -.21                         
+#> 6 carb -.55 -.09  .06  .27 -.66                    
+#> 7   hp -.78 -.45 -.24 -.13 -.71  .75               
+#> 8   wt -.87 -.71 -.69 -.58 -.17  .43  .66          
+#> 9 disp -.85 -.71 -.59 -.56 -.43  .39  .79  .89
 rplot(x)
 #> Don't know how to automatically pick scale for object of type noquote. Defaulting to continuous.
 ```
