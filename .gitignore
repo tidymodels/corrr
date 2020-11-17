@@ -6,3 +6,5 @@ inst/doc
 packrat/lib*/
 /logs
 .DS_Store
+revdep/library.noindex
+revdep/checks.noindex
