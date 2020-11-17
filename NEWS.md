@@ -1,4 +1,4 @@
-# corrr 0.4.2.9000
+# corrr 0.4.3
 
 - Fix EOL issues and class attribute (@krlmlr, #93 and #90)
 
@@ -60,7 +60,7 @@
 
 ## Small breaking changes
 
-The `diagonal` argument of `as_matrix` and `as_matrix.cor_df` is now an optional argument rather than set to `1` by default [#52](https://github.com/drsimonj/corrr/issues/52)
+The `diagonal` argument of `as_matrix` and `as_matrix.cor_df` is now an optional argument rather than set to `1` by default [#52](https://github.com/tidymodels/corrr/issues/52)
 
 ## New Functions
 

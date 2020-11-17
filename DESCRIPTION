@@ -1,6 +1,6 @@
 Package: corrr
 Type: Package
-Version: 0.4.2.9000
+Version: 0.4.3
 Title: Correlations in R
 Description: A tool for exploring correlations.
     It makes it possible to easily perform routine tasks when
@@ -45,4 +45,4 @@ License: MIT + file LICENSE
 URL: https://github.com/tidymodels/corrr, https://corrr.tidymodels.org
 BugReports: https://github.com/tidymodels/corrr/issues
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.1.9000
