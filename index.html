@@ -55,7 +55,7 @@
         <a class="navbar-brand" href="index.html">corrr</a>
         <div class="info hidden-xs hidden-sm">
           <span class="partof">part of <a href="https://tidymodels.org">tidymodels</a></span>
-          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.2.9000</span>
+          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.3</span>
         </div>
       </div>
     </div>
@@ -111,7 +111,7 @@
 <a href="#corrr-" class="anchor"></a>corrr <a href="https://corrr.tidymodels.org"><img src="reference/figures/logo.png" align="right" height="139"></a>
 </h1></div>
 
-<p>corrr is a package for exploring <strong>corr</strong>elations in <strong>R</strong>. It focuses on creating and working with <strong>data frames</strong> of correlations (instead of matrices) that can be easily explored via corrr functions or by leveraging tools like those in the <a href="https://tidyverse.org/">tidyverse</a>. This, along with the primary corrr functions, is represented below:</p>
+<p>corrr is a package for exploring <strong>corr</strong>elations in <strong>R</strong>. It focuses on creating and working with <strong>data frames</strong> of correlations (instead of matrices) that can be easily explored via corrr functions or by leveraging tools like those in the <a href="https://www.tidyverse.org/">tidyverse</a>. This, along with the primary corrr functions, is represented below:</p>
 <p><img src="reference/figures/to-cor-df.png"></p>
 <p>You can install:</p>
 <ul>
@@ -138,7 +138,7 @@
 <div id="api" class="section level3">
 <h3 class="hasAnchor">
 <a href="#api" class="anchor"></a>API</h3>
-<p>The corrr API is designed with data pipelines in mind (e.g., to use <code><a href="https://rdrr.io/pkg/magrittr/man/pipe.html">%&gt;%</a></code> from the magrittr package). After <code><a href="reference/correlate.html">correlate()</a></code>, the primary corrr functions take a <code>cor_df</code> as their first argument, and return a <code>cor_df</code> or <code>tbl</code> (or output like a plot). These functions serve one of three purposes:</p>
+<p>The corrr API is designed with data pipelines in mind (e.g., to use <code><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></code> from the magrittr package). After <code><a href="reference/correlate.html">correlate()</a></code>, the primary corrr functions take a <code>cor_df</code> as their first argument, and return a <code>cor_df</code> or <code>tbl</code> (or output like a plot). These functions serve one of three purposes:</p>
 <p>Internal changes (<code>cor_df</code> out):</p>
 <ul>
 <li>
@@ -231,6 +231,9 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Correlation method: 'pearson'</span>
 <span class="co">#&gt; Missing treated using: 'pairwise.complete.obs'</span>
+<span class="co">#&gt; Registered S3 method overwritten by 'seriation':</span>
+<span class="co">#&gt;   method         from </span>
+<span class="co">#&gt;   reorder.hclust gclus</span>
        
 <span class="fu"><a href="reference/fashion.html">fashion</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
 <span class="co">#&gt;   term  mpg drat   am gear qsec carb   hp   wt disp</span>
