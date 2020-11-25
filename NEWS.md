@@ -1,3 +1,5 @@
+# corrr (development version)
+
 # corrr 0.4.3
 
 - Fix EOL issues and class attribute (@krlmlr, #93 and #90)
