@@ -14,8 +14,9 @@ coverage](https://codecov.io/gh/tidymodels/corrr/branch/master/graph/badge.svg)]
 corrr is a package for exploring **corr**elations in **R**. It focuses
 on creating and working with **data frames** of correlations (instead of
 matrices) that can be easily explored via corrr functions or by
-leveraging tools like those in the [tidyverse](https://tidyverse.org/).
-This, along with the primary corrr functions, is represented below:
+leveraging tools like those in the
+[tidyverse](https://www.tidyverse.org/). This, along with the primary
+corrr functions, is represented below:
 
 <img src='man/figures/to-cor-df.png'>
 
@@ -152,6 +153,9 @@ x <- datasets::mtcars %>%
 #> 
 #> Correlation method: 'pearson'
 #> Missing treated using: 'pairwise.complete.obs'
+#> Registered S3 method overwritten by 'seriation':
+#>   method         from 
+#>   reorder.hclust gclus
        
 fashion(x)
 #>   term  mpg drat   am gear qsec carb   hp   wt disp
