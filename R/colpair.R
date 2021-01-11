@@ -44,10 +44,10 @@ colpair_map <- function(.data, .f, ..., .diagonal = NA){
 #'
 #' @noRd
 
-summarise_col <- function(x, f, data, ...){
+summarise_col <- function(.data_col, f, .data, ...){
 
-  dplyr::summarise(data, dplyr::across(.cols = dplyr::everything(),
+  dplyr::summarise(.data, dplyr::across(.cols = dplyr::everything(),
                                         .fns = f,
-                                        x,
+                                        .data_col,
                                        ...))
 }
