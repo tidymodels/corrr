@@ -10,3 +10,16 @@ test_that("colpair_map() works", {
                tolerance = 0.0001)
   expect_equal(correlate(mtcars), colpair_map(mtcars, cor))
 })
+
+test_that("colpair_map() masks argument names", {
+
+  arg_names <- c("x", ".x", "f", ".f" , ".fns", "data", ".data",
+                 "summarise_col", ".cols", "diagonal", ".diagonal")
+
+  my_mtcars <- mtcars
+  colnames(my_mtcars) <- arg_names
+
+  expect_equal(colpair_map(my_mtcars, cor),
+               correlate(my_mtcars, quiet = TRUE),
+               tolerance = 1e-10)
+})
