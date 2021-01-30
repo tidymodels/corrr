@@ -26,7 +26,7 @@
 
 colpair_map <- function(.data, .f, ..., .diagonal = NA){
 
-  out <- purrr::map_dfr(.data, summarise_col, .f, .data, ...)
+  out <- purrr::map_dfr(.data, summarise_col, {{ .f }}, .data, ...)
 
   as_cordf(out, diagonal = .diagonal)
 
@@ -44,10 +44,10 @@ colpair_map <- function(.data, .f, ..., .diagonal = NA){
 #'
 #' @noRd
 
-summarise_col <- function(.data_col, f, .data, ...){
+summarise_col <- function(x, f, data, ...){
 
-  dplyr::summarise(.data, dplyr::across(.cols = dplyr::everything(),
-                                        .fns = f,
-                                        .data_col,
+  dplyr::summarise(data, dplyr::across(.cols = dplyr::everything(),
+                                       .fns = {{ f }},
+                                       {{ x }},
                                        ...))
 }
