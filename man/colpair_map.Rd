@@ -20,7 +20,7 @@ A correlation data frame (\code{cor_df}).
 }
 \description{
 \code{colpair_map()} transforms a data frame by applying a function to each pair
-of its columns.The result is a correlation data frame (see
+of its columns. The result is a correlation data frame (see
 \code{\link{correlate}} for details).
 }
 \examples{

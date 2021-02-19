@@ -1,7 +1,7 @@
 #' Apply a function to all pairs of columns in a data frame
 #'
 #' `colpair_map()` transforms a data frame by applying a function to each pair
-#'   of its columns.The result is a correlation data frame (see
+#'   of its columns. The result is a correlation data frame (see
 #'   \code{\link{correlate}} for details).
 #'
 #' @param .data A data frame or data frame extension (e.g. a tibble).
