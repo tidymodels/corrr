@@ -36,18 +36,18 @@ colpair_map <- function(.data, .f, ..., .diagonal = NA){
 #'
 #' Helper function to summarise data frame column.
 #'
-#' @param x A vector, in this case a column of a data frame.
-#' @param f A function.
-#' @param data The data frame in which the column is found.
+#' @param .x A vector, in this case a column of a data frame.
+#' @param .f A function.
+#' @param .data The data frame in which the column is found.
 #'
 #' @return A row summarising the values in the column.
 #'
 #' @noRd
 
-summarise_col <- function(x, f, data, ...){
+summarise_col <- function(.x, .f, .data, ...){
 
-  dplyr::summarise(data, dplyr::across(.cols = dplyr::everything(),
-                                       .fns = {{ f }},
-                                       {{ x }},
+  dplyr::summarise(.data, dplyr::across(.cols = dplyr::everything(),
+                                       .fns = {{ .f }},
+                                       {{ .x }},
                                        ...))
 }
