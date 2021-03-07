@@ -13,8 +13,10 @@ test_that("colpair_map() works", {
 
 test_that("colpair_map() masks argument names", {
 
-  arg_names <- c("x", ".x", "f", ".f" , ".fns", "data", ".data",
+  arg_names <- c("x", ".x", "f", ".f" , ".fns", "data", ".data2",
                  "summarise_col", ".cols", "diagonal", ".diagonal")
+
+  ## `.data` is an exception: users cannot use it as a column name.
 
   my_mtcars <- mtcars
   colnames(my_mtcars) <- arg_names
