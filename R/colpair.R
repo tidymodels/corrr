@@ -26,7 +26,11 @@
 
 colpair_map <- function(.data, .f, ..., .diagonal = NA){
 
+  ## .data cannot be used as column name.
+
   out <- purrr::map_dfr(.data, summarise_col, {{ .f }}, .data, ...)
+
+  ## Tidy eval curly brackets ({{) are for compatibility with dplyr v1.0.0 - v1.0.3
 
   as_cordf(out, diagonal = .diagonal)
 
@@ -50,4 +54,6 @@ summarise_col <- function(.x, .f, .data, ...){
                                        .fns = {{ .f }},
                                        {{ .x }},
                                        ...))
+
+  ## Tidy eval curly brackets ({{) are for compatibility with dplyr v1.0.0 - v1.0.3
 }
