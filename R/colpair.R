@@ -1,7 +1,7 @@
 #' Apply a function to all pairs of columns in a data frame
 #'
 #' `colpair_map()` transforms a data frame by applying a function to each pair
-#'   of its columns.The result is a correlation data frame (see
+#'   of its columns. The result is a correlation data frame (see
 #'   \code{\link{correlate}} for details).
 #'
 #' @param .data A data frame or data frame extension (e.g. a tibble).
@@ -26,7 +26,11 @@
 
 colpair_map <- function(.data, .f, ..., .diagonal = NA){
 
-  out <- purrr::map_dfr(.data, summarise_col, .f, .data, ...)
+  ## .data cannot be used as column name.
+
+  out <- purrr::map_dfr(.data, summarise_col, {{ .f }}, .data, ...)
+
+  ## Tidy eval curly brackets ({{) are for compatibility with dplyr v1.0.0 - v1.0.3
 
   as_cordf(out, diagonal = .diagonal)
 
@@ -36,18 +40,20 @@ colpair_map <- function(.data, .f, ..., .diagonal = NA){
 #'
 #' Helper function to summarise data frame column.
 #'
-#' @param x A vector, in this case a column of a data frame.
-#' @param f A function.
-#' @param data The data frame in which the column is found.
+#' @param .x A vector, in this case a column of a data frame.
+#' @param .f A function.
+#' @param .data The data frame in which the column is found.
 #'
 #' @return A row summarising the values in the column.
 #'
 #' @noRd
 
-summarise_col <- function(.data_col, f, .data, ...){
+summarise_col <- function(.x, .f, .data, ...){
 
   dplyr::summarise(.data, dplyr::across(.cols = dplyr::everything(),
-                                        .fns = f,
-                                        .data_col,
+                                       .fns = {{ .f }},
+                                       {{ .x }},
                                        ...))
+
+  ## Tidy eval curly brackets ({{) are for compatibility with dplyr v1.0.0 - v1.0.3
 }

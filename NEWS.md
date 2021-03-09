@@ -1,5 +1,7 @@
 # corrr (development version)
 
+- Make `colpair_map()` more robust to input column names, with the exception of ".data" and ".env" (@jameslairdsmith, #131).
+
 # corrr 0.4.3
 
 - Fix EOL issues and class attribute (@krlmlr, #93 and #90)
