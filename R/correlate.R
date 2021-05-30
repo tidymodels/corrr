@@ -52,12 +52,38 @@ correlate <- function(x, y = NULL,
                       quiet = FALSE) {
   UseMethod("correlate")
 }
+
+
+keep_numeric <- function(df, quiet){
+  col_is_numeric = map_lgl(df, is.numeric)
+
+  if(sum(col_is_numeric) < dim(df)[2]){
+    nonnum_cols <- names(df)[!col_is_numeric]
+    df <- df[col_is_numeric]
+    if(!quiet)inform(paste("Non-numeric variables removed from input:",
+                           glue::glue_collapse(
+                             glue::glue('`{nonnum_cols}`'), ", ", last = " and ")
+                    ))
+  }
+
+  return (df)
+}
+
+
 #' @export
 correlate.default <- function(x, y = NULL,
                        use = "pairwise.complete.obs",
                        method = "pearson",
                       diagonal = NA,
                       quiet = FALSE) {
+  if(is.data.frame(x)){
+    x <- keep_numeric(x, quiet)
+  }
+
+  if(is.data.frame(y)){
+    y <- keep_numeric(y, quiet)
+  }
+
   x <- stats::cor(x = x, y = y, use = use, method = method)
 
   if (!quiet)

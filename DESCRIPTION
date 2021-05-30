@@ -28,7 +28,8 @@ Imports:
     purrr (>= 0.2.2),
     tibble (>= 2.0),
     ggrepel (>= 0.6.5),
-    rlang (>= 0.4.0)
+    rlang (>= 0.4.0),
+    glue (>= 1.4.2)
 Suggests: 
     testthat (>= 2.1.0),
     knitr (>= 1.13),
