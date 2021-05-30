@@ -58,6 +58,22 @@ correlate.default <- function(x, y = NULL,
                        method = "pearson",
                       diagonal = NA,
                       quiet = FALSE) {
+  if(is.data.frame(x)){
+    col_is_numeric = map_lgl(x, is.numeric)
+    if(sum(col_is_numeric) < dim(x)[2]){
+      x <- x[col_is_numeric]
+      if(!quiet)message("\nNon-numeric variables removed from input x")
+    }
+  }
+
+  if(is.data.frame(y)){
+    col_is_numeric = map_lgl(y, is.numeric)
+    if(sum(col_is_numeric) < dim(y)[2]){
+      y <- y[col_is_numeric]
+      if(!quiet)message("\nNon-numeric variables removed from input y")
+    }
+  }
+
   x <- stats::cor(x = x, y = y, use = use, method = method)
 
   if (!quiet)
