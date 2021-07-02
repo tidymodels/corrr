@@ -203,37 +203,37 @@ mirror is FALSE.</p></td>
 #&gt; <span style='color: #BCBCBC;'> 8</span> mpg   vs     0.664
 #&gt; <span style='color: #BCBCBC;'> 9</span> mpg   am     0.600
 #&gt; <span style='color: #BCBCBC;'>10</span> mpg   gear   0.480
-#&gt; <span style='color: #949494;'># … with 111 more rows</span></div><div class='input'><span class='fu'>stretch</span><span class='op'>(</span><span class='va'>x</span>, na.rm <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>  <span class='co'># omit NAs (diagonal in this case)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 121 x 3</span>
+#&gt; <span style='color: #949494;'># … with 111 more rows</span></div><div class='input'><span class='fu'>stretch</span><span class='op'>(</span><span class='va'>x</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>  <span class='co'># omit NAs (diagonal in this case)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 110 x 3</span>
 #&gt;    x     y          r
 #&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> mpg   mpg   <span style='color: #BB0000;'>NA</span>    
-#&gt; <span style='color: #BCBCBC;'> 2</span> mpg   cyl   -<span style='color: #BB0000;'>0.852</span>
-#&gt; <span style='color: #BCBCBC;'> 3</span> mpg   disp  -<span style='color: #BB0000;'>0.848</span>
-#&gt; <span style='color: #BCBCBC;'> 4</span> mpg   hp    -<span style='color: #BB0000;'>0.776</span>
-#&gt; <span style='color: #BCBCBC;'> 5</span> mpg   drat   0.681
-#&gt; <span style='color: #BCBCBC;'> 6</span> mpg   wt    -<span style='color: #BB0000;'>0.868</span>
-#&gt; <span style='color: #BCBCBC;'> 7</span> mpg   qsec   0.419
-#&gt; <span style='color: #BCBCBC;'> 8</span> mpg   vs     0.664
-#&gt; <span style='color: #BCBCBC;'> 9</span> mpg   am     0.600
-#&gt; <span style='color: #BCBCBC;'>10</span> mpg   gear   0.480
-#&gt; <span style='color: #949494;'># … with 111 more rows</span></div><div class='input'>
+#&gt; <span style='color: #BCBCBC;'> 1</span> mpg   cyl   -<span style='color: #BB0000;'>0.852</span>
+#&gt; <span style='color: #BCBCBC;'> 2</span> mpg   disp  -<span style='color: #BB0000;'>0.848</span>
+#&gt; <span style='color: #BCBCBC;'> 3</span> mpg   hp    -<span style='color: #BB0000;'>0.776</span>
+#&gt; <span style='color: #BCBCBC;'> 4</span> mpg   drat   0.681
+#&gt; <span style='color: #BCBCBC;'> 5</span> mpg   wt    -<span style='color: #BB0000;'>0.868</span>
+#&gt; <span style='color: #BCBCBC;'> 6</span> mpg   qsec   0.419
+#&gt; <span style='color: #BCBCBC;'> 7</span> mpg   vs     0.664
+#&gt; <span style='color: #BCBCBC;'> 8</span> mpg   am     0.600
+#&gt; <span style='color: #BCBCBC;'> 9</span> mpg   gear   0.480
+#&gt; <span style='color: #BCBCBC;'>10</span> mpg   carb  -<span style='color: #BB0000;'>0.551</span>
+#&gt; <span style='color: #949494;'># … with 100 more rows</span></div><div class='input'>
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='shave.html'>shave</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>  <span class='co'># use shave to set upper triangle to NA and then...</span>
-<span class='fu'>stretch</span><span class='op'>(</span><span class='va'>x</span>, na.rm <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>  <span class='co'># omit all NAs, therefore keeping each</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 121 x 3</span>
+<span class='fu'>stretch</span><span class='op'>(</span><span class='va'>x</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>  <span class='co'># omit all NAs, therefore keeping each</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 55 x 3</span>
 #&gt;    x     y          r
 #&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> mpg   mpg   <span style='color: #BB0000;'>NA</span>    
-#&gt; <span style='color: #BCBCBC;'> 2</span> mpg   cyl   -<span style='color: #BB0000;'>0.852</span>
-#&gt; <span style='color: #BCBCBC;'> 3</span> mpg   disp  -<span style='color: #BB0000;'>0.848</span>
-#&gt; <span style='color: #BCBCBC;'> 4</span> mpg   hp    -<span style='color: #BB0000;'>0.776</span>
-#&gt; <span style='color: #BCBCBC;'> 5</span> mpg   drat   0.681
-#&gt; <span style='color: #BCBCBC;'> 6</span> mpg   wt    -<span style='color: #BB0000;'>0.868</span>
-#&gt; <span style='color: #BCBCBC;'> 7</span> mpg   qsec   0.419
-#&gt; <span style='color: #BCBCBC;'> 8</span> mpg   vs     0.664
-#&gt; <span style='color: #BCBCBC;'> 9</span> mpg   am     0.600
-#&gt; <span style='color: #BCBCBC;'>10</span> mpg   gear   0.480
-#&gt; <span style='color: #949494;'># … with 111 more rows</span></div><div class='input'>                             <span class='co'># correlation only once.</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> mpg   cyl   -<span style='color: #BB0000;'>0.852</span>
+#&gt; <span style='color: #BCBCBC;'> 2</span> mpg   disp  -<span style='color: #BB0000;'>0.848</span>
+#&gt; <span style='color: #BCBCBC;'> 3</span> mpg   hp    -<span style='color: #BB0000;'>0.776</span>
+#&gt; <span style='color: #BCBCBC;'> 4</span> mpg   drat   0.681
+#&gt; <span style='color: #BCBCBC;'> 5</span> mpg   wt    -<span style='color: #BB0000;'>0.868</span>
+#&gt; <span style='color: #BCBCBC;'> 6</span> mpg   qsec   0.419
+#&gt; <span style='color: #BCBCBC;'> 7</span> mpg   vs     0.664
+#&gt; <span style='color: #BCBCBC;'> 8</span> mpg   am     0.600
+#&gt; <span style='color: #BCBCBC;'> 9</span> mpg   gear   0.480
+#&gt; <span style='color: #BCBCBC;'>10</span> mpg   carb  -<span style='color: #BB0000;'>0.551</span>
+#&gt; <span style='color: #949494;'># … with 45 more rows</span></div><div class='input'>                             <span class='co'># correlation only once.</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
