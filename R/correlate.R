@@ -95,9 +95,9 @@ correlate.default <- function(x, y = NULL,
   if (!quiet) {
     rlang::inform(
       c(
-        "Correlation method and missing data handling:",
-        glue::glue("Method: {method}"),
-        glue::glue("Missing treated using: {use}")
+        "Correlation computed with",
+        glue::glue("Method: '{method}'"),
+        glue::glue("Missing treated using: '{use}'")
       )
     )
   }

@@ -17,7 +17,7 @@ test_that("Accurately computes correlations", {
   expect_equal(correlate(d, method = "spearman")$Sepal.Length[2],
                cor(d, method = "spearman", use = "pairwise.complete.obs")[2, "Sepal.Length"])
   expect_equal(correlate(mpg)$cty[displ_colnum], cor(mpg$cty, mpg$displ))
-  expect_message(correlate(d, quiet = FALSE), "Correlation method")
+  expect_message(correlate(d, quiet = FALSE), "Correlation computed")
 })
 
 test_that("Diagonal sets correctly", {
