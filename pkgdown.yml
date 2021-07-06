@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   databases: databases.html
   using-corrr: using-corrr.html
-last_built: 2021-07-02T23:27Z
+last_built: 2021-07-06T19:33Z
 urls:
   reference: https://corrr.tidymodels.org/reference
   article: https://corrr.tidymodels.org/articles

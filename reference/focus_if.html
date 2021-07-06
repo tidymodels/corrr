@@ -196,9 +196,9 @@ not.</p></td>
 <span class='op'>}</span>
 
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='correlate.html'>correlate</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Correlation method: 'pearson'</span>
-#&gt; <span class='message'>Missing treated using: 'pairwise.complete.obs'</span></div><div class='input'>
+</div><div class='output co'>#&gt; <span class='message'>Correlation computed with</span>
+#&gt; <span class='message'>* Method: 'pearson'</span>
+#&gt; <span class='message'>* Missing treated using: 'pairwise.complete.obs'</span></div><div class='input'>
 <span class='va'>x</span> <span class='op'>%&gt;%</span> <span class='fu'>focus_if</span><span class='op'>(</span><span class='va'>any_greater_than</span>, <span class='fl'>.6</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6 x 6</span>
 #&gt;   term     mpg    cyl   disp     hp     wt
