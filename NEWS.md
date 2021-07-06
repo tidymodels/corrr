@@ -2,7 +2,7 @@
 
 - Make `colpair_map()` more robust to input column names, with the exception of ".data" and ".env" (@jameslairdsmith, #131).
 
-- `correlate()` now removes non-numeric columns from data frame inputs (@thisisdaryn).
+- `correlate()` now removes non-numeric columns from data frame inputs (@thisisdaryn, #139).
 
 # corrr 0.4.3
 
