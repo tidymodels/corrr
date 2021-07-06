@@ -27,6 +27,7 @@ test_that("Diagonal sets correctly", {
 
 
 test_that("Numeric variables are kept", {
+  expect_message(correlate(mpg), "Non-numeric variables removed")
   expect_equal(names(correlate(mpg))[-1], mpg_num_names)
 })
 
