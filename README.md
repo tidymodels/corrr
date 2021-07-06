@@ -146,9 +146,9 @@ x <- datasets::mtcars %>%
        focus(-cyl, -vs, mirror = TRUE) %>%  # Focus on cor_df without 'cyl' and 'vs'
        rearrange() %>%  # rearrange by correlations
        shave() # Shave off the upper triangle for a clean result
-#> 
-#> Correlation method: 'pearson'
-#> Missing treated using: 'pairwise.complete.obs'
+#> Correlation computed with
+#> * Method: 'pearson'
+#> * Missing treated using: 'pairwise.complete.obs'
        
 fashion(x)
 #>   term  mpg drat   am gear qsec carb   hp   wt disp
@@ -171,9 +171,9 @@ rplot(x)
 datasets::airquality %>% 
   correlate() %>% 
   network_plot(min_cor = .2)
-#> 
-#> Correlation method: 'pearson'
-#> Missing treated using: 'pairwise.complete.obs'
+#> Correlation computed with
+#> * Method: 'pearson'
+#> * Missing treated using: 'pairwise.complete.obs'
 ```
 
 ![](man/figures/README-combination-2.png)<!-- -->
