@@ -8,12 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
-A tool for exploring correlations.
-    It makes it possible to easily perform routine tasks when
-    exploring correlation matrices such as ignoring the diagonal,
-    focusing on the correlations of certain variables against others,
-    or rearranging and visualizing the matrix in terms of the
-    strength of the correlations.
+A tool for exploring correlations. It makes it possible to easily perform routine tasks when exploring correlation matrices such as ignoring the diagonal, focusing on the correlations of certain variables against others, or rearranging and visualizing the matrix in terms of the strength of the correlations.
 }
 \seealso{
 Useful links:
