@@ -190,7 +190,7 @@ of its columns. The result is a correlation data frame (see
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Using `stats::cov` produces a covariance data frame.</span>
 <span class='fu'>colpair_map</span><span class='op'>(</span><span class='va'>mtcars</span>, <span class='va'>cov</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 11 x 12</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 11 × 12</span>
 #&gt;    term      mpg     cyl   disp      hp     drat      wt     qsec       vs
 #&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'> 1</span> mpg     <span style='color: #BB0000;'>NA</span>     -<span style='color: #BB0000;'>9.17</span>  -<span style='color: #BB0000;'>633.</span>  -<span style='color: #BB0000;'>321.</span>     2.20    -<span style='color: #BB0000;'>5.12</span>    4.51     2.02  
@@ -211,7 +211,7 @@ of its columns. The result is a correlation data frame (see
 <span class='op'>}</span>
 
 <span class='fu'>colpair_map</span><span class='op'>(</span><span class='va'>mtcars</span>, <span class='va'>calc_p_value</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 11 x 12</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 11 × 12</span>
 #&gt;    term        mpg       cyl      disp        hp      drat        wt      qsec
 #&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'> 1</span> mpg   <span style='color: #BB0000;'>NA</span>   <span style='color: #949494;'> </span>     9.51<span style='color: #949494;'>e</span><span style='color: #BB0000;'>-15</span>  7.98<span style='color: #949494;'>e</span><span style='color: #BB0000;'>-11</span>  1.03<span style='color: #949494;'>e</span><span style='color: #BB0000;'>-11</span>  3.16<span style='color: #949494;'>e</span><span style='color: #BB0000;'>-16</span>  1.03<span style='color: #949494;'>e</span><span style='color: #BB0000;'>-16</span>  5.11<span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 2</span>

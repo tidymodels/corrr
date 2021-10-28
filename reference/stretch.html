@@ -190,7 +190,7 @@ mirror is FALSE.</p></td>
 </div><div class='output co'>#&gt; <span class='message'>Correlation computed with</span>
 #&gt; <span class='message'>* Method: 'pearson'</span>
 #&gt; <span class='message'>* Missing treated using: 'pairwise.complete.obs'</span></div><div class='input'><span class='fu'>stretch</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>  <span class='co'># Convert all to long format</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 121 x 3</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 121 × 3</span>
 #&gt;    x     y          r
 #&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'> 1</span> mpg   mpg   <span style='color: #BB0000;'>NA</span>    
@@ -204,7 +204,7 @@ mirror is FALSE.</p></td>
 #&gt; <span style='color: #BCBCBC;'> 9</span> mpg   am     0.600
 #&gt; <span style='color: #BCBCBC;'>10</span> mpg   gear   0.480
 #&gt; <span style='color: #949494;'># … with 111 more rows</span></div><div class='input'><span class='fu'>stretch</span><span class='op'>(</span><span class='va'>x</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>  <span class='co'># omit NAs (diagonal in this case)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 110 x 3</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 110 × 3</span>
 #&gt;    x     y          r
 #&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'> 1</span> mpg   cyl   -<span style='color: #BB0000;'>0.852</span>
@@ -220,7 +220,7 @@ mirror is FALSE.</p></td>
 #&gt; <span style='color: #949494;'># … with 100 more rows</span></div><div class='input'>
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='shave.html'>shave</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>  <span class='co'># use shave to set upper triangle to NA and then...</span>
 <span class='fu'>stretch</span><span class='op'>(</span><span class='va'>x</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>  <span class='co'># omit all NAs, therefore keeping each</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 55 x 3</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 55 × 3</span>
 #&gt;    x     y          r
 #&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'> 1</span> mpg   cyl   -<span style='color: #BB0000;'>0.852</span>

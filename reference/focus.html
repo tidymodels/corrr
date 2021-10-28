@@ -206,7 +206,7 @@ not.</p></td>
 </div><div class='output co'>#&gt; <span class='message'>Correlation computed with</span>
 #&gt; <span class='message'>* Method: 'pearson'</span>
 #&gt; <span class='message'>* Missing treated using: 'pairwise.complete.obs'</span></div><div class='input'><span class='fu'>focus</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>mpg</span>, <span class='va'>cyl</span><span class='op'>)</span>  <span class='co'># Focus on correlations of mpg and cyl with all other variables</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 9 x 3</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 9 × 3</span>
 #&gt;   term     mpg    cyl
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'>1</span> disp  -<span style='color: #BB0000;'>0.848</span>  0.902
@@ -218,7 +218,7 @@ not.</p></td>
 #&gt; <span style='color: #BCBCBC;'>7</span> am     0.600 -<span style='color: #BB0000;'>0.523</span>
 #&gt; <span style='color: #BCBCBC;'>8</span> gear   0.480 -<span style='color: #BB0000;'>0.493</span>
 #&gt; <span style='color: #BCBCBC;'>9</span> carb  -<span style='color: #BB0000;'>0.551</span>  0.527</div><div class='input'><span class='fu'>focus</span><span class='op'>(</span><span class='va'>x</span>, <span class='op'>-</span><span class='va'>disp</span>, <span class='op'>-</span> <span class='va'>mpg</span>, mirror <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>  <span class='co'># Remove disp and mpg from columns and rows</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 9 x 10</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 9 × 10</span>
 #&gt;   term     cyl     hp    drat     wt    qsec     vs      am   gear    carb
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'>1</span> cyl   <span style='color: #BB0000;'>NA</span>      0.832 -<span style='color: #BB0000;'>0.700</span>   0.782 -<span style='color: #BB0000;'>0.591</span>  -<span style='color: #BB0000;'>0.811</span> -<span style='color: #BB0000;'>0.523</span>  -<span style='color: #BB0000;'>0.493</span>  0.527 
@@ -234,7 +234,7 @@ not.</p></td>
 </div><div class='output co'>#&gt; <span class='message'>Correlation computed with</span>
 #&gt; <span class='message'>* Method: 'pearson'</span>
 #&gt; <span class='message'>* Missing treated using: 'pairwise.complete.obs'</span></div><div class='input'><span class='fu'>focus</span><span class='op'>(</span><span class='va'>x</span>, <span class='op'>-</span><span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>matches</a></span><span class='op'>(</span><span class='st'>"Sepal"</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># Focus on correlations of non-Sepal</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2 x 3</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2 × 3</span>
 #&gt;   term         Petal.Length Petal.Width
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>               <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'>1</span> Sepal.Length        0.872       0.818
