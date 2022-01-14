@@ -39,6 +39,8 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -53,19 +55,13 @@
       <div class="navbar-brand-container">
         <a class="navbar-brand" href="index.html">corrr</a>
         <div class="info hidden-xs hidden-sm">
-          <span class="partof">part of <a href="https://tidymodels.org">tidymodels</a></span>
-          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.3.9000</span>
+          <span class="partof">part of <a href="https://tidymodels.org" class="external-link">tidymodels</a></span>
+          <span class="version version-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.3.9000</span>
         </div>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
@@ -88,7 +84,7 @@
   <a href="news/index.html">Changelog</a>
 </li>
         <li>
-  <a href="https://github.com/tidymodels/corrr/">
+  <a href="https://github.com/tidymodels/corrr/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -105,39 +101,39 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="corrr-" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#corrr-" class="anchor"></a>corrr <a href="https://corrr.tidymodels.org"><img src="reference/figures/logo.png" align="right" height="139"></a>
+<div class="section level1">
+<div class="page-header"><h1 id="corrr-">corrr <a href="https://corrr.tidymodels.org"><img src="reference/figures/logo.png" align="right" height="139"></a>
+<a class="anchor" aria-label="anchor" href="#corrr-"></a>
 </h1></div>
 
-<p>corrr is a package for exploring <strong>corr</strong>elations in <strong>R</strong>. It focuses on creating and working with <strong>data frames</strong> of correlations (instead of matrices) that can be easily explored via corrr functions or by leveraging tools like those in the <a href="https://www.tidyverse.org/">tidyverse</a>. This, along with the primary corrr functions, is represented below:</p>
+<p>corrr is a package for exploring <strong>corr</strong>elations in <strong>R</strong>. It focuses on creating and working with <strong>data frames</strong> of correlations (instead of matrices) that can be easily explored via corrr functions or by leveraging tools like those in the <a href="https://www.tidyverse.org/" class="external-link">tidyverse</a>. This, along with the primary corrr functions, is represented below:</p>
 <p><img src="reference/figures/to-cor-df.png"></p>
 <p>You can install:</p>
 <ul>
 <li>the latest released version from CRAN with</li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"corrr"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"corrr"</span><span class="op">)</span></code></pre></div>
 <ul>
 <li>the latest development version from GitHub with</li>
 </ul>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("remotes") </span>
 <span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"tidymodels/corrr"</span><span class="op">)</span></code></pre></div>
-<div id="using-corrr" class="section level2">
-<h2 class="hasAnchor">
-<a href="#using-corrr" class="anchor"></a>Using corrr</h2>
-<p>Using <code>corrr</code> typically starts with <code><a href="reference/correlate.html">correlate()</a></code>, which acts like the base correlation function <code><a href="https://rdrr.io/r/stats/cor.html">cor()</a></code>. It differs by defaulting to pairwise deletion, and returning a correlation data frame (<code>cor_df</code>) of the following structure:</p>
+<div class="section level2">
+<h2 id="using-corrr">Using corrr<a class="anchor" aria-label="anchor" href="#using-corrr"></a>
+</h2>
+<p>Using <code>corrr</code> typically starts with <code><a href="reference/correlate.html">correlate()</a></code>, which acts like the base correlation function <code><a href="https://rdrr.io/r/stats/cor.html" class="external-link">cor()</a></code>. It differs by defaulting to pairwise deletion, and returning a correlation data frame (<code>cor_df</code>) of the following structure:</p>
 <ul>
 <li>A <code>tbl</code> with an additional class, <code>cor_df</code>
 </li>
 <li>An extra “term” column</li>
 <li>Standardized variances (the matrix diagonal) set to missing values (<code>NA</code>) so they can be ignored.</li>
 </ul>
-<div id="api" class="section level3">
-<h3 class="hasAnchor">
-<a href="#api" class="anchor"></a>API</h3>
-<p>The corrr API is designed with data pipelines in mind (e.g., to use <code><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></code> from the magrittr package). After <code><a href="reference/correlate.html">correlate()</a></code>, the primary corrr functions take a <code>cor_df</code> as their first argument, and return a <code>cor_df</code> or <code>tbl</code> (or output like a plot). These functions serve one of three purposes:</p>
+<div class="section level3">
+<h3 id="api">API<a class="anchor" aria-label="anchor" href="#api"></a>
+</h3>
+<p>The corrr API is designed with data pipelines in mind (e.g., to use <code>%&gt;%</code> from the magrittr package). After <code><a href="reference/correlate.html">correlate()</a></code>, the primary corrr functions take a <code>cor_df</code> as their first argument, and return a <code>cor_df</code> or <code>tbl</code> (or output like a plot). These functions serve one of three purposes:</p>
 <p>Internal changes (<code>cor_df</code> out):</p>
 <ul>
 <li>
@@ -163,40 +159,40 @@
 </ul>
 </div>
 </div>
-<div id="databases-and-spark" class="section level2">
-<h2 class="hasAnchor">
-<a href="#databases-and-spark" class="anchor"></a>Databases and Spark</h2>
+<div class="section level2">
+<h2 id="databases-and-spark">Databases and Spark<a class="anchor" aria-label="anchor" href="#databases-and-spark"></a>
+</h2>
 <p>The <code><a href="reference/correlate.html">correlate()</a></code> function also works with database tables. The function will automatically push the calculations of the correlations to the database, collect the results in R, and return the <code>cor_df</code> object. This allows for those results integrate with the rest of the <code>corrr</code> API.</p>
 </div>
-<div id="examples" class="section level2">
-<h2 class="hasAnchor">
-<a href="#examples" class="anchor"></a>Examples</h2>
+<div class="section level2">
+<h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
+</h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.stats.ox.ac.uk/pub/MASS4/">MASS</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidymodels/corrr">corrr</a></span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://www.stats.ox.ac.uk/pub/MASS4/" class="external-link">MASS</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidymodels/corrr" class="external-link">corrr</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
 
 <span class="co"># Simulate three columns correlating about .7 with each other</span>
-<span class="va">mu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">3</span><span class="op">)</span>
-<span class="va">Sigma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">.7</span>, nrow <span class="op">=</span> <span class="fl">3</span>, ncol <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span><span class="op">*</span><span class="fl">.3</span>
-<span class="va">seven</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/MASS/man/mvrnorm.html">mvrnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">1000</span>, mu <span class="op">=</span> <span class="va">mu</span>, Sigma <span class="op">=</span> <span class="va">Sigma</span><span class="op">)</span>
+<span class="va">mu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">3</span><span class="op">)</span>
+<span class="va">Sigma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fl">.7</span>, nrow <span class="op">=</span> <span class="fl">3</span>, ncol <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html" class="external-link">diag</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span><span class="op">*</span><span class="fl">.3</span>
+<span class="va">seven</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/MASS/man/mvrnorm.html" class="external-link">mvrnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">1000</span>, mu <span class="op">=</span> <span class="va">mu</span>, Sigma <span class="op">=</span> <span class="va">Sigma</span><span class="op">)</span>
 
 <span class="co"># Simulate three columns correlating about .4 with each other</span>
-<span class="va">mu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">3</span><span class="op">)</span>
-<span class="va">Sigma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">.4</span>, nrow <span class="op">=</span> <span class="fl">3</span>, ncol <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span><span class="op">*</span><span class="fl">.6</span>
-<span class="va">four</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/MASS/man/mvrnorm.html">mvrnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">1000</span>, mu <span class="op">=</span> <span class="va">mu</span>, Sigma <span class="op">=</span> <span class="va">Sigma</span><span class="op">)</span>
+<span class="va">mu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">3</span><span class="op">)</span>
+<span class="va">Sigma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fl">.4</span>, nrow <span class="op">=</span> <span class="fl">3</span>, ncol <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html" class="external-link">diag</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span><span class="op">*</span><span class="fl">.6</span>
+<span class="va">four</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/MASS/man/mvrnorm.html" class="external-link">mvrnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">1000</span>, mu <span class="op">=</span> <span class="va">mu</span>, Sigma <span class="op">=</span> <span class="va">Sigma</span><span class="op">)</span>
 
 <span class="co"># Bind together</span>
-<span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">seven</span>, <span class="va">four</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"v"</span>, <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span><span class="op">)</span>
+<span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">seven</span>, <span class="va">four</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"v"</span>, <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span><span class="op">)</span>
 
 <span class="co"># Insert some missing values</span>
-<span class="va">d</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span>, <span class="fl">100</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span>
-<span class="va">d</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span>, <span class="fl">200</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="fl">5</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span>
+<span class="va">d</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span>, <span class="fl">100</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span>
+<span class="va">d</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span>, <span class="fl">200</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="fl">5</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span>
 
 <span class="co"># Correlate</span>
 <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/correlate.html">correlate</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
 <span class="co">#&gt; [1] "cor_df"     "tbl_df"     "tbl"        "data.frame"</span>
 <span class="va">x</span>
 <span class="co">#&gt; # A tibble: 6 x 7</span>
@@ -211,10 +207,10 @@
 <p><strong>NOTE: Previous to corrr 0.4.3, the first column of a <code>cor_df</code> dataframe was named “rowname”. As of corrr 0.4.3, the name of this first column changed to “term”.</strong></p>
 <p>As a <code>tbl</code>, we can use functions from data frame packages like <code>dplyr</code>, <code>tidyr</code>, <code>ggplot2</code>:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
 
 <span class="co"># Filter rows by correlation size</span>
-<span class="va">x</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">v1</span> <span class="op">&gt;</span> <span class="fl">.6</span><span class="op">)</span>
+<span class="va">x</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">v1</span> <span class="op">&gt;</span> <span class="fl">.6</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 2 x 7</span>
 <span class="co">#&gt;   term     v1     v2     v3       v4      v5      v6</span>
 <span class="co">#&gt;   &lt;chr&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span>
@@ -222,10 +218,10 @@
 <span class="co">#&gt; 2 v3    0.716  0.702 NA     -0.00171 0.0205  -0.0566</span></code></pre></div>
 <p>corrr functions work in pipelines (<code>cor_df</code> in; <code>cor_df</code> or <code>tbl</code> out):</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">datasets</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/datasets/mtcars.html">mtcars</a></span> <span class="op">%&gt;%</span>
-       <span class="fu"><a href="reference/correlate.html">correlate</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>    <span class="co"># Create correlation data frame (cor_df)</span>
-       <span class="fu"><a href="reference/focus.html">focus</a></span><span class="op">(</span><span class="op">-</span><span class="va">cyl</span>, <span class="op">-</span><span class="va">vs</span>, mirror <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span>  <span class="co"># Focus on cor_df without 'cyl' and 'vs'</span>
-       <span class="fu"><a href="reference/rearrange.html">rearrange</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>  <span class="co"># rearrange by correlations</span>
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">datasets</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/datasets/mtcars.html" class="external-link">mtcars</a></span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+       <span class="fu"><a href="reference/correlate.html">correlate</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>    <span class="co"># Create correlation data frame (cor_df)</span>
+       <span class="fu"><a href="reference/focus.html">focus</a></span><span class="op">(</span><span class="op">-</span><span class="va">cyl</span>, <span class="op">-</span><span class="va">vs</span>, mirror <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>  <span class="co"># Focus on cor_df without 'cyl' and 'vs'</span>
+       <span class="fu"><a href="reference/rearrange.html">rearrange</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>  <span class="co"># rearrange by correlations</span>
        <span class="fu"><a href="reference/shave.html">shave</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Shave off the upper triangle for a clean result</span>
 <span class="co">#&gt; Correlation computed with</span>
 <span class="co">#&gt; * Method: 'pearson'</span>
@@ -246,23 +242,23 @@
 <span class="co">#&gt; Don't know how to automatically pick scale for object of type noquote. Defaulting to continuous.</span></code></pre></div>
 <p><img src="reference/figures/README-combination-1.png"><!-- --></p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">datasets</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/datasets/airquality.html">airquality</a></span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="reference/correlate.html">correlate</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="fu">datasets</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/datasets/airquality.html" class="external-link">airquality</a></span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
+  <span class="fu"><a href="reference/correlate.html">correlate</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu"><a href="reference/network_plot.html">network_plot</a></span><span class="op">(</span>min_cor <span class="op">=</span> <span class="fl">.2</span><span class="op">)</span>
 <span class="co">#&gt; Correlation computed with</span>
 <span class="co">#&gt; * Method: 'pearson'</span>
 <span class="co">#&gt; * Missing treated using: 'pairwise.complete.obs'</span></code></pre></div>
 <p><img src="reference/figures/README-combination-2.png"><!-- --></p>
 </div>
-<div id="contributing" class="section level2">
-<h2 class="hasAnchor">
-<a href="#contributing" class="anchor"></a>Contributing</h2>
-<p>This project is released with a <a href="https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+<div class="section level2">
+<h2 id="contributing">Contributing<a class="anchor" aria-label="anchor" href="#contributing"></a>
+</h2>
+<p>This project is released with a <a href="https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html" class="external-link">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 <ul>
-<li><p>For questions and discussions about tidymodels packages, modeling, and machine learning, please <a href="https://community.rstudio.com/new-topic?category_id=15&amp;tags=tidymodels,question">post on RStudio Community</a>.</p></li>
-<li><p>If you think you have encountered a bug, please <a href="https://github.com/tidymodels/corrr/issues">submit an issue</a>.</p></li>
-<li><p>Either way, learn how to create and share a <a href="https://reprex.tidyverse.org/articles/articles/learn-reprex.html">reprex</a> (a minimal, reproducible example), to clearly communicate about your code.</p></li>
-<li><p>Check out further details on <a href="https://www.tidymodels.org/contribute/">contributing guidelines for tidymodels packages</a> and <a href="https://www.tidymodels.org/help/">how to get help</a>.</p></li>
+<li><p>For questions and discussions about tidymodels packages, modeling, and machine learning, please <a href="https://community.rstudio.com/new-topic?category_id=15&amp;tags=tidymodels,question" class="external-link">post on RStudio Community</a>.</p></li>
+<li><p>If you think you have encountered a bug, please <a href="https://github.com/tidymodels/corrr/issues" class="external-link">submit an issue</a>.</p></li>
+<li><p>Either way, learn how to create and share a <a href="https://reprex.tidyverse.org/articles/articles/learn-reprex.html" class="external-link">reprex</a> (a minimal, reproducible example), to clearly communicate about your code.</p></li>
+<li><p>Check out further details on <a href="https://www.tidymodels.org/contribute/" class="external-link">contributing guidelines for tidymodels packages</a> and <a href="https://www.tidymodels.org/help/" class="external-link">how to get help</a>.</p></li>
 </ul>
 </div>
 </div>
@@ -270,32 +266,39 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=corrr">https://​cloud.r-project.org/​package=corrr</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/tidymodels/corrr/">https://​github.com/​tidymodels/​corrr/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/tidymodels/corrr/issues">https://​github.com/​tidymodels/​corrr/​issues</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=corrr" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/tidymodels/corrr/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/tidymodels/corrr/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li>
-<a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
+<a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
 </li>
 </ul>
 </div>
+
 <div class="community">
-<h2>Community</h2>
+<h2 data-toc-skip>Community</h2>
 <ul class="list-unstyled">
 <li><a href="CONTRIBUTING.html">Contributing guide</a></li>
 </ul>
 </div>
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing corrr</a></li>
+</ul>
+</div>
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Max Kuhn <br><small class="roles"> Author, maintainer </small>  </li>
 <li>Simon Jackson <br><small class="roles"> Author </small>  </li>
@@ -303,16 +306,17 @@
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/tidymodels/corrr/actions"><img src="https://github.com/tidymodels/corrr/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
-<li><a href="https://travis-ci.org/tidymodels/corrr"><img src="https://travis-ci.org/tidymodels/corrr.svg?branch=master" alt="Build Status"></a></li>
-<li><a href="https://cran.r-project.org/package=corrr"><img src="https://www.r-pkg.org/badges/version/corrr" alt="CRAN_Status_Badge"></a></li>
-<li><a href="https://codecov.io/gh/tidymodels/corrr?branch=master"><img src="https://codecov.io/gh/tidymodels/corrr/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://github.com/tidymodels/corrr/actions" class="external-link"><img src="https://github.com/tidymodels/corrr/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li><a href="https://travis-ci.org/tidymodels/corrr" class="external-link"><img src="https://travis-ci.org/tidymodels/corrr.svg?branch=master" alt="Build Status"></a></li>
+<li><a href="https://cran.r-project.org/package=corrr" class="external-link"><img src="https://www.r-pkg.org/badges/version/corrr" alt="CRAN_Status_Badge"></a></li>
+<li><a href="https://codecov.io/gh/tidymodels/corrr?branch=master" class="external-link"><img src="https://codecov.io/gh/tidymodels/corrr/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
 </ul>
 </div>
-</div>
+
+  </div>
 </div>
 
 
@@ -322,8 +326,8 @@
 
 <div class="author">
   <p>
-    Developed by Max Kuhn, Simon Jackson, Jorge Cimentada.
-    Site built by <a href="https://pkgdown.r-lib.org">pkgdown</a>.
+    Developed by .
+    Site built by <a href="https://pkgdown.r-lib.org" class="external-link">pkgdown</a>.
   </p>
 </div>
 
@@ -332,6 +336,8 @@
 
   
 
+
+  
 
   </body>
 </html>

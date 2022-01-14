@@ -1,7 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://corrr.tidymodels.org/404.html</loc>
+  </url>
+  <url>
+    <loc>https://corrr.tidymodels.org/CONTRIBUTING.html</loc>
+  </url>
+  <url>
+    <loc>https://corrr.tidymodels.org/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://corrr.tidymodels.org/articles/databases.html</loc>
+  </url>
+  <url>
+    <loc>https://corrr.tidymodels.org/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://corrr.tidymodels.org/articles/using-corrr.html</loc>
+  </url>
+  <url>
+    <loc>https://corrr.tidymodels.org/authors.html</loc>
+  </url>
+  <url>
     <loc>https://corrr.tidymodels.org/index.html</loc>
+  </url>
+  <url>
+    <loc>https://corrr.tidymodels.org/news/index.html</loc>
   </url>
   <url>
     <loc>https://corrr.tidymodels.org/reference/as_cordf.html</loc>
@@ -34,6 +58,9 @@
     <loc>https://corrr.tidymodels.org/reference/focus_if.html</loc>
   </url>
   <url>
+    <loc>https://corrr.tidymodels.org/reference/index.html</loc>
+  </url>
+  <url>
     <loc>https://corrr.tidymodels.org/reference/network_plot.html</loc>
   </url>
   <url>
@@ -53,11 +80,5 @@
   </url>
   <url>
     <loc>https://corrr.tidymodels.org/reference/stretch.html</loc>
-  </url>
-  <url>
-    <loc>https://corrr.tidymodels.org/articles/databases.html</loc>
-  </url>
-  <url>
-    <loc>https://corrr.tidymodels.org/articles/using-corrr.html</loc>
   </url>
 </urlset>
