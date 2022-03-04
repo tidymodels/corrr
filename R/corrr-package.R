@@ -1,3 +1,10 @@
+#' @keywords internal
+"_PACKAGE"
+
+## usethis namespace: start
+## usethis namespace: end
+NULL
+
 #' @importFrom stats dist
 #' @importFrom purrr map_df
 #' @importFrom purrr map_dfr
@@ -23,7 +30,5 @@
 #' @importFrom tibble as_tibble
 #' @import ggplot2
 #' @import rlang
-#' @keywords internal
-"_PACKAGE"
-NULL
+
 utils::globalVariables(c("id", "r", "n"))

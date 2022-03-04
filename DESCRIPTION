@@ -37,8 +37,7 @@ Suggests:
     testthat (>= 2.1.0)
 VignetteBuilder: 
     knitr
-Config/Needs/website:
-    tidyverse/tidytemplate
+Config/Needs/website:tidyverse/tidytemplate
 Encoding: UTF-8
 LazyData: yes
 Roxygen: list(markdown = TRUE)
