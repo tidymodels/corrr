@@ -49,7 +49,8 @@ fashion.default <- function(x, decimals = 2, leading_zeros = FALSE, na_print = "
         longest <- max(n_chars)
         tmp1 <- purrr::map_chr(
           (longest - n_chars),
-          ~paste(rep(" ", .), collapse = ""))
+          ~ paste(rep(" ", .), collapse = "")
+        )
         tmp <- paste0(tmp1, tmp)
       }
 

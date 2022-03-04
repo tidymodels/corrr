@@ -10,8 +10,8 @@
 #' @export
 #' @examples
 #' x <- correlate(mtcars)
-#' shave(x)  # Default; shave upper triangle
-#' shave(x, upper = FALSE)  # shave lower triangle
+#' shave(x) # Default; shave upper triangle
+#' shave(x, upper = FALSE) # shave lower triangle
 shave <- function(x, upper = TRUE) {
   UseMethod("shave")
 }
@@ -33,8 +33,8 @@ shave <- function(x, upper = TRUE) {
 #' x <- correlate(mtcars)
 #'
 #' rearrange(x) # Default settings
-#' rearrange(x, method = "HC")  # Different seriation method
-#' rearrange(x, absolute = FALSE)  # Not using absolute values for arranging
+#' rearrange(x, method = "HC") # Different seriation method
+#' rearrange(x, absolute = FALSE) # Not using absolute values for arranging
 rearrange <- function(x, method = "PC", absolute = TRUE) {
   UseMethod("rearrange")
 }

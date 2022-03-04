@@ -16,15 +16,14 @@
 #' colpair_map(mtcars, cov)
 #'
 #' ## Function to get the p-value from a t-test:
-#' calc_p_value <- function(vec_a, vec_b){
+#' calc_p_value <- function(vec_a, vec_b) {
 #'   t.test(vec_a, vec_b)$p.value
 #' }
 #'
 #' colpair_map(mtcars, calc_p_value)
-#'
 #' @export
 
-colpair_map <- function(.data, .f, ..., .diagonal = NA){
+colpair_map <- function(.data, .f, ..., .diagonal = NA) {
 
   ## .data cannot be used as column name.
 
@@ -33,7 +32,6 @@ colpair_map <- function(.data, .f, ..., .diagonal = NA){
   ## Tidy eval curly brackets ({{) are for compatibility with dplyr v1.0.0 - v1.0.3
 
   as_cordf(out, diagonal = .diagonal)
-
 }
 
 #' Summarise a column
@@ -48,12 +46,13 @@ colpair_map <- function(.data, .f, ..., .diagonal = NA){
 #'
 #' @noRd
 
-summarise_col <- function(.x, .f, .data, ...){
-
-  dplyr::summarise(.data, dplyr::across(.cols = dplyr::everything(),
-                                       .fns = {{ .f }},
-                                       {{ .x }},
-                                       ...))
+summarise_col <- function(.x, .f, .data, ...) {
+  dplyr::summarise(.data, dplyr::across(
+    .cols = dplyr::everything(),
+    .fns = {{ .f }},
+    {{ .x }},
+    ...
+  ))
 
   ## Tidy eval curly brackets ({{) are for compatibility with dplyr v1.0.0 - v1.0.3
 }
