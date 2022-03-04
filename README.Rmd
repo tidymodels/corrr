@@ -14,10 +14,11 @@ knitr::opts_chunk$set(
 
 # corrr <a href='https://corrr.tidymodels.org'><img src='man/figures/logo.png' align="right" height="139" /></a>
 
-[![R build status](https://github.com/tidymodels/corrr/workflows/R-CMD-check/badge.svg)](https://github.com/tidymodels/corrr/actions)
-[![Build Status](https://travis-ci.org/tidymodels/corrr.svg?branch=master)](https://travis-ci.org/tidymodels/corrr)
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/tidymodels/corrr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/tidymodels/corrr/actions/workflows/R-CMD-check.yaml)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/corrr)](https://cran.r-project.org/package=corrr)
-[![Codecov test coverage](https://codecov.io/gh/tidymodels/corrr/branch/master/graph/badge.svg)](https://codecov.io/gh/tidymodels/corrr?branch=master)
+[![Codecov test coverage](https://codecov.io/gh/tidymodels/corrr/branch/main/graph/badge.svg)](https://app.codecov.io/gh/tidymodels/corrr?branch=main)
+<!-- badges: end -->
 
 corrr is a package for exploring **corr**elations in **R**. It focuses on creating and working with **data frames** of correlations (instead of matrices) that can be easily explored via corrr functions or by leveraging tools like those in the [tidyverse](https://www.tidyverse.org/). This, along with the primary corrr functions, is represented below:
 
