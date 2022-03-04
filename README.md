@@ -3,13 +3,13 @@
 
 # corrr <a href='https://corrr.tidymodels.org'><img src='man/figures/logo.png' align="right" height="139" /></a>
 
-[![R build
-status](https://github.com/tidymodels/corrr/workflows/R-CMD-check/badge.svg)](https://github.com/tidymodels/corrr/actions)
-[![Build
-Status](https://travis-ci.org/tidymodels/corrr.svg?branch=master)](https://travis-ci.org/tidymodels/corrr)
-[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/corrr)](https://cran.r-project.org/package=corrr)
+<!-- badges: start -->
+
+[![R-CMD-check](https://github.com/tidymodels/corrr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/tidymodels/corrr/actions/workflows/R-CMD-check.yaml)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/corrr)](https://cran.r-project.org/package=corrr)
 [![Codecov test
-coverage](https://codecov.io/gh/tidymodels/corrr/branch/master/graph/badge.svg)](https://codecov.io/gh/tidymodels/corrr?branch=master)
+coverage](https://codecov.io/gh/tidymodels/corrr/branch/main/graph/badge.svg)](https://app.codecov.io/gh/tidymodels/corrr?branch=main)
+<!-- badges: end -->
 
 corrr is a package for exploring **corr**elations in **R**. It focuses
 on creating and working with **data frames** of correlations (instead of
@@ -108,7 +108,7 @@ x <- correlate(d)
 class(x)
 #> [1] "cor_df"     "tbl_df"     "tbl"        "data.frame"
 x
-#> # A tibble: 6 x 7
+#> # A tibble: 6 × 7
 #>   term        v1       v2       v3       v4       v5      v6
 #>   <chr>    <dbl>    <dbl>    <dbl>    <dbl>    <dbl>   <dbl>
 #> 1 v1    NA        0.684    0.716    0.00187 -0.00769 -0.0237
@@ -131,7 +131,7 @@ library(dplyr)
 
 # Filter rows by correlation size
 x %>% filter(v1 > .6)
-#> # A tibble: 2 x 7
+#> # A tibble: 2 × 7
 #>   term     v1     v2     v3       v4      v5      v6
 #>   <chr> <dbl>  <dbl>  <dbl>    <dbl>   <dbl>   <dbl>
 #> 1 v2    0.684 NA      0.702 -0.0248  0.00495 -0.0161
@@ -147,8 +147,8 @@ x <- datasets::mtcars %>%
        rearrange() %>%  # rearrange by correlations
        shave() # Shave off the upper triangle for a clean result
 #> Correlation computed with
-#> * Method: 'pearson'
-#> * Missing treated using: 'pairwise.complete.obs'
+#> • Method: 'pearson'
+#> • Missing treated using: 'pairwise.complete.obs'
        
 fashion(x)
 #>   term  mpg drat   am gear qsec carb   hp   wt disp
@@ -172,8 +172,8 @@ datasets::airquality %>%
   correlate() %>% 
   network_plot(min_cor = .2)
 #> Correlation computed with
-#> * Method: 'pearson'
-#> * Missing treated using: 'pairwise.complete.obs'
+#> • Method: 'pearson'
+#> • Missing treated using: 'pairwise.complete.obs'
 ```
 
 ![](man/figures/README-combination-2.png)<!-- -->
@@ -181,7 +181,7 @@ datasets::airquality %>%
 ## Contributing
 
 This project is released with a [Contributor Code of
-Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
+Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html).
 By contributing to this project, you agree to abide by its terms.
 
 -   For questions and discussions about tidymodels packages, modeling,

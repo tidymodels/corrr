@@ -1,5 +1,3 @@
-context("stretch")
-
 d <- datasets::iris[, 1:4]
 d[1, 1] <- NA
 d <- correlate(d)
@@ -34,7 +32,7 @@ test_that("Converts to proper structure", {
       "Petal.Width", "Petal.Length",  0.962865431402796,
       "Petal.Width",  "Petal.Width",                 NA
     )
-  expect_equivalent(as.data.frame(stretch(d)), as.data.frame(exp_res))
+  expect_equal(as.data.frame(stretch(d)), as.data.frame(exp_res))
 })
 
 test_that("na.rm", {

@@ -29,6 +29,8 @@ retract.data.frame <- function(.data, x = x, y = y, val = r) {
 }
 
 fct_inorder <- function(x) {
-  if (is.factor(x)) return(x)
+  if (is.factor(x)) {
+    return(x)
+  }
   factor(x, levels = unique(x))
 }

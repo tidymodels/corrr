@@ -20,12 +20,12 @@
 #' @examples
 #' library(dplyr)
 #' x <- correlate(mtcars)
-#' focus(x, mpg, cyl)  # Focus on correlations of mpg and cyl with all other variables
-#' focus(x, -disp, - mpg, mirror = TRUE)  # Remove disp and mpg from columns and rows
+#' focus(x, mpg, cyl) # Focus on correlations of mpg and cyl with all other variables
+#' focus(x, -disp, -mpg, mirror = TRUE) # Remove disp and mpg from columns and rows
 #'
 #' x <- correlate(iris[-5])
-#' focus(x, -matches("Sepal"))  # Focus on correlations of non-Sepal
-#'                              # variables with Sepal variables.
+#' focus(x, -matches("Sepal")) # Focus on correlations of non-Sepal
+#' # variables with Sepal variables.
 focus <- function(x, ..., mirror = FALSE) {
   focus_(
     x = x,
@@ -43,7 +43,6 @@ focus <- function(x, ..., mirror = FALSE) {
 #' @examples
 #'
 #' dice(correlate(mtcars), mpg, wt, am)
-#'
 #' @export
 dice <- function(x, ...) {
   UseMethod("dice")
@@ -110,31 +109,31 @@ focus_if.default <- function(x, .predicate, ..., mirror = FALSE) {
 #' @export
 #' @examples
 #' x <- correlate(mtcars)
-#' stretch(x)  # Convert all to long format
-#' stretch(x, na.rm = TRUE)  # omit NAs (diagonal in this case)
+#' stretch(x) # Convert all to long format
+#' stretch(x, na.rm = TRUE) # omit NAs (diagonal in this case)
 #'
-#' x <- shave(x)  # use shave to set upper triangle to NA and then...
-#' stretch(x, na.rm = TRUE)  # omit all NAs, therefore keeping each
-#'                              # correlation only once.
-stretch <- function(x, na.rm = FALSE, remove.dups =  FALSE) {
+#' x <- shave(x) # use shave to set upper triangle to NA and then...
+#' stretch(x, na.rm = TRUE) # omit all NAs, therefore keeping each
+#' # correlation only once.
+stretch <- function(x, na.rm = FALSE, remove.dups = FALSE) {
   UseMethod("stretch")
 }
 
 #' @export
-stretch.cor_df <- function(x, na.rm = FALSE, remove.dups =  FALSE) {
-  if(remove.dups) x <- shave(x)
+stretch.cor_df <- function(x, na.rm = FALSE, remove.dups = FALSE) {
+  if (remove.dups) x <- shave(x)
   row_name <- x$term
   x <- x[colnames(x) != "term"]
-  tb <- imap_dfr(x, ~tibble(x = .y, y = row_name, r = .x))
-  if(na.rm) tb <- tb[!is.na(tb$r), ]
-  if(remove.dups) {
+  tb <- imap_dfr(x, ~ tibble(x = .y, y = row_name, r = .x))
+  if (na.rm) tb <- tb[!is.na(tb$r), ]
+  if (remove.dups) {
     stretch_unique(tb)
   } else {
     tb
   }
 }
 
-stretch_unique <- function(.data,  x = x, y = y, val = r) {
+stretch_unique <- function(.data, x = x, y = y, val = r) {
   val <- enquo(val)
   y <- enquo(y)
   x <- enquo(x)
@@ -142,16 +141,16 @@ stretch_unique <- function(.data,  x = x, y = y, val = r) {
   td <- purrr::transpose(.data)
   combos <- map_chr(
     td,
-    ~paste0(sort(c(.x$x, .x$y)), collapse = " | ")
+    ~ paste0(sort(c(.x$x, .x$y)), collapse = " | ")
   )
   .data$combos <- combos
   map_dfr(
     unique(combos),
-    ~{
+    ~ {
       cr <- .data[.data$combos == .x, ]
       vl <- cr[, as_label(val)][[1]]
-      if(nrow(cr) == 2) cr <- cr[!is.na(vl), ]
-      if(nrow(cr) != 1) stop("Error deduplicating stretched table")
+      if (nrow(cr) == 2) cr <- cr[!is.na(vl), ]
+      if (nrow(cr) != 1) rlang::abort("Error deduplicating stretched table")
       cr[, colnames(cr) != "combos"]
     }
   )
