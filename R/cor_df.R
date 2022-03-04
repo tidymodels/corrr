@@ -100,7 +100,7 @@ focus_if.cor_df <- function(x, .predicate, ..., mirror = FALSE) {
   to_keep <- names(to_keep)[!is.na(to_keep) & to_keep]
 
   if (!length(to_keep)) {
-    stop("No variables were TRUE given the function.")
+    rlang::abort("No variables were TRUE given the function.")
   }
   # Create the network plot
   focus_(x, .dots = to_keep, mirror = mirror)
@@ -184,7 +184,7 @@ network_plot.cor_df <- function(rdf,
                                 curved = TRUE,
                                 colors) {
   if (min_cor < 0 || min_cor > 1) {
-    stop("min_cor must be a value ranging from zero to one.")
+    rlang::abort("min_cor must be a value ranging from zero to one.")
   }
 
   if (!missing(colors)) {

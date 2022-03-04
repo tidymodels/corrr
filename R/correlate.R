@@ -120,21 +120,21 @@ correlate.tbl_sql <- function(x, y = NULL,
                               method = "pearson",
                               diagonal = NA,
                               quiet = FALSE) {
-  if (use != "pairwise.complete.obs") stop("Only 'pairwise.complete.obs' method are supported")
-  if (!is.null(y)) stop("y is not supported for tables with a SQL back-end")
-  if (!is.na(diagonal)) stop("Only NA's are supported for same field correlations")
+  if (use != "pairwise.complete.obs") rlang::abort("Only 'pairwise.complete.obs' method are supported")
+  if (!is.null(y)) rlang::abort("y is not supported for tables with a SQL back-end")
+  if (!is.na(diagonal)) rlang::abort("Only NA's are supported for same field correlations")
   df_cor <- NULL
 
   if ("tbl_spark" %in% class(x)) {
     if (!method %in% c("pearson", "spearman")) {
-      stop("Only pearson or spearman methods are currently supported")
+      rlang::abort("Only pearson or spearman methods are currently supported")
     }
 
     df_cor <- as_cordf(sparklyr::ml_corr(x, method = method))
   }
 
   if (is.null(df_cor)) {
-    if (method != "pearson") stop("Only 'pearson' method is currently supported")
+    if (method != "pearson") rlang::abort("Only 'pearson' method is currently supported")
 
     col_names <- colnames(x)
 
@@ -151,8 +151,8 @@ correlate.tbl_sql <- function(x, y = NULL,
 
     f_cols <- map_dfr(unique_combos, ~ head(cols[cols$combos == .x, ], 1))
 
-    if (!all(unique(f_cols$x) == col_names)) stop("Not all variable combinations are present")
-    if (!all(unique(f_cols$y) == col_names)) stop("Not all variable combinations are present")
+    if (!all(unique(f_cols$x) == col_names)) rlang::abort("Not all variable combinations are present")
+    if (!all(unique(f_cols$y) == col_names)) rlang::abort("Not all variable combinations are present")
 
     f_cols <- f_cols[f_cols$x != f_cols$y, ]
 

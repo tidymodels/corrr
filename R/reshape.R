@@ -150,7 +150,7 @@ stretch_unique <- function(.data, x = x, y = y, val = r) {
       cr <- .data[.data$combos == .x, ]
       vl <- cr[, as_label(val)][[1]]
       if (nrow(cr) == 2) cr <- cr[!is.na(vl), ]
-      if (nrow(cr) != 1) stop("Error deduplicating stretched table")
+      if (nrow(cr) != 1) rlang::abort("Error deduplicating stretched table")
       cr[, colnames(cr) != "combos"]
     }
   )

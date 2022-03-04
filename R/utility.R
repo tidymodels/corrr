@@ -15,7 +15,7 @@
 #' as_cordf(x, diagonal = 1)
 as_cordf <- function(x, diagonal = NA) {
   if (inherits(x, "cor_df")) {
-    warning("x is already a correlation data frame.")
+    rlang::warn("x is already a correlation data frame.")
     return(x)
   }
   x <- as.data.frame(x)
@@ -23,7 +23,7 @@ as_cordf <- function(x, diagonal = NA) {
   x <- x[colnames(x) != "term"]
   rownames(x) <- row_name
   if (ncol(x) != nrow(x)) {
-    stop(
+    rlang::abort(
       "Input object x is not a square. ",
       "The number of columns must be equal to the number of rows."
     )
@@ -55,7 +55,7 @@ first_col <- function(df, ..., var = "term") {
   stopifnot(is.data.frame(df))
 
   if (tibble::has_name(df, var)) {
-    stop("There is a column named ", var, " already!")
+    rlang::abort(paste("There is a column named ", var, " already!"))
   }
 
   new_col <- tibble::tibble(...)
