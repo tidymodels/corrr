@@ -1,5 +1,3 @@
-context("as_cordf")
-
 d <- cor(mtcars)
 
 test_that("Inherits correct classes", {

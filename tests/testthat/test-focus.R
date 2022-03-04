@@ -1,5 +1,3 @@
-context("focus")
-
 d <- datasets::iris[, 1:4]
 d[1, 1] <- NA
 d <- correlate(d)

@@ -1,5 +1,3 @@
-context("tbl_sql")
-
 d <- datasets::iris[, 1:4]
 d[1, 1] <- NA
 
@@ -12,12 +10,14 @@ test_that("Fails when non supported arguments are passed", {
   expect_error(correlate(remote_d, diagonal = 1))
 })
 
-compare_corr <- function(x, y, ...) {
-  res <- purrr:::map2_lgl(x, y, ~ isTRUE(all.equal(.x[[1]], .y[[1]])), ...)
-  all(res)
-}
 
 test_that("tbl_sql routine's results are within the 0.01 threshold", {
+
+  compare_corr <- function(x, y, ...) {
+    res <- purrr:::map2_lgl(x, y, ~ isTRUE(all.equal(.x[[1]], .y[[1]])), ...)
+    all(res)
+  }
+
   expect_true(
     compare_corr(
       correlate(mtcars, quiet = TRUE),

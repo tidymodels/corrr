@@ -1,12 +1,9 @@
-context("correlate")
-
 d <- datasets::iris[, 1:4]
 d[1, 1] <- NA
 
 mpg <- ggplot2::mpg
 mpg_num_names <- names(mpg)[purrr::map_lgl(mpg, is.numeric)]
 displ_colnum <- match("displ", mpg_num_names)
-
 
 test_that("Accurately computes correlations", {
   expect_equal(

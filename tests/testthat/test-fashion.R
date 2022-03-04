@@ -1,5 +1,3 @@
-context("fashion")
-
 test_that("Digits", {
   expect_equal(
     fashion(0.232573),
