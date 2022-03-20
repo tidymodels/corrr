@@ -128,7 +128,7 @@ rplot.cor_df <- function(rdf,
   # Convert data to relevant format for plotting
   pd <- stretch(rdf, na.rm = TRUE)
   pd$size <- abs(pd$r)
-  pd$label <- fashion(pd$r)
+  pd$label <- as.character(fashion(pd$r))
 
   if (.order == "default") {
     pd$x <- factor(pd$x, levels = row_order)
