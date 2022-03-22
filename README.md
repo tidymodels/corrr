@@ -162,7 +162,6 @@ fashion(x)
 #> 8   wt -.87 -.71 -.69 -.58 -.17  .43  .66          
 #> 9 disp -.85 -.71 -.59 -.56 -.43  .39  .79  .89
 rplot(x)
-#> Don't know how to automatically pick scale for object of type noquote. Defaulting to continuous.
 ```
 
 ![](man/figures/README-combination-1.png)<!-- -->
