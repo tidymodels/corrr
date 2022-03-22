@@ -85,7 +85,7 @@
       <img src="../logo.png" class="logo" alt=""><h1>Using corrr</h1>
                         <h4 data-toc-skip class="author">Simon Jackson</h4>
             
-            <h4 data-toc-skip class="date">2022-03-04</h4>
+            <h4 data-toc-skip class="date">2022-03-22</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/tidymodels/corrr/blob/HEAD/vignettes/using-corrr.Rmd" class="external-link"><code>vignettes/using-corrr.Rmd</code></a></small>
       <div class="d-none name"><code>using-corrr.Rmd</code></div>
@@ -243,8 +243,7 @@
 <code class="sourceCode R"><span class="va">d</span> <span class="op"><a href="https://purrr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="../reference/focus.html">focus</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">:</span><span class="va">drat</span>, mirror <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://purrr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="../reference/shave.html">shave</a></span><span class="op">(</span>upper <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op"><a href="https://purrr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="../reference/rplot.html">rplot</a></span><span class="op">(</span><span class="op">)</span>     <span class="co"># Plot</span>
-<span class="co">#&gt; Don't know how to automatically pick scale for object of type noquote. Defaulting to continuous.</span></code></pre></div>
+  <span class="fu"><a href="../reference/rplot.html">rplot</a></span><span class="op">(</span><span class="op">)</span>     <span class="co"># Plot</span></code></pre></div>
 <p><img src="using-corrr_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
 <p>Perhaps we’d like to rearrange the correlations so that the plot becomes easier to interpret. In this case, we can add <code><a href="../reference/rearrange.html">rearrange()</a></code> into our pipeline before shaving one of the triangles (we’ll take correlation sign into account with <code>absolute = FALSE</code>).</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
@@ -252,8 +251,7 @@
   <span class="fu"><a href="../reference/focus.html">focus</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">:</span><span class="va">drat</span>, mirror <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://purrr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="../reference/rearrange.html">rearrange</a></span><span class="op">(</span>absolute <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op"><a href="https://purrr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/shave.html">shave</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://purrr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
-  <span class="fu"><a href="../reference/rplot.html">rplot</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; Don't know how to automatically pick scale for object of type noquote. Defaulting to continuous.</span></code></pre></div>
+  <span class="fu"><a href="../reference/rplot.html">rplot</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="using-corrr_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
 </div>
 </div>
