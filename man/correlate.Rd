@@ -68,6 +68,9 @@ The \code{use} argument and its possible values are inherited from \code{stats::
 
 As of version 0.4.3, the first column of a \code{cor_df} object is named "term".
 In previous versions this first column was named "rowname".
+
+There is a \code{\link[ggplot2:autoplot]{ggplot2::autoplot()}} method for quickly visualizing the
+correlation matrix, for more informaition see \code{\link[=autoplot.cor_df]{autoplot.cor_df()}}.
 }
 \examples{
 \dontrun{
@@ -77,7 +80,6 @@ correlate(iris)
 correlate(iris[-5])
 
 correlate(mtcars)
-
 \dontrun{
 
 # Also supports DB backend and collects results into memory
@@ -88,7 +90,6 @@ mtcars_tbl <- copy_to(sc, mtcars)
 mtcars_tbl \%>\%
   correlate(use = "pairwise.complete.obs", method = "spearman")
 spark_disconnect(sc)
-
 }
 
 }
