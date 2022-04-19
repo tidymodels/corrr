@@ -70,7 +70,7 @@ As of version 0.4.3, the first column of a \code{cor_df} object is named "term".
 In previous versions this first column was named "rowname".
 
 There is a \code{\link[ggplot2:autoplot]{ggplot2::autoplot()}} method for quickly visualizing the
-correlation matrix, for more informaition see \code{\link[=autoplot.cor_df]{autoplot.cor_df()}}.
+correlation matrix, for more information see \code{\link[=autoplot.cor_df]{autoplot.cor_df()}}.
 }
 \examples{
 \dontrun{
