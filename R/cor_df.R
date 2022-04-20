@@ -369,7 +369,7 @@ autoplot.cor_df <- function(object, ...,
                             mid = "#F1F1F1",
                             high = "#2166AC") {
 
-  triangular <- match.arg(triangular)
+  triangular <- rlang::arg_match(triangular)
 
   object <- rearrange(object, method = method)
   if (triangular == "upper") {
