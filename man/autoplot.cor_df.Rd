@@ -24,9 +24,8 @@
 Clustering is achieved via \code{\link[seriation]{seriate}}, which can be
 consulted for a complete list of clustering methods. Default = "PCA".}
 
-\item{triangular}{a single character, which part of the correlation matrix
-should be shown? Must be one of \code{"upper"}, \code{"lower"}, or \code{"full"}. Defaults
-to \code{"upper"}.}
+\item{triangular}{Which part of the correlation matrix should be shown?
+Must be one of \code{"upper"}, \code{"lower"}, or \code{"full"}, and defaults to \code{"upper"}.}
 
 \item{barheight}{A single, non-negative number. Is passed to
 \code{\link[ggplot2:guide_colourbar]{ggplot2::guide_colourbar()}} to determine the height of the guide colorbar.
