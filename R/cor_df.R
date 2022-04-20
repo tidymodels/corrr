@@ -378,9 +378,9 @@ autoplot.cor_df <- function(object, ...,
     object <- shave(object, upper = TRUE)
   }
   object <- stretch(object)
-  object <- dplyr::filter(object, !is.na(r))
   object <- dplyr::mutate(object, x = factor(x, levels = unique(x)))
   object <- dplyr::mutate(object, y = factor(y, levels = rev(unique(y))))
+  object <- dplyr::filter(object, !is.na(r))
 
   res <- ggplot2::ggplot(object, ggplot2::aes(x, y, fill = r)) +
     ggplot2::geom_tile(color = "white", size = 0.5) +
