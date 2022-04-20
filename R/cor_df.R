@@ -336,9 +336,8 @@ network_plot.cor_df <- function(rdf,
 #' @param object A `cor_df` object.
 #' @param ... this argument is ignored.
 #' @inheritParams rearrange
-#' @param triangular a single character, which part of the correlation matrix
-#' should be shown? Must be one of `"upper"`, `"lower"`, or `"full"`. Defaults
-#' to `"upper"`.
+#' @param triangular Which part of the correlation matrix should be shown?
+#' Must be one of `"upper"`, `"lower"`, or `"full"`, and defaults to `"upper"`.
 #' @param barheight A single, non-negative number. Is passed to
 #' [ggplot2::guide_colourbar()] to determine the height of the guide colorbar.
 #' Defaults to 20, is likely to need manual adjustments.
