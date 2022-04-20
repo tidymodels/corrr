@@ -336,6 +336,9 @@ network_plot.cor_df <- function(rdf,
 #' @param object A `cor_df` object.
 #' @param ... this argument is ignored.
 #' @inheritParams rearrange
+#' @param triangular a single character, which part of the correlation matrix
+#' should be shown? Must be one of `"upper"`, `"lower"`, or `"full"`. Defaults
+#' to `"upper"`.
 #' @param barheight A single, non-negative number. Is passed to
 #' [ggplot2::guide_colourbar()] to determine the height of the guide colorbar.
 #' Defaults to 20, is likely to need manual adjustments.
@@ -353,19 +356,33 @@ network_plot.cor_df <- function(rdf,
 #' x <- correlate(mtcars)
 #'
 #' autoplot(x)
+#'
+#' autoplot(x, triangular = "lower")
+#'
+#' autoplot(x, triangular = "full")
 #' @export
-autoplot.cor_df <- function(object, ..., method = "PCA", barheight = 20,
-                            low = "#B2182B", mid = "#F1F1F1",
+autoplot.cor_df <- function(object, ...,
+                            method = "PCA",
+                            triangular = c("upper", "lower", "full"),
+                            barheight = 20,
+                            low = "#B2182B",
+                            mid = "#F1F1F1",
                             high = "#2166AC") {
 
+  triangular <- match.arg(triangular)
+
   object <- rearrange(object, method = method)
-  object <- shave(object)
+  if (triangular == "upper") {
+    object <- shave(object, upper = FALSE)
+  } else if (triangular == "lower") {
+    object <- shave(object, upper = TRUE)
+  }
   object <- stretch(object)
   object <- dplyr::filter(object, !is.na(r))
   object <- dplyr::mutate(object, x = factor(x, levels = unique(x)))
   object <- dplyr::mutate(object, y = factor(y, levels = rev(unique(y))))
 
-  ggplot2::ggplot(object, ggplot2::aes(x, y, fill = r)) +
+  res <- ggplot2::ggplot(object, ggplot2::aes(x, y, fill = r)) +
     ggplot2::geom_tile(color = "white", size = 0.5) +
     ggplot2::scale_fill_gradient2(
       low = low, mid = mid, high = high, breaks = seq(-1, 1, by = 0.2),
@@ -379,6 +396,16 @@ autoplot.cor_df <- function(object, ..., method = "PCA", barheight = 20,
     ggplot2::coord_fixed() +
     ggplot2::labs(x = NULL, y = NULL, fill = NULL) +
     ggplot2::guides(fill = ggplot2::guide_colourbar(barheight = barheight))
+
+  if (triangular == "upper") {
+    res <- res +
+      scale_x_discrete(position = "top") +
+      ggplot2::theme(
+        axis.text.x = ggplot2::element_text(angle = 315, vjust = 1, hjust = 1)
+      )
+  }
+
+  res
 }
 
 #' @importFrom ggplot2 autoplot

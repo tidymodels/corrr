@@ -8,6 +8,7 @@
   object,
   ...,
   method = "PCA",
+  triangular = c("upper", "lower", "full"),
   barheight = 20,
   low = "#B2182B",
   mid = "#F1F1F1",
@@ -22,6 +23,10 @@
 \item{method}{String specifying the arrangement (clustering) method.
 Clustering is achieved via \code{\link[seriation]{seriate}}, which can be
 consulted for a complete list of clustering methods. Default = "PCA".}
+
+\item{triangular}{a single character, which part of the correlation matrix
+should be shown? Must be one of \code{"upper"}, \code{"lower"}, or \code{"full"}. Defaults
+to \code{"upper"}.}
 
 \item{barheight}{A single, non-negative number. Is passed to
 \code{\link[ggplot2:guide_colourbar]{ggplot2::guide_colourbar()}} to determine the height of the guide colorbar.
@@ -46,4 +51,8 @@ This method provides a good first visualization of the correlation matrix.
 x <- correlate(mtcars)
 
 autoplot(x)
+
+autoplot(x, triangular = "lower")
+
+autoplot(x, triangular = "full")
 }
