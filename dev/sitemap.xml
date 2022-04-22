@@ -34,6 +34,9 @@
     <loc>https://corrr.tidymodels.org/dev/reference/as_matrix.html</loc>
   </url>
   <url>
+    <loc>https://corrr.tidymodels.org/dev/reference/autoplot.cor_df.html</loc>
+  </url>
+  <url>
     <loc>https://corrr.tidymodels.org/dev/reference/colpair_map.html</loc>
   </url>
   <url>
@@ -68,6 +71,9 @@
   </url>
   <url>
     <loc>https://corrr.tidymodels.org/dev/reference/rearrange.html</loc>
+  </url>
+  <url>
+    <loc>https://corrr.tidymodels.org/dev/reference/reexports.html</loc>
   </url>
   <url>
     <loc>https://corrr.tidymodels.org/dev/reference/retract.html</loc>
