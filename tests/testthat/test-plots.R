@@ -24,3 +24,8 @@ test_that("rplot works", {
   expect_s3_class(rplot(d), "ggplot")
   expect_s3_class(rplot(d, colors = c("indianred2", "white", "skyblue1")), "ggplot")
 })
+
+test_that("autoplot works", {
+  expect_s3_class(autoplot(d), "ggplot")
+  expect_s3_class(autoplot(d, low = "indianred2", mid = "white", high = "skyblue1"), "ggplot")
+})

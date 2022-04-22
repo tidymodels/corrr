@@ -328,3 +328,85 @@ network_plot.cor_df <- function(rdf,
 
   ggplot() + plot_
 }
+
+#' Create a correlation matrix from a cor_df object
+#'
+#' This method provides a good first visualization of the correlation matrix.
+#'
+#' @param object A `cor_df` object.
+#' @param ... this argument is ignored.
+#' @inheritParams rearrange
+#' @param triangular Which part of the correlation matrix should be shown?
+#' Must be one of `"upper"`, `"lower"`, or `"full"`, and defaults to `"upper"`.
+#' @param barheight A single, non-negative number. Is passed to
+#' [ggplot2::guide_colourbar()] to determine the height of the guide colorbar.
+#' Defaults to 20, is likely to need manual adjustments.
+#' @param low A single color. Is passed to [ggplot2::scale_fill_gradient2()].
+#' The color of negative correlation. Defaults to `"#B2182B"`.
+#' @param mid A single color. Is passed to [ggplot2::scale_fill_gradient2()].
+#' The color of no correlation. Defaults to `"#F1F1F1"`.
+#' @param high A single color. Is passed to [ggplot2::scale_fill_gradient2()].
+#' The color of the positive correlation. Defaults to `"#2166AC"`.
+#' @return A ggplot object
+#'
+#' @rdname autoplot.cor_df
+#'
+#' @examples
+#' x <- correlate(mtcars)
+#'
+#' autoplot(x)
+#'
+#' autoplot(x, triangular = "lower")
+#'
+#' autoplot(x, triangular = "full")
+#' @export
+autoplot.cor_df <- function(object, ...,
+                            method = "PCA",
+                            triangular = c("upper", "lower", "full"),
+                            barheight = 20,
+                            low = "#B2182B",
+                            mid = "#F1F1F1",
+                            high = "#2166AC") {
+
+  triangular <- rlang::arg_match(triangular)
+
+  object <- rearrange(object, method = method)
+  if (triangular == "upper") {
+    object <- shave(object, upper = FALSE)
+  } else if (triangular == "lower") {
+    object <- shave(object, upper = TRUE)
+  }
+  object <- stretch(object)
+  object <- dplyr::mutate(object, x = factor(x, levels = unique(x)))
+  object <- dplyr::mutate(object, y = factor(y, levels = rev(unique(y))))
+  object <- dplyr::filter(object, !is.na(r))
+
+  res <- ggplot2::ggplot(object, ggplot2::aes(x, y, fill = r)) +
+    ggplot2::geom_tile(color = "white", size = 0.5) +
+    ggplot2::scale_fill_gradient2(
+      low = low, mid = mid, high = high, breaks = seq(-1, 1, by = 0.2),
+      limits = c(-1, 1)
+    ) +
+    ggplot2::theme_minimal() +
+    ggplot2::theme(
+      panel.grid = ggplot2::element_blank(),
+      axis.text.x = ggplot2::element_text(angle = 45, vjust = 1, hjust = 1)
+    ) +
+    ggplot2::coord_fixed() +
+    ggplot2::labs(x = NULL, y = NULL, fill = NULL) +
+    ggplot2::guides(fill = ggplot2::guide_colourbar(barheight = barheight))
+
+  if (triangular == "upper") {
+    res <- res +
+      scale_x_discrete(position = "top") +
+      ggplot2::theme(
+        axis.text.x = ggplot2::element_text(angle = 315, vjust = 1, hjust = 1)
+      )
+  }
+
+  res
+}
+
+#' @importFrom ggplot2 autoplot
+#' @export
+ggplot2::autoplot

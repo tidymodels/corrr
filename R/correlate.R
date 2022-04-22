@@ -28,6 +28,9 @@
 #' As of version 0.4.3, the first column of a `cor_df` object is named "term".
 #' In previous versions this first column was named "rowname".
 #'
+#' There is a [ggplot2::autoplot()] method for quickly visualizing the
+#' correlation matrix, for more information see [autoplot.cor_df()].
+#'
 #' @inheritParams stats::cor
 #' @inheritParams as_cordf
 #' @param quiet Set as TRUE to suppress message about `method` and `use`

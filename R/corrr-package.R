@@ -31,4 +31,4 @@ NULL
 #' @import ggplot2
 #' @import rlang
 
-utils::globalVariables(c("id", "r", "n"))
+utils::globalVariables(c("id", "r", "n", "x", "y"))

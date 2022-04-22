@@ -3,6 +3,7 @@
 - Make `colpair_map()` more robust to input column names, with the exception of ".data" and ".env" (@jameslairdsmith, #131).
 
 - `correlate()` now removes non-numeric columns from data frame inputs (@thisisdaryn, #139).
+- `autoplot.cor_df()` method have been added fot quick generation of correlation chart.
 
 # corrr 0.4.3
 
