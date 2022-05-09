@@ -178,11 +178,13 @@ rplot.cor_df <- function(rdf,
 #' @export
 network_plot.cor_df <- function(rdf,
                                 min_cor = .30,
-                                legend = TRUE,
+                                legend = c("full", "range", "none"),
                                 colours = c("indianred2", "white", "skyblue1"),
                                 repel = TRUE,
                                 curved = TRUE,
                                 colors) {
+  legend <- match.arg(legend)
+
   if (min_cor < 0 || min_cor > 1) {
     rlang::abort("min_cor must be a value ranging from zero to one.")
   }
@@ -260,6 +262,13 @@ network_plot.cor_df <- function(rdf,
     }
   }
 
+  if(legend %in% c("full", "none")){
+    legend_range = c(-1, 1)
+  }
+  else if(legend == "range"){
+    legend_range = c(min(rdf[row(rdf)!=col(rdf)]),
+                     max(rdf[row(rdf)!=col(rdf)]))
+  }
   plot_ <- list(
     # For plotting paths
     if (curved) {
@@ -284,7 +293,7 @@ network_plot.cor_df <- function(rdf,
     },
     scale_alpha(limits = c(0, 1)),
     scale_size(limits = c(0, 1)),
-    scale_colour_gradientn(limits = c(-1, 1), colors = colours),
+    scale_colour_gradientn(limits = legend_range, colors = colours),
     # Plot the points
     geom_point(
       data = points,
@@ -322,8 +331,8 @@ network_plot.cor_df <- function(rdf,
     # Theme and legends
     theme_void(),
     guides(size = "none", alpha = "none"),
-    if (legend) labs(colour = NULL),
-    if (!legend) theme(legend.position = "none")
+    if (legend != "none") labs(colour = NULL),
+    if (legend == "none") theme(legend.position = "none")
   )
 
   ggplot() + plot_

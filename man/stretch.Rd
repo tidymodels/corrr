@@ -25,10 +25,10 @@ data frame. The term column is handled automatically.
 }
 \examples{
 x <- correlate(mtcars)
-stretch(x)  # Convert all to long format
-stretch(x, na.rm = TRUE)  # omit NAs (diagonal in this case)
+stretch(x) # Convert all to long format
+stretch(x, na.rm = TRUE) # omit NAs (diagonal in this case)
 
-x <- shave(x)  # use shave to set upper triangle to NA and then...
-stretch(x, na.rm = TRUE)  # omit all NAs, therefore keeping each
-                             # correlation only once.
+x <- shave(x) # use shave to set upper triangle to NA and then...
+stretch(x, na.rm = TRUE) # omit all NAs, therefore keeping each
+# correlation only once.
 }

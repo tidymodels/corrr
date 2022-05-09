@@ -125,6 +125,11 @@ rplot.default <- function(rdf, ...) {
 #'
 #' @param min_cor Number from 0 to 1 indicating the minimum value of
 #'   correlations (in absolute terms) to plot.
+#' @param legend Either "full", meaning the color range is mapped to correlation
+#' values from -1 to 1 and a legend is displayed, or "range", meaning the color
+#' range is mapped to the range of correlation values in \code{rdf}, or "none"
+#' meaning the color range is mapped to the range -1 to 1 with no legend
+#' displayed.
 #' @param colours,colors Vector of colors to use for n-color gradient.
 #' @param repel Should variable labels repel each other? If TRUE, text is added
 #'   via \code{\link[ggrepel]{geom_text_repel}} instead of \code{\link[ggplot2]{geom_text}}
@@ -141,7 +146,7 @@ rplot.default <- function(rdf, ...) {
 #' network_plot(x, min_cor = .7, colors = c("red", "green"), legend = TRUE)
 network_plot <- function(rdf,
                          min_cor = .3,
-                         legend = TRUE,
+                         legend = c("full", "range", "none"),
                          colours = c("indianred2", "white", "skyblue1"),
                          repel = TRUE,
                          curved = TRUE,
