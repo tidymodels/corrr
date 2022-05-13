@@ -21,11 +21,10 @@ that can be coerced to one (see \code{\link{as_cordf}}).}
 \item{min_cor}{Number from 0 to 1 indicating the minimum value of
 correlations (in absolute terms) to plot.}
 
-\item{legend}{Either "full", meaning the color range is mapped to correlation
-values from -1 to 1 and a legend is displayed, or "range", meaning the color
-range is mapped to the range of correlation values in \code{rdf}, or "none"
-meaning the color range is mapped to the range -1 to 1 with no legend
-displayed.}
+\item{legend}{How should the colors and legend for the correlation values be
+displayed? The options are "full" (the default) for -1 to 1 with a legend,
+"range" for the range of correlation values in \code{rdf} with a legend,
+or "none" for colors between -1 to 1 with no legend displayed.}
 
 \item{colours, colors}{Vector of colors to use for n-color gradient.}
 
