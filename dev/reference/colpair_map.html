@@ -104,7 +104,7 @@ of its columns. The result is a correlation data frame (see
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 3 more variables: am &lt;dbl&gt;, gear &lt;dbl&gt;, carb &lt;dbl&gt;</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co">## Function to get the p-value from a t-test:</span></span>
-<span class="r-in"><span class="va">calc_p_value</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">vec_a</span>, <span class="va">vec_b</span><span class="op">)</span><span class="op">{</span></span>
+<span class="r-in"><span class="va">calc_p_value</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">vec_a</span>, <span class="va">vec_b</span><span class="op">)</span> <span class="op">{</span></span>
 <span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html" class="external-link">t.test</a></span><span class="op">(</span><span class="va">vec_a</span>, <span class="va">vec_b</span><span class="op">)</span><span class="op">$</span><span class="va">p.value</span></span>
 <span class="r-in"><span class="op">}</span></span>
 <span class="r-in"></span>
@@ -125,7 +125,6 @@ of its columns. The result is a correlation data frame (see
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> carb   1.68<span style="color: #949494;">e</span><span style="color: #BB0000;">-17</span>  5.61<span style="color: #949494;">e</span><span style="color: #BB0000;">-11</span>  1.24<span style="color: #949494;">e</span><span style="color: #BB0000;">-11</span>  4.55<span style="color: #949494;">e</span><span style="color: #BB0000;">-13</span>  1.30<span style="color: #949494;">e</span><span style="color: #BB0000;">- 2</span>  2.31<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 5 more variables: qsec &lt;dbl&gt;, vs &lt;dbl&gt;, am &lt;dbl&gt;, gear &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   carb &lt;dbl&gt;</span></span>
-<span class="r-in"></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
@@ -139,7 +138,7 @@ of its columns. The result is a correlation data frame (see
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
   </div></footer></body></html>

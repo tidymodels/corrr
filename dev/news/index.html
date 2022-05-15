@@ -56,6 +56,7 @@
 <ul><li><p>Make <code><a href="../reference/colpair_map.html">colpair_map()</a></code> more robust to input column names, with the exception of “.data” and “.env” (<a href="https://github.com/jameslairdsmith" class="external-link">@jameslairdsmith</a>, <a href="https://github.com/tidymodels/corrr/issues/131" class="external-link">#131</a>).</p></li>
 <li><p><code><a href="../reference/correlate.html">correlate()</a></code> now removes non-numeric columns from data frame inputs (<a href="https://github.com/thisisdaryn" class="external-link">@thisisdaryn</a>, <a href="https://github.com/tidymodels/corrr/issues/139" class="external-link">#139</a>).</p></li>
 <li><p><code><a href="../reference/autoplot.cor_df.html">autoplot.cor_df()</a></code> method have been added fot quick generation of correlation chart.</p></li>
+<li><p><code><a href="../reference/network_plot.html">network_plot()</a></code> now allows the user the option to map the color range to the range of correlations that are in the input <code>rdf</code> (<a href="https://github.com/thisisdaryn" class="external-link">@thisisdaryn</a>, <a href="https://github.com/tidymodels/corrr/issues/158" class="external-link">#158</a>).</p></li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.3" id="corrr-043">corrr 0.4.3<a class="anchor" aria-label="anchor" href="#corrr-043"></a></h2><p class="text-muted">CRAN release: 2020-11-24</p>
@@ -70,12 +71,10 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.2" id="corrr-042">corrr 0.4.2<a class="anchor" aria-label="anchor" href="#corrr-042"></a></h2><p class="text-muted">CRAN release: 2020-03-22</p>
-<ul><li>Updates to work with tibble 3.0.0 and dplyr 1.0.0</li>
-</ul></div>
+<ul><li>Updates to work with tibble 3.0.0 and dplyr 1.0.0</li></ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.1" id="corrr-041">corrr 0.4.1<a class="anchor" aria-label="anchor" href="#corrr-041"></a></h2><p class="text-muted">CRAN release: 2020-02-10</p>
-<ul><li>Updates maintainer</li>
-</ul></div>
+<ul><li>Updates maintainer</li></ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.0" id="corrr-040">corrr 0.4.0<a class="anchor" aria-label="anchor" href="#corrr-040"></a></h2><p class="text-muted">CRAN release: 2019-07-12</p>
 <ul><li><p>Adds <code>remove.dups</code> argument to <code><a href="../reference/stretch.html">stretch()</a></code>. It removes duplicates with out removing all NAs (<a href="https://github.com/tidymodels/corrr/issues/57" class="external-link">#57</a>)</p></li>
@@ -126,8 +125,7 @@
 </ul></div>
 <div class="section level3">
 <h3 id="fixes-0-3-0">Fixes<a class="anchor" aria-label="anchor" href="#fixes-0-3-0"></a></h3>
-<ul><li>When <code>legend = TRUE</code> (now the default setting), <code>rplot</code> and <code>network_plot</code> generate a single, unlabeled legend referring to the size of the correlations.</li>
-</ul></div>
+<ul><li>When <code>legend = TRUE</code> (now the default setting), <code>rplot</code> and <code>network_plot</code> generate a single, unlabeled legend referring to the size of the correlations.</li></ul></div>
 <div class="section level3">
 <h3 id="other-0-3-0">Other<a class="anchor" aria-label="anchor" href="#other-0-3-0"></a></h3>
 <ul><li><p><code><a href="../reference/correlate.html">correlate()</a></code> is now an S3 method so that it can adapt to <code>x</code>’s object type.</p></li>
@@ -140,8 +138,7 @@
 <div class="section level3">
 <h3 id="new-functionality-0-2-1">New Functionality<a class="anchor" aria-label="anchor" href="#new-functionality-0-2-1"></a></h3>
 <ul><li>Can keep leading zeros when using <code><a href="../reference/fashion.html">fashion()</a></code> with new argument <code>leading_zeros = TRUE</code>.</li>
-<li>New optional arguments added to plotting functions, <code><a href="../reference/network_plot.html">network_plot()</a></code> and <code><a href="../reference/rplot.html">rplot()</a></code>:
-<ul><li>
+<li>New optional arguments added to plotting functions, <code><a href="../reference/network_plot.html">network_plot()</a></code> and <code><a href="../reference/rplot.html">rplot()</a></code>:<ul><li>
 <code>legend</code> to display a legend mapping correlations to size and colour.</li>
 <li>
 <code>colours</code> (or <code>colors</code>) to change colours in plot.</li>
@@ -181,8 +178,7 @@
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.0" id="corrr-010">corrr 0.1.0<a class="anchor" aria-label="anchor" href="#corrr-010"></a></h2><p class="text-muted">CRAN release: 2016-07-08</p>
-<ul><li>First corrr release!</li>
-</ul></div>
+<ul><li>First corrr release!</li></ul></div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
 
@@ -194,7 +190,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
   </div></footer></body></html>
