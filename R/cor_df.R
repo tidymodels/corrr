@@ -183,7 +183,7 @@ network_plot.cor_df <- function(rdf,
                                 repel = TRUE,
                                 curved = TRUE,
                                 colors) {
-  legend <- match.arg(legend)
+  legend <- rlang::arg_match(legend)
 
   if (min_cor < 0 || min_cor > 1) {
     rlang::abort("min_cor must be a value ranging from zero to one.")
