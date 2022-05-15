@@ -142,7 +142,8 @@ rplot.default <- function(rdf, ...) {
 #' network_plot(x)
 #' network_plot(x, min_cor = .1)
 #' network_plot(x, min_cor = .6)
-#' network_plot(x, min_cor = .7, colors = c("red", "green"), legend = TRUE)
+#' network_plot(x, min_cor = .2, colors = c("red", "green"), legend = "full")
+#' network_plot(x, min_cor = .2, colors = c("red", "green"), legend = "range")
 network_plot <- function(rdf,
                          min_cor = .3,
                          legend = c("full", "range", "none"),
