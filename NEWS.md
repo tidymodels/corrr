@@ -4,6 +4,7 @@
 
 - `correlate()` now removes non-numeric columns from data frame inputs (@thisisdaryn, #139).
 - `autoplot.cor_df()` method have been added fot quick generation of correlation chart.
+- `network_plot()` now allows the user the option to map the color range to the range of correlations that are in the input `rdf` (@thisisdaryn, #158). 
 
 # corrr 0.4.3
 

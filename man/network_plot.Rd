@@ -7,7 +7,7 @@
 network_plot(
   rdf,
   min_cor = 0.3,
-  legend = TRUE,
+  legend = c("full", "range", "none"),
   colours = c("indianred2", "white", "skyblue1"),
   repel = TRUE,
   curved = TRUE,
@@ -21,8 +21,10 @@ that can be coerced to one (see \code{\link{as_cordf}}).}
 \item{min_cor}{Number from 0 to 1 indicating the minimum value of
 correlations (in absolute terms) to plot.}
 
-\item{legend}{Boolean indicating whether a legend mapping the colors to the
-correlations should be displayed.}
+\item{legend}{How should the colors and legend for the correlation values be
+displayed? The options are "full" (the default) for -1 to 1 with a legend,
+"range" for the range of correlation values in \code{rdf} with a legend,
+or "none" for colors between -1 to 1 with no legend displayed.}
 
 \item{colours, colors}{Vector of colors to use for n-color gradient.}
 
