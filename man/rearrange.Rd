@@ -27,6 +27,6 @@ together.
 x <- correlate(mtcars)
 
 rearrange(x) # Default settings
-rearrange(x, method = "HC")  # Different seriation method
-rearrange(x, absolute = FALSE)  # Not using absolute values for arranging
+rearrange(x, method = "HC") # Different seriation method
+rearrange(x, absolute = FALSE) # Not using absolute values for arranging
 }

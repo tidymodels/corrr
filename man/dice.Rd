@@ -17,5 +17,4 @@ Returns a correlation table with the selected fields only
 \examples{
 
 dice(correlate(mtcars), mpg, wt, am)
-
 }
