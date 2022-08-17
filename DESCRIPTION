@@ -1,7 +1,7 @@
 Type: Package
 Package: corrr
 Title: Correlations in R
-Version: 0.4.4
+Version: 0.4.4.9000
 Authors@R: c(
     person("Max", "Kuhn", , "max@rstudio.com", role = c("aut", "cre")),
     person("Simon", "Jackson", role = "aut"),
