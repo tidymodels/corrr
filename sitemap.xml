@@ -4,6 +4,9 @@
     <loc>https://corrr.tidymodels.org/404.html</loc>
   </url>
   <url>
+    <loc>https://corrr.tidymodels.org/CODE_OF_CONDUCT.html</loc>
+  </url>
+  <url>
     <loc>https://corrr.tidymodels.org/CONTRIBUTING.html</loc>
   </url>
   <url>
@@ -32,6 +35,9 @@
   </url>
   <url>
     <loc>https://corrr.tidymodels.org/reference/as_matrix.html</loc>
+  </url>
+  <url>
+    <loc>https://corrr.tidymodels.org/reference/autoplot.cor_df.html</loc>
   </url>
   <url>
     <loc>https://corrr.tidymodels.org/reference/colpair_map.html</loc>
@@ -68,6 +74,9 @@
   </url>
   <url>
     <loc>https://corrr.tidymodels.org/reference/rearrange.html</loc>
+  </url>
+  <url>
+    <loc>https://corrr.tidymodels.org/reference/reexports.html</loc>
   </url>
   <url>
     <loc>https://corrr.tidymodels.org/reference/retract.html</loc>
