@@ -2,7 +2,7 @@
 
 - `rearrange(absolute = TRUE)` works again (@jmbarbone, #167)
 
-- Extra `cor_df` classes are no longer appended to `cor_df` objects (@jmbarbone)
+- Extra `cor_df` classes are no longer appended to `cor_df` objects (@jmbarbone, #168)
 
 # corrr 0.4.4
 
