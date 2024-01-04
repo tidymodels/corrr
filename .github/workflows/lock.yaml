@@ -16,7 +16,7 @@ jobs:
 #          issue-lock-labels: 'outdated'
           issue-lock-comment: >
             This issue has been automatically locked. If you believe you have
-            found a related problem, please file a new issue (with a reprex:
+            found a related problem, please file a new issue (with a reprex
             <https://reprex.tidyverse.org>) and link to this issue.
           issue-lock-reason: ''
           pr-lock-inactive-days: '14'
@@ -24,7 +24,7 @@ jobs:
           pr-lock-labels: ''
           pr-lock-comment: >
             This pull request has been automatically locked. If you believe you
-            have found a related problem, please file a new issue (with a reprex:
+            have found a related problem, please file a new issue (with a reprex
             <https://reprex.tidyverse.org>) and link to this issue.
           pr-lock-reason: ''
 #          process-only: 'issues'
