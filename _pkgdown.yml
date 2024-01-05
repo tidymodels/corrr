@@ -8,7 +8,7 @@ template:
     primary: "#CA225E"
   includes:
     in_header: |
-      <script defer data-domain="tidymodels.tidymodels.org,all.tidymodels.org" src="https://plausible.io/js/plausible.js"></script>
+      <script defer data-domain="corrr.tidymodels.org,all.tidymodels.org" src="https://plausible.io/js/plausible.js"></script>
 
 development:
   mode: auto
