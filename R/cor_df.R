@@ -41,7 +41,9 @@ rearrange.cor_df <- function(x, method = "PCA", absolute = TRUE) {
   # Convert to original matrix
   m <- as_matrix(x, diagonal = 1)
 
-  if (absolute) abs(m)
+  if (absolute) {
+    m <- abs(m)
+  }
 
   if (method %in% c("BEA", "BEA_TSP", "PCA", "PCA_angle")) {
     ord <- seriation::seriate(m, method = method)

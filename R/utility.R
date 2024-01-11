@@ -36,7 +36,11 @@ new_cordf <- function(x, term = NULL) {
   if (!is.null(term)) {
     x <- first_col(x, term)
   }
-  class(x) <- c("cor_df", class(x))
+
+  if (!inherits(x, "cor_df")) {
+    class(x) <- c("cor_df", class(x))
+  }
+
   x
 }
 

@@ -4,3 +4,9 @@ test_that("pair_n works", {
     "matrix"
   )
 })
+
+test_that("new_cordf() doesn't append again", {
+  x <- as_cordf(data.frame(a = 1))
+  obj <- new_cordf(x)
+  expect_identical(obj, x)
+})
