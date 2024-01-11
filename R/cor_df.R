@@ -36,17 +36,19 @@ shave.cor_df <- function(x, upper = TRUE) {
 }
 
 #' @export
-rearrange.cor_df <- function(x, method = "PCA", absolute = TRUE) {
+rearrange.cor_df <- function(x, method = "PCA", absolute = FALSE) {
 
   # Convert to original matrix
   m <- as_matrix(x, diagonal = 1)
 
-  if (absolute) abs(m)
+  if (absolute)
+    m <- abs(m)
 
-  if (method %in% c("BEA", "BEA_TSP", "PCA", "PCA_angle")) {
+  if (method %in% seriation::list_seriation_methods("matrix")) {
     ord <- seriation::seriate(m, method = method)
   } else {
-    ord <- seriation::seriate(dist(m), method = method)
+    #ord <- seriation::seriate(dist(m), method = method)
+    ord <- seriation::seriate(sqrt(stats::as.dist(1 - m)), method = method)
   }
 
   ord <- seriation::get_order(ord)
