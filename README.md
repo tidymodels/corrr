@@ -8,7 +8,7 @@
 [![R-CMD-check](https://github.com/tidymodels/corrr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/tidymodels/corrr/actions/workflows/R-CMD-check.yaml)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/corrr)](https://cran.r-project.org/package=corrr)
 [![Codecov test
-coverage](https://codecov.io/gh/tidymodels/corrr/branch/main/graph/badge.svg)](https://app.codecov.io/gh/tidymodels/corrr?branch=main)
+coverage](https://codecov.io/gh/tidymodels/corrr/graph/badge.svg)](https://app.codecov.io/gh/tidymodels/corrr)
 <!-- badges: end -->
 
 corrr is a package for exploring **corr**elations in **R**. It focuses
