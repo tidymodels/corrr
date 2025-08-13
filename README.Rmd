@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/tidymodels/corrr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/tidymodels/corrr/actions/workflows/R-CMD-check.yaml)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/corrr)](https://cran.r-project.org/package=corrr)
-[![Codecov test coverage](https://codecov.io/gh/tidymodels/corrr/branch/main/graph/badge.svg)](https://app.codecov.io/gh/tidymodels/corrr?branch=main)
+[![Codecov test coverage](https://codecov.io/gh/tidymodels/corrr/graph/badge.svg)](https://app.codecov.io/gh/tidymodels/corrr)
 <!-- badges: end -->
 
 corrr is a package for exploring **corr**elations in **R**. It focuses on creating and working with **data frames** of correlations (instead of matrices) that can be easily explored via corrr functions or by leveraging tools like those in the [tidyverse](https://www.tidyverse.org/). This, along with the primary corrr functions, is represented below:
@@ -134,7 +134,7 @@ datasets::airquality %>%
 
 This project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
 
-- For questions and discussions about tidymodels packages, modeling, and machine learning, please [post on RStudio Community](https://community.rstudio.com/new-topic?category_id=15&tags=tidymodels,question).
+- For questions and discussions about tidymodels packages, modeling, and machine learning, please [post on RStudio Community](https://forum.posit.co/new-topic?category_id=15&tags=tidymodels,question).
 
 - If you think you have encountered a bug, please [submit an issue](https://github.com/tidymodels/corrr/issues).
 

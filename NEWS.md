@@ -1,4 +1,6 @@
-# corrr (development version)
+# corrr 0.4.5
+
+- Maintenance release for broken code links. 
 
 # corrr 0.4.4
 

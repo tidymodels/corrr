@@ -79,7 +79,7 @@ fashion.default <- function(x, decimals = 2, leading_zeros = FALSE, na_print = "
 #'   that can be coerced to one (see \code{\link{as_cordf}}).
 #' @param legend Boolean indicating whether a legend mapping the colors to the
 #'   correlations should be displayed.
-#' @param shape \code{\link{geom_point}} aesthetic.
+#' @param shape [ggplot2::geom_point()] aesthetic.
 #' @param print_cor Boolean indicating whether the correlations should be
 #'   printed over the shapes.
 #' @param colours,colors Vector of colors to use for n-color gradient.

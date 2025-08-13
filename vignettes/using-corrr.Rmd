@@ -121,4 +121,4 @@ d %>%
 
 ## Other Resources
 
-For other resources about how to use `corrr`, you'll find plenty of posts explaining functions at [blogR](https://drsimonj.svbtle.com/), or keep up to date with these on Twitter by following [\@drsimonj](https://twitter.com/drsimonj).
+For other resources about how to use `corrr`, you'll find plenty of posts explaining functions at [blogR](https://drsimonj.svbtle.com/).

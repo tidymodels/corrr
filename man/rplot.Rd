@@ -21,7 +21,7 @@ that can be coerced to one (see \code{\link{as_cordf}}).}
 \item{legend}{Boolean indicating whether a legend mapping the colors to the
 correlations should be displayed.}
 
-\item{shape}{\code{\link{geom_point}} aesthetic.}
+\item{shape}{\code{\link[ggplot2:geom_point]{ggplot2::geom_point()}} aesthetic.}
 
 \item{colours, colors}{Vector of colors to use for n-color gradient.}
 
