@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# corrr <a href='https://corrr.tidymodels.org'><img src='man/figures/logo.png' style='float: right'  height="139" /></a>
+# corrr <a href="https://corrr.tidymodels.org"><img src="man/figures/logo.png" align="right" height="138" alt="corrr website" /></a>
 
 <!-- badges: start -->
 
@@ -22,13 +22,13 @@ corrr functions, is represented below:
 
 You can install:
 
--   the latest released version from CRAN with
+- the latest released version from CRAN with
 
 ``` r
 install.packages("corrr")
 ```
 
--   the latest development version from GitHub with
+- the latest development version from GitHub with
 
 ``` r
 # install.packages("remotes") 
@@ -42,10 +42,10 @@ base correlation function `cor()`. It differs by defaulting to pairwise
 deletion, and returning a correlation data frame (`cor_df`) of the
 following structure:
 
--   A `tbl` with an additional class, `cor_df`
--   An extra “term” column
--   Standardized variances (the matrix diagonal) set to missing values
-    (`NA`) so they can be ignored.
+- A `tbl` with an additional class, `cor_df`
+- An extra “term” column
+- Standardized variances (the matrix diagonal) set to missing values
+  (`NA`) so they can be ignored.
 
 ### API
 
@@ -57,19 +57,19 @@ purposes:
 
 Internal changes (`cor_df` out):
 
--   `shave()` the upper or lower triangle (set to NA).
--   `rearrange()` the columns and rows based on correlation strengths.
+- `shave()` the upper or lower triangle (set to NA).
+- `rearrange()` the columns and rows based on correlation strengths.
 
 Reshape structure (`tbl` or `cor_df` out):
 
--   `focus()` on select columns and rows.
--   `stretch()` into a long format.
+- `focus()` on select columns and rows.
+- `stretch()` into a long format.
 
 Output/visualizations (console/plot out):
 
--   `fashion()` the correlations for pretty printing.
--   `rplot()` the correlations with shapes in place of the values.
--   `network_plot()` the correlations in a network.
+- `fashion()` the correlations for pretty printing.
+- `rplot()` the correlations with shapes in place of the values.
+- `network_plot()` the correlations in a network.
 
 ## Databases and Spark
 
@@ -167,6 +167,7 @@ rplot(x)
 ![](man/figures/README-combination-1.png)<!-- -->
 
 ``` r
+
 datasets::airquality %>% 
   correlate() %>% 
   network_plot(min_cor = .2)
@@ -183,18 +184,18 @@ This project is released with a [Contributor Code of
 Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html).
 By contributing to this project, you agree to abide by its terms.
 
--   For questions and discussions about tidymodels packages, modeling,
-    and machine learning, please [post on RStudio
-    Community](https://community.rstudio.com/new-topic?category_id=15&tags=tidymodels,question).
+- For questions and discussions about tidymodels packages, modeling, and
+  machine learning, please [post on RStudio
+  Community](https://community.rstudio.com/new-topic?category_id=15&tags=tidymodels,question).
 
--   If you think you have encountered a bug, please [submit an
-    issue](https://github.com/tidymodels/corrr/issues).
+- If you think you have encountered a bug, please [submit an
+  issue](https://github.com/tidymodels/corrr/issues).
 
--   Either way, learn how to create and share a
-    [reprex](https://reprex.tidyverse.org/articles/articles/learn-reprex.html)
-    (a minimal, reproducible example), to clearly communicate about your
-    code.
+- Either way, learn how to create and share a
+  [reprex](https://reprex.tidyverse.org/articles/articles/learn-reprex.html)
+  (a minimal, reproducible example), to clearly communicate about your
+  code.
 
--   Check out further details on [contributing guidelines for tidymodels
-    packages](https://www.tidymodels.org/contribute/) and [how to get
-    help](https://www.tidymodels.org/help/).
+- Check out further details on [contributing guidelines for tidymodels
+  packages](https://www.tidymodels.org/contribute/) and [how to get
+  help](https://www.tidymodels.org/help/).
