@@ -96,7 +96,7 @@ focus_if.default <- function(x, .predicate, ..., mirror = FALSE) {
 
 #' Stretch correlation data frame into long format.
 #'
-#' \code{stretch} is a specified implementation of tidyr::gather() to be applied
+#' \code{stretch} is a specified implementation of tidyr::pivot_longer() to be applied
 #' to a correlation data frame. It will gather the columns into a long-format
 #' data frame. The term column is handled automatically.
 #'
